@@ -1,23 +1,14 @@
-@extends('layouts.app')
-
+@include('layout.base')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+<div class="container-scroller" id="app">
+    @include('layout.header')
+    <div class="container-fluid page-body-wrapper">
+      @include('layout.sidebar')
+      <div class="main-panel">
+        <div class="content-wrapper">
+          @yield('content')
         </div>
+        @include('layout.footer')
+      </div>
     </div>
-</div>
-@endsection
+  </div>

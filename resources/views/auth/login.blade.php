@@ -3,11 +3,15 @@
 <div class="container-scroller" id="app">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       
-<div class="content-wrapper d-flex align-items-center justify-content-center auth theme-one" style="background-image: url(https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=740&t=st=1673984091~exp=1673984691~hmac=0cefc882eb3b0fc8e917900f863cbe20730a54d9fc5817aac810e8d921218959); background-size: cover;">
+<div class="content-wrapper d-flex align-items-center justify-content-center auth theme-one" style="background-image: url('img/background_img.webp'); background-size: cover;">
   <div class="row w-100">
  
     <div class="col-lg-6 mx-auto">
-      <div class="auto-form-wrapper">
+     
+      <div class="auto-form-wrapper"> 
+      <h1 class="d-flex align-items-center justify-content-center">
+      STIB
+    </h1>
     
         <form method="POST" action="{{ route('login') }}">
         @csrf
