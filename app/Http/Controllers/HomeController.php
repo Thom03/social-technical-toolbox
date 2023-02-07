@@ -25,4 +25,28 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    // Dashboard
+    public function dashboard_1()
+    {
+
+        $page_title = 'STBIS';
+        $page_description = 'Some description for the page';
+        $logo = "img/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+
+        return view('dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
+    }
+
+    //    List of system users
+    public function user_list()
+    {
+        $page_title = 'User List';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+
+        return view('usermanagement.userlist', compact('page_title', 'page_description','action'));
+    }
 }
