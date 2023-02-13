@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+
 return [
 
     /*
@@ -13,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'MetroAdmin Laravel'),
+    'name' => env('APP_NAME', 'STIBs Dashboard'),
 
 
     'public' => [
@@ -47,7 +49,7 @@ return [
                     'vendor/chartist/css/chartist.min.css',
                     'https://cdn.lineicons.com/2.0/LineIcons.css',
                 ],
-                'doctor_index' => [
+                'dataset_list' => [
                     'vendor/jqvmap/css/jqvmap.min.css',
                     'vendor/chartist/css/chartist.min.css',
                     'https://cdn.lineicons.com/2.0/LineIcons.css',
@@ -217,6 +219,12 @@ return [
                 'user_list' => [
                     'vendor/chartist/css/chartist.min.css',
                 ],
+                'role_list' => [
+                    'vendor/chartist/css/chartist.min.css',
+                ],
+                'edit_user' => [
+                    'vendor/jquery-steps/css/jquery.steps.css',
+                ],
             ],
             'js' => [
                 'dashboard_1' => [
@@ -225,7 +233,7 @@ return [
                     'js/custom.min.js',
                     'js/deznav-init.js',
                 ],
-                'doctor_index' => [
+                'dataset_list' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',
                     'vendor/peity/jquery.peity.min.js',
@@ -668,7 +676,35 @@ return [
                     'js/plugins-init/widgets-script-init.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',
-                ]
+                ],
+                'role_list' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/chartist/js/chartist.min.js',
+                    'vendor/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js',
+                    'vendor/flot/jquery.flot.js',
+                    'vendor/flot/jquery.flot.pie.js',
+                    'vendor/flot/jquery.flot.resize.js',
+                    'vendor/flot-spline/jquery.flot.spline.min.js',
+                    'vendor/jquery-sparkline/jquery.sparkline.min.js',
+                    'js/plugins-init/sparkline-init.js',
+                    'vendor/peity/jquery.peity.min.js',
+                    'js/plugins-init/piety-init.js',
+                    'js/plugins-init/widgets-script-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/custom.min.js',
+                ],
+                'edit_user' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/jquery-steps/build/jquery.steps.min.js',
+                    'vendor/jquery-validation/jquery.validate.min.js',
+                    'js/plugins-init/jquery.validate-init.js',
+                    'js/plugins-init/jquery-steps-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
 
             ]
         ],

@@ -19,7 +19,7 @@
 							<span class="nav-text">User Management</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{!! url('./userlist'); !!}">User List</a></li>
+                            <li><a href="{{ route('user_list') }}">User List</a></li>
 {{--                            <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Role Management</a>--}}
 {{--                                <ul aria-expanded="false">--}}
 {{--                                    <li><a href="{!! url('./email-compose'); !!}">User List</a></li>--}}
@@ -27,7 +27,7 @@
 {{--                                    <li><a href="{!! url('./email-read'); !!}">Read</a></li>--}}
 {{--                                </ul>--}}
 {{--                            </li>--}}
-                            <li><a href="{!! url('./app-calender'); !!}">Role Management</a></li>
+                            <li><a href="{!! url('./rolelist'); !!}">Role Management</a></li>
 {{--							<li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Shop</a>--}}
 {{--                                <ul aria-expanded="false">--}}
 {{--                                    <li><a href="{!! url('./ecom-product-grid'); !!}">Product Grid</a></li>--}}
@@ -39,6 +39,7 @@
 {{--									<li><a href="{!! url('./ecom-customers'); !!}">Customers</a></li>--}}
 {{--                                </ul>--}}
 {{--                            </li>--}}
+                            <li><a href="#">Permissions</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
@@ -46,12 +47,9 @@
 							<span class="nav-text">Datasets</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{!! url('./chart-flot'); !!}">Flot</a></li>
+                            <li><a href="{!! url('./datasetlist'); !!}">Dataset List</a></li>
                             <li><a href="{!! url('./chart-morris'); !!}">Morris</a></li>
-                            <li><a href="{!! url('./chart-chartjs'); !!}">Chartjs</a></li>
-                            <li><a href="{!! url('./chart-chartist'); !!}">Chartist</a></li>
-                            <li><a href="{!! url('./chart-sparkline'); !!}">Sparkline</a></li>
-                            <li><a href="{!! url('./chart-peity'); !!}">Peity</a></li>
+
                         </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
@@ -59,23 +57,8 @@
 							<span class="nav-text">API</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{!! url('./ui-accordion'); !!}">Collection</a></li>
+                            <li><a href="{!! url('./ui-accordion'); !!}">API Collection</a></li>
                             <li><a href="{!! url('./ui-alert'); !!}">Pull Datasets</a></li>
-{{--                            <li><a href="{!! url('./ui-badge'); !!}">Badge</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-button'); !!}">Button</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-modal'); !!}">Modal</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-button-group'); !!}">Button Group</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-list-group'); !!}">List Group</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-media-object'); !!}">Media Object</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-card'); !!}">Cards</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-carousel'); !!}">Carousel</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-dropdown'); !!}">Dropdown</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-popover'); !!}">Popover</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-progressbar'); !!}">Progressbar</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-tab'); !!}">Tab</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-typography'); !!}">Typography</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-pagination'); !!}">Pagination</a></li>--}}
-{{--                            <li><a href="{!! url('./ui-grid'); !!}">Grid</a></li>--}}
 
                         </ul>
                     </li>

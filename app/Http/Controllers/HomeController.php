@@ -42,11 +42,26 @@ class HomeController extends Controller
     //    List of system users
     public function user_list()
     {
+        $logo = "img/logo.png";
         $page_title = 'User List';
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
 
-        return view('usermanagement.userlist', compact('page_title', 'page_description','action'));
+        return view('usermanagement.userlist', compact('logo','page_title', 'page_description','action'));
     }
+
+    public function dataset_list()
+    {
+        $page_title = 'Dataset Lists';
+        $page_description = 'Some description for the page';
+        $logo = "img/logo.png";
+        $logoText = "images/logo-text.png";
+
+        $action = __FUNCTION__;
+
+        return view('datasets.datasetlist', compact('page_title', 'page_description','action','logo','logoText'));
+    }
+
+
 }

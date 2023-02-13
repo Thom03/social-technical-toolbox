@@ -1,21 +1,20 @@
 {{-- Extends layout --}}
 @extends('layout.default')
 
-
 {{-- Content --}}
 @section('content')
     <div class="container-fluid">
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>User List</h4>
+                    <h4>Role List</h4>
                     {{--                    <span>Statistics</span>--}}
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">user list</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">role list</a></li>
                 </ol>
             </div>
         </div>
@@ -31,7 +30,7 @@
         <div class="col-xl-12 col-lg-12 col-xxl-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">User List</h4>
+                    <h4 class="card-title">Role List</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive recentOrderTable">
@@ -40,26 +39,22 @@
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Roles</th>
+{{--                                <th scope="col">Email</th>--}}
+{{--                                <th scope="col">Roles</th>--}}
+                                {{--                                <th scope="col">Status</th>--}}
                                 {{--                                <th scope="col">Bills</th>--}}
                                 <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($roles as $key => $role)
                                 <tr>
                                     <td>{{ ++$i }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->username }}</td>
-                                    <td>
-                                        @foreach($user->roles as $role)
-                                        <span class="badge badge-rounded badge-primary">{{ $role->name }}</span>
-                                        @endforeach
-                                    </td>
-
+                                    <td>{{ $role->name }}</td>
+{{--                                    <td>{{ $user->email }}</td>--}}
+{{--                                    <td>01 August 2020</td>--}}
+{{--                                    <td><span class="badge badge-rounded badge-primary">Checkin</span></td>--}}
+{{--                                    <td>$120</td>--}}
                                     <td>
                                         <div class="dropdown custom-dropdown mb-0">
                                             <div class="btn sharp btn-primary tp-btn" data-toggle="dropdown">
@@ -76,7 +71,7 @@
                                             </div>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" href="#">Details</a>
-                                                <a class="dropdown-item text-success" href="{{ route('edit_user', $user->id) }}">Edit</a>
+                                                <a class="dropdown-item text-green" data-toggle="modal" data-target="#exampleModalpopover" href="#">Edit</a>
                                                 <a class="dropdown-item text-danger" href="#">Cancel</a>
                                             </div>
                                         </div>
@@ -92,5 +87,3 @@
     </div>
 
 @endsection
-
-
