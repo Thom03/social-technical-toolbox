@@ -33,7 +33,8 @@ Route::group(['middleware' => ['auth']], function (){
 Route::group(['namespace' => 'App\Http\Controllers'], function ()
 {
 //    Home Routes
-    Route::get('/', 'HomeController@dashboard_1')->name('dashboard');
+    Route::get('/', 'HomeController@landing_page')->name('landing_page');
+    Route::get('/dashboard', 'HomeController@dashboard_1')->name('dashboard');
 
 //    Auth Routes
     Auth::routes();
