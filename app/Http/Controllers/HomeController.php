@@ -63,5 +63,17 @@ class HomeController extends Controller
         return view('datasets.datasetlist', compact('page_title', 'page_description','action','logo','logoText'));
     }
 
+    public function landing_page()
+    {
+        $logo = "img/logo.png";
+        $page_title = 'Home Page';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+
+        return view('home', compact('logo','page_title', 'page_description','action'));
+    }
+
+
 
 }

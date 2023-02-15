@@ -31,7 +31,7 @@ class RoleController extends Controller
     {
 
         $logo = "img/logo.png";
-        $page_title = 'User List';
+        $page_title = 'Roles';
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
@@ -93,14 +93,20 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit_role(Role $role)
     {
-        $role = Role::find($id);
-        $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
-            ->all();
-        return view('roles.edit',compact('role','permission','rolePermissions'));
+
+        $logo = "img/logo.png";
+        $page_title = 'Roles';
+        $page_description = 'Some description for the page';
+
+
+        $action = __FUNCTION__;
+
+        $role = $role;
+        $rolePermissions = $role->permissions->pluck('name')->toArray();
+        $permissions = Permission::get();
+        return view('usermanagement.roles.edit',compact('logo','page_description', 'page_title','role','permissions','rolePermissions', 'action'));
     }
 
     /**
@@ -110,9 +116,18 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_role(Request $request, Role $role)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'required',
+        ]);
+        $role->update($request->only('name'));
+
+        $role->syncPermissions($request->get('permission'));
+
+        return redirect()->route('usermanagement.roles.index')
+            ->with('success','Role updated successfully');
     }
 
     /**

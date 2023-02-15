@@ -7,14 +7,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Role List</h4>
+                    <h4>Permission List</h4>
                     {{--                    <span>Statistics</span>--}}
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">role list</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Permission list</a></li>
                 </ol>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 </div>
             </div>
 {{--            <a href="#" type="hidden" class="btn btn-primary ml-3"><i class="flaticon-381-plus mr-0"></i></a>--}}
-            <a href="javascript:void(0);" class="btn btn-success ml-auto px-5">+ Add Role</a>
+            <a href="javascript:void(0);" class="btn btn-success ml-auto px-5">+ Add Permission</a>
 {{--            <div class="form-head d-flex mb-3 mb-lg-5 align-items-start">--}}
 
 {{--                <a href="javascript:void(0);" class="btn btn-success ml-auto px-5">+ Add Netw Appointment</a>--}}
@@ -35,15 +35,15 @@
         <div class="col-xl-12 col-lg-12 col-xxl-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Role List</h4>
+                    <h4 class="card-title">Permission List</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive recentOrderTable">
                         <table class="table verticle-middle table-responsive-md">
                             <thead>
                             <tr>
-                                <th scope="col">No.</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Guard</th>
 {{--                                <th scope="col">Email</th>--}}
 {{--                                <th scope="col">Roles</th>--}}
                                 {{--                                <th scope="col">Status</th>--}}
@@ -52,10 +52,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($roles as $key => $role)
+                            @foreach($permissions as $permission)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $role->name }}</td>
+                                    <td>{{ $permission->name }}</td>
+                                    <td>{{ $permission->guard_name }}</td>
 {{--                                    <td>{{ $user->email }}</td>--}}
 {{--                                    <td>01 August 2020</td>--}}
 {{--                                    <td><span class="badge badge-rounded badge-primary">Checkin</span></td>--}}
@@ -76,7 +76,7 @@
                                             </div>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" href="#">Details</a>
-                                                <a class="dropdown-item text-green"  href="{{ route('edit_role', $role->id) }}">Edit</a>
+                                                <a class="dropdown-item text-green" href="#">Edit</a>
                                                 <a class="dropdown-item text-danger" href="#">Cancel</a>
                                             </div>
                                         </div>
@@ -84,9 +84,6 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                            <div class="d-flex">
-                                {!! $roles->links() !!}
-                            </div>
                         </table>
                     </div>
                 </div>

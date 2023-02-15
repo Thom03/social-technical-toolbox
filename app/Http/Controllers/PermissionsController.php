@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class PermissionsController extends Controller
 {
@@ -11,10 +12,15 @@ class PermissionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function permission_list()
     {
+        $logo = "img/logo.png";
+        $page_title = 'Permissions';
+        $page_description = 'Some description for the page';
+        $action = __FUNCTION__;
+
         $permissions = Permission::all();
-        return view('permissions.index', [
+        return view('usermanagement.permissions.index', compact('logo', 'page_title', 'page_description', 'action'), [
             'permissions' => $permissions
         ]);
     }

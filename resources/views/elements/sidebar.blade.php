@@ -7,10 +7,10 @@
 						</a>
                         <ul aria-expanded="false">
 							<li><a href="{!! url('index'); !!}">Dashboard</a></li>
-							<li><a href="{!! url('doctors'); !!}">Doctors</a></li>
-							<li><a href="{!! url('doctors-details'); !!}">Doctors Details</a></li>
-							<li><a href="{!! url('doctors-review'); !!}">Doctors Review</a></li>
-							<li><a href="{!! url('patient-details'); !!}">Patient Details</a></li>
+							<li><a href="{!! url('doctors'); !!}">Profile Management</a></li>
+{{--							<li><a href="{!! url('doctors-details'); !!}">Doctors Details</a></li>--}}
+{{--							<li><a href="{!! url('doctors-review'); !!}">Doctors Review</a></li>--}}
+{{--							<li><a href="{!! url('patient-details'); !!}">Patient Details</a></li>--}}
 						</ul>
 
                     </li>
@@ -39,7 +39,7 @@
 {{--									<li><a href="{!! url('./ecom-customers'); !!}">Customers</a></li>--}}
 {{--                                </ul>--}}
 {{--                            </li>--}}
-                            <li><a href="#">Permissions</a></li>
+                            <li><a href="{{ route('permission_list') }}">Permissions</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
@@ -48,7 +48,7 @@
 						</a>
                         <ul aria-expanded="false">
                             <li><a href="{!! url('./datasetlist'); !!}">Dataset List</a></li>
-                            <li><a href="{!! url('./chart-morris'); !!}">Morris</a></li>
+                            <li><a href="{!! url('./chart-morris'); !!}">Uploading Dataset</a></li>
 
                         </ul>
                     </li>
@@ -67,12 +67,12 @@
 							<span class="nav-text">Settings</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{!! url('./uc-select2'); !!}">Select 2</a></li>
+                            <li><a href="{!! url('./uc-select2'); !!}">Datataset Templates</a></li>
                             <li><a href="{!! url('./uc-nestable'); !!}">Nestedable</a></li>
-                            <li><a href="{!! url('./uc-noui-slider'); !!}">Noui Slider</a></li>
-                            <li><a href="{!! url('./uc-sweetalert'); !!}">Sweet Alert</a></li>
-                            <li><a href="{!! url('./uc-toastr'); !!}">Toastr</a></li>
-                            <li><a href="{!! url('./map-jqvmap'); !!}">Jqv Map</a></li>
+{{--                            <li><a href="{!! url('./uc-noui-slider'); !!}">Noui Slider</a></li>--}}
+{{--                            <li><a href="{!! url('./uc-sweetalert'); !!}">Sweet Alert</a></li>--}}
+{{--                            <li><a href="{!! url('./uc-toastr'); !!}">Toastr</a></li>--}}
+{{--                            <li><a href="{!! url('./map-jqvmap'); !!}">Jqv Map</a></li>--}}
                         </ul>
                     </li>
                     <li><a href="{!! url('widget-basic'); !!}" class="ai-icon" aria-expanded="false">
