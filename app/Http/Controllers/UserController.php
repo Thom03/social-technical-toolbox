@@ -111,6 +111,6 @@ class UserController extends Controller
         //
         $user->delete();
         return redirect()->route('usermanagement.users.userlist')
-            ->withSuccess(__('User updated successfully.'));
+            ->withSuccess(__('User deleted successfully.'));
     }
 }

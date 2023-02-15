@@ -3,32 +3,32 @@
 
 
  var dzChartlist = function(){
-	
+
 	var screenWidth = $(window).width();
-		
+
 	var chartBar = function(){
-		
+
 		var options = {
 			  series: [
 				{
 					name: 'Net Profit',
 					data: [44, 55, 90, 80, 25, 15, 70, 55, 35, 15, 70, 55, 95, 35],
-					//radius: 12,	
-				}, 
+					//radius: 12,
+				},
 				{
 				  name: 'Revenue',
 				  data: [15, 65, 15, 35, 30, 5, 40, 60, 10, 5, 40, 60, 10, 35]
-				}, 
-				
+				},
+
 			],
 				chart: {
 				type: 'bar',
 				height: 350,
-				
+
 				toolbar: {
 					show: false,
 				},
-				
+
 			},
 			plotOptions: {
 			  bar: {
@@ -44,14 +44,14 @@
 			markers: {
 		shape: "circle",
 		},
-		
-		
+
+
 			legend: {
 				show: true,
 				fontSize: '12px',
 				labels: {
 					colors: '#000000',
-					
+
 					},
 				markers: {
 				width: 18,
@@ -59,7 +59,7 @@
 				strokeWidth: 0,
 				strokeColor: '#fff',
 				fillColors: undefined,
-				radius: 12,	
+				radius: 12,
 				}
 			},
 			stroke: {
@@ -71,7 +71,7 @@
 				borderColor: '#eee',
 			},
 			xaxis: {
-				
+
 			  categories: ['01', '02', '03', '04', '05', '06', '07', '08', '09'],
 			  labels: {
 			   style: {
@@ -112,7 +112,7 @@
 			var chartBar1 = new ApexCharts(document.querySelector("#chartBar"), options);
 			chartBar1.render();
 	}
-	
+
 	var chartStrock = function(){
 		//var date = new Date(1327359600000);
 		//alert(date);
@@ -161,7 +161,7 @@
             [1336946400000,32.23],
             [1337119200000,32.36],
           ]
-          
+
         }],
           chart: {
           id: 'area-datetime',
@@ -194,43 +194,43 @@
 				  show: false,
 				},
         },
-		
+
         yaxis: {
 				show: false
 			},
 			grid: {
 				show: false,
-			},	
+			},
 		responsive: [{
           breakpoint: 1024,
           options: {
 			   chart: {
 				width: '100%',
 			   }
-				
+
 		  }
-        }],	
+        }],
         };
-		
-		
-		
+
+
+
         var chart = new ApexCharts(document.querySelector("#chartStrock"), options);
         chart.render();
-      
-      
+
+
         var resetCssClasses = function(activeEl) {
         var els = document.querySelectorAll('button')
         Array.prototype.forEach.call(els, function(el) {
           el.classList.remove('active')
         })
-      
+
         activeEl.target.classList.add('active')
       }
-		
+
 	}
 	var chartCircle = function(){
-		
-		
+
+
 		var optionsCircle = {
 		  chart: {
 			type: 'radialBar',
@@ -238,7 +238,7 @@
 			height: 350,
 			offsetY: 0,
 			offsetX: 0,
-			
+
 		  },
 		  plotOptions: {
 			radialBar: {
@@ -246,16 +246,16 @@
 			  inverseOrder: false,
 			  hollow: {
 				margin: 0,
-				size: '35%',
+				size: '35',
 				background: 'transparent',
 			  },
-			  
-			  
-			  
+
+
+
 			  track: {
 				show: true,
 				background: '#e1e5ff',
-				strokeWidth: '10%',
+				strokeWidth: '10',
 				opacity: 1,
 				margin: 15, // margin is in pixels
 			  },
@@ -269,7 +269,7 @@
 			chart: {
 			offsetY: 0,
 			offsetX: 0
-		  },	
+		  },
             legend: {
               position: 'bottom',
               offsetX:0,
@@ -277,27 +277,27 @@
             }
           }
         }],
-		
+
 		fill: {
           opacity: 1
         },
-		
-		colors:['#ff2c53', '#209f84', '#ff5c00'],
-		series: [71, 63, 90],
-		labels: ['New', 'Recover', 'In Treatment'],
+
+		colors:['#ff2c53', '#209f84', '#ff5c00', '#7356f1', '#6e6e6e'],
+		series: [64, 73, 48, 61, 59],
+		labels: ['Gender Equity, Youth & Social Inclusion', 'Nutrition, Health & Food Security', 'Climate Adaptation & Mitigation', 'Poverty Reduction, Livelihoods & Jobs', 'Environment Health and Biodiversity'],
 		legend: {
-			fontSize: '16px',  
+			fontSize: '16px',
 			show: false,
-		  },		 
+		  },
 		}
 
 		var chartCircle1 = new ApexCharts(document.querySelector('#chartCircle'), optionsCircle);
 		chartCircle1.render();
-		
+
 	}
-	
+
 	var chartTimeline = function(){
-		
+
 		var optionsTimeline = {
 			chart: {
 				type: "bar",
@@ -319,14 +319,14 @@
 				{
 					name: "Retained Clients",
 					data: [-100, -55, -40, -120, -70, -40, -60]
-				} 
+				}
 			],
-			
+
 			plotOptions: {
 				bar: {
 					columnWidth: "25%",
 					endingShape: "rounded",
-					
+
 					colors: {
 						backgroundBarColors: ['#f0f0f0', '#f0f0f0', '#f0f0f0', '#f0f0f0'],
 						backgroundBarOpacity: 1,
@@ -375,11 +375,11 @@
 				  show: false,
 				},
 			},
-			
+
 			yaxis: {
 				show: false
 			},
-			
+
 			tooltip: {
 				x: {
 					show: true
@@ -389,39 +389,39 @@
 		var chartTimelineRender =  new ApexCharts(document.querySelector("#chartTimeline"), optionsTimeline);
 		 chartTimelineRender.render();
 	}
-	
+
 	/* Function ============ */
 		return {
 			init:function(){
 			},
-			
-			
+
+
 			load:function(){
-				chartBar();	
-				chartStrock();	
+				chartBar();
+				chartStrock();
 				chartCircle();
-				chartTimeline();				
+				chartTimeline();
 			},
-			
+
 			resize:function(){
 			}
 		}
-	
+
 	}();
 
 	jQuery(document).ready(function(){
 	});
-		
+
 	jQuery(window).on('load',function(){
 		setTimeout(function(){
 			dzChartlist.load();
-		}, 1000); 
-		
+		}, 1000);
+
 	});
 
 	jQuery(window).on('resize',function(){
-		
-		
-	});     
+
+
+	});
 
 })(jQuery);

@@ -603,10 +603,12 @@
                             </li>
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    @auth
 									<div class="header-info">
 										<span>{{ Auth::user()->name }}</span>
 										<small>ADMIN</small>
 									</div>
+                                    @endauth
                                     <img src="{{ asset('img/profile.png') }}" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">

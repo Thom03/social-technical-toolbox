@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DatasetController;
+use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -17,17 +18,10 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-
-//Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard_1'])->name('dashboard');
-
-//Auth::routes();
-
-//Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard_1'])->name('dashboard');
-
 #Route::get('/userlist', [HomeController::class, 'user_list'])->name('user_list');
 Route::get('/datasetlist', [HomeController::class, 'dataset_list'])->name('dataset_list');
-//Route::get('/userlist', [UserController::class, 'user_list'])->name('user_list');
-Route::get('/rolelist', [RoleController::class, 'role_list'])->name('role_list');
+
+
 
 Route::group(['middleware' => ['auth']], function (){
     Route::resource('roles', RoleController::class);
@@ -47,10 +41,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function ()
 
 
 
+
 //    User Routes
     Route::get('/userlist', [UserController::class, 'user_list'])->name('user_list');
     Route::get('/{user}/edituser', [UserController::class, 'edit_user'])->name('edit_user');
     Route::patch('/{user}/updateuser', [UserController::class, 'update_user'])->name('update_user');
+
+//    Permission Routes
+    Route::get('/permissionlist', [PermissionsController::class, 'permission_list'])->name('permission_list');
+
+//    Roles Routes
+    Route::get('/rolelist', [RoleController::class, 'role_list'])->name('role_list');
+    Route::get('/{role}/editrole', [RoleController::class, 'edit_role'])->name('edit_role');
+    Route::patch('/{role}/updaterole', [RoleController::class, 'update_role'])->name('update_role');
 
 
 //    User Routes
