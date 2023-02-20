@@ -22,4 +22,20 @@ class Dataset extends Model
         'release_year',
     ];
 
+    public function region()
+    {
+        return $this->hasMany('App\Models\Region');
+    }
+
+    public function theme()
+    {
+        return $this->hasMany('App\Models\Theme');
+    }
+
+    public function impactarea()
+    {
+        return $this->hasMany('App\Models\ImpactArea');
+    }
+
+
 }

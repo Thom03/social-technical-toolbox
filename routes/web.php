@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ImpactAreaController;
+use App\Http\Controllers\Admin\RegionController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\DatasetController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\RoleController;
@@ -18,29 +21,16 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-#Route::get('/userlist', [HomeController::class, 'user_list'])->name('user_list');
-Route::get('/datasetlist', [HomeController::class, 'dataset_list'])->name('dataset_list');
+
+//    Home Routes
+Route::get('/', [HomeController::class, 'landing_page'])->name('landing_page');
 
 
+Auth::routes();
+//Route::post('insert_impact', [ImpactAreaController::class, 'insert_impact'])->name('insert_impact');
 
 Route::group(['middleware' => ['auth']], function (){
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class );
-//    Route::resource('/userlist', [UserController::class, 'user_list'])->name('user_list');
-    Route::resource('datasets', DatasetController::class );
-});
-
-Route::group(['namespace' => 'App\Http\Controllers'], function ()
-{
-//    Home Routes
-    Route::get('/', 'HomeController@landing_page')->name('landing_page');
-    Route::get('/dashboard', 'HomeController@dashboard_1')->name('dashboard');
-
-//    Auth Routes
-    Auth::routes();
-
-
-
+    Route::get('/dashboard', [HomeController::class, 'dashboard_1'])->name('dashboard');
 
 
 //    User Routes
@@ -57,13 +47,27 @@ Route::group(['namespace' => 'App\Http\Controllers'], function ()
     Route::patch('/{role}/updaterole', [RoleController::class, 'update_role'])->name('update_role');
 
 
-//    User Routes
-    Route::group(['middleware' => ['auth', 'permission']], function (){
+    //    Impact Areas Routes
+    Route::get('impact_areas', [ImpactAreaController::class, 'impact_list'])->name('impact_list');
+    Route::get('add_impact', [ImpactAreaController::class, 'add_impact'])->name('add_impact');
+    Route::get('insert_impact', [ImpactAreaController::class, 'insert_impact'])->name('insert_impact');
 
-//        Route::get('/userlist', [UserController::class, 'user_list'])->name('user_list');
+    //    Region Routes
+    Route::get('region_list', [RegionController::class, 'region_list'])->name('region_list');
+    Route::get('add_region', [RegionController::class, 'add_region'])->name('add_region');
+    Route::get('insert_region', [RegionController::class, 'insert_region'])->name('insert_region');
+
+
+    //    Themes Routes
+    Route::get('theme_list', [ThemeController::class, 'theme_list'])->name('theme_list');
+    Route::get('add_theme', [ThemeController::class, 'add_theme'])->name('add_theme');
+    Route::get('insert_theme', [ThemeController::class, 'insert_theme'])->name('insert_theme');
 
 
 
+    //Datasets Routes
+    Route::get('datasetlist', [HomeController::class, 'dataset_list'])->name('dataset_list');
 
-    });
+
+
 });

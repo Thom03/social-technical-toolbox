@@ -101,7 +101,7 @@
                             <table id="example" class="display" style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Title</th>
                                     <th>Position</th>
                                     <th>Office</th>
                                     <th>Age</th>
