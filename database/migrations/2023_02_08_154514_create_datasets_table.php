@@ -18,6 +18,13 @@ class CreateDatasetsTable extends Migration
             $table->char('title', 255);
             $table->char('author', 255);
             $table->year('release_year');
+            $table->char('source', 255);
+            $table->string('access');
+            $table->string('license');
+            $table->string('contact');
+            $table->string('DOI');
+            $table->string('providers');
+            $table->string('collection_period');
             $table->timestamps();
 
 

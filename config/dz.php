@@ -230,10 +230,22 @@ return [
                     'vendor/chartist/css/chartist.min.css',
                 ],'permission_list' => [
                     'vendor/chartist/css/chartist.min.css',
+                ],'impact_list' => [
+                    'vendor/chartist/css/chartist.min.css',
                 ],
                 'edit_user' => [
                     'vendor/jquery-steps/css/jquery.steps.css',
-                ], 'edit_role' => [
+                ],
+                'add_impact' => [
+                    'vendor/jquery-steps/css/jquery.steps.css',
+                ],
+                'add_region' => [
+                    'vendor/jquery-steps/css/jquery.steps.css',
+                ],
+                'add_theme' => [
+                    'vendor/jquery-steps/css/jquery.steps.css',
+                ],
+                'edit_role' => [
                     'vendor/jquery-steps/css/jquery.steps.css',
                 ],
             ],
@@ -734,7 +746,8 @@ return [
                     'js/custom.min.js',
                     'js/deznav-init.js',
                     'js/custom.min.js',
-                ],  'permission_list' => [
+                ],
+                'permission_list' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',
                     'vendor/chartist/js/chartist.min.js',
@@ -752,7 +765,67 @@ return [
                     'js/deznav-init.js',
                     'js/custom.min.js',
                 ],
+                'impact_list' => [
+                    'vendor/flot-spline/jquery.flot.spline.min.js',
+                    'vendor/jquery-sparkline/jquery.sparkline.min.js',
+                    'vendor/peity/jquery.peity.min.js',
+                    'js/plugins-init/piety-init.js',
+                    'js/plugins-init/widgets-script-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/custom.min.js',
+                ],
+                'region_list' => [
+                    'vendor/flot-spline/jquery.flot.spline.min.js',
+                    'vendor/jquery-sparkline/jquery.sparkline.min.js',
+                    'vendor/peity/jquery.peity.min.js',
+                    'js/plugins-init/piety-init.js',
+                    'js/plugins-init/widgets-script-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/custom.min.js',
+                ],
+                'theme_list' => [
+                    'vendor/flot-spline/jquery.flot.spline.min.js',
+                    'vendor/jquery-sparkline/jquery.sparkline.min.js',
+                    'vendor/peity/jquery.peity.min.js',
+                    'js/plugins-init/piety-init.js',
+                    'js/plugins-init/widgets-script-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/custom.min.js',
+                ],
                 'edit_user' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/jquery-steps/build/jquery.steps.min.js',
+                    'vendor/jquery-validation/jquery.validate.min.js',
+                    'js/plugins-init/jquery.validate-init.js',
+                    'js/plugins-init/jquery-steps-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'add_impact' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/jquery-steps/build/jquery.steps.min.js',
+                    'vendor/jquery-validation/jquery.validate.min.js',
+                    'js/plugins-init/jquery.validate-init.js',
+                    'js/plugins-init/jquery-steps-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'add_region' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/jquery-steps/build/jquery.steps.min.js',
+                    'vendor/jquery-validation/jquery.validate.min.js',
+                    'js/plugins-init/jquery.validate-init.js',
+                    'js/plugins-init/jquery-steps-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'add_theme' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',
                     'vendor/jquery-steps/build/jquery.steps.min.js',

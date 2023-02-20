@@ -68,9 +68,9 @@
 						</a>
                         <ul aria-expanded="false">
                             <li><a href="{!! url('./uc-select2'); !!}">Datataset Templates</a></li>
-                            <li><a href="{!! url('./uc-nestable'); !!}">Nestedable</a></li>
-{{--                            <li><a href="{!! url('./uc-noui-slider'); !!}">Noui Slider</a></li>--}}
-{{--                            <li><a href="{!! url('./uc-sweetalert'); !!}">Sweet Alert</a></li>--}}
+                            <li><a href="{{ route('region_list') }}">Dataset Regions</a></li>
+                            <li><a href="{{ route('theme_list') }}">Dataset Themes</a></li>
+                            <li><a href="{{ route('impact_list') }}">Dataset Impact Areas</a></li>
 {{--                            <li><a href="{!! url('./uc-toastr'); !!}">Toastr</a></li>--}}
 {{--                            <li><a href="{!! url('./map-jqvmap'); !!}">Jqv Map</a></li>--}}
                         </ul>
