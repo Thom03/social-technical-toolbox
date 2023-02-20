@@ -28,6 +28,60 @@
 
             <a href="{{ route('add_impact') }}" class="btn btn-success ml-auto px-5">+ Add Impact Area</a>
 
+        </div>
+        <div class="col-xl-12 col-lg-12 col-xxl-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Impact Area List</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive recentOrderTable">
+                        <table class="table verticle-middle table-responsive-md">
+                            <thead>
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">slug</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($impact_area as $impact_area)
+                                <tr>
+                                    <td>{{ $impact_area->id }}</td>
+                                    <td><span class="badge badge-rounded badge-success">{{ $impact_area->name }}</span></td>
+                                    <td>{{ $impact_area->slug }}</td>
+
+                                    <td>
+                                        <div class="dropdown custom-dropdown mb-0">
+                                            <div class="btn sharp btn-primary tp-btn" data-toggle="dropdown">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
+                                                     viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                        <circle fill="#000000" cx="12" cy="5" r="2"/>
+                                                        <circle fill="#000000" cx="12" cy="12" r="2"/>
+                                                        <circle fill="#000000" cx="12" cy="19" r="2"/>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#">Details</a>
+                                                <a class="dropdown-item text-success" href="#">Edit</a>
+                                                <a class="dropdown-item text-danger" href="#">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 @endsection

@@ -17,13 +17,15 @@ class ImpactAreaController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
+        $impact_area = ImpactArea::all();
 
 
 //        $users = User::latest()->paginate(10);
-        return view('settings.impact.index', compact('logo', 'page_title', 'page_description', 'action'));
+        return view('settings.impact.index', compact('impact_area','logo', 'page_title', 'page_description', 'action'));
 
     }
 
+    //TODO: Displaying error messages.
     public function add_impact()
     {
         $logo = "img/logo.png";
@@ -44,8 +46,8 @@ class ImpactAreaController extends Controller
         $impact->slug = $request->input('slug');
         $impact->save();
 
-        return redirect('/dashboard')->with('status', 'Impact Area added successfully.');
+        return redirect('/impact_areas')->with('status', 'Impact Area added successfully.');
 
     }
-
+//TODO: Adding edit and update functions
 }

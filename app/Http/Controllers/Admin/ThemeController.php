@@ -18,7 +18,9 @@ class ThemeController extends Controller
 
         $action = __FUNCTION__;
 
-        return view('settings.themes.index', compact('logo', 'page_title', 'page_description', 'action'));
+        $theme = Theme::all();
+
+        return view('settings.themes.index', compact('theme','logo', 'page_title', 'page_description', 'action'));
 
     }
 
