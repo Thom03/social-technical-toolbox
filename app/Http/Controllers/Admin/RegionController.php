@@ -16,8 +16,9 @@ class RegionController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
+        $region = Region::all();
 
-        return view('settings.regions.index', compact('logo', 'page_title', 'page_description', 'action'));
+        return view('settings.regions.index', compact('region', 'logo', 'page_title', 'page_description', 'action'));
 
     }
 
