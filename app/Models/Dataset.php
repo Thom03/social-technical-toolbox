@@ -16,10 +16,19 @@ class Dataset extends Model
     protected $table = 'datasets';
 
     protected $fillable = [
-        'user_id',
         'title',
         'author',
         'release_year',
+        'region_id',
+        'theme_id',
+        'impact_id',
+        'source',
+        'access',
+        'license',
+        'contact',
+        'DOI',
+        'providers',
+        'collection_period',
     ];
 
     public function region()

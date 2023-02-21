@@ -66,7 +66,9 @@ Route::group(['middleware' => ['auth']], function (){
 
 
     //Datasets Routes
-    Route::get('datasetlist', [HomeController::class, 'dataset_list'])->name('dataset_list');
+    Route::get('datasetlist', [DatasetController::class, 'dataset_list'])->name('dataset_list');
+    Route::get('add_dataset', [DatasetController::class, 'add_dataset'])->name('add_dataset');
+    Route::get('insert_dataset', [DatasetController::class, 'insert_dataset'])->name('insert_dataset');
 
 
 

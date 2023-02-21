@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dataset;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -70,8 +71,13 @@ class HomeController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
+        $dataset = Dataset::all();
+        $dataset_count = Dataset::all()->count();
+        $open_count = Dataset::where('access', 'open')->count();
+        $limited_count = Dataset::where('access', 'limited')->count();
 
-        return view('home', compact('logo','page_title', 'page_description','action'));
+
+        return view('home', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
     }
 
 
