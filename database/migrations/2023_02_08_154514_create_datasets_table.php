@@ -18,6 +18,9 @@ class CreateDatasetsTable extends Migration
             $table->char('title', 255);
             $table->char('author', 255);
             $table->year('release_year');
+            $table->bigInteger('region_id');
+            $table->bigInteger('theme_id');
+            $table->bigInteger('impact_id');
             $table->char('source', 255);
             $table->string('access');
             $table->string('license');
@@ -26,8 +29,6 @@ class CreateDatasetsTable extends Migration
             $table->string('providers');
             $table->string('collection_period');
             $table->timestamps();
-
-
         });
     }
 
