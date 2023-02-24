@@ -22,6 +22,7 @@ class Dataset extends Model
         'region_id',
         'theme_id',
         'impact_id',
+        'resource_files',
         'source',
         'access',
         'license',
@@ -29,11 +30,26 @@ class Dataset extends Model
         'DOI',
         'providers',
         'collection_period',
+        'data_type',
+        'methods',
+        'production_system',
+        'technology_practice',
+        'gender_responsive',
+        'social_inclusion',
+        'policy_institutional',
+        'organizational',
+        'marketing',
+        'financial',
+        'insurance',
+        'digital',
+        'training',
+        'observations',
+
     ];
 
     public function region()
     {
-        return $this->hasMany('App\Models\Region');
+        return $this->belongsTo(Region::class, 'region_id', 'id');
     }
 
     public function theme()

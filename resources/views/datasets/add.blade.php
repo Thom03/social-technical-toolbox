@@ -23,7 +23,7 @@
             <div class="col-xl-12 col-xxl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Add Dataset</h4>
+                        <h4 class="card-title">Dataset Information</h4>
                     </div>
                     <div class="card-body">
                         <form  action="{{ route('insert_dataset') }}" action="post"  enctype="multipart/form-data" class="step-form-horizontal">
@@ -33,8 +33,8 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Title</label>
-                                        <input  type="text" name="title"
-                                                class="form-control" placeholder="Title" required>
+                                        <textarea  rows="5"  name="title"
+                                                   class="form-control" placeholder="Title" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Author</label>
@@ -110,9 +110,91 @@
                                         <input  type="text" name="collection_period"
                                                 class="form-control" placeholder="Collection Period" required>
                                     </div>
+                                </div>
+                                <div class="col-lg-6 mb-2">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Additional Information</h4>
+                                    </div>
+                                    <div class="form-group">
 
+                                        <input  type="text"  name="data_type"
+                                                   class="form-control" placeholder="Data Type">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Methods</label>
+                                        <input  type="text" name="methods"
+                                                class="form-control" placeholder="Methods">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Production System</label>
+                                        <input  type="text" name="production_system"
+                                                class="form-control" placeholder="Production System">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="text-label">Technology/Practice</label>
+                                        <input  type="text" name="technology_practice"
+                                                class="form-control" placeholder="Technology/Practice" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="text-label">Gender Responsive</label>
+                                        <input  type="checkbox" name="access"
+                                                class="form-control" required>
+                                    </div>
                                 </div>
 
+                                <div class="col-lg-6 mb-2">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Innovation Components</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <input  type="text" name="license"
+                                                class="form-control" placeholder="license">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="text-label">Policy/Institutional</label>
+                                        <input  type="checkbox" name="contact"
+                                                class="form-control" placeholder="Contact">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="text-label">Organizational</label>
+                                        <input  type="checkbox" name="providers"
+                                                class="form-control" placeholder="Providers" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Marketing</label>
+                                        <input  type="checkbox" name="collection_period"
+                                                class="form-control" placeholder="Collection Period">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Financial</label>
+                                        <input  type="checkbox" name="collection_period"
+                                                class="form-control" placeholder="Collection Period">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Insurance</label>
+                                        <input  type="checkbox" name="collection_period"
+                                                class="form-control" placeholder="Collection Period">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Digital</label>
+                                        <input  type="checkbox" name="collection_period"
+                                                class="form-control" placeholder="Collection Period">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Training</label>
+                                        <input  type="checkbox" name="collection_period"
+                                                class="form-control" placeholder="Collection Period">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Observation</label>
+                                        <textarea rows="3"   name="collection_period"
+                                                    class="form-control" placeholder="Collection Period"></textarea>
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-success">Add Dataset</button>
                             <a href="{{ route('dataset_list') }}" type="submit" class="btn btn-danger">Back</a>
