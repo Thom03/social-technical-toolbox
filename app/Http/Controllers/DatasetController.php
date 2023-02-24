@@ -86,9 +86,17 @@ class DatasetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function datset_detail($id)
+
     {
-        //
+        $logo = "img/logo.png";
+        $page_title = 'Dataset';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+        $datasets = Dataset::find($id);
+
+        return view('datasets.detail', compact('datasets', 'logo', 'page_title', 'page_description', 'action'));
     }
 
     /**

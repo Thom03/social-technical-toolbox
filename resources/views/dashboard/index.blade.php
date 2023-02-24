@@ -117,35 +117,35 @@
 														<span class="bg-danger"></span>
 														<div>
 															<p>Gender Equity, Youth & Social Inclusion</p>
-															<h3>64</h3>
+															<h3>0</h3>
 														</div>
 													</div>
 													<div class="col px-0">
 														<span class="bg-success"></span>
 														<div>
 															<p>Nutrition, Health & Food Security</p>
-															<h3>73</h3>
+															<h3>0</h3>
 														</div>
 													</div>
 													<div class="col px-0">
 														<span class="bg-warning"></span>
 														<div>
 															<p>Climate Adaptation & Mitigation. </p>
-															<h3>48</h3>
+															<h3>0</h3>
 														</div>
 													</div>
                                                     <div class="col px-0">
                                                         <span class="bg-blue"></span>
                                                         <div>
                                                             <p>Poverty Reduction, Livelihoods & Jobs.</p>
-                                                            <h3>61</h3>
+                                                            <h3>0</h3>
                                                         </div>
                                                     </div>
                                                     <div class="col px-0">
                                                         <span class="bg-dark"></span>
                                                         <div>
                                                             <p>Environment Health and Biodiversity.</p>
-                                                            <h3>59</h3>
+                                                            <h3>0</h3>
                                                         </div>
                                                     </div>
 												</div>
@@ -441,7 +441,7 @@
 												<i class="la la-users"></i>
 											</span>
 											<div class="media-body text-white text-right">
-												<p class="mb-1">TOTAL USERS</p>
+												<p class="mb-1">TOTAL CLUSTER BUNDLES</p>
 												<h3 class="text-white">76</h3>
 											</div>
 										</div>

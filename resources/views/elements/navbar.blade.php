@@ -13,16 +13,11 @@
 <div class="nav-scroller bg-white shadow-sm">
     <nav class="nav  justify-content-center nav-underline">
         <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" href="{{ route('landing_page') }}">
            Datasets
 {{--            <span class="badge badge-pill bg-light align-text-bottom">27</span>--}}
         </a>
         <a class="nav-link" href="#">Documentation</a>
-{{--        <a class="nav-link" href="#">Suggestions</a>--}}
-{{--        <a class="nav-link" href="#">Link</a>--}}
-{{--        <a class="nav-link" href="#">Link</a>--}}
-{{--        <a class="nav-link" href="#">Link</a>--}}
-{{--        <a class="nav-link" href="#">Link</a>--}}
-{{--        <a class="nav-link" href="#">Link</a>--}}
+
     </nav>
 </div>
