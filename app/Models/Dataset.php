@@ -59,7 +59,7 @@ class Dataset extends Model
 
     public function impactarea()
     {
-        return $this->hasMany('App\Models\ImpactArea');
+        return $this->belongsTo(ImpactArea::class, 'impact_id', 'id');
     }
 
 

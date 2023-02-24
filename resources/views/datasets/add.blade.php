@@ -37,7 +37,7 @@
                                                    class="form-control" placeholder="Title" required></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-label">Author</label>
+                                        <label class="text-label">Author(s)</label>
                                         <input  type="text" name="author"
                                                 class="form-control" placeholder="Author" required>
                                     </div>
@@ -108,7 +108,7 @@
                                     <div class="form-group">
                                         <label class="text-label">Collection Period</label>
                                         <input  type="text" name="collection_period"
-                                                class="form-control" placeholder="Collection Period" required>
+                                                class="form-control" placeholder="Collection Period">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
@@ -134,13 +134,12 @@
                                     <div class="form-group">
                                         <label class="text-label">Technology/Practice</label>
                                         <input  type="text" name="technology_practice"
-                                                class="form-control" placeholder="Technology/Practice" required>
+                                                class="form-control" placeholder="Technology/Practice">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-label">Gender Responsive</label>
-                                        <input  type="checkbox" name="access"
-                                                class="form-control" required>
+                                        <input  type="checkbox" name="gender_responsive">
                                     </div>
                                 </div>
 
@@ -148,50 +147,40 @@
                                     <div class="card-header">
                                         <h4 class="card-title">Innovation Components</h4>
                                     </div>
-                                    <div class="form-group">
-                                        <input  type="text" name="license"
-                                                class="form-control" placeholder="license">
-                                    </div>
+
 
                                     <div class="form-group">
                                         <label class="text-label">Policy/Institutional</label>
-                                        <input  type="checkbox" name="contact"
-                                                class="form-control" placeholder="Contact">
+                                        <input  type="checkbox" name="policy_institutional">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-label">Organizational</label>
-                                        <input  type="checkbox" name="providers"
-                                                class="form-control" placeholder="Providers" >
+                                        <input  type="checkbox" name="organizational">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Marketing</label>
-                                        <input  type="checkbox" name="collection_period"
-                                                class="form-control" placeholder="Collection Period">
+                                        <input  type="checkbox" name="marketing">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Financial</label>
-                                        <input  type="checkbox" name="collection_period"
-                                                class="form-control" placeholder="Collection Period">
+                                        <input  type="checkbox" name="financial">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Insurance</label>
-                                        <input  type="checkbox" name="collection_period"
-                                                class="form-control" placeholder="Collection Period">
+                                        <input  type="checkbox" name="insurance">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Digital</label>
-                                        <input  type="checkbox" name="collection_period"
-                                                class="form-control" placeholder="Collection Period">
+                                        <input  type="checkbox" name="digital">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Training</label>
-                                        <input  type="checkbox" name="collection_period"
-                                                class="form-control" placeholder="Collection Period">
+                                        <input  type="checkbox" name="training">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Observation</label>
-                                        <textarea rows="3"   name="collection_period"
+                                        <textarea rows="3"   name="observations"
                                                     class="form-control" placeholder="Collection Period"></textarea>
                                     </div>
                                 </div>
