@@ -40,6 +40,10 @@
                                 <td colspan="5"> {{ $datasets->region->name }}</td>
                             </tr>
                             <tr>
+                                <th class="text-nowrap text-dark" scope="row">Impact Area</th>
+                                <td colspan="5"> <span class="badge badge-rounded badge-secondary">{{ $datasets->impactarea->name }}</span></td>
+                            </tr>
+                            <tr>
                                 <th class="text-nowrap text-dark" scope="row">Resource Files</th>
                                 <td colspan="5"></td>
                             </tr>
@@ -57,8 +61,12 @@
                                 @endif
                             </tr>
                             <tr>
-                                <th class="text-nowrap text-dark" scope="row">Data Type</th>
-                                <td colspan="5"></td>
+                                <th class="text-nowrap text-dark" scope="row">License</th>
+                                <td colspan="5">{{ $datasets->license }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-nowrap text-dark" scope="row">Contact</th>
+                                <td colspan="5">{{ $datasets->contact }}</td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Production System</th>
@@ -82,51 +90,40 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped" style="min-width: 490px;">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th class="text-center text-dark">
-                                    <br>
-                                    <small class="text-muted">&lt;</small>
-                                </th>
-
-                            </tr>
-                            </thead>
                             <tbody>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Social inclusion/protection</th>
-                                <td> No</td>
+                                <td> {{ $datasets->social_inclusion == 1 ? 'Yes' : 'No' }}</td>
 
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Policy/Institutional</th>
-                                <td><code>Yes</code></td>
+                                <td><code>{{ $datasets->policy_institutional == 1 ? 'Yes' : 'No' }}</code></td>
 
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Organizational</th>
-                                <td colspan="5"> </td>
+                                <td colspan="5">{{ $datasets->organizational == 1 ? 'Yes' : 'No' }}</td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Marketing</th>
-                                <td colspan="5">Yes</td>
+                                <td colspan="5">{{ $datasets->marketing == 1 ? 'Yes' : 'No' }}</td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Financial</th>
-                                <td colspan="5"> No
-                                </td>
+                                <td colspan="5">{{ $datasets->financial == 1 ? 'Yes' : 'No' }}</td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Insurance</th>
-                                <td colspan="5">Yes</td>
+                                <td colspan="5">{{ $datasets->insurance == 1 ? 'Yes' : 'No' }}</td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Digital</th>
-                                <td colspan="5">Yes</td>
+                                <td colspan="5">{{ $datasets->digital == 1 ? 'Yes' : 'No' }}</td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Training</th>
-                                <td colspan="5">Yes</td>
+                                <td colspan="5">{{ $datasets->training == 1 ? 'Yes' : 'No' }}</td>
                             </tr>
                             </tbody>
                         </table>

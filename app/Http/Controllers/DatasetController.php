@@ -67,6 +67,7 @@ class DatasetController extends Controller
         $dataset->region_id = $request->input('region_id');
         $dataset->theme_id = $request->input('theme_id');
         $dataset->impact_id = $request->input('impact_id');
+        $dataset->resource_files = $request->input('resource_files');
         $dataset->source = $request->input('source');
         $dataset->access = $request->input('access');
         $dataset->license = $request->input('license');
@@ -74,6 +75,20 @@ class DatasetController extends Controller
         $dataset->DOI = $request->input('DOI');
         $dataset->providers = $request->input('providers');
         $dataset->collection_period = $request->input('collection_period');
+        $dataset->data_type = $request->input('data_type');
+        $dataset->methods = $request->input('methods');
+        $dataset->production_system = $request->input('production_system');
+        $dataset->technology_practice = $request->input('technology_practice');
+        $dataset->gender_responsive = $request->input('gender_responsive')=='on'?1:0;
+        $dataset->social_inclusion = $request->input('social_inclusion')=='on'?1:0;
+        $dataset->policy_institutional = $request->input('policy_institutional')=='on'?1:0;
+        $dataset->organizational = $request->input('organizational')=='on'?1:0;
+        $dataset->marketing = $request->input('marketing')=='on'?1:0;
+        $dataset->financial = $request->input('financial')=='on'?1:0;
+        $dataset->insurance = $request->input('insurance')=='on'?1:0;
+        $dataset->digital = $request->input('digital')=='on'?1:0;
+        $dataset->training = $request->input('training')=='on'?1:0;
+        $dataset->observations = $request->input('observations');
         $dataset->save();
 
         return redirect('/impact_areas')->with('status', 'Impact Area added successfully.');
