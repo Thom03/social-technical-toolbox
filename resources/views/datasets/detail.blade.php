@@ -37,7 +37,7 @@
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Region</th>
-                                <td colspan="5"> {{ $datasets->region->name }}</td>
+                                <td colspan="5"> <span class="badge badge-rounded badge-light">{{ $datasets->region->name }}</span></td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Impact Area</th>
@@ -70,7 +70,15 @@
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Production System</th>
-                                <td colspan="5">Rice</td>
+                                <td colspan="5">{{ $datasets->production_system }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-nowrap text-dark" scope="row">Technology/Practice</th>
+                                <td colspan="5">{{ $datasets->technology_practice }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-nowrap text-dark" scope="row">Gender Response</th>
+                                <td colspan="5">{{ $datasets->gender_responsive == 1 ? 'YES' : 'NO'}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -93,37 +101,37 @@
                             <tbody>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Social inclusion/protection</th>
-                                <td> {{ $datasets->social_inclusion == 1 ? 'Yes' : 'No' }}</td>
+                                <td><span class="badge badge-rounded badge-light"> {{ $datasets->social_inclusion == 1 ? 'Yes' : 'No' }}</span></td>
 
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Policy/Institutional</th>
-                                <td><code>{{ $datasets->policy_institutional == 1 ? 'Yes' : 'No' }}</code></td>
+                                <td><span class="badge badge-rounded badge-light">{{ $datasets->policy_institutional == 1 ? 'Yes' : 'No' }}</span></td>
 
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Organizational</th>
-                                <td colspan="5">{{ $datasets->organizational == 1 ? 'Yes' : 'No' }}</td>
+                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->organizational == 1 ? 'Yes' : 'No' }}</span></td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Marketing</th>
-                                <td colspan="5">{{ $datasets->marketing == 1 ? 'Yes' : 'No' }}</td>
+                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->marketing == 1 ? 'Yes' : 'No' }}</span></td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Financial</th>
-                                <td colspan="5">{{ $datasets->financial == 1 ? 'Yes' : 'No' }}</td>
+                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->financial == 1 ? 'Yes' : 'No' }}</span></td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Insurance</th>
-                                <td colspan="5">{{ $datasets->insurance == 1 ? 'Yes' : 'No' }}</td>
+                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->insurance == 1 ? 'Yes' : 'No' }}</span></td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Digital</th>
-                                <td colspan="5">{{ $datasets->digital == 1 ? 'Yes' : 'No' }}</td>
+                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->digital == 1 ? 'Yes' : 'No' }}</span></td>
                             </tr>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Training</th>
-                                <td colspan="5">{{ $datasets->training == 1 ? 'Yes' : 'No' }}</td>
+                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->training == 1 ? 'Yes' : 'No' }}</span></td>
                             </tr>
                             </tbody>
                         </table>
@@ -140,16 +148,7 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped" style="min-width: 490px;">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th class="text-center text-dark">
-                                    <br>
-                                    <small class="text-muted">&lt;</small>
-                                </th>
 
-                            </tr>
-                            </thead>
                             <tbody>
                             <tr>
                                 <th class="text-nowrap text-dark" scope="row">Access to finance</th>
@@ -161,11 +160,14 @@
                                 <td><code>Yes</code></td>
 
                             </tr>
+
                             </tbody>
                         </table>
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
 

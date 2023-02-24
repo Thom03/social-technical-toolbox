@@ -91,7 +91,11 @@ class DatasetController extends Controller
         $dataset->observations = $request->input('observations');
         $dataset->save();
 
-        return redirect('/impact_areas')->with('status', 'Impact Area added successfully.');
+
+//        $impactareas = $request->input('impactareas');
+//        $dataset->impactareas()->sync($impactareas);
+
+        return redirect('/datasetlist')->with('status', 'Impact Area added successfully.');
 
     }
 

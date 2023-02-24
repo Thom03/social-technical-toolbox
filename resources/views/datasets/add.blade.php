@@ -66,7 +66,7 @@
                                     <select class="form-select" name="region_id">
                                         <option class="text-label">Select a Region</option>
                                         @foreach($region as $item)
-                                        <option value="{{ $item->id }}" class="form-control">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                     </div>
@@ -84,10 +84,18 @@
                                         <select class="form-select" name="impact_id">
                                             <option class="text-label">Select a Region</option>
                                             @foreach($impact as $item)
-                                                <option value="{{ $item->id }}" class="form-control">{{ $item->name }}</option>
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="impactareas">Impact Areas</label>--}}
+{{--                                        <select id="impactareas" class="form-select" name="impactareas[]" multiple>--}}
+{{--                                            @foreach($impact as $impact)--}}
+{{--                                                <option value="{{ $impact->id }}">{{ $impact->name }}</option>--}}
+{{--                                            @endforeach--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
                                     <div class="form-group">
                                         <label class="text-label">License</label>
                                         <input  type="text" name="license"
