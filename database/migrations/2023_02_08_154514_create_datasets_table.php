@@ -21,6 +21,7 @@ class CreateDatasetsTable extends Migration
             $table->bigInteger('region_id');
             $table->bigInteger('theme_id');
             $table->bigInteger('impact_id');
+            $table->bigInteger('impactareas')->nullable();
             $table->string('resource_files')->nullable();
             $table->char('source', 255);
             $table->string('access');

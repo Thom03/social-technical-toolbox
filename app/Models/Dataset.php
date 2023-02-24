@@ -62,5 +62,10 @@ class Dataset extends Model
         return $this->belongsTo(ImpactArea::class, 'impact_id', 'id');
     }
 
+//    public function impactareas()
+//    {
+//        return $this::belongsToMany(ImpactArea::class);
+//    }
+
 
 }
