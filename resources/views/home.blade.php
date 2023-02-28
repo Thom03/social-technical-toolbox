@@ -114,7 +114,7 @@
                                 <tbody>
                                 @foreach ($dataset as $dataset)
                                 <tr>
-                                    <td><a href="{{ route('datset_detail', $dataset->id) }}">{{$dataset->title}}</a></td>
+                                    <td><a href="{{ route('bundle_detail', $dataset->id) }}">{{$dataset->title}}</a></td>
                                     <td>{{$dataset-> release_year}}</td>
                                     <td>{{$dataset-> access}}</td>
                                     <td><span class="badge badge-rounded badge-success">{{$dataset-> source}}</span></td>

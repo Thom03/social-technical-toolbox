@@ -24,7 +24,7 @@ use App\Http\Controllers\HomeController;
 
 //    Home Routes
 Route::get('/', [HomeController::class, 'landing_page'])->name('landing_page');
-Route::get('/bundle-detail', [HomeController::class, 'bundle_detail'])->name('bundle-detail');
+Route::get('/bundle_detail/{id}', [HomeController::class, 'bundle_detail'])->name('bundle_detail');
 
 
 Auth::routes();
