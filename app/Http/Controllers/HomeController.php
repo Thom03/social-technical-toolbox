@@ -12,20 +12,20 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
+//    public function index()
+//    {
+//        return view('home');
+//    }
 
     // Dashboard
     public function dashboard_1()
@@ -79,20 +79,15 @@ class HomeController extends Controller
 
         return view('home', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
     }
-    public function bundle_detail()
+    public function bundle_detail($id)
     {
         $logo = "img/logo.png";
         $page_title = 'Home Page';
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $dataset = Dataset::all();
-        $dataset_count = Dataset::all()->count();
-        $open_count = Dataset::where('access', 'open')->count();
-        $limited_count = Dataset::where('access', 'limited')->count();
-
-
-        return view('bundle', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
+        $datasets = Dataset::find($id);
+        return view('bundle', compact('datasets', 'logo','page_title', 'page_description','action'));
     }
 
 
