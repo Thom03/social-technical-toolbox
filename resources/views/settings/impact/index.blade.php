@@ -68,8 +68,8 @@
                                             </div>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" href="#">Details</a>
-                                                <a class="dropdown-item text-success" href="#">Edit</a>
-                                                <a class="dropdown-item text-danger" href="#">Cancel</a>
+                                                <a class="dropdown-item text-success" href="{{ route('edit_impact', $impact_area->id) }}">Edit</a>
+                                                <a class="dropdown-item text-danger" href="#">Delete</a>
                                             </div>
                                         </div>
                                     </td>

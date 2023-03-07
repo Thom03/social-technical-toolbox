@@ -52,6 +52,9 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('impact_areas', [ImpactAreaController::class, 'impact_list'])->name('impact_list');
     Route::get('add_impact', [ImpactAreaController::class, 'add_impact'])->name('add_impact');
     Route::get('insert_impact', [ImpactAreaController::class, 'insert_impact'])->name('insert_impact');
+    Route::get('edit_impact/{id}', [ImpactAreaController::class, 'edit_impact'])->name('edit_impact');
+    Route::get('update_impact/{id}', [ImpactAreaController::class, 'update_impact'])->name('update_impact');
+
 
     //    Region Routes
     Route::get('region_list', [RegionController::class, 'region_list'])->name('region_list');

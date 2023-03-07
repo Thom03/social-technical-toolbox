@@ -49,5 +49,29 @@ class ImpactAreaController extends Controller
         return redirect('/impact_areas')->with('status', 'Impact Area added successfully.');
 
     }
-//TODO: Adding edit and update functions
+    public function edit_impact($id)
+    {
+        $logo = "img/logo.png";
+        $page_title = 'Impact Areas';
+        $page_description = 'Some description for the page';
+        $action = __FUNCTION__;
+        $impact = ImpactArea::find($id);
+
+
+        return view('settings.impact.edit', compact('logo', 'page_title', 'page_description', 'action', 'impact'));
+
+    }
+    public function update_impact(Request $request, $id)
+    {
+
+        $impact = ImpactArea::find($id);
+        $impact->name = $request->input('name');
+        $impact->slug = $request->input('slug');
+        $impact->update();
+
+
+        return redirect('/impact_areas')->with('status', 'Impact Area updated successfully.');
+
+    }
+//TODO: Adding delete functions
 }
