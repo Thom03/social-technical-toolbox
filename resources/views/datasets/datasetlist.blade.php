@@ -48,7 +48,7 @@
                                                 <h4 class="mb-2">{{ $dataset->title }}</h4>
                                                 <p><span class="badge badge-rounded badge-secondary">{{ $dataset->source }}</span></p>
                                                 <a href="#" class="btn btn-outline-danger mr-2">DELETE</a>
-                                                <a href="#" class="btn btn-success">EDIT</a>
+                                                <a href="{{ route('edit_dataset', $dataset->id) }}" class="btn btn-success">EDIT</a>
                                             </div>
                                         </div>
 

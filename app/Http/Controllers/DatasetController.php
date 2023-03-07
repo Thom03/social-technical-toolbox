@@ -124,9 +124,15 @@ class DatasetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit_dataset($id)
     {
-        //
+        $logo = "img/logo.png";
+        $page_title = 'Impact Areas';
+        $page_description = 'Some description for the page';
+        $action = __FUNCTION__;
+        $dataset= Dataset::find($id);
+
+        return view('datasets.edit', compact('logo', 'page_title', 'page_description', 'action', 'dataset'));
     }
 
     /**
@@ -136,9 +142,10 @@ class DatasetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_dataset(Request $request, $id)
     {
         //
+        return redirect('/datasetlist')->with('status', 'Impact Area added successfully.');
     }
 
     /**

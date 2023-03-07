@@ -48,6 +48,6 @@ class ThemeController extends Controller
 
     }
 
-//    TODO: Adding region update function.
+//    TODO: Adding theme update function.
 
 }
