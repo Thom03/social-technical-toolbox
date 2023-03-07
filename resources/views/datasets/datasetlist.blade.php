@@ -46,13 +46,14 @@
                                         <div class="timeline-panel bg-white p-4 mb-4">
                                             <div class="media-body">
                                                 <h4 class="mb-2">{{ $dataset->title }}</h4>
-                                                <p><span class="badge badge-rounded badge-danger">{{ $dataset->source }}</span></p>
+                                                <p><span class="badge badge-rounded badge-secondary">{{ $dataset->source }}</span></p>
+                                                <a href="#" class="btn btn-outline-danger mr-2">DELETE</a>
+                                                <a href="#" class="btn btn-success">EDIT</a>
                                             </div>
-
                                         </div>
+
                                     </div>
                                     @endforeach
-
                                 </div>
                             </div>
                         </div>
@@ -60,6 +61,7 @@
 
                 </div>
             </div>
+
         </div>
     </div>
 

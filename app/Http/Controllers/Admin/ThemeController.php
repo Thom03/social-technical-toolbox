@@ -44,7 +44,7 @@ class ThemeController extends Controller
         $theme->name = $request->input('name');
         $theme->save();
 
-        return redirect('/theme_list')->with('status', 'Impact Area added successfully.');
+        return redirect('/theme_list')->with('status', 'Theme added successfully.');
 
     }
 

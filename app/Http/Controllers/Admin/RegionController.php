@@ -42,7 +42,7 @@ class RegionController extends Controller
         $region->slug = $request->input('slug');
         $region->save();
 
-        return redirect('/region_list')->with('status', 'Impact Area added successfully.');
+        return redirect('/region_list')->with('status', 'Region added successfully.');
 
     }
 
