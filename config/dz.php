@@ -263,6 +263,9 @@ return [
                 'add_dataset' => [
                     'vendor/jquery-steps/css/jquery.steps.css',
                 ],
+                'edit_dataset' => [
+                    'vendor/jquery-steps/css/jquery.steps.css',
+                ],
                 'edit_role' => [
                     'vendor/jquery-steps/css/jquery.steps.css',
                 ],
@@ -912,6 +915,16 @@ return [
                     'js/deznav-init.js',
                 ],
                 'add_dataset' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/jquery-steps/build/jquery.steps.min.js',
+                    'vendor/jquery-validation/jquery.validate.min.js',
+                    'js/plugins-init/jquery.validate-init.js',
+                    'js/plugins-init/jquery-steps-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'edit_dataset' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',
                     'vendor/jquery-steps/build/jquery.steps.min.js',
