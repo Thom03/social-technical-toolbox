@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Dataset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class HomeController extends Controller
 {
@@ -41,15 +43,15 @@ class HomeController extends Controller
     }
 
     //    List of system users
-    public function user_list()
+    public function map_page()
     {
         $logo = "img/logo.png";
-        $page_title = 'User List';
+        $page_title = 'Map Page';
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
 
-        return view('usermanagement.userlist', compact('logo','page_title', 'page_description','action'));
+        return view('map', compact('logo','page_title', 'page_description','action'));
     }
 
     public function dataset_list()
@@ -72,6 +74,7 @@ class HomeController extends Controller
 
         $action = __FUNCTION__;
         $dataset = Dataset::all();
+
         $dataset_count = Dataset::all()->count();
         $open_count = Dataset::where('access', 'open')->count();
         $limited_count = Dataset::where('access', 'limited')->count();
