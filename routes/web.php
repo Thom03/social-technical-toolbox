@@ -25,7 +25,7 @@ use App\Http\Controllers\HomeController;
 //    Home Routes
 Route::get('/', [HomeController::class, 'landing_page'])->name('landing_page');
 Route::get('/bundle_detail/{id}', [HomeController::class, 'bundle_detail'])->name('bundle_detail');
-
+Route::get('/map', [HomeController::class, 'map_page'])->name('map_page');
 
 Auth::routes();
 //Route::post('insert_impact', [ImpactAreaController::class, 'insert_impact'])->name('insert_impact');

@@ -94,7 +94,7 @@
 
         <div class="row">
             <div class="col-12">
-                <div class="card" style="width: 1500px;">
+                <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Dataset List</h4>
                     </div>
