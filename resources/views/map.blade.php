@@ -49,7 +49,7 @@
     }
     #map{
         position: absolute;
-        width: 99%;
+        width: 100%;
         height: 76vh;
         z-index: 1;
     }
@@ -115,32 +115,32 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <h2><a href="/datasets" id="cont_datasets"></a></h2>
-                        </div>
-                        <div class="col-lg-4">
-                            <h4 class="card-title">Datasets by Region</h4>
-                            <div><canvas id="regionsChart" height="180" width="300"> </canvas></div>
-                            <div id="regionsLegend" style="text-align: center;"></div>
-                        </div>
-                        <div class="col-lg-4">
-                            <h4 class="card-title">Datasets by Research Area</h4>
-                            <div>
-                                <canvas id="researchChart" height="450" width="330"> </canvas>
-                            </div>
-                            <div id="researchLegend" style="text-align: center;"></div>
-                        </div>
-                        <div class="col-lg-4">
-                            <h4 class="card-title">Datasets by Commodities</h4>
-                            <div><canvas id="commodityChart" height="450" width="330"> </canvas></div>
-                            <div id="commodityLegend" style="text-align: center;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="card">--}}
+{{--                <div class="card-body">--}}
+{{--                    <div class="row justify-content-center">--}}
+{{--                        <div class="col-12">--}}
+{{--                            <h2><a href="/datasets" id="cont_datasets"></a></h2>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-4">--}}
+{{--                            <h4 class="card-title">Datasets by Region</h4>--}}
+{{--                            <div><canvas id="regionsChart" height="180" width="300"> </canvas></div>--}}
+{{--                            <div id="regionsLegend" style="text-align: center;"></div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-4">--}}
+{{--                            <h4 class="card-title">Datasets by Research Area</h4>--}}
+{{--                            <div>--}}
+{{--                                <canvas id="researchChart" height="450" width="330"> </canvas>--}}
+{{--                            </div>--}}
+{{--                            <div id="researchLegend" style="text-align: center;"></div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-4">--}}
+{{--                            <h4 class="card-title">Datasets by Commodities</h4>--}}
+{{--                            <div><canvas id="commodityChart" height="450" width="330"> </canvas></div>--}}
+{{--                            <div id="commodityLegend" style="text-align: center;"></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="modal fade" id="datasetInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">

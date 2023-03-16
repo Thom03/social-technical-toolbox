@@ -93,7 +93,7 @@
     <!--**********************************
         Content body start
     ***********************************-->
-    <div class="content-body content-body-panding">
+    <div class="content-fluid" style="margin-left: auto;">
         <!-- row -->
         @yield('content')
     </div>
