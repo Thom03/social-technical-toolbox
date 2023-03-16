@@ -4,10 +4,8 @@
 
 {{-- Content --}}
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid container-padding-top">
         <div class="row">
-
-
         <div class="col-xl-3 col-lg-6 col-sm-6">
             <div class="widget-stat card">
                 <div class="card-body p-4">
@@ -93,14 +91,14 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
+            <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Dataset List</h4>
+                        <h4 class="card-title center">Dataset List</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="display" style="width:100%">
+                            <table id="example" class="table  table-striped verticle-middle table-responsive-sm display">
                                 <thead>
                                 <tr>
                                     <th>Title</th>
@@ -114,7 +112,7 @@
                                 <tbody>
                                 @foreach ($dataset as $dataset)
                                 <tr>
-                                    <td><a href="{{ route('bundle_detail', $dataset->id) }}">{{$dataset->title}}</a></td>
+                                    <td><a href="{{ route('bundle_detail', $dataset->id) }}">{{Str::limit($dataset->title, 120)}}</a><a class="badge badge-rounded badge-outline-info" href="{{ route('bundle_detail', $dataset->id) }}">...more info</a></td>
                                     <td>{{$dataset-> release_year}}</td>
                                     <td>{{$dataset-> access}}</td>
                                     <td><span class="badge badge-rounded badge-success">{{$dataset-> source}}</span></td>

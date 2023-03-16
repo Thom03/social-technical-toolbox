@@ -117,6 +117,10 @@
     }
 }
 
+.container-padding-top {
+    padding-top: 15px;
+}
+
 .nav-scroller {
     position: relative;
     z-index: 2;
