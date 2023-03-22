@@ -90,7 +90,7 @@ class HomeController extends Controller
 
         $action = __FUNCTION__;
         $datasets = Dataset::find($id);
-        return view('bundle', compact('datasets', 'logo','page_title', 'page_description','action'));
+        return view('bundlee', compact('datasets', 'logo','page_title', 'page_description','action'));
     }
 
 

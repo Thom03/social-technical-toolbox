@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
