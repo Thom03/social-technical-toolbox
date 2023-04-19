@@ -11,15 +11,13 @@ class ImpactArea extends Model
 
 
     protected $table = 'impact_areas';
-    protected $fillable = [
-        'name',
-        'slug',
-    ];
+    protected $fillable = ['name'];
 
-//    public function datasets()
-//    {
-//        return $this->belongsToMany(Dataset::class);
-//    }
+
+    public function datasets()
+    {
+        return $this->belongsToMany(Dataset::class);
+    }
 
 
 }

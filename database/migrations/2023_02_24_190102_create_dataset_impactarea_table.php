@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDatasetImpatareaTable extends Migration
+class CreateDatasetImpactareaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDatasetImpatareaTable extends Migration
      */
     public function up()
     {
-        Schema::create('dataset_impact_area', function (Blueprint $table) {
+        Schema::create('dataset_impactarea', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('dataset_id')->constrained();
-            $table->foreignId('impact_area_id')->constrained();
+            $table->foreignId('dataset_id')->references('id')->constrained()->onDelete('cascade');
+            $table->foreignId('impact_area_id')->references('id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDatasetImpatareaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dataset_impatarea');
+        Schema::dropIfExists('dataset_impactarea');
     }
 }

@@ -21,7 +21,6 @@ class Dataset extends Model
         'release_year',
         'region_id',
         'theme_id',
-        'impact_id',
         'resource_files',
         'source',
         'access',
@@ -32,17 +31,10 @@ class Dataset extends Model
         'collection_period',
         'data_type',
         'methods',
-        'production_system',
         'technology_practice',
         'gender_responsive',
-        'social_inclusion',
-        'policy_institutional',
-        'organizational',
-        'marketing',
-        'financial',
-        'insurance',
-        'digital',
-        'training',
+        'innovations',
+        'resillience_indicators',
         'observations',
 
     ];
@@ -59,13 +51,9 @@ class Dataset extends Model
 
     public function impactarea()
     {
-        return $this->belongsTo(ImpactArea::class, 'impact_id', 'id');
+        return $this->belongsToMany(ImpactArea::class);
     }
 
-//    public function impactareas()
-//    {
-//        return $this::belongsToMany(ImpactArea::class);
-//    }
 
 
 }

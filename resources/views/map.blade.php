@@ -71,7 +71,7 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-9 m-b-20">
                             <div class="container p-l-0 p-r-0">
-                                <div class="col-12 bg-inverse text-white" onclick="displayFilters('commodities')"><i class="fa fa-file-text"></i> Commodities</div>
+                                <div class="col-12 bg-inverse text-white" onclick="displayFilters('commodities')"><i class="fa fa-file-text"></i> Innovations</div>
                                 <div id="commodities" class="col-12 show">
                                     <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Beans" id="Beans" checked class="ciat-check"> <label for="Beans" class="small">Beans</label><br>
                                     <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Cassava" id="Cassava" checked class="ciat-check"> <label for="Cassava" class="small">Cassava</label><br>
@@ -79,7 +79,7 @@
                                     <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Rice" id="Rice" checked class="ciat-check"> <label for="Rice" class="small">Rice</label><br>
                                     <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="All agriculture" id="All agriculture" checked class="ciat-check"> <label for="All agriculture" class="small">All agriculture</label><br>
                                 </div>
-                                <div class="col-12 bg-inverse text-white m-t-5" onclick="displayFilters('researches')"><i class="fa fa-flask"></i> Research Areas</div>
+                                <div class="col-12 bg-inverse text-white m-t-5" onclick="displayFilters('researches')"><i class="fa fa-flask"></i> Impact Areas</div>
                                 <div id="researches" class="col-12 show"></div>
                                 <div class="col-12 bg-inverse text-white m-t-5" onclick="displayFilters('regionsDiv')"><i class="fa fa-globe"></i> Regions</div>
                                 <div id="regionsDiv" class="col-12 show">
@@ -90,7 +90,7 @@
                                     <input type="checkbox" name="status" onclick="controlDatasetsLayer();" value="Published" id="Published" checked class="ciat-check"> <label for="Published" class="small">Published</label> <br>
                                     <input type="checkbox" name="status" onclick="controlDatasetsLayer();" value="Unpublished" id="Unpublished" checked class="ciat-check"> <label for="Unpublished" class="small">Unpublished</label>
                                 </div>
-                                <div class="col-12 bg-inverse text-white m-t-5" onclick="displayFilters('levelD')"><i class="fa fa-tag"></i> Dataset Level</div>
+                                <div class="col-12 bg-inverse text-white m-t-5" onclick="displayFilters('levelD')"><i class="fa fa-tag"></i> Bundle Level</div>
                                 <div id="levelD" class="col-12 show">
                                     <table style="margin-top: 3px">
                                         <tr>

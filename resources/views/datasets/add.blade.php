@@ -79,23 +79,31 @@
                                         @endforeach
                                     </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="text-label">Select Impact Area</label>
-                                        <select class="form-select" name="impact_id">
-                                            <option class="text-label">Select a Region</option>
-                                            @foreach($impact as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+
 {{--                                    <div class="form-group">--}}
 {{--                                        <label for="impactareas">Impact Areas</label>--}}
-{{--                                        <select id="impactareas" class="form-select" name="impactareas[]" multiple>--}}
+{{--                                        <select id="impactareas" class="form-select select2"  multiple="multiple" id="selectall-tag" name="impactareas[]" >--}}
 {{--                                            @foreach($impact as $impact)--}}
 {{--                                                <option value="{{ $impact->id }}">{{ $impact->name }}</option>--}}
 {{--                                            @endforeach--}}
 {{--                                        </select>--}}
 {{--                                    </div>--}}
+                                    <div class="col-xs-12 form-group">
+                                        <label for="tag" class="control-label">Impact Areas</label>
+                                        <button type="button" class="btn btn-primary btn-xs" id="selectbtn-tag">Select all</button>
+                                        <button type="button" class="btn btn-primary btn-xs" id="deselectbtn-tag">Deselect all</button>
+                                        <select name="impact[]" class="form-control select2" multiple="multiple" id="selectall-tag">
+                                            @foreach ($impact as $impactId => $impactName)
+                                                <option value="{{ $impactId }}" {{ (collect(old('impact'))->contains($impactId)) ? 'selected' : '' }}>{{ $impactName }}</option>
+                                            @endforeach
+                                        </select>
+                                        <p class="help-block"></p>
+                                        @if($errors->has('impact'))
+                                            <p class="help-block">{{ $errors->first('impact') }}</p>
+                                        @endif
+                                    </div>
+
+
                                     <div class="form-group">
                                         <label class="text-label">License</label>
                                         <input  type="text" name="license"
@@ -205,21 +213,22 @@
 
 @endsection
 @section('scripts')
-    <script type="text/javascript">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        $("#selectbtn-tag").click(function(){
+            $("#selectall-tag > option").prop("selected","selected");
+            $("#selectall-tag").trigger("change");
+        });
+        $("#deselectbtn-tag").click(function(){
+            $("#selectall-tag > option").prop("selected","");
+            $("#selectall-tag").trigger("change");
+        });
+
         $(document).ready(function () {
-            $('[name="all_permission"]').on('click', function () {
-
-                if ($(this).is(':checked')) {
-                    $.each($('.permission'), function () {
-                        $(this).prop('checked', true);
-                    });
-                } else {
-                    $.each($('.permission'), function () {
-                        $(this).prop('checked', false);
-                    });
-                }
-
-            });
+            $('.select2').select2();
         });
     </script>
 @endsection
