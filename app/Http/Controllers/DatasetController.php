@@ -45,7 +45,8 @@ class DatasetController extends Controller
 
         $region = Region::all();
         $theme = Theme::all();
-        $impact = ImpactArea::all();
+//        $impact = ImpactArea::all();
+        $impact = ImpactArea::get()->pluck('name', 'id');
 
         return view('datasets.add', compact('region', 'theme', 'impact','logo', 'page_title', 'page_description', 'action'));
 
@@ -90,6 +91,7 @@ class DatasetController extends Controller
         $dataset->training = $request->input('training')=='on'?1:0;
         $dataset->observations = $request->input('observations');
         $dataset->save();
+
 
 
 //        $impactareas = $request->input('impactareas');
