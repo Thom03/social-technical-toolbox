@@ -13,10 +13,10 @@ class CreateDatasetImpactareaTable extends Migration
      */
     public function up()
     {
-        Schema::create('dataset_impactarea', function (Blueprint $table) {
+        Schema::create('dataset_impact_area', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('dataset_id')->references('id')->constrained()->onDelete('cascade');
-            $table->foreignId('impact_area_id')->references('id')->constrained()->onDelete('cascade');
+            $table->foreignId('dataset_id')->constrained();
+            $table->foreignId('impact_area_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDatasetImpactareaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dataset_impactarea');
+        Schema::dropIfExists('dataset_impact_area');
     }
 }

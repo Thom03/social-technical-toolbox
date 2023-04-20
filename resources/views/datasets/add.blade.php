@@ -26,105 +26,100 @@
                         <h4 class="card-title">Dataset Information</h4>
                     </div>
                     <div class="card-body">
-                        <form  action="{{ route('insert_dataset') }}" action="post"  enctype="multipart/form-data" class="step-form-horizontal">
+                        <form action="{{ route('insert_dataset') }}" action="post" enctype="multipart/form-data"
+                              class="step-form-horizontal">
                             @csrf
                             @method('PUT')
                             <div class="row">
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Title</label>
-                                        <textarea  rows="5"  name="title"
-                                                   class="form-control" placeholder="Title" required></textarea>
+                                        <textarea rows="5" name="title"
+                                                  class="form-control" placeholder="Title" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Author(s)</label>
-                                        <input  type="text" name="author"
-                                                class="form-control" placeholder="Author" required>
+                                        <input type="text" name="author"
+                                               class="form-control" placeholder="Author" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Release Year</label>
-                                        <input  type="text" name="release_year"
-                                                class="form-control" placeholder="Release Year" required>
+                                        <input type="text" name="release_year"
+                                               class="form-control" placeholder="Release Year" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-label">Source</label>
-                                        <input  type="text" name="source"
-                                                class="form-control" placeholder="Source" required>
+                                        <input type="text" name="source"
+                                               class="form-control" placeholder="Source" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-label">Access</label>
-                                        <input  type="text" name="access"
-                                                class="form-control" placeholder="Access" required>
+                                        <input type="text" name="access"
+                                               class="form-control" placeholder="Access" required>
                                     </div>
 
                                 </div>
-                                <div class="col-lg-6 mb-2">
-                                    <div class="form-group">
-                                    <label class="text-label">Select a Region</label>
-                                    <select class="form-select" name="region_id">
-                                        <option class="text-label">Select a Region</option>
-                                        @foreach($region as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    </div>
-                                    <div class="form-group">
-                                    <label class="text-label">Select Theme</label>
-                                    <select class="form-select" name="theme_id">
-                                        <option class="text-label">Select a Region</option>
-                                        @foreach($theme as $item)
-                                            <option value="{{ $item->id }}" class="form-control">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    </div>
-
+{{--                                <div class="col-lg-6 mb-2">--}}
 {{--                                    <div class="form-group">--}}
-{{--                                        <label for="impactareas">Impact Areas</label>--}}
-{{--                                        <select id="impactareas" class="form-select select2"  multiple="multiple" id="selectall-tag" name="impactareas[]" >--}}
-{{--                                            @foreach($impact as $impact)--}}
-{{--                                                <option value="{{ $impact->id }}">{{ $impact->name }}</option>--}}
+{{--                                        <label class="text-label">Select a Region</label>--}}
+{{--                                        <select class="form-select" name="region_id">--}}
+{{--                                            <option class="text-label">Select a Region</option>--}}
+{{--                                            @foreach($region as $item)--}}
+{{--                                                <option value="{{ $item->id }}">{{ $item->name }}</option>--}}
 {{--                                            @endforeach--}}
 {{--                                        </select>--}}
 {{--                                    </div>--}}
-                                    <div class="col-xs-12 form-group">
-                                        <label for="tag" class="control-label">Impact Areas</label>
-                                        <button type="button" class="btn btn-primary btn-xs" id="selectbtn-tag">Select all</button>
-                                        <button type="button" class="btn btn-primary btn-xs" id="deselectbtn-tag">Deselect all</button>
-                                        <select name="impact[]" class="form-control select2" multiple="multiple" id="selectall-tag">
-                                            @foreach ($impact as $impactId => $impactName)
-                                                <option value="{{ $impactId }}" {{ (collect(old('impact'))->contains($impactId)) ? 'selected' : '' }}>{{ $impactName }}</option>
-                                            @endforeach
-                                        </select>
-                                        <p class="help-block"></p>
-                                        @if($errors->has('impact'))
-                                            <p class="help-block">{{ $errors->first('impact') }}</p>
-                                        @endif
-                                    </div>
+
+
+                                <div class="form-group">
+                                    <label for="impact_areas">Impact Areas</label>
+                                    <select name="impact_areas[]" id="impact_areas" class="form-control" multiple>
+                                        @foreach($impactAreas as $impactArea)
+                                            <option value="{{ $impactArea->id }}">{{ $impactArea->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+
+{{--                                    <div class="col-xs-12 form-group">--}}
+{{--                                        <label for="tag" class="control-label">Impact Areas</label>--}}
+{{--                                        <select name="impact[]" class="form-control select2" multiple="multiple"--}}
+{{--                                                id="selectall-tag">--}}
+{{--                                            @foreach ($impact as $impactId => $impactName)--}}
+{{--                                                <option--}}
+{{--                                                    value="{{ $impactId }}" {{ (collect(old('impact'))->contains($impactId)) ? 'selected' : '' }}>{{ $impactName }}</option>--}}
+{{--                                            @endforeach--}}
+{{--                                        </select>--}}
+{{--                                        <p class="help-block"></p>--}}
+{{--                                        @if($errors->has('impact'))--}}
+{{--                                            <p class="help-block">{{ $errors->first('impact') }}</p>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
 
 
                                     <div class="form-group">
                                         <label class="text-label">License</label>
-                                        <input  type="text" name="license"
-                                                class="form-control" placeholder="license" required>
+                                        <input type="text" name="license"
+                                               class="form-control" placeholder="license" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-label">Contact</label>
-                                        <input  type="email" name="contact"
-                                                class="form-control" placeholder="Contact" required>
+                                        <input type="email" name="contact"
+                                               class="form-control" placeholder="Contact" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-label">Providers</label>
-                                        <input  type="text" name="providers"
-                                                class="form-control" placeholder="Providers" required>
+                                        <input type="text" name="providers"
+                                               class="form-control" placeholder="Providers" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Collection Period</label>
-                                        <input  type="text" name="collection_period"
-                                                class="form-control" placeholder="Collection Period">
+                                        <input type="text" name="collection_period"
+                                               class="form-control" placeholder="Collection Period">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
@@ -133,29 +128,29 @@
                                     </div>
                                     <div class="form-group">
 
-                                        <input  type="text"  name="data_type"
-                                                   class="form-control" placeholder="Data Type">
+                                        <input type="text" name="data_type"
+                                               class="form-control" placeholder="Data Type">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Methods</label>
-                                        <input  type="text" name="methods"
-                                                class="form-control" placeholder="Methods">
+                                        <input type="text" name="methods"
+                                               class="form-control" placeholder="Methods">
                                     </div>
                                     <div class="form-group">
                                         <label class="text-label">Production System</label>
-                                        <input  type="text" name="production_system"
-                                                class="form-control" placeholder="Production System">
+                                        <input type="text" name="production_system"
+                                               class="form-control" placeholder="Production System">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-label">Technology/Practice</label>
-                                        <input  type="text" name="technology_practice"
-                                                class="form-control" placeholder="Technology/Practice">
+                                        <input type="text" name="technology_practice"
+                                               class="form-control" placeholder="Technology/Practice">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-label">Gender Responsive</label>
-                                        <input  type="checkbox" name="gender_responsive">
+                                        <input type="checkbox" name="gender_responsive">
                                     </div>
                                 </div>
 
@@ -163,41 +158,10 @@
                                     <div class="card-header">
                                         <h4 class="card-title">Innovation Components</h4>
                                     </div>
-
-
-                                    <div class="form-group">
-                                        <label class="text-label">Policy/Institutional</label>
-                                        <input  type="checkbox" name="policy_institutional">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="text-label">Organizational</label>
-                                        <input  type="checkbox" name="organizational">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-label">Marketing</label>
-                                        <input  type="checkbox" name="marketing">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-label">Financial</label>
-                                        <input  type="checkbox" name="financial">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-label">Insurance</label>
-                                        <input  type="checkbox" name="insurance">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-label">Digital</label>
-                                        <input  type="checkbox" name="digital">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-label">Training</label>
-                                        <input  type="checkbox" name="training">
-                                    </div>
                                     <div class="form-group">
                                         <label class="text-label">Observation</label>
-                                        <textarea rows="3"   name="observations"
-                                                    class="form-control" placeholder="Collection Period"></textarea>
+                                        <textarea rows="3" name="observations"
+                                                  class="form-control" placeholder="Collection Period"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -218,12 +182,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
-        $("#selectbtn-tag").click(function(){
-            $("#selectall-tag > option").prop("selected","selected");
+        $("#selectbtn-tag").click(function () {
+            $("#selectall-tag > option").prop("selected", "selected");
             $("#selectall-tag").trigger("change");
         });
-        $("#deselectbtn-tag").click(function(){
-            $("#selectall-tag > option").prop("selected","");
+        $("#deselectbtn-tag").click(function () {
+            $("#selectall-tag > option").prop("selected", "");
             $("#selectall-tag").trigger("change");
         });
 
