@@ -54,6 +54,15 @@ class Dataset extends Model
         return $this->belongsToMany(ImpactArea::class);
     }
 
+    public function techPracs()
+    {
+        return $this->belongsToMany(TechPrac::class);
+    }
 
+
+    public function innovations()
+    {
+        return $this->belongsToMany(Innovation::class);
+    }
 
 }
