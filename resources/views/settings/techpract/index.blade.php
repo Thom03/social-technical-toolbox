@@ -7,14 +7,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Impact Areas List</h4>
+                    <h4>Technology/Practices List</h4>
                     {{--                    <span>Statistics</span>--}}
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Impact Area list</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Technology/Practices list</a></li>
                 </ol>
             </div>
         </div>
@@ -26,13 +26,13 @@
                 </div>
             </div>
 
-            <a href="{{ route('add_impact') }}" class="btn btn-success ml-auto px-5">+ Add Impact Area</a>
+            <a href="{{ route('add_techprac') }}" class="btn btn-success ml-auto px-5">+ Add Technology/Practices</a>
 
         </div>
         <div class="col-xl-12 col-lg-12 col-xxl-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Impact Area List</h4>
+                    <h4 class="card-title">Technology/Practices List</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive recentOrderTable">
@@ -46,11 +46,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($impact_area as $impact_area)
+                            @foreach ($techpracs as $techpracs)
                                 <tr>
-                                    <td>{{ $impact_area->id }}</td>
-                                    <td><span class="badge badge-rounded badge-success">{{ $impact_area->name }}</span></td>
-                                    <td>{{ $impact_area->slug }}</td>
+                                    <td>{{ $techpracs->id }}</td>
+                                    <td><span class="badge badge-rounded badge-success">{{ $techpracs->name }}</span></td>
+                                    <td>{{ $techpracs->slug }}</td>
 
                                     <td>
                                         <div class="dropdown custom-dropdown mb-0">
@@ -68,7 +68,7 @@
                                             </div>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" href="#">Details</a>
-                                                <a class="dropdown-item text-success" href="{{ route('edit_impact', $impact_area->id) }}">Edit</a>
+                                                <a class="dropdown-item text-success" href="{{ route('edit_techprac', $techpracs->id) }}">Edit</a>
                                                 <a class="dropdown-item text-danger" href="#">Delete</a>
                                             </div>
                                         </div>

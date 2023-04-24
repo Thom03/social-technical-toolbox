@@ -14,7 +14,7 @@
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Dashaboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit Impact Area</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit Technology/Practice</a></li>
                 </ol>
             </div>
         </div>
@@ -23,10 +23,10 @@
             <div class="col-xl-12 col-xxl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Add Impact Area</h4>
+                        <h4 class="card-title">Add Technology/Practice</h4>
                     </div>
                     <div class="card-body">
-                        <form  action="{{ route('insert_impact') }}" action="post"  enctype="multipart/form-data" class="step-form-horizontal">
+                        <form  action="{{ route('insert_techprac') }}" action="post"  enctype="multipart/form-data" class="step-form-horizontal">
                             @csrf
                             @method('PUT')
                                 <div class="row">
@@ -45,8 +45,8 @@
                                     </div>
 
                                 </div>
-                            <button type="submit" class="btn btn-success">Add Impact Area</button>
-                            <a href="{{ route('impact_list') }}" type="submit" class="btn btn-danger">Back</a>
+                            <button type="submit" class="btn btn-success">Add Technology/Practice</button>
+                            <a href="{{ route('techprac_list') }}" type="submit" class="btn btn-danger">Back</a>
                         </form>
 
                     </div>
@@ -55,23 +55,4 @@
         </div>
     </div>
 
-@endsection
-@section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('[name="all_permission"]').on('click', function () {
-
-                if ($(this).is(':checked')) {
-                    $.each($('.permission'), function () {
-                        $(this).prop('checked', true);
-                    });
-                } else {
-                    $.each($('.permission'), function () {
-                        $(this).prop('checked', false);
-                    });
-                }
-
-            });
-        });
-    </script>
 @endsection
