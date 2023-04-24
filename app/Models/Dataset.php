@@ -49,11 +49,20 @@ class Dataset extends Model
         return $this->hasMany('App\Models\Theme');
     }
 
-    public function impactarea()
+    public function impactAreas()
     {
         return $this->belongsToMany(ImpactArea::class);
     }
 
+    public function techPracs()
+    {
+        return $this->belongsToMany(TechPrac::class);
+    }
 
+
+    public function innovations()
+    {
+        return $this->belongsToMany(Innovation::class);
+    }
 
 }

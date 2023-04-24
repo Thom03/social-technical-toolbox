@@ -46,9 +46,10 @@ class DatasetController extends Controller
         $region = Region::all();
         $theme = Theme::all();
 //        $impact = ImpactArea::all();
-        $impact = ImpactArea::get()->pluck('name', 'id');
+//        $impact = ImpactArea::get()->pluck('name', 'id');
+        $impactAreas = ImpactArea::all();
 
-        return view('datasets.add', compact('region', 'theme', 'impact','logo', 'page_title', 'page_description', 'action'));
+        return view('datasets.add', compact('region', 'theme', 'impactAreas','logo', 'page_title', 'page_description', 'action'));
 
     }
 
@@ -61,13 +62,18 @@ class DatasetController extends Controller
     public function insert_dataset(Request $request)
     {
 
+        // Validate the form data
+        $validateData = $request->validate([
+            'impact_areas'=> 'nullable|array',
+            'impact_areas.*' => 'exists:impact_areas,id',
+
+        ]);
+
+        // Create the dataset
         $dataset = new Dataset();
         $dataset->title = $request->input('title');
         $dataset->author = $request->input('author');
         $dataset->release_year = $request->input('release_year');
-        $dataset->region_id = $request->input('region_id');
-        $dataset->theme_id = $request->input('theme_id');
-        $dataset->impact_id = $request->input('impact_id');
         $dataset->resource_files = $request->input('resource_files');
         $dataset->source = $request->input('source');
         $dataset->access = $request->input('access');
@@ -81,21 +87,19 @@ class DatasetController extends Controller
         $dataset->production_system = $request->input('production_system');
         $dataset->technology_practice = $request->input('technology_practice');
         $dataset->gender_responsive = $request->input('gender_responsive')=='on'?1:0;
-        $dataset->social_inclusion = $request->input('social_inclusion')=='on'?1:0;
-        $dataset->policy_institutional = $request->input('policy_institutional')=='on'?1:0;
-        $dataset->organizational = $request->input('organizational')=='on'?1:0;
-        $dataset->marketing = $request->input('marketing')=='on'?1:0;
-        $dataset->financial = $request->input('financial')=='on'?1:0;
-        $dataset->insurance = $request->input('insurance')=='on'?1:0;
-        $dataset->digital = $request->input('digital')=='on'?1:0;
-        $dataset->training = $request->input('training')=='on'?1:0;
+        $dataset->innovations = $request->input('innovations');
+        $dataset->resillience_indicators = $request->input('resillience_indicators');
         $dataset->observations = $request->input('observations');
         $dataset->save();
 
 
+//        Attach the selected impact areas to the dataset
 
-//        $impactareas = $request->input('impactareas');
-//        $dataset->impactareas()->sync($impactareas);
+        $dataset->impactAreas()->attach($validateData['impact_areas']);
+
+
+
+
 
         return redirect('/datasetlist')->with('status', 'Impact Area added successfully.');
 

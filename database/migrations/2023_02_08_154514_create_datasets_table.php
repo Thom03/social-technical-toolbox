@@ -28,6 +28,7 @@ class CreateDatasetsTable extends Migration
             $table->string('collection_period')->nullable();
             $table->string('data_type')->nullable();
             $table->string('methods')->nullable();
+            $table->string('production_system')->nullable();
             $table->string('technology_practice')->nullable();
             $table->string('gender_responsive')->nullable();
             $table->string('innovations')->nullable();
