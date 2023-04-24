@@ -71,6 +71,8 @@
                             <li><a href="{{ route('region_list') }}">Dataset Regions</a></li>
                             <li><a href="{{ route('theme_list') }}">Dataset Themes</a></li>
                             <li><a href="{{ route('impact_list') }}">Dataset Impact Areas</a></li>
+                            <li><a href="{{ route('innovation_list') }}">Innovations</a></li>
+                            <li><a href="#">Technology/Practices</a></li>
 {{--                            <li><a href="{!! url('./uc-toastr'); !!}">Toastr</a></li>--}}
 {{--                            <li><a href="{!! url('./map-jqvmap'); !!}">Jqv Map</a></li>--}}
                         </ul>

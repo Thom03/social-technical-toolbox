@@ -249,7 +249,11 @@ return [
                     'vendor/chartist/css/chartist.min.css',
                 ],'permission_list' => [
                     'vendor/chartist/css/chartist.min.css',
-                ],'impact_list' => [
+                ],
+                'impact_list' => [
+                    'vendor/chartist/css/chartist.min.css',
+                ],
+                'innovation_list' => [
                     'vendor/chartist/css/chartist.min.css',
                 ],
                 'edit_user' => [
@@ -258,7 +262,13 @@ return [
                 'add_impact' => [
                     'vendor/jquery-steps/css/jquery.steps.css',
                 ],
+                'add_innovation' => [
+                    'vendor/jquery-steps/css/jquery.steps.css',
+                ],
                 'edit_impact' => [
+                    'vendor/jquery-steps/css/jquery.steps.css',
+                ],
+                'edit_innovation' => [
                     'vendor/jquery-steps/css/jquery.steps.css',
                 ],
                 'add_region' => [
@@ -877,6 +887,16 @@ return [
                     'js/deznav-init.js',
                     'js/custom.min.js',
                 ],
+                'innovation_list' => [
+                    'vendor/flot-spline/jquery.flot.spline.min.js',
+                    'vendor/jquery-sparkline/jquery.sparkline.min.js',
+                    'vendor/peity/jquery.peity.min.js',
+                    'js/plugins-init/piety-init.js',
+                    'js/plugins-init/widgets-script-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/custom.min.js',
+                ],
                 'region_list' => [
                     'vendor/flot-spline/jquery.flot.spline.min.js',
                     'vendor/jquery-sparkline/jquery.sparkline.min.js',
@@ -917,7 +937,27 @@ return [
                     'js/custom.min.js',
                     'js/deznav-init.js',
                 ],
+                'add_innovation' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/jquery-steps/build/jquery.steps.min.js',
+                    'vendor/jquery-validation/jquery.validate.min.js',
+                    'js/plugins-init/jquery.validate-init.js',
+                    'js/plugins-init/jquery-steps-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
                 'edit_impact' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/jquery-steps/build/jquery.steps.min.js',
+                    'vendor/jquery-validation/jquery.validate.min.js',
+                    'js/plugins-init/jquery.validate-init.js',
+                    'js/plugins-init/jquery-steps-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'edit_innovation' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',
                     'vendor/jquery-steps/build/jquery.steps.min.js',
@@ -981,3 +1021,5 @@ return [
         ],
     ]
 ];
+
+//TODO: Cleaning unnecessary code
