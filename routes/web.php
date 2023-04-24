@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ImpactAreaController;
 use App\Http\Controllers\Admin\InnovationController;
 use App\Http\Controllers\Admin\RegionController;
+use App\Http\Controllers\Admin\TechPracController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\DatasetController;
 use App\Http\Controllers\PermissionsController;
@@ -62,6 +63,13 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('insert_innovation', [InnovationController::class, 'insert_innovation'])->name('insert_innovation');
     Route::get('edit_innovation/{id}', [InnovationController::class, 'edit_innovation'])->name('edit_innovation');
     Route::get('update_innovation/{id}', [InnovationController::class, 'update_innovation'])->name('update_innovation');
+
+    //    Technology/Practices Routes
+    Route::get('techprac', [TechPracController::class, 'techprac_list'])->name('techprac_list');
+    Route::get('add_techprac', [TechPracController::class, 'add_techprac'])->name('add_techprac');
+    Route::get('insert_techprac', [TechPracController::class, 'insert_techprac'])->name('insert_techprac');
+    Route::get('edit_techprac/{id}', [TechPracController::class, 'edit_techprac'])->name('edit_techprac');
+    Route::get('update_techprac/{id}', [TechPracController::class, 'update_techprac'])->name('update_techprac');
 
 
     //    Region Routes
