@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ImpactAreaController;
+use App\Http\Controllers\Admin\InnovationController;
 use App\Http\Controllers\Admin\RegionController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\DatasetController;
@@ -54,6 +55,13 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('insert_impact', [ImpactAreaController::class, 'insert_impact'])->name('insert_impact');
     Route::get('edit_impact/{id}', [ImpactAreaController::class, 'edit_impact'])->name('edit_impact');
     Route::get('update_impact/{id}', [ImpactAreaController::class, 'update_impact'])->name('update_impact');
+
+    //    Innovation management Routes
+    Route::get('innovation', [InnovationController::class, 'innovation_list'])->name('innovation_list');
+    Route::get('add_innovation', [InnovationController::class, 'add_innovation'])->name('add_innovation');
+    Route::get('insert_innovation', [InnovationController::class, 'insert_innovation'])->name('insert_innovation');
+    Route::get('edit_innovation/{id}', [InnovationController::class, 'edit_innovation'])->name('edit_innovation');
+    Route::get('update_innovation/{id}', [InnovationController::class, 'update_innovation'])->name('update_innovation');
 
 
     //    Region Routes
