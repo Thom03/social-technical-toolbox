@@ -79,8 +79,31 @@
                                         <option value="{{ $impactArea->id }}">{{ $impactArea->name }}</option>
                                     @endforeach
                                 </select>
+{{--TODO: Making select fields behave like input--}}
+
+                            <div class="form-group">
+                                <label for="innovations">Innovations</label>
+                                <select name="innovations[]" id="innovations" class="form-control" multiple>
+                                    @foreach($innovations as $innovation)
+                                        <option value="{{ $innovation->id }}">{{ $innovation->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                                <div class="form-group">
+                                    <label for="tech_pracs">Technology/Practices</label>
+                                    <select name="tech_pracs[]" id="tech_pracs" class="form-control" multiple>
+                                        @foreach($techPracs as $techPracs)
+                                            <option value="{{ $techPracs->id }}">{{ $techPracs->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
                             </div>
                             </div>
+
+
+
 
 
                             {{--                                    <div class="col-xs-12 form-group">--}}

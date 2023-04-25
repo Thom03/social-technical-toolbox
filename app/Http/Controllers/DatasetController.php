@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Dataset;
 use App\Models\ImpactArea;
+use App\Models\Innovation;
 use App\Models\Region;
+use App\Models\TechPrac;
 use App\Models\Theme;
 use Illuminate\Http\Request;
 
@@ -45,11 +47,11 @@ class DatasetController extends Controller
 
         $region = Region::all();
         $theme = Theme::all();
-//        $impact = ImpactArea::all();
-//        $impact = ImpactArea::get()->pluck('name', 'id');
         $impactAreas = ImpactArea::all();
+        $innovations = Innovation::all();
+        $techPracs = TechPrac::all();
 
-        return view('datasets.add', compact('region', 'theme', 'impactAreas','logo', 'page_title', 'page_description', 'action'));
+        return view('datasets.add', compact('region', 'theme', 'impactAreas','innovations','techPracs','logo', 'page_title', 'page_description', 'action'));
 
     }
 
@@ -66,6 +68,10 @@ class DatasetController extends Controller
         $validateData = $request->validate([
             'impact_areas'=> 'nullable|array',
             'impact_areas.*' => 'exists:impact_areas,id',
+            'innovations'=> 'nullable|array',
+            'innovations.*' => 'exists:innovations,id',
+            'tech_pracs'=> 'nullable|array',
+            'tech_pracs.*' => 'exists:tech_pracs,id',
 
         ]);
 
@@ -87,7 +93,6 @@ class DatasetController extends Controller
         $dataset->production_system = $request->input('production_system');
         $dataset->technology_practice = $request->input('technology_practice');
         $dataset->gender_responsive = $request->input('gender_responsive')=='on'?1:0;
-        $dataset->innovations = $request->input('innovations');
         $dataset->resillience_indicators = $request->input('resillience_indicators');
         $dataset->observations = $request->input('observations');
         $dataset->save();
@@ -96,6 +101,8 @@ class DatasetController extends Controller
 //        Attach the selected impact areas to the dataset
 
         $dataset->impactAreas()->attach($validateData['impact_areas']);
+        $dataset->innovations()->attach($validateData['innovations']);
+        $dataset->techPracs()->attach($validateData['tech_pracs']);
 
 
 

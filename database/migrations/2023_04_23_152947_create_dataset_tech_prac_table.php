@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDatasetTechPracsTable extends Migration
+class CreateDatasetTechPracTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDatasetTechPracsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dataset_tech_pracs', function (Blueprint $table) {
+        Schema::create('dataset_tech_prac', function (Blueprint $table) {
             $table->id();
             $table->foreignId('dataset_id')->constrained();
-            $table->foreignId('tech_pracs_id')->constrained();
+            $table->foreignId('tech_prac_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDatasetTechPracsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dataset_tech_pracs');
+        Schema::dropIfExists('dataset_tech_prac');
     }
 }
