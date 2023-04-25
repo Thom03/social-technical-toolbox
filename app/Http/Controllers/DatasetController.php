@@ -91,7 +91,6 @@ class DatasetController extends Controller
         $dataset->data_type = $request->input('data_type');
         $dataset->methods = $request->input('methods');
         $dataset->production_system = $request->input('production_system');
-        $dataset->technology_practice = $request->input('technology_practice');
         $dataset->gender_responsive = $request->input('gender_responsive')=='on'?1:0;
         $dataset->resillience_indicators = $request->input('resillience_indicators');
         $dataset->observations = $request->input('observations');
