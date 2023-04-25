@@ -60,67 +60,37 @@
                                 </div>
 
                             </div>
-                            {{--                                <div class="col-lg-6 mb-2">--}}
-                            {{--                                    <div class="form-group">--}}
-                            {{--                                        <label class="text-label">Select a Region</label>--}}
-                            {{--                                        <select class="form-select" name="region_id">--}}
-                            {{--                                            <option class="text-label">Select a Region</option>--}}
-                            {{--                                            @foreach($region as $item)--}}
-                            {{--                                                <option value="{{ $item->id }}">{{ $item->name }}</option>--}}
-                            {{--                                            @endforeach--}}
-                            {{--                                        </select>--}}
-                            {{--                                    </div>--}}
 
                             <div class="col-lg-6 mb-2">
-                            <div class="form-group">
-                                <label for="impact_areas">Impact Areas</label>
-                                <select name="impact_areas[]" id="impact_areas" class="form-control" multiple>
-                                    @foreach($impactAreas as $impactArea)
-                                        <option value="{{ $impactArea->id }}">{{ $impactArea->name }}</option>
-                                    @endforeach
-                                </select>
-{{--TODO: Making select fields behave like input--}}
-
-                            <div class="form-group">
-                                <label for="innovations">Innovations</label>
-                                <select name="innovations[]" id="innovations" class="form-control" multiple>
-                                    @foreach($innovations as $innovation)
-                                        <option value="{{ $innovation->id }}">{{ $innovation->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
                                 <div class="form-group">
-                                    <label for="tech_pracs">Technology/Practices</label>
-                                    <select name="tech_pracs[]" id="tech_pracs" class="form-control" multiple>
-                                        @foreach($techPracs as $techPracs)
-                                            <option value="{{ $techPracs->id }}">{{ $techPracs->name }}</option>
+                                    <label for="impact_areas">Impact Areas</label>
+                                    <select name="impact_areas[]" id="impact_areas" class="form-control" multiple>
+                                        @foreach($impactAreas as $impactArea)
+                                            <option value="{{ $impactArea->id }}">{{ $impactArea->name }}</option>
                                         @endforeach
                                     </select>
+                                    {{--TODO: Making select fields behave like input--}}
+
+                                    <div class="form-group">
+                                        <label for="innovations">Innovations</label>
+                                        <select name="innovations[]" id="innovations" class="form-control" multiple>
+                                            @foreach($innovations as $innovation)
+                                                <option value="{{ $innovation->id }}">{{ $innovation->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="tech_pracs">Technology/Practices</label>
+                                        <select name="tech_pracs[]" id="tech_pracs" class="form-control" multiple>
+                                            @foreach($techPracs as $techPracs)
+                                                <option value="{{ $techPracs->id }}">{{ $techPracs->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                 </div>
-
                             </div>
-                            </div>
-
-
-
-
-
-                            {{--                                    <div class="col-xs-12 form-group">--}}
-                            {{--                                        <label for="tag" class="control-label">Impact Areas</label>--}}
-                            {{--                                        <select name="impact[]" class="form-control select2" multiple="multiple"--}}
-                            {{--                                                id="selectall-tag">--}}
-                            {{--                                            @foreach ($impact as $impactId => $impactName)--}}
-                            {{--                                                <option--}}
-                            {{--                                                    value="{{ $impactId }}" {{ (collect(old('impact'))->contains($impactId)) ? 'selected' : '' }}>{{ $impactName }}</option>--}}
-                            {{--                                            @endforeach--}}
-                            {{--                                        </select>--}}
-                            {{--                                        <p class="help-block"></p>--}}
-                            {{--                                        @if($errors->has('impact'))--}}
-                            {{--                                            <p class="help-block">{{ $errors->first('impact') }}</p>--}}
-                            {{--                                        @endif--}}
-                            {{--                                    </div>--}}
-
 
                             <div class="form-group">
                                 <label class="text-label">License</label>
@@ -188,21 +158,21 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Add Dataset</button>
-                            <a href="{{ route('dataset_list') }}" type="submit" class="btn btn-danger">Back</a>
-                        </form>
+                        <a href="{{ route('dataset_list') }}" type="submit" class="btn btn-danger">Back</a>
+                    </form>
 
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 @endsection
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.select2').select2({
                 tags: true
             });

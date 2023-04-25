@@ -31,9 +31,8 @@ class Dataset extends Model
         'collection_period',
         'data_type',
         'methods',
-        'technology_practice',
+        'production_system',
         'gender_responsive',
-        'innovations',
         'resillience_indicators',
         'observations',
 
