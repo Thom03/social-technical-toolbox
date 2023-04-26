@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dataset;
 use App\Models\ImpactArea;
 use App\Models\Innovation;
+use App\Models\TechPrac;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -82,7 +83,24 @@ class HomeController extends Controller
         $limited_count = Dataset::where('access', 'limited')->count();
 
 
-        return view('home', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
+        return view('home-list', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
+    }
+
+    public function landing_page_grid()
+    {
+        $logo = "img/logo.png";
+        $page_title = 'Home Page';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+        $dataset = Dataset::all();
+
+        $dataset_count = Dataset::all()->count();
+        $open_count = Dataset::where('access', 'open')->count();
+        $limited_count = Dataset::where('access', 'limited')->count();
+
+
+        return view('home-grid', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
     }
     public function bundle_detail($id)
     {
@@ -94,6 +112,7 @@ class HomeController extends Controller
         $datasets = Dataset::find($id);
         $impactAreas = ImpactArea::all();
         $innovations = Innovation::all();
+        $techPracs = TechPrac::all();
 
 
         return view('bundlee', compact('datasets','impactAreas','innovations', 'logo','page_title', 'page_description','action'));

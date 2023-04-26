@@ -71,7 +71,7 @@
 {{--                    </div>--}}
 
                     <div class="col-12 m-t-20">
-                        <h4>Provider</h4>
+                        <h4>Providers</h4>
                         <div class="col-md-12 table-responsive">
                             <table class="table">
                                 <thead>
@@ -121,6 +121,11 @@
                     </div>
 
                     <div class="col-12 m-t-20">
+                        <h4>DOI</h4>
+                        <a href="{{ $datasets->DOI }}"> <p class="badge badge-rounded badge-outline-info">{{ $datasets->DOI }}</p> </a>
+                    </div>
+
+                    <div class="col-12 m-t-20">
                         <h4>Resource Files</h4>
                         <div class="col-md-12 table-responsive">
                             <table class="table">
@@ -152,9 +157,9 @@
                     </div>
 
                     <div class="col-12 m-t-20">
-                        <h4>Innovations</h4>
+                        <h4>Social Innovations Components</h4>
                         @foreach($datasets->innovations as $innovation)
-                            <p class="badge badge-success">{{ $innovation->name }}</p>
+                            <p class="badge badge-dark">{{ $innovation->name }}</p>
                         @endforeach
                     </div>
 
@@ -328,6 +333,13 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+
+                    <div class="col-12 m-t-20">
+                        <h4>Technology/Practice</h4>
+                        @foreach($datasets->techPracs as $techPrac)
+                            <p class="badge badge-light">{{ $techPrac->name }}</p>
+                        @endforeach
                     </div>
                 </div>
 

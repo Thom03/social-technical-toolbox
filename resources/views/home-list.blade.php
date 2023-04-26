@@ -89,6 +89,12 @@
                 </div>
             </div>
         </div>
+        </div>
+
+        <div class="form-head d-flex mb-3  mb-lg-5   align-items-start">
+            <a href="{{ route('landing_page') }}" class="btn btn-outline-primary btn-light ml-3"><i class="flaticon-381-menu-1 mr-0"></i></a>
+            <a href="{{ route('landing_page_grid') }}" class="btn ml-3"><i class="flaticon-381-pad mr-0"></i></a>
+        </div>
 
         <div class="row justify-content-center">
             <div class="container-fluid">
@@ -129,7 +135,7 @@
 
         </div>
     </div>
-    <div
+    <div>
 
 
 @endsection
