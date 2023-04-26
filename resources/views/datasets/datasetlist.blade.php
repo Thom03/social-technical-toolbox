@@ -46,7 +46,16 @@
                                         <div class="timeline-panel bg-white p-4 mb-4">
                                             <div class="media-body">
                                                 <h4 class="mb-2">{{ $dataset->title }}</h4>
-                                                <p><span class="badge badge-rounded badge-secondary">{{ $dataset->source }}</span></p>
+                                                @foreach($dataset->impactAreas as $impactArea)
+{{--                                                <p><span class="badge badge-rounded badge-secondary">{{ $impactArea->name }}</span></p>--}}
+{{--                                                        <span class="badge badge-primary">{{ $impactArea->name }}</span>--}}
+                                                    <label class="form-check-label" for="impact_area_{{ $impactArea->id }}">
+                                                        <span class="badge badge-primary">{{ $impactArea->name }}</span>
+                                                    </label>
+                                                @endforeach
+                                            <br>
+                                            <br>
+                                                <br>
                                                 <a href="#" class="btn btn-outline-danger mr-2">DELETE</a>
                                                 <a href="{{ route('edit_dataset', $dataset->id) }}" class="btn btn-success">EDIT</a>
                                             </div>
