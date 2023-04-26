@@ -41,8 +41,21 @@ class HomeController extends Controller
         $logo = "imig/logo.png";
         $logoText = "img/logo-text.png";
         $action = __FUNCTION__;
+        $dataset_count = Dataset::all()->count();
 
-        return view('dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
+//        $datasets = Dataset::with('impactAreas')->get();
+//        $impactAreas = ImpactArea::withCount('datasets')->get();
+        $nutrition_impact = ImpactArea::where('id', '1')->withCount('datasets')->first();
+        $climate_impact = ImpactArea::where('id', '2')->withCount('datasets')->first();
+        $gender_impact = ImpactArea::where('id', '3')->withCount('datasets')->first();
+        $poverty_impact = ImpactArea::where('id', '4')->withCount('datasets')->first();
+        $environment_impact = ImpactArea::where('id', '5')->withCount('datasets')->first();
+
+
+
+
+        return view('dashboard.index', compact('page_title', 'nutrition_impact', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
+            'climate_impact', 'page_description','action','logo','logoText'));
     }
 
     //    List of system users

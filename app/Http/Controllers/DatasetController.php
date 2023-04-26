@@ -214,4 +214,20 @@ class DatasetController extends Controller
     {
         //
     }
+
+
+    public function search_dataset(Request $request)
+    {
+
+        $query = $request->input('query');
+
+        $datasets = Dataset::where('title', 'like', '%' . $query . '%')
+            ->orWhere('release_year', 'like', '%' . $query . '%')
+            ->get();
+
+        return view('datasets.datasetlist', [
+            'datasets' => $datasets,
+        ]);
+
+    }
 }
