@@ -81,6 +81,13 @@
                                 </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label">DOI</label>
+                                        <input type="text" name="DOI"
+                                               class="form-control" placeholder="DOI" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-2">
                                 <div class="form-group">
                                     <label class="text-label">Providers</label>
                                     <input type="text" name="providers"

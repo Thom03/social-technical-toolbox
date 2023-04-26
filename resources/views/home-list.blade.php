@@ -90,6 +90,29 @@
             </div>
         </div>
 
+            <div class="form-head d-flex mb-3  mb-lg-5   align-items-end">
+{{--                <div class="dropdown ml-3 d-inline-block">--}}
+{{--                    <div class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">--}}
+{{--                        <i class="flaticon-381-controls-3 mr-2"></i> Filter--}}
+{{--                    </div>--}}
+{{--                    <div class="dropdown-menu dropdown-menu-left">--}}
+{{--                        <a class="dropdown-item" href="#">A To Z List</a>--}}
+{{--                        <a class="dropdown-item" href="#">Z To A List</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="dropdown ml-3 d-inline-block">--}}
+{{--                    <div class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">--}}
+{{--                        Newest--}}
+{{--                    </div>--}}
+{{--                    <div class="dropdown-menu dropdown-menu-left">--}}
+{{--                        <a class="dropdown-item" href="#">Newest</a>--}}
+{{--                        <a class="dropdown-item" href="#">Old</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+                <a href="javascript:void(0);" class="btn btn-outline-primary ml-3"><i class="flaticon-381-menu-1 mr-0"></i></a>
+                <a href="javascript:void(0);" class="btn btn-light ml-3"><i class="flaticon-381-pad mr-0"></i></a>
+            </div>
+
         <div class="row justify-content-center">
             <div class="container-fluid">
                 <div class="card">
@@ -129,7 +152,7 @@
 
         </div>
     </div>
-    <div
+    <div>
 
 
 @endsection
