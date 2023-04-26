@@ -129,6 +129,15 @@
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
+                                        <label class="text-label">Status</label>
+                                        <select class="form-control"  name="status" id="status">
+                                            <option  value="unpublished">Unpublished</option>
+                                            <option value="published">Published</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
                                         <label class="text-label">Gender Responsive</label>
                                         <input type="checkbox" name="gender_responsive">
                                     </div>

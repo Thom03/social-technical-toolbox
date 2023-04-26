@@ -94,18 +94,10 @@
 							<div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
 								<div class="card">
 									<div class="card-header border-0 pb-0">
-										<h4 class="card-title">Impact Areas</h4>
-{{--										<div class="dropdown">--}}
-{{--											<button type="button" class="btn btn-dark dropdown-toggle light" data-toggle="dropdown" aria-expanded="false">--}}
-{{--												Weekly--}}
-{{--											</button>--}}
-{{--											<div class="dropdown-menu" >--}}
-{{--												<a class="dropdown-item" href="#">Daily</a>--}}
-{{--												<a class="dropdown-item" href="#">Weekly</a>--}}
-{{--												<a class="dropdown-item" href="#">Monthly</a>--}}
-{{--											</div>--}}
-{{--										</div>--}}
+										<h4 class="card-title">Bundle classification based on Impact Areas</h4>
+
 									</div>
+
 									<div class="card-body pt-2">
 										<div class="row mx-0 align-items-center">
 											<div class="col-sm-8 col-md-7  px-0">
@@ -117,35 +109,35 @@
 														<span class="bg-danger"></span>
 														<div>
 															<p>Gender Equity, Youth & Social Inclusion</p>
-															<h3>0</h3>
+															<h3>{{ $gender_impact ->datasets_count }}</h3>
 														</div>
 													</div>
 													<div class="col px-0">
 														<span class="bg-success"></span>
 														<div>
 															<p>Nutrition, Health & Food Security</p>
-															<h3>0</h3>
+															<h3>{{ $nutrition_impact ->datasets_count }}</h3>
 														</div>
 													</div>
 													<div class="col px-0">
 														<span class="bg-warning"></span>
 														<div>
 															<p>Climate Adaptation & Mitigation. </p>
-															<h3>0</h3>
+															<h3>{{ $climate_impact ->datasets_count }}</h3>
 														</div>
 													</div>
                                                     <div class="col px-0">
                                                         <span class="bg-blue"></span>
                                                         <div>
                                                             <p>Poverty Reduction, Livelihoods & Jobs.</p>
-                                                            <h3>0</h3>
+                                                            <h3>{{ $poverty_impact ->datasets_count }}</h3>
                                                         </div>
                                                     </div>
                                                     <div class="col px-0">
                                                         <span class="bg-dark"></span>
                                                         <div>
                                                             <p>Environment Health and Biodiversity.</p>
-                                                            <h3>0</h3>
+                                                            <h3>{{ $environment_impact ->datasets_count }}</h3>
                                                         </div>
                                                     </div>
 												</div>
@@ -392,7 +384,7 @@
 											</span>
 											<div class="media-body text-white text-right">
 												<p class="mb-1">Published Datasets</p>
-												<h3 class="text-white">76</h3>
+												<h3 class="text-white">{{ $publishedCount }}</h3>
 											</div>
 										</div>
 									</div>
@@ -407,7 +399,7 @@
 											</span>
 											<div class="media-body text-white text-right">
 												<p class="mb-1">UNPUBLISHED DATASETS</p>
-												<h3 class="text-white">86</h3>
+												<h3 class="text-white">{{ $unpublishedCount }}</h3>
 											</div>
 										</div>
 									</div>
@@ -426,7 +418,7 @@
 									</span>
                                             <div class="media-body">
                                                 <p class="mb-1"> Total Dataset</p>
-                                                <h4 class="mb-0">80</h4>
+                                                <h4 class="mb-0">{{ $dataset_count }}</h4>
 {{--                                                <span class="badge badge-success">-3.5%</span>--}}
                                             </div>
                                         </div>
@@ -442,7 +434,7 @@
 											</span>
 											<div class="media-body text-white text-right">
 												<p class="mb-1">TOTAL CLUSTER BUNDLES</p>
-												<h3 class="text-white">76</h3>
+												<h3 class="text-white">#</h3>
 											</div>
 										</div>
 									</div>

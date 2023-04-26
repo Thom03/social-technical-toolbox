@@ -6,7 +6,7 @@
 							<span class="nav-text">Dashboard</span>
 						</a>
                         <ul aria-expanded="false">
-							<li><a href="{!! url('index'); !!}">Dashboard</a></li>
+							<li><a href="{!! url('dashboard'); !!}">Dashboard</a></li>
 							<li><a href="{!! url('doctors'); !!}">Profile Management</a></li>
 {{--							<li><a href="{!! url('doctors-details'); !!}">Doctors Details</a></li>--}}
 {{--							<li><a href="{!! url('doctors-review'); !!}">Doctors Review</a></li>--}}

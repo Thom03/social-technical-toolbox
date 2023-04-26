@@ -35,6 +35,7 @@ class Dataset extends Model
         'gender_responsive',
         'resillience_indicators',
         'observations',
+        'status',
 
     ];
 
