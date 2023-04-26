@@ -94,17 +94,8 @@
 							<div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
 								<div class="card">
 									<div class="card-header border-0 pb-0">
-										<h4 class="card-title">Impact Areas</h4>
-{{--										<div class="dropdown">--}}
-{{--											<button type="button" class="btn btn-dark dropdown-toggle light" data-toggle="dropdown" aria-expanded="false">--}}
-{{--												Weekly--}}
-{{--											</button>--}}
-{{--											<div class="dropdown-menu" >--}}
-{{--												<a class="dropdown-item" href="#">Daily</a>--}}
-{{--												<a class="dropdown-item" href="#">Weekly</a>--}}
-{{--												<a class="dropdown-item" href="#">Monthly</a>--}}
-{{--											</div>--}}
-{{--										</div>--}}
+										<h4 class="card-title">Bundle classification based on Impact Areas</h4>
+
 									</div>
 
 									<div class="card-body pt-2">
@@ -393,7 +384,7 @@
 											</span>
 											<div class="media-body text-white text-right">
 												<p class="mb-1">Published Datasets</p>
-												<h3 class="text-white">76</h3>
+												<h3 class="text-white">{{ $publishedCount }}</h3>
 											</div>
 										</div>
 									</div>
@@ -408,7 +399,7 @@
 											</span>
 											<div class="media-body text-white text-right">
 												<p class="mb-1">UNPUBLISHED DATASETS</p>
-												<h3 class="text-white">86</h3>
+												<h3 class="text-white">{{ $unpublishedCount }}</h3>
 											</div>
 										</div>
 									</div>
@@ -443,7 +434,7 @@
 											</span>
 											<div class="media-body text-white text-right">
 												<p class="mb-1">TOTAL CLUSTER BUNDLES</p>
-												<h3 class="text-white">76</h3>
+												<h3 class="text-white">#</h3>
 											</div>
 										</div>
 									</div>

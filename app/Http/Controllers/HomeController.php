@@ -51,11 +51,14 @@ class HomeController extends Controller
         $poverty_impact = ImpactArea::where('id', '4')->withCount('datasets')->first();
         $environment_impact = ImpactArea::where('id', '5')->withCount('datasets')->first();
 
+        $publishedCount = Dataset::where('status', 'published')->count();
+        $unpublishedCount = Dataset::where('status', 'unpublished')->count();
+
 
 
 
         return view('dashboard.index', compact('page_title', 'nutrition_impact', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
-            'climate_impact', 'page_description','action','logo','logoText'));
+            'climate_impact', 'publishedCount', 'unpublishedCount','page_description','action','logo','logoText'));
     }
 
     //    List of system users

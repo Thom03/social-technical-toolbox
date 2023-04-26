@@ -95,6 +95,7 @@ class DatasetController extends Controller
         $dataset->gender_responsive = $request->input('gender_responsive')=='on'?1:0;
         $dataset->resillience_indicators = $request->input('resillience_indicators');
         $dataset->observations = $request->input('observations');
+        $dataset->status = $request->input('status');
         $dataset->save();
 
 
@@ -163,40 +164,40 @@ class DatasetController extends Controller
     {
 
 
-        $validateData = $request->validate([
-            'impact_areas'=> 'nullable|array',
-            'impact_areas.*' => 'exists:impact_areas,id',
-            'innovations'=> 'nullable|array',
-            'innovations.*' => 'exists:innovations,id',
-            'tech_pracs'=> 'nullable|array',
-            'tech_pracs.*' => 'exists:tech_pracs,id',
-
-        ]);
-
-        // Create the dataset
-        $dataset = new Dataset();
-        $dataset->title = $request->input('title');
-        $dataset->author = $request->input('author');
-        $dataset->release_year = $request->input('release_year');
-        $dataset->resource_files = $request->input('resource_files');
-        $dataset->source = $request->input('source');
-        $dataset->access = $request->input('access');
-        $dataset->license = $request->input('license');
-        $dataset->contact = $request->input('contact');
-        $dataset->DOI = $request->input('DOI');
-        $dataset->providers = $request->input('providers');
-        $dataset->collection_period = $request->input('collection_period');
-        $dataset->data_type = $request->input('data_type');
-        $dataset->methods = $request->input('methods');
-        $dataset->production_system = $request->input('production_system');
-        $dataset->gender_responsive = $request->input('gender_responsive')=='on'?1:0;
-        $dataset->resillience_indicators = $request->input('resillience_indicators');
-        $dataset->observations = $request->input('observations');
-        $dataset->update();
-
-        $dataset->impactAreas()->attach($validateData['impact_areas']);
-        $dataset->innovations()->attach($validateData['innovations']);
-        $dataset->techPracs()->attach($validateData['tech_pracs']);
+//        $validateData = $request->validate([
+//            'impact_areas'=> 'nullable|array',
+//            'impact_areas.*' => 'exists:impact_areas,id',
+//            'innovations'=> 'nullable|array',
+//            'innovations.*' => 'exists:innovations,id',
+//            'tech_pracs'=> 'nullable|array',
+//            'tech_pracs.*' => 'exists:tech_pracs,id',
+//
+//        ]);
+//
+//        // Create the dataset
+//        $dataset = new Dataset();
+//        $dataset->title = $request->input('title');
+//        $dataset->author = $request->input('author');
+//        $dataset->release_year = $request->input('release_year');
+//        $dataset->resource_files = $request->input('resource_files');
+//        $dataset->source = $request->input('source');
+//        $dataset->access = $request->input('access');
+//        $dataset->license = $request->input('license');
+//        $dataset->contact = $request->input('contact');
+//        $dataset->DOI = $request->input('DOI');
+//        $dataset->providers = $request->input('providers');
+//        $dataset->collection_period = $request->input('collection_period');
+//        $dataset->data_type = $request->input('data_type');
+//        $dataset->methods = $request->input('methods');
+//        $dataset->production_system = $request->input('production_system');
+//        $dataset->gender_responsive = $request->input('gender_responsive')=='on'?1:0;
+//        $dataset->resillience_indicators = $request->input('resillience_indicators');
+//        $dataset->observations = $request->input('observations');
+//        $dataset->update();
+//
+//        $dataset->impactAreas()->attach($validateData['impact_areas']);
+//        $dataset->innovations()->attach($validateData['innovations']);
+//        $dataset->techPracs()->attach($validateData['tech_pracs']);
 
 
         return redirect('/datasetlist')->with('status', 'Impact Area added successfully.');
