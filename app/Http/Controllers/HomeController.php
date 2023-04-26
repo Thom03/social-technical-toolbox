@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dataset;
+use App\Models\ImpactArea;
+use App\Models\Innovation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -90,7 +92,11 @@ class HomeController extends Controller
 
         $action = __FUNCTION__;
         $datasets = Dataset::find($id);
-        return view('bundlee', compact('datasets', 'logo','page_title', 'page_description','action'));
+        $impactAreas = ImpactArea::all();
+        $innovations = Innovation::all();
+
+
+        return view('bundlee', compact('datasets','impactAreas','innovations', 'logo','page_title', 'page_description','action'));
     }
 
 
