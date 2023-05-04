@@ -92,11 +92,15 @@ class HomeController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $dataset = Dataset::all();
+        $dataset = Dataset::where('status', 'published')->get();
 
-        $dataset_count = Dataset::all()->count();
-        $open_count = Dataset::where('access', 'open')->count();
-        $limited_count = Dataset::where('access', 'limited')->count();
+        $dataset_count = Dataset::where('status', 'published')->count();
+        $open_count = Dataset::where('access', 'open')
+            ->where('status', 'published')
+            ->count();
+        $limited_count = Dataset::where('access', 'limited')
+            ->where('status', 'published')
+            ->count();
 
 
         return view('home-list', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
@@ -109,11 +113,15 @@ class HomeController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $dataset = Dataset::all();
+        $dataset = Dataset::where('status', 'published')->get();
 
-        $dataset_count = Dataset::all()->count();
-        $open_count = Dataset::where('access', 'open')->count();
-        $limited_count = Dataset::where('access', 'limited')->count();
+        $dataset_count = Dataset::where('status', 'published')->count();
+        $open_count = Dataset::where('access', 'open')
+            ->where('status', 'published')
+            ->count();
+        $limited_count = Dataset::where('access', 'limited')
+            ->where('status', 'published')
+            ->count();
 
 
         return view('home-grid', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
@@ -131,7 +139,7 @@ class HomeController extends Controller
         $techPracs = TechPrac::all();
 
 
-        return view('bundlee', compact('datasets','impactAreas','innovations', 'logo','page_title', 'page_description','action'));
+        return view('bundlee', compact('datasets','impactAreas','innovations', 'techPracs','logo','page_title', 'page_description','action'));
     }
 
 

@@ -383,8 +383,8 @@
 												<i class="flaticon-381-calendar-1"></i>
 											</span>
 											<div class="media-body text-white text-right">
-												<p class="mb-1">Published Datasets</p>
-												<h3 class="text-white">{{ $publishedCount }}</h3>
+												<p class="mb-1">UNPublished Datasets</p>
+												<h3 class="text-white">{{ $unpublishedCount }}</h3>
 											</div>
 										</div>
 									</div>
@@ -398,8 +398,8 @@
 												<i class="flaticon-381-database"></i>
 											</span>
 											<div class="media-body text-white text-right">
-												<p class="mb-1">UNPUBLISHED DATASETS</p>
-												<h3 class="text-white">{{ $unpublishedCount }}</h3>
+												<p class="mb-1">PUBLISHED DATASETS</p>
+												<h3 class="text-white">{{ $publishedCount }}</h3>
 											</div>
 										</div>
 									</div>

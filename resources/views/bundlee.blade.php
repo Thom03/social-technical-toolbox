@@ -10,7 +10,8 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="m-b-0">{{ $datasets->title }} </h2>
-                    <span class="btn btn-rounded btn-xs btn-warning">Unpublished</span>
+{{--                    <span class="btn btn-rounded btn-xs btn-warning">Unpublished</span>--}}
+                    <span class="btn btn-rounded btn-xs btn-success">{{ $datasets->status }} </span>
                     <br>
                     <br>
                     <div class="col-12 m-t-20">
@@ -141,7 +142,7 @@
                                 <tr>
                                     <td>
                                         Questionnaire_RiceBOL2013.pdf
-                                        <span class="btn btn-rounded btn-xs btn-success">Open</span>
+                                        <span class="btn btn-rounded btn-xs btn-warning">Open</span>
                                     </td>
                                     <td>
                                         Complete survey that was used to collect household rice producers information
@@ -260,76 +261,11 @@
                                         Moxos
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
 
-                                    </td>
-                                    <td>
 
-                                    </td>
-                                    <td>
-                                        Ignacio Warnes
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
 
-                                    </td>
-                                    <td>
 
-                                    </td>
-                                    <td>
-                                        Nuflo de Chavez
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
 
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                        Obispo Santistevan
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                        Cercado
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                        Marban
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
