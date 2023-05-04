@@ -34,8 +34,8 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Title</label>
-                                        <textarea rows="5" name="title" value="{{ $dataset->title }}"
-                                                  class="form-control" placeholder="Title"></textarea>
+                                        <input type="text" name="title" value="{{ $dataset->title }}"
+                                               class="form-control" placeholder="Title">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
@@ -48,8 +48,7 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Release Year</label>
-                                        <input type="text" name="release_year" value="{{ $dataset->release_year }}"
-                                               class="form-control" placeholder="Release Year">
+                                        <input type="text" name="release_year" value="{{ $dataset->release_year }}" class="form-control">
                                     </div>
                                 </div>
 
@@ -125,6 +124,15 @@
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
+                                        <label class="text-label">Status</label>
+                                        <select class="form-control"  name="status" id="status">
+                                            <option  value="unpublished">Unpublished</option>
+                                            <option value="published">Published</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
                                         <label class="text-label">Gender Responsive</label>
                                         <input type="checkbox" value="{{ $dataset->gender_responsive == "1" ? 'checked':'' }}" name="gender_responsive">
                                     </div>
@@ -140,40 +148,42 @@
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
                                             <label for="impact_areas">Impact Areas</label>
-                                            @foreach($impactAreas as $impactArea)
-                                                <div class="form-check form-check-inline">
-{{--                                                    <input class="form-check-input" type="checkbox" name="impact_areas[]" id="impact_area_{{ $impactArea->id }}" value="{{ $impactArea->id }}">--}}
-                                                    <label class="form-check-label" for="impact_area_{{ $impactArea->id }}">
-                                                        <span class="badge badge-primary">{{ $impactArea->name }}</span>
-                                                    </label>
-                                                </div>
-                                            @endforeach
+                                            <select id="impact_areas" class="form-control @error('impact_areas') is-invalid @enderror" name="impact_areas[]" multiple data-tags="true">
+                                                @foreach ($impactAreas as $impactArea)
+                                                    <option value="{{ $impactArea->id }}" @if($dataset->impactAreas->contains($impactArea->id)) selected @endif>
+                                                        {{ $impactArea->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
 {{--                                            TODO: Making select fields behave like input--}}
                                         </div>
                                     </div>
 
-{{--                                    <div class="col-lg-6 mb-2">--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="innovations">Innovations</label>--}}
-{{--                                            <select name="innovations[]" id="innovations" class="form-control" multiple>--}}
-{{--                                                @foreach($innovations as $innovation)--}}
-{{--                                                    <option--}}
-{{--                                                        value="{{ $innovation->id }}">{{ $innovation->name }}</option>--}}
-{{--                                                @endforeach--}}
-{{--                                            </select>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    <div class="col-lg-6 mb-2">
+                                        <div class="form-group">
+                                            <label for="innovations">Innovations</label>
+                                            <select name="innovations[]" id="innovations" class="form-control" @error('innovations') is-invalid @enderror" multiple>
+                                                @foreach($innovations as $innovation)
+                                                    <option value="{{ $innovation->id }}"  @if($dataset->innovations->contains($innovation->id)) selected @endif>
+                                                        {{ $innovation->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
-{{--                                    <div class="col-lg-6 mb-2">--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="tech_pracs">Technology/Practices</label>--}}
-{{--                                            <select name="tech_pracs[]" id="tech_pracs" class="form-control" multiple>--}}
-{{--                                                @foreach($techPracs as $techPracs)--}}
-{{--                                                    <option value="{{ $techPracs->id }}">{{ $techPracs->name }}</option>--}}
-{{--                                                @endforeach--}}
-{{--                                            </select>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    <div class="col-lg-6 mb-2">
+                                        <div class="form-group">
+                                            <label for="tech_pracs">Technology/Practices</label>
+                                            <select name="tech_pracs[]" id="tech_pracs" class="form-control" @error('innovations') is-invalid @enderror" multiple>
+                                                @foreach($techPracs as $techPracs)
+                                                    <option value="{{ $techPracs->id }}" @if($dataset->techPracs->contains($techPracs->id)) selected @endif>
+                                                        {{ $techPracs->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Observation</label>
