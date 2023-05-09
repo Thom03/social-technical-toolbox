@@ -64,5 +64,9 @@ class Dataset extends Model
     {
         return $this->belongsToMany(Innovation::class);
     }
+    public function administrativeBoundaries()
+    {
+        return $this->belongsToMany(AdministrativeBoundary::class);
+    }
 
 }
