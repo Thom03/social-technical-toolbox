@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdministrativeBoundary;
 use App\Models\Dataset;
 use App\Models\ImpactArea;
 use App\Models\Innovation;
@@ -73,6 +74,10 @@ class DatasetController extends Controller
             'innovations.*' => 'exists:innovations,id',
             'tech_pracs'=> 'nullable|array',
             'tech_pracs.*' => 'exists:tech_pracs,id',
+            'country' => 'nullable',
+            'admin_bound_1' => 'nullable',
+            'admin_bound_2' => 'nullable',
+            'admin_bound_3' => 'nullable',
 
         ]);
 
@@ -99,14 +104,21 @@ class DatasetController extends Controller
         $dataset->save();
 
 
-//        Attach the selected impact areas to the dataset
 
+
+//        Attach the selected impact areas to the dataset
         $dataset->impactAreas()->attach($validateData['impact_areas']);
         $dataset->innovations()->attach($validateData['innovations']);
         $dataset->techPracs()->attach($validateData['tech_pracs']);
 
-
-
+//        Attach Administrative boundaries to the dataset
+        $administrativeBoundaries = new AdministrativeBoundary();
+        $administrativeBoundaries->country = $validateData['country'];
+        $administrativeBoundaries->admin_bound_1 = $validateData['admin_bound_1'];
+        $administrativeBoundaries->admin_bound_2 = $validateData['admin_bound_2'];
+        $administrativeBoundaries->admin_bound_3 = $validateData['admin_bound_3'];
+        $administrativeBoundaries->dataset_id = $dataset->id;
+        $administrativeBoundaries->save();
 
 
         return redirect('/datasetlist')->with('status', 'Impact Area added successfully.');
