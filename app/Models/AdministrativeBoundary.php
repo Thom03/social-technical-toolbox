@@ -11,7 +11,12 @@ class AdministrativeBoundary extends Model
 
     protected $table = 'adminstrativeboundary';
 
-    protected $fillable = ['country', 'admin_bound_1', 'admin_bound_2', 'admin_bound_3'];
+    protected $fillable = [
+        'country',
+        'admin_bound_1',
+        'admin_bound_2',
+        'admin_bound_3',
+        ];
 
     public function datasets()
     {

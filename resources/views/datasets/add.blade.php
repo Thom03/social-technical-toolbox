@@ -191,43 +191,36 @@
                                     <div class="card-header">
                                         <h4 class="card-title">Regions</h4>
                                     </div>
+                                </div>
 
-                                    <div id="boundary-container">
-                                        <!-- The dynamic input fields will be added here -->
-                                    </div>
 
+                                <div class="col-lg-12 mb-2" id="boundary-container">
+                                    <!-- The dynamic input fields will be added here -->
                                 </div>
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
-{{--                                        <label for="impact_areas">Country</label>--}}
-                                        <input type="text" name="country"
+                                        <input type="text" id="country" name="country"
                                                class="form-control" placeholder="Country">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
-{{--                                        <label for="impact_areas">Administrative Boundary 1</label>--}}
-                                        <input type="text" name="boundary1"
+                                        <input type="text" id="admin_bound_1" name="admin_bound_1"
                                                class="form-control" placeholder="Administrative Boundary 1">
 
                                     </div>
                                 </div>
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
-{{--                                        <label for="impact_areas">Administrative Boundary 2</label>--}}
-                                        <input type="text" name="boundary2"
+                                        <input type="text" id="admin_bound_2" name="admin_bound_2"
                                                class="form-control" placeholder="Administrative Boundary 2">
-
                                     </div>
                                 </div>
-
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
-{{--                                        <label for="impact_areas">Administrative Boundary 3</label>--}}
-                                        <input type="text" name="boundary3"
+                                        <input type="text" id="admin_bound_3" name="admin_bound_3"
                                                class="form-control" placeholder="Administrative Boundary 3">
-
                                     </div>
                                 </div>
                                 <div class="input-group-btn">
@@ -238,8 +231,6 @@
                                 <a href="{{ route('dataset_list') }}" type="submit" class="btn btn-danger">Back</a>
                         </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -247,71 +238,5 @@
     </div>
 
 @endsection
-@push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.select2').select2({
-                tags: true
-            });
-        });
-
-        $(document).ready(function() {
-            // Counter to keep track of the number of input fields
-            var boundaryCount = 1;
-
-            // Function to create the input fields dynamically
-            function createBoundaryInput() {
-                // Create a new HTML element for the country input field
-                var countryInput = $('<input>')
-                    .attr({
-                        type: 'text',
-                        name: 'country' + boundaryCount,
-                        class: 'form-control',
-                        placeholder: 'Country'
-                    });
-
-                // Create a new HTML element for the administrative boundary 1 input field
-                var boundary1Input = $('<input>')
-                    .attr({
-                        type: 'text',
-                        name: 'boundary1' + boundaryCount,
-                        class: 'form-control',
-                        placeholder: 'Administrative Boundary 1'
-                    });
-
-                // Create a new HTML element for the administrative boundary 2 input field
-                var boundary2Input = $('<input>')
-                    .attr({
-                        type: 'text',
-                        name: 'boundary2' + boundaryCount,
-                        class: 'form-control',
-                        placeholder: 'Administrative Boundary 2'
-                    });
-
-                // Create a new HTML element for the administrative boundary 3 input field
-                var boundary3Input = $('<input>')
-                    .attr({
-                        type: 'text',
-                        name: 'boundary3' + boundaryCount,
-                        class: 'form-control',
-                        placeholder: 'Administrative Boundary 3'
-                    });
-
-                // Append the input fields to the container element
-                $('#boundary-container').append(countryInput, boundary1Input, boundary2Input, boundary3Input);
-
-                // Increment the counter
-                boundaryCount++;
-            }
-
-            // Attach the createBoundaryInput function to the button click event
-            $('#add-boundary').click(function() {
-                createBoundaryInput();
-            });
-        });
-    </script>
-@endpush
 
 

@@ -15,10 +15,10 @@ class CreateAdminstrivebountryTable extends Migration
     {
         Schema::create('adminstrativeboundary', function (Blueprint $table) {
             $table->id();
-            $table->string('country');
-            $table->string('admin_bound_1');
-            $table->string('admin_bound_2');
-            $table->string('admin_bound_3');
+            $table->string('country')->nullable();
+            $table->string('admin_bound_1')->nullable();
+            $table->string('admin_bound_2')->nullable();
+            $table->string('admin_bound_3')->nullable();
             $table->timestamps();
         });
     }
