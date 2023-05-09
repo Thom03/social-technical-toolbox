@@ -36,6 +36,7 @@ return [
                 'vendor/global/global.min.js',
                 'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                 // 'js/custom.min.js',
+                'js/style.js',
 
 
                 // 'js/deznav-init.js',
