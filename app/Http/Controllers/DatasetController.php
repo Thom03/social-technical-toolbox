@@ -74,10 +74,10 @@ class DatasetController extends Controller
             'innovations.*' => 'exists:innovations,id',
             'tech_pracs'=> 'nullable|array',
             'tech_pracs.*' => 'exists:tech_pracs,id',
-            'country' => 'nullable',
-            'admin_bound_1' => 'nullable',
-            'admin_bound_2' => 'nullable',
-            'admin_bound_3' => 'nullable',
+            'country.*' => 'nullable',
+            'admin_bound_1.*' => 'nullable',
+            'admin_bound_2.*' => 'nullable',
+            'admin_bound_3.*' => 'nullable',
 
         ]);
 
@@ -112,13 +112,37 @@ class DatasetController extends Controller
         $dataset->techPracs()->attach($validateData['tech_pracs']);
 
 //        Attach Administrative boundaries to the dataset
-        $administrativeBoundaries = new AdministrativeBoundary();
-        $administrativeBoundaries->country = $validateData['country'];
-        $administrativeBoundaries->admin_bound_1 = $validateData['admin_bound_1'];
-        $administrativeBoundaries->admin_bound_2 = $validateData['admin_bound_2'];
-        $administrativeBoundaries->admin_bound_3 = $validateData['admin_bound_3'];
-        $administrativeBoundaries->dataset_id = $dataset->id;
-        $administrativeBoundaries->save();
+//        $administrativeBoundaries = new AdministrativeBoundary();
+//        $administrativeBoundaries->country = $validateData['country'];
+//        $administrativeBoundaries->admin_bound_1 = $validateData['admin_bound_1'];
+//        $administrativeBoundaries->admin_bound_2 = $validateData['admin_bound_2'];
+//        $administrativeBoundaries->admin_bound_3 = $validateData['admin_bound_3'];
+//        $administrativeBoundaries->dataset_id = $dataset->id;
+//        $administrativeBoundaries->save();
+
+        $country = $validateData['country'];
+        $admin_bound_1 = $validateData['admin_bound_1'];
+        $admin_bound_2 = $validateData['admin_bound_2'];
+        $admin_bound_3 = $validateData['admin_bound_3'];
+
+
+        // Check if the arrays have the same number of elements
+        $arrayCount = count($country);
+//        if (count($admin_bound_1) !== $arrayCount || count($admin_bound_2) !== $arrayCount || count($admin_bound_3) !== $arrayCount) {
+//            return redirect()->back()->withErrors('The arrays must have the same number of elements.');
+//        }
+
+        for ($i = 0; $i < $arrayCount; $i++) {
+            $administrativeBoundaries = new AdministrativeBoundary();
+            $administrativeBoundaries->country = $country[$i];
+            $administrativeBoundaries->admin_bound_1 = $admin_bound_1[$i] ?? null;
+            $administrativeBoundaries->admin_bound_2 = $admin_bound_2[$i] ?? null;
+            $administrativeBoundaries->admin_bound_3 = $admin_bound_3[$i] ?? null;
+            $administrativeBoundaries->dataset_id = $dataset->id;
+            $administrativeBoundaries->save();
+        }
+
+
 
 
         return redirect('/datasetlist')->with('status', 'Impact Area added successfully.');

@@ -199,27 +199,27 @@
                                 </div>
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
-                                        <input type="text" id="country" name="country"
+                                        <input type="text" id="country" name="country[]"
                                                class="form-control" placeholder="Country">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
-                                        <input type="text" id="admin_bound_1" name="admin_bound_1"
+                                        <input type="text" id="admin_bound_1" name="admin_bound_1[]"
                                                class="form-control" placeholder="Administrative Boundary 1">
 
                                     </div>
                                 </div>
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
-                                        <input type="text" id="admin_bound_2" name="admin_bound_2"
+                                        <input type="text" id="admin_bound_2" name="admin_bound_2[]"
                                                class="form-control" placeholder="Administrative Boundary 2">
                                     </div>
                                 </div>
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
-                                        <input type="text" id="admin_bound_3" name="admin_bound_3"
+                                        <input type="text" id="admin_bound_3" name="admin_bound_3[]"
                                                class="form-control" placeholder="Administrative Boundary 3">
                                     </div>
                                 </div>
