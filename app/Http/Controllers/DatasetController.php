@@ -10,6 +10,7 @@ use App\Models\Region;
 use App\Models\TechPrac;
 use App\Models\Theme;
 use Illuminate\Http\Request;
+use PragmaRX\Countries\Package\Countries;
 
 class DatasetController extends Controller
 {
@@ -25,12 +26,13 @@ class DatasetController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $dataset = Dataset::all();
+        $dataset = Dataset::paginate(6);
         $impactAreas = ImpactArea::all();
+        $latestDatasets = Dataset::latest()->get();
 
 
 //        $users = User::latest()->paginate(10);
-        return view('datasets.datasetlist', compact('dataset','impactAreas','logo', 'page_title', 'page_description', 'action'));
+        return view('datasets.datasetlist', compact('dataset','impactAreas','latestDatasets','logo', 'page_title', 'page_description', 'action'));
 
     }
 
@@ -52,8 +54,10 @@ class DatasetController extends Controller
         $impactAreas = ImpactArea::all();
         $innovations = Innovation::all();
         $techPracs = TechPrac::all();
+        $countries = new Countries();
+        $countryList = $countries->all()->pluck('name.common');
 
-        return view('datasets.add', compact('region', 'theme', 'impactAreas','innovations','techPracs','logo', 'page_title', 'page_description', 'action'));
+        return view('datasets.add', compact('region', 'theme', 'impactAreas','innovations','techPracs','logo','countryList', 'page_title', 'page_description', 'action'));
 
     }
 
@@ -110,15 +114,6 @@ class DatasetController extends Controller
         $dataset->impactAreas()->attach($validateData['impact_areas']);
         $dataset->innovations()->attach($validateData['innovations']);
         $dataset->techPracs()->attach($validateData['tech_pracs']);
-
-//        Attach Administrative boundaries to the dataset
-//        $administrativeBoundaries = new AdministrativeBoundary();
-//        $administrativeBoundaries->country = $validateData['country'];
-//        $administrativeBoundaries->admin_bound_1 = $validateData['admin_bound_1'];
-//        $administrativeBoundaries->admin_bound_2 = $validateData['admin_bound_2'];
-//        $administrativeBoundaries->admin_bound_3 = $validateData['admin_bound_3'];
-//        $administrativeBoundaries->dataset_id = $dataset->id;
-//        $administrativeBoundaries->save();
 
         $country = $validateData['country'];
         $admin_bound_1 = $validateData['admin_bound_1'];
@@ -268,6 +263,32 @@ class DatasetController extends Controller
         return view('datasets.datasetlist', [
             'datasets' => $datasets,
         ]);
+
+    }
+
+//    Filtering datasets
+
+    public function filter($filter)
+    {
+        $logo = "img/logo.png";
+        $page_title = 'Datasets';
+        $page_description = 'Some description for the page';
+        $action = __FUNCTION__;
+
+        if ($filter == 'newest') {
+            $dataset = Dataset::orderBy('created_at', 'desc')->get();
+
+        } elseif ($filter == 'oldest') {
+            $dataset = Dataset::orderBy('created_at', 'desc')->get();
+
+
+        }else {
+            // Handle other filter options if needed
+            $dataset = Dataset::all();
+        }
+
+//        return view('datasets.datasetlist', ['dataset' => $dataset]);
+        return view('datasets.datasetlist', compact('dataset','logo', 'page_title', 'page_description', 'action'));
 
     }
 }

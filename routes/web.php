@@ -94,6 +94,8 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('edit_dataset/{id}', [DatasetController::class, 'edit_dataset'])->name('edit_dataset');
     Route::get('update_dataset/{id}', [DatasetController::class, 'update_dataset'])->name('update_dataset');
     Route::get('/search_dataset', [DatasetController::class, 'search_dataset'])->name('search_dataset');
+//    Route::get('/datasets/filter/{filter}', 'DatasetController@filter')->name('datasets.filter');
+    Route::get('/datasets/filter/{filter}', [DatasetController::class, 'filter'])->name('datasets.filter');
 
 
 

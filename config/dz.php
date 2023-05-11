@@ -286,6 +286,7 @@ return [
                 ],
                 'add_dataset' => [
                     'vendor/jquery-steps/css/jquery.steps.css',
+                    'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css',
                 ],
                 'edit_dataset' => [
                     'vendor/jquery-steps/css/jquery.steps.css',
@@ -430,6 +431,14 @@ return [
 
                 ],
                 'dataset_list' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/peity/jquery.peity.min.js',
+                    'vendor/chartist/js/chartist.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'filter' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',
                     'vendor/peity/jquery.peity.min.js',
@@ -1058,6 +1067,7 @@ return [
                     'js/plugins-init/jquery-steps-init.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',
+                    'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js',
                 ],
                 'edit_dataset' => [
                     'vendor/chart.js/Chart.bundle.min.js',

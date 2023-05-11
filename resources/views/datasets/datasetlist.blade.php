@@ -17,8 +17,8 @@
                     <i class="flaticon-381-controls-3 mr-2"></i> Filter
                 </div>
                 <div class="dropdown-menu dropdown-menu-left">
-                    <a class="dropdown-item" href="#">A To Z List</a>
-                    <a class="dropdown-item" href="#">Z To A List</a>
+                    <a class="dropdown-item" href="#">Published</a>
+                    <a class="dropdown-item" href="#">Unpublished</a>
                 </div>
             </div>
             <div class="dropdown ml-3 d-inline-block">
@@ -26,8 +26,8 @@
                     Newest
                 </div>
                 <div class="dropdown-menu dropdown-menu-left">
-                    <a class="dropdown-item" href="#">Newest</a>
-                    <a class="dropdown-item" href="#">Old</a>
+                    <a class="dropdown-item" href="{{ route('datasets.filter', ['filter' => 'newest']) }}">Newest</a>
+                    <a class="dropdown-item" href="{{ route('datasets.filter', ['filter' => 'oldest']) }}">Oldest</a>
                 </div>
             </div>
             <a href="javascript:void(0);" class="btn btn-outline-primary ml-3"><i class="flaticon-381-menu-1 mr-0"></i></a>
@@ -54,19 +54,45 @@
                                                     </label>
                                                 @endforeach
                                             <br>
-                                            <br>
                                                 <br>
-                                                <a href="#" class="btn btn-outline-danger mr-2">DELETE</a>
-                                                <a href="{{ route('edit_dataset', $dataset->id) }}" class="btn btn-success">EDIT</a>
+                                                @if($dataset->status == 'published')
+                                                <span>Status: </span><span class="badge badge-success">{{ $dataset->status }}</span>
+                                                @else
+                                                    <span>Status: </span><span class="badge badge-warning">{{ $dataset->status }}</span>
+                                                @endif
+                                                <br>
+                                                <br>
+                                                <a href="#" class="btn btn-rounded btn-outline-danger">DELETE</a>
+{{--                                                <a href="{{ route('edit_dataset', $dataset->id) }}" class="btn btn-outline-success">EDIT</a>--}}
+                                                <a href="{{ route('edit_dataset', $dataset->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>
                                             </div>
                                         </div>
 
                                     </div>
+
                                     @endforeach
                                 </div>
+                                <nav>
+                                    <ul class="pagination pagination-circle">
+                                        <li class="page-item page-indicator">
+                                            <a class="page-link" href="javascript:void()">
+                                                <i class="la la-angle-left"></i></a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="javascript:void()">1</a>
+                                        </li>
+                                        <li class="page-item page-indicator">
+                                            <a class="page-link" href="javascript:void()">
+                                                <i class="la la-angle-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                 </div>
             </div>
