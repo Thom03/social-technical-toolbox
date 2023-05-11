@@ -111,6 +111,15 @@
             </div>
             <div class="dropdown ml-3 d-inline-block">
                 <div class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
+                    <i class="flaticon-381-controls-3 mr-2"></i> Cluster
+                </div>
+                <div class="dropdown-menu dropdown-menu-left">
+                    <a class="dropdown-item" href="#">Cluster 1</a>
+                    <a class="dropdown-item" href="#">Cluster 2</a>
+                </div>
+            </div>
+            <div class="dropdown ml-3 d-inline-block">
+                <div class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
                     Newest
                 </div>
                 <div class="dropdown-menu dropdown-menu-left">

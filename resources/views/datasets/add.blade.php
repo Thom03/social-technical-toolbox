@@ -148,7 +148,7 @@
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
                                             <label for="impact_areas">Impact Areas</label>
-                                            <select name="impact_areas[]" id="impact_areas" class="form-control" multiple>
+                                            <select name="impact_areas[]" id="impact_areas" class="form-control select2-tags" multiple>
                                                 @foreach($impactAreas as $impactArea)
                                                     <option value="{{ $impactArea->id }}">{{ $impactArea->name }}</option>
                                                 @endforeach
@@ -160,7 +160,7 @@
                                             <div class="col-lg-6 mb-2">
                                             <div class="form-group">
                                                 <label for="innovations">Innovations</label>
-                                                <select name="innovations[]" id="innovations" class="form-control" multiple>
+                                                <select name="innovations[]" id="innovations" class="form-control select2-tags" multiple>
                                                     @foreach($innovations as $innovation)
                                                         <option
                                                             value="{{ $innovation->id }}">{{ $innovation->name }}</option>
@@ -172,9 +172,9 @@
                                             <div class="col-lg-6 mb-2">
                                             <div class="form-group">
                                                 <label for="tech_pracs">Technology/Practices</label>
-                                                <select name="tech_pracs[]" id="tech_pracs" class="form-control" multiple>
+                                                <select name="tech_pracs[]" id="tech_pracs" class="form-control select2-tags" multiple>
                                                     @foreach($techPracs as $techPracs)
-                                                        <option value="{{ $techPracs->id }}">{{ $techPracs->name }}</option>
+                                                        <option  class="badge badge-secondary" value="{{ $techPracs->id }}">{{ $techPracs->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -200,7 +200,12 @@
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
                                         <input type="text" id="country" name="country[]"
-                                               class="form-control" placeholder="Country">
+                                               class="form-control" placeholder="Country" list="countryList">
+                                        <datalist id="countryList">
+                                            @foreach($countryList as $country)
+                                                <option value="{{ $country }}">
+                                            @endforeach
+                                        </datalist>
                                     </div>
                                 </div>
 
