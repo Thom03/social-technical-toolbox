@@ -156,7 +156,7 @@ class HomeController extends Controller
 
         return view('home-grid', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
     }
-    public function bundle_detail($id)
+    public function bundle_detail($id, Dataset $dataset)
     {
         $logo = "img/logo.png";
         $page_title = 'Home Page';
@@ -167,9 +167,10 @@ class HomeController extends Controller
         $impactAreas = ImpactArea::all();
         $innovations = Innovation::all();
         $techPracs = TechPrac::all();
+        $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
 
 
-        return view('bundlee', compact('datasets','impactAreas','innovations', 'techPracs','logo','page_title', 'page_description','action'));
+        return view('bundlee', compact('datasets','impactAreas','innovations', 'dataset','techPracs', 'adminBoundaries','logo','page_title', 'page_description','action'));
     }
 
 
