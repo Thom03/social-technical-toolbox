@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdministrativeBoundary;
 use App\Models\Dataset;
 use App\Models\ImpactArea;
 use App\Models\Innovation;
 use App\Models\TechPrac;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Spatie\Geocoder\Geocoder;
 
 
 class HomeController extends Controller
@@ -61,8 +63,25 @@ class HomeController extends Controller
             'climate_impact', 'publishedCount', 'unpublishedCount','page_description','action','logo','logoText'));
     }
 
+    private $geocoder;
+
+    public function __construct(Geocoder $geocoder)
+    {
+        $this->geocoder = $geocoder;
+    }
+
+    function getCountriesJson()
+    {
+        $administrativeBoundaries = AdministrativeBoundary::all();
+        $countryList = $administrativeBoundaries->pluck('country')->toArray();
+        $json = json_encode($countryList);
+
+        return response($json)->header('Content-Type', 'application/json');
+
+    }
+
     //    List of system users
-    public function map_page()
+    public function map_page(Geocoder $geocoder)
     {
         $logo = "img/logo.png";
         $page_title = 'Map Page';
@@ -70,7 +89,29 @@ class HomeController extends Controller
 
         $action = __FUNCTION__;
 
-        return view('map', compact('logo','page_title', 'page_description','action'));
+//        $administrativeBoundaries = AdministrativeBoundary::all();
+////        $geocoder = new Geocoder($administrativeBoundaries);
+//        $coordinatesList = [];
+//
+//        foreach ($administrativeBoundaries as $boundary) {
+//            $country = $boundary->country;
+
+//            $geocoder = Geocoder::getFacadeRoot();
+
+            // Perform geocoding for each country
+//            $results = $this->geocoder->getCoordinatesForAddress($country)->setApiKey(config('services.google_maps.api_key');
+//            $results = Geocoder::getCoordinatesForAddress($country)->setApiKey(config('services.google_maps.api_key'));
+//            $results = $geocoder->getCoordinatesForAddress($country)->setApiKey(config('services.google_maps.api_key'));
+//
+//            if (!empty($results)) {
+//                $latitude = $results['lat'];
+//                $longitude = $results['lng'];
+//
+//                $coordinatesList[] = ['lng' => $longitude, 'lat' => $latitude];
+//            }
+//        }
+
+        return view('map', compact('logo','page_title', 'page_description','action',));
     }
 
     public function dataset_list()
@@ -141,6 +182,7 @@ class HomeController extends Controller
 
         return view('bundlee', compact('datasets','impactAreas','innovations', 'techPracs','logo','page_title', 'page_description','action'));
     }
+
 
 
 
