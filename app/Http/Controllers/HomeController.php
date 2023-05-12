@@ -73,7 +73,17 @@ class HomeController extends Controller
     function getCountriesJson()
     {
         $administrativeBoundaries = AdministrativeBoundary::all();
-        $countryList = $administrativeBoundaries->pluck('country')->toArray();
+
+        $countryList = $administrativeBoundaries->map(function ($item) {
+            $dataset = Dataset::find($item->dataset_id);
+            $datasetTitle = $dataset ? $dataset->title : null;
+            return [
+                'country' => $item->country,
+                'admin_bound_1' => $item->admin_bound_1,
+                'dataset_title' => $datasetTitle,
+
+            ];
+        })->toArray();
         $json = json_encode($countryList);
 
         return response($json)->header('Content-Type', 'application/json');
@@ -89,27 +99,6 @@ class HomeController extends Controller
 
         $action = __FUNCTION__;
 
-//        $administrativeBoundaries = AdministrativeBoundary::all();
-////        $geocoder = new Geocoder($administrativeBoundaries);
-//        $coordinatesList = [];
-//
-//        foreach ($administrativeBoundaries as $boundary) {
-//            $country = $boundary->country;
-
-//            $geocoder = Geocoder::getFacadeRoot();
-
-            // Perform geocoding for each country
-//            $results = $this->geocoder->getCoordinatesForAddress($country)->setApiKey(config('services.google_maps.api_key');
-//            $results = Geocoder::getCoordinatesForAddress($country)->setApiKey(config('services.google_maps.api_key'));
-//            $results = $geocoder->getCoordinatesForAddress($country)->setApiKey(config('services.google_maps.api_key'));
-//
-//            if (!empty($results)) {
-//                $latitude = $results['lat'];
-//                $longitude = $results['lng'];
-//
-//                $coordinatesList[] = ['lng' => $longitude, 'lat' => $latitude];
-//            }
-//        }
 
         return view('map', compact('logo','page_title', 'page_description','action',));
     }
