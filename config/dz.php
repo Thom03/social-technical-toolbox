@@ -408,6 +408,7 @@ return [
                     'vendor/apexchart/apexchart.js',
                     'js/dashboard/dashboard-1.js',
                     'js/custom.min.js',
+                    'js/map.js',
                     'js/deznav-init.js',
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/raphael/raphael.min.js',

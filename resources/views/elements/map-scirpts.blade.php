@@ -5,7 +5,7 @@
 <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css' rel='stylesheet' />
-<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js'></script>
 
@@ -24,7 +24,9 @@
 <script src="https://soecodat.ciat.cgiar.org/monster/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
 <script src="https://soecodat.ciat.cgiar.org/monster/js/custom.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
-<script src="https://soecodat.ciat.cgiar.org/js/studies.js"></script>
+{{--<script src="https://soecodat.ciat.cgiar.org/js/studies.js"></script>--}}
+<script src="{{ asset('js/map.js') }}"></script>
+
 <script src="https://soecodat.ciat.cgiar.org/js/custom.js"></script>
 <script src="https://soecodat.ciat.cgiar.org/js/chartjs.init.js"></script>
 
