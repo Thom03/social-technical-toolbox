@@ -1079,6 +1079,7 @@ return [
                     'js/plugins-init/jquery-steps-init.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',
+                    'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js',
                 ],'edit_role' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',

@@ -26,7 +26,7 @@ class DatasetController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $dataset = Dataset::paginate(6);
+        $dataset = Dataset::all();
         $impactAreas = ImpactArea::all();
         $latestDatasets = Dataset::latest()->get();
 

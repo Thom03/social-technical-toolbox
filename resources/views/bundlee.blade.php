@@ -122,7 +122,7 @@
                     </div>
 
                     <div class="col-12 m-t-20">
-                        <h4>DOI</h4>
+                        <h4>Digital Object Identifer (DOI) </h4>
                         <a href="{{ $datasets->DOI }}"> <p class="badge badge-rounded badge-outline-info">{{ $datasets->DOI }}</p> </a>
                     </div>
 
@@ -171,100 +171,23 @@
                                 <thead>
                                 <tr>
                                     <th>Country</th>
-                                    <th>State/Province</th>
-                                    <th>City</th>
-                                    <th>Other</th>
+                                    <th>Administrative Boundary 1</th>
+                                    <th>Administrative Boundary 2</th>
+                                    <th>Administrative Boundary 3</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($adminBoundaries as $adminBoundary)
                                 <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
 
-                                    </td>
-                                    <td>
+                                    <td>{{ $adminBoundary->country }}</td>
 
-                                    </td>
-                                    <td>
-                                        Jose Ballivian
-                                    </td>
+                                    <td>{{ $adminBoundary->admin_bound_1 }}</td>
+                                    <td>{{ $adminBoundary->admin_bound_2 }}</td>
+                                    <td>{{ $adminBoundary->admin_bound_3 }}</td>
+
                                 </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                        Carrasco
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                        Sara
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                        Guarayos
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                        Ichilo
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Bolivia
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                        Moxos
-                                    </td>
-                                </tr>
-
-
-
-
+                                @endforeach
 
                                 </tbody>
                             </table>
