@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\InnovationController;
 use App\Http\Controllers\Admin\RegionController;
 use App\Http\Controllers\Admin\TechPracController;
 use App\Http\Controllers\Admin\ThemeController;
+use App\Http\Controllers\Api\APIController;
 use App\Http\Controllers\DatasetController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\RoleController;
@@ -33,6 +34,10 @@ Route::get('/countries-json', [HomeController::class, 'getCountriesJson'])->name
 
 Auth::routes();
 //Route::post('insert_impact', [ImpactAreaController::class, 'insert_impact'])->name('insert_impact');
+
+
+//API Routes
+Route::get('api/v1/datasets', [APIController::class, 'getDatasets']);
 
 Route::group(['middleware' => ['auth']], function (){
     Route::get('/dashboard', [HomeController::class, 'dashboard_1'])->name('dashboard');

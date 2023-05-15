@@ -34,8 +34,8 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Title</label>
-                                        <input type="text" name="title" value="{{ $dataset->title }}"
-                                               class="form-control" placeholder="Title">
+                                        <textarea rows="5"  name="title"
+                                                  class="form-control" placeholder="Title">{{ $dataset->title }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
@@ -81,6 +81,15 @@
                                                class="form-control" placeholder="Contact" >
                                     </div>
                                 </div>
+
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label">DOI</label>
+                                        <input type="text" name="DOI" value="{{ $dataset->doi }}"
+                                               class="form-control" placeholder="DOI" >
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Providers</label>
@@ -96,11 +105,6 @@
                                                class="form-control" placeholder="Collection Period">
                                     </div>
                                 </div>
-{{--                                <div class="col-lg-6 mb-2">--}}
-{{--                                    <div class="card-header">--}}
-{{--                                        <h4 class="card-title">Additional Information</h4>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
                                     <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Data Type</label>
@@ -148,7 +152,7 @@
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
                                             <label for="impact_areas">Impact Areas</label>
-                                            <select id="impact_areas" class="form-control @error('impact_areas') is-invalid @enderror" name="impact_areas[]" multiple data-tags="true">
+                                            <select id="impact_areas" class="form-control select2-tags @error('impact_areas') is-invalid @enderror" name="impact_areas[]" multiple data-tags="true">
                                                 @foreach ($impactAreas as $impactArea)
                                                     <option value="{{ $impactArea->id }}" @if($dataset->impactAreas->contains($impactArea->id)) selected @endif>
                                                         {{ $impactArea->name }}
@@ -162,7 +166,7 @@
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
                                             <label for="innovations">Innovations</label>
-                                            <select name="innovations[]" id="innovations" class="form-control" @error('innovations') is-invalid @enderror" multiple>
+                                            <select name="innovations[]" id="innovations" class="form-control select2-tags" @error('innovations') is-invalid @enderror" multiple>
                                                 @foreach($innovations as $innovation)
                                                     <option value="{{ $innovation->id }}"  @if($dataset->innovations->contains($innovation->id)) selected @endif>
                                                         {{ $innovation->name }}
@@ -175,7 +179,7 @@
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
                                             <label for="tech_pracs">Technology/Practices</label>
-                                            <select name="tech_pracs[]" id="tech_pracs" class="form-control" @error('innovations') is-invalid @enderror" multiple>
+                                            <select name="tech_pracs[]" id="tech_pracs" class="form-control select2-tags" @error('innovations') is-invalid @enderror" multiple>
                                                 @foreach($techPracs as $techPracs)
                                                     <option value="{{ $techPracs->id }}" @if($dataset->techPracs->contains($techPracs->id)) selected @endif>
                                                         {{ $techPracs->name }}
