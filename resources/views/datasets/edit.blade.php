@@ -26,7 +26,7 @@
                         <h4 class="card-title">Dataset Information</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('insert_dataset') }}" action="post" enctype="multipart/form-data"
+                        <form action="{{ route('update_dataset', ['id' => $dataset->id]) }}" action="post" enctype="multipart/form-data"
                               class="step-form-horizontal">
                             @csrf
                             @method('PUT')
@@ -194,12 +194,64 @@
                                         <textarea rows="3" name="observations"
                                                   class="form-control" placeholder="Collection Period"></textarea>
                                     </div>
-                                </div>
+                                    </div>
+
+                                        <div class="col-lg-12 mb-2">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Regions</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 mb-2" id="boundary-container">
+                                            <!-- The dynamic input fields will be added here -->
+                                        </div>
+
+
+                                        <div class="col-lg-2 mb-2">
+                                            <div class="form-group">
+                                                <input type="text" id="country" name="country[]"
+                                                       class="form-control" placeholder="Country" list="countryList">
+                                                <datalist id="countryList">
+{{--                                                    @foreach($countryList->toArray() as $country)--}}
+{{--                                                        <option value="{{ is_array($country) ? htmlspecialchars($country['name']) : htmlspecialchars($country) }}" {{ in_array($country, $selectedCountries) ? 'selected' : '' }}></option>--}}
+{{--                                                    @endforeach--}}
+                                                </datalist>
+                                            </div>
+                                        </div>
+
+                                    @foreach($administrativeBoundaries as $index => $boundary)
+
+                                        <div class="col-lg-2 mb-2">
+                                            <div class="form-group">
+                                                <input type="text" id="admin_bound_1{{ $index }}" name="admin_bound_1[]"
+                                                       class="form-control" placeholder="Administrative Boundary 1" value="{{ $boundary->admin_bound_1 }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 mb-2">
+                                            <div class="form-group">
+                                                <input type="text" id="admin_bound_2{{ $index }}" name="admin_bound_2[]"
+                                                       class="form-control" placeholder="Administrative Boundary 2" value="{{ $boundary->admin_bound_2 }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 mb-2">
+                                            <div class="form-group">
+                                                <input type="text" id="admin_bound_3{{ $index }}" name="admin_bound_3[]"
+                                                       class="form-control" placeholder="Administrative Boundary 3" value="{{ $boundary->admin_bound_3 }}">
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-outline-warning" type="button" onclick="region_fields();"> Add Region
+                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+
                             </div>
 
                             <button type="submit" class="btn btn-success">Update Dataset</button>
                             <a href="{{ route('dataset_list') }}" type="submit" class="btn btn-danger">Back</a>
                         </form>
+                    </div>
 
                     </div>
                 </div>

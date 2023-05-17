@@ -8,7 +8,7 @@
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
                     <h4>Hi, welcome back!</h4>
-                    <p class="mb-0">Your business dashboard template</p>
+                    <p class="mb-0">Your STIBS dashboard</p>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -35,63 +35,62 @@
                                     <div class="form-group">
                                         <label class="text-label">Title</label>
                                         <textarea rows="5" name="title"
-                                                  class="form-control" placeholder="Title" required></textarea>
+                                                  class="form-control" placeholder="Title"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Author(s)</label>
                                         <input type="text" name="author"
-                                               class="form-control" placeholder="Author" required>
+                                               class="form-control" placeholder="Author">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Release Year</label>
                                         <input type="text" name="release_year"
-                                               class="form-control" placeholder="Release Year" required>
+                                               class="form-control" placeholder="Release Year">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Source</label>
                                         <input type="text" name="source"
-                                               class="form-control" placeholder="Source" required>
+                                               class="form-control" placeholder="Source">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Access</label>
                                         <input type="text" name="access"
-                                               class="form-control" placeholder="Access" required>
+                                               class="form-control" placeholder="Access">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                 <div class="form-group">
                                     <label class="text-label">License</label>
                                     <input type="text" name="license"
-                                           class="form-control" placeholder="license" required>
+                                           class="form-control" placeholder="license">
                                 </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                 <div class="form-group">
                                     <label class="text-label">Contact</label>
-                                    <input type="email" name="contact"
-                                           class="form-control" placeholder="Contact" required>
+                                    <input type="email" name="contact" class="form-control" placeholder="Contact">
                                 </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">DOI</label>
                                         <input type="text" name="DOI"
-                                               class="form-control" placeholder="DOI" required>
+                                               class="form-control" placeholder="DOI">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                 <div class="form-group">
                                     <label class="text-label">Providers</label>
                                     <input type="text" name="providers"
-                                           class="form-control" placeholder="Providers" required>
+                                           class="form-control" placeholder="Providers">
                                 </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
