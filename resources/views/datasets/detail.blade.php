@@ -1,178 +1,212 @@
 {{-- Extends layout --}}
-@extends('layout.landing')
+@extends('layout.default')
 
 
 {{-- Content --}}
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">{{ $datasets->title }}</h4>
-                </div>
-                <div class="card-body">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="m-b-0">{{ $datasets->title }} </h2>
+                        {{--                    <span class="btn btn-rounded btn-xs btn-warning">Unpublished</span>--}}
+                        @if($datasets->status == 'published')
+                        <span class="btn btn-rounded btn-xs btn-success">{{ $datasets->status }} </span>
+                        @else
+                            <span class="btn btn-rounded btn-xs btn-warning">{{ $datasets->status }} </span>
+                        @endif
+                        <br>
+                        <br>
+                        <div class="col-12 m-t-20">
+                            <h4>Main Title</h4>
+                            <p class="text-justify">{{ $datasets->title }}</p>
+                        </div>
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped" style="min-width: 900px;">
-                            <thead>
-{{--                            <tr>--}}
-{{--                                <th></th>--}}
-{{--                                <th class="text-center text-dark">--}}
-{{--                                    <br>--}}
-{{--                                    <small class="text-muted">&lt;</small>--}}
-{{--                                </th>--}}
+                        <div class="col-12 m-t-20">
+                            <h4>Authors</h4>
+                            {{ $datasets->author }}
+                            <br>
+                            <br>
+                        </div>
 
-{{--                            </tr>--}}
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Author(s)</th>
-                                <td>{{ $datasets->author }}  </td>
+                        <div class="col-12 m-t-20">
+                            <h4>Collection dates</h4>
+                            {{ $datasets->collection_period }}
+                            <br>
+                        </div>
+                        <br>
 
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Release year</th>
-                                <td><code>{{ $datasets->release_year }}</code></td>
+                        <div class="col-12 m-t-20">
+                            {{--                        <h4>Keywords</h4>--}}
+                            <div class="col-md-12 table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Release Year</th>
+                                        <th>Source</th>
+                                        <th>Access</th>
+                                        <th>License</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ $datasets->release_year }}</td>
+                                        <td>{{ $datasets->source }}</td>
+                                        <td>{{ $datasets->access }}</td>
+                                        <td>{{ $datasets->license }}</td>
+                                    </tr>
 
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Region</th>
-                                <td colspan="5"> <span class="badge badge-rounded badge-light">{{ $datasets->region->name }}</span></td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Impact Area</th>
-                                <td colspan="5"> <span class="badge badge-rounded badge-secondary">{{ $datasets->impactarea->name }}</span></td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Resource Files</th>
-                                <td colspan="5"></td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Source</th>
-                                <td colspan="5"> <span class="badge badge-rounded badge-success">{{ $datasets->source }}</span></td>
-                            </tr>
-                            <tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
-                                <th class="text-nowrap text-dark" scope="row">Access</th>
-                                @if($datasets->access == 'access');
-                                <td colspan="5"><span class="badge badge-success">{{ $datasets->access }}</span></td>
-                                @else
-                                    <td colspan="5"><span class="badge badge-danger">{{ $datasets->access }}</span></td>
-                                @endif
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">License</th>
-                                <td colspan="5">{{ $datasets->license }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Contact</th>
-                                <td colspan="5">{{ $datasets->contact }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Production System</th>
-                                <td colspan="5">{{ $datasets->production_system }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Technology/Practice</th>
-                                <td colspan="5">{{ $datasets->technology_practice }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Gender Response</th>
-                                <td colspan="5">{{ $datasets->gender_responsive == 1 ? 'YES' : 'NO'}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="col-12 m-t-20">
+                            <h4>Impact Areas</h4>
+                            @foreach($datasets->impactAreas as $impactArea)
+                                <p class="badge badge-primary">{{ $impactArea->name }}</p>
+                            @endforeach
+                        </div>
+
+                        {{--                    <div class="col-12 m-t-20">--}}
+                        {{--                        <h4>Related publications</h4>--}}
+                        {{--                        <ul>--}}
+                        {{--                        </ul>--}}
+                        {{--                    </div>--}}
+
+                        <div class="col-12 m-t-20">
+                            <h4>Providers</h4>
+                            <div class="col-md-12 table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>URL</th>
+                                        <th>Contact</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>International Center for Tropical Agriculture (CIAT)</td>
+                                        <td><a href="http://ciat.cgiar.org/" target="_blank">http://ciat.cgiar.org/</a><img src="http://ciat-library.ciat.cgiar.org/dm_images/CIAT-Logo-255x128.png" width="60"> </td>
+                                        <td> {{ $datasets->contact }} </td>
+                                    </tr>
+                                    {{--                                <tr>--}}
+                                    {{--                                    <td>International Center for Tropical Agriculture (CIAT)</td>--}}
+                                    {{--                                    <td><a href="http://ciat.cgiar.org/" target="_blank">http://ciat.cgiar.org/</a> 										 <img src="http://ciat-library.ciat.cgiar.org/dm_images/CIAT-Logo-255x128.png" width="60"> 									</td>--}}
+                                    {{--                                    <td>Producer--}}
+                                    {{--                                    </td>--}}
+                                    {{--                                </tr>--}}
+                                    {{--                                <tr>--}}
+                                    {{--                                    <td>--}}
+                                    {{--                                        Global Rice Science Partnership--}}
+                                    {{--                                        (GRiSP)--}}
+                                    {{--                                    </td>--}}
+                                    {{--                                    <td>--}}
+                                    {{--                                        <a href="http://www.grisp.net/main/summary" target="_blank">http://www.grisp.net/main/summary</a> 										 <img src="http://ciat-library.ciat.cgiar.org/dm_images/CGIAR-GRISP-LOGO.png" width="60"> 									</td>--}}
+                                    {{--                                    <td>--}}
+                                    {{--                                        Producer--}}
+                                    {{--                                    </td>--}}
+                                    {{--                                </tr>--}}
+                                    {{--                                <tr>--}}
+                                    {{--                                    <td>--}}
+                                    {{--                                        HarvestPlus--}}
+
+                                    {{--                                    </td>--}}
+                                    {{--                                    <td>--}}
+                                    {{--                                    </td>--}}
+                                    {{--                                    <td>--}}
+                                    {{--                                        Producer--}}
+                                    {{--                                    </td>--}}
+                                    {{--                                </tr>--}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-12 m-t-20">
+                            <h4>Digital Object Identifer (DOI) </h4>
+                            <a href="{{ $datasets->DOI }}"> <p class="badge badge-rounded badge-outline-info">{{ $datasets->DOI }}</p> </a>
+                        </div>
+
+                        <div class="col-12 m-t-20">
+                            <h4>Resource Files</h4>
+                            <div class="col-md-12 table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Label</th>
+                                        <th>Description</th>
+                                        <th>Tags</th>
+                                        <th class="small">Restricted reason/duration</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            Questionnaire_RiceBOL2013.pdf
+                                            <span class="btn btn-rounded btn-xs btn-warning">Open</span>
+                                        </td>
+                                        <td>
+                                            Complete survey that was used to collect household rice producers information
+                                        </td>
+                                        <td>
+                                            Questionnaire
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-12 m-t-20">
+                            <h4>Social Innovations Components</h4>
+                            @foreach($datasets->innovations as $innovation)
+                                <p class="badge badge-dark">{{ $innovation->name }}</p>
+                            @endforeach
+                        </div>
+
+                        <div class="col-12 m-t-20">
+                            <h4>Sites</h4>
+                            <div class="col-md-12 table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>Administrative Boundary 1</th>
+                                        <th>Administrative Boundary 2</th>
+                                        <th>Administrative Boundary 3</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($adminBoundaries as $adminBoundary)
+                                        <tr>
+
+                                            <td>{{ $adminBoundary->country }}</td>
+
+                                            <td>{{ $adminBoundary->admin_bound_1 }}</td>
+                                            <td>{{ $adminBoundary->admin_bound_2 }}</td>
+                                            <td>{{ $adminBoundary->admin_bound_3 }}</td>
+
+                                        </tr>
+                                    @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-12 m-t-20">
+                            <h4>Technology/Practice</h4>
+                            @foreach($datasets->techPracs as $techPrac)
+                                <p class="badge badge-light">{{ $techPrac->name }}</p>
+                            @endforeach
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Innovations</h4>
-                </div>
-                <div class="card-body">
-
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped" style="min-width: 490px;">
-                            <tbody>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Social inclusion/protection</th>
-                                <td><span class="badge badge-rounded badge-light"> {{ $datasets->social_inclusion == 1 ? 'Yes' : 'No' }}</span></td>
-
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Policy/Institutional</th>
-                                <td><span class="badge badge-rounded badge-light">{{ $datasets->policy_institutional == 1 ? 'Yes' : 'No' }}</span></td>
-
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Organizational</th>
-                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->organizational == 1 ? 'Yes' : 'No' }}</span></td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Marketing</th>
-                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->marketing == 1 ? 'Yes' : 'No' }}</span></td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Financial</th>
-                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->financial == 1 ? 'Yes' : 'No' }}</span></td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Insurance</th>
-                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->insurance == 1 ? 'Yes' : 'No' }}</span></td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Digital</th>
-                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->digital == 1 ? 'Yes' : 'No' }}</span></td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Training</th>
-                                <td colspan="5"><span class="badge badge-rounded badge-light">{{ $datasets->training == 1 ? 'Yes' : 'No' }}</span></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="timeline-panel bg-white p-4 mb-4">
+                    <a href="{{ route('edit_dataset', $datasets->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>
+                    <a href="{{ route('dataset_list') }}" type="button" class="btn btn-rounded btn-light">Back</a>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Resilience Indicators</h4>
-                </div>
-                <div class="card-body">
-
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped" style="min-width: 490px;">
-
-                            <tbody>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">Access to finance</th>
-                                <td> No</td>
-
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap text-dark" scope="row">climate change awareness</th>
-                                <td><code>Yes</code></td>
-
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-
-
-
-
 @endsection

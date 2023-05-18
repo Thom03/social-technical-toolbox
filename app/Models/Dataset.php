@@ -69,4 +69,14 @@ class Dataset extends Model
         return $this->belongsToMany(AdministrativeBoundary::class);
     }
 
+    public function providers()
+    {
+        return $this->belongsToMany(Provider::class);
+    }
+
+    public function clusters()
+    {
+        return $this->belongsToMany(Cluster::class);
+    }
+
 }

@@ -160,8 +160,9 @@ class DatasetController extends Controller
         $action = __FUNCTION__;
         $datasets = Dataset::find($id);
         $impactAreas = ImpactArea::all();
+        $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
 
-        return view('datasets.detail', compact('datasets', 'impactAreas', 'logo', 'page_title', 'page_description', 'action'));
+        return view('datasets.detail', compact('datasets', 'impactAreas', 'adminBoundaries','logo', 'page_title', 'page_description', 'action'));
     }
 
     /**
@@ -176,14 +177,17 @@ class DatasetController extends Controller
         $page_title = 'Impact Areas';
         $page_description = 'Some description for the page';
         $action = __FUNCTION__;
-        $dataset= Dataset::find($id);
+        $dataset= Dataset::findOrFail($id);
         $impactAreas = ImpactArea::all();
         $innovations = Innovation::all();
         $techPracs = TechPrac::all();
+//        $countries = new Countries();
+//        $countryList = $countries->all()->pluck('name.common');
+        $countryList = Countries::all();
+        $administrativeBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
 
 
-
-        return view('datasets.edit', compact('logo', 'page_title', 'page_description', 'action', 'dataset', 'impactAreas','innovations', 'techPracs'));
+        return view('datasets.edit', compact('logo', 'page_title', 'page_description', 'action', 'dataset', 'impactAreas','innovations', 'techPracs', 'administrativeBoundaries','countryList'));
     }
 
     /**
@@ -204,11 +208,15 @@ class DatasetController extends Controller
             'innovations.*' => 'exists:innovations,id',
             'tech_pracs'=> 'nullable|array',
             'tech_pracs.*' => 'exists:tech_pracs,id',
+            'country.*' => 'nullable',
+            'admin_bound_1.*' => 'nullable',
+            'admin_bound_2.*' => 'nullable',
+            'admin_bound_3.*' => 'nullable',
 
         ]);
 
         // Create the dataset
-        $dataset = new Dataset();
+        $dataset = Dataset::findOrFail($id);
         $dataset->title = $request->input('title');
         $dataset->author = $request->input('author');
         $dataset->release_year = $request->input('release_year');
@@ -227,11 +235,31 @@ class DatasetController extends Controller
         $dataset->resillience_indicators = $request->input('resillience_indicators');
         $dataset->observations = $request->input('observations');
         $dataset->status = $request->input('status');
-        $dataset->update();
+        $dataset->save();
 
         $dataset->impactAreas()->attach($validateData['impact_areas']);
         $dataset->innovations()->attach($validateData['innovations']);
         $dataset->techPracs()->attach($validateData['tech_pracs']);
+
+        $country = $validateData['country'];
+        $admin_bound_1 = $validateData['admin_bound_1'];
+        $admin_bound_2 = $validateData['admin_bound_2'];
+        $admin_bound_3 = $validateData['admin_bound_3'];
+
+        $arrayCount = count($country);
+
+        for ($i = 0; $i < $arrayCount; $i++) {
+            $administrativeBoundaries = AdministrativeBoundary::where('dataset_id', $id)->where('id', $i + 1)->first();
+            if (!$administrativeBoundaries) {
+                $administrativeBoundaries = new AdministrativeBoundary();
+                $administrativeBoundaries->dataset_id = $dataset->id;
+            }
+            $administrativeBoundaries->country = $country[$i];
+            $administrativeBoundaries->admin_bound_1 = $admin_bound_1[$i] ?? null;
+            $administrativeBoundaries->admin_bound_2 = $admin_bound_2[$i] ?? null;
+            $administrativeBoundaries->admin_bound_3 = $admin_bound_3[$i] ?? null;
+            $administrativeBoundaries->save();
+        }
 
 
         return redirect('/datasetlist')->with('status', 'Impact Area added successfully.');
