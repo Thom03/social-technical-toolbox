@@ -189,6 +189,18 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6 mb-2">
+                                        <div class="form-group">
+                                            <label for="clusters">Cluster</label>
+                                            <select name="clusters[]" id="clusters" class="form-control select2-tags" @error('clusters') is-invalid @enderror" multiple>
+                                                @foreach($clusters as $clusters)
+                                                    <option value="{{ $clusters->id }}" @if($dataset->clusters->contains($clusters->id)) selected @endif>
+                                                        {{ $clusters->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Observation</label>
                                         <textarea rows="3" name="observations"

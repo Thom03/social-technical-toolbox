@@ -67,17 +67,17 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
-                                <div class="form-group">
-                                    <label class="text-label">License</label>
-                                    <input type="text" name="license"
-                                           class="form-control" placeholder="license">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="text-label">License</label>
+                                        <input type="text" name="license"
+                                               class="form-control" placeholder="license">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
-                                <div class="form-group">
-                                    <label class="text-label">Contact</label>
-                                    <input type="email" name="contact" class="form-control" placeholder="Contact">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Contact</label>
+                                        <input type="email" name="contact" class="form-control" placeholder="Contact">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
@@ -87,26 +87,26 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
-                                <div class="form-group">
-                                    <label class="text-label">Providers</label>
-                                    <input type="text" name="providers"
-                                           class="form-control" placeholder="Providers">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="text-label">Providers</label>
+                                        <input type="text" name="providers"
+                                               class="form-control" placeholder="Providers">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
-                                <div class="form-group">
-                                    <label class="text-label">Collection Period</label>
-                                    <input type="text" name="collection_period"
-                                           class="form-control" placeholder="Collection Period">
-                                </div>
-                                </div>
-
-
-                                    <div class="col-lg-6 mb-2">
-                                    <label class="text-label">Data Type</label>
-                                        <input type="text" name="data_type"
-                                               class="form-control" placeholder="Data Type">
+                                    <div class="form-group">
+                                        <label class="text-label">Collection Period</label>
+                                        <input type="text" name="collection_period"
+                                               class="form-control" placeholder="Collection Period">
                                     </div>
+                                </div>
+
+
+                                <div class="col-lg-6 mb-2">
+                                    <label class="text-label">Data Type</label>
+                                    <input type="text" name="data_type"
+                                           class="form-control" placeholder="Data Type">
+                                </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Methods</label>
@@ -124,8 +124,8 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Status</label>
-                                        <select class="form-control"  name="status" id="status">
-                                            <option  value="unpublished">Unpublished</option>
+                                        <select class="form-control" name="status" id="status">
+                                            <option value="unpublished">Unpublished</option>
                                             <option value="published">Published</option>
                                         </select>
                                     </div>
@@ -144,40 +144,56 @@
                                         <h4 class="card-title">Social Technical Components</h4>
                                     </div>
                                 </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label for="impact_areas">Impact Areas</label>
-                                            <select name="impact_areas[]" id="impact_areas" class="form-control select2-tags" multiple>
-                                                @foreach($impactAreas as $impactArea)
-                                                    <option value="{{ $impactArea->id }}">{{ $impactArea->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            {{--TODO: Making select fields behave like input--}}
-                                        </div>
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label for="impact_areas">Impact Areas</label>
+                                        <select name="impact_areas[]" id="impact_areas"
+                                                class="form-control select2-tags" multiple>
+                                            @foreach($impactAreas as $impactArea)
+                                                <option value="{{ $impactArea->id }}">{{ $impactArea->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        {{--TODO: Making select fields behave like input--}}
                                     </div>
+                                </div>
 
-                                            <div class="col-lg-6 mb-2">
-                                            <div class="form-group">
-                                                <label for="innovations">Innovations</label>
-                                                <select name="innovations[]" id="innovations" class="form-control select2-tags" multiple>
-                                                    @foreach($innovations as $innovation)
-                                                        <option
-                                                            value="{{ $innovation->id }}">{{ $innovation->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            </div>
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label for="innovations">Innovations</label>
+                                        <select name="innovations[]" id="innovations" class="form-control select2-tags"
+                                                multiple>
+                                            @foreach($innovations as $innovation)
+                                                <option
+                                                    value="{{ $innovation->id }}">{{ $innovation->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
-                                            <div class="col-lg-6 mb-2">
-                                            <div class="form-group">
-                                                <label for="tech_pracs">Technology/Practices</label>
-                                                <select name="tech_pracs[]" id="tech_pracs" class="form-control select2-tags" multiple>
-                                                    @foreach($techPracs as $techPracs)
-                                                        <option  class="badge badge-secondary" value="{{ $techPracs->id }}">{{ $techPracs->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            </div>
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label for="tech_pracs">Technology/Practices</label>
+                                        <select name="tech_pracs[]" id="tech_pracs" class="form-control select2-tags"
+                                                multiple>
+                                            @foreach($techPracs as $techPracs)
+                                                <option class="badge badge-secondary"
+                                                        value="{{ $techPracs->id }}">{{ $techPracs->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label for="clusters">Clustering</label>
+                                        <select name="clusters[]" id="clusters" class="form-control select2-tags"
+                                                multiple>
+                                            @foreach($clusters as $clusters)
+                                                <option class="badge badge-secondary"
+                                                        value="{{ $clusters->id }}">{{ $clusters->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Observation</label>
@@ -228,11 +244,13 @@
                                     </div>
                                 </div>
                                 <div class="input-group-btn">
-                                    <button class="btn btn-outline-warning" type="button"  onclick="region_fields();"> Add Region<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                                    <button class="btn btn-outline-warning" type="button" onclick="region_fields();">
+                                        Add Region<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </div>
-                                <button type="submit" class="btn btn-success">Save Dataset</button>
-                                <a href="{{ route('dataset_list') }}" type="submit" class="btn btn-danger">Back</a>
+                            <button type="submit" class="btn btn-success">Save Dataset</button>
+                            <a href="{{ route('dataset_list') }}" type="submit" class="btn btn-danger">Back</a>
                         </form>
                     </div>
                 </div>

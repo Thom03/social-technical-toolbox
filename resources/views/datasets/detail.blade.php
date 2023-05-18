@@ -204,6 +204,13 @@
                                 <p class="badge badge-light">{{ $techPrac->name }}</p>
                             @endforeach
                         </div>
+
+                        <div class="col-12 m-t-20">
+                            <h4>Cluster</h4>
+                            @foreach($datasets->clusters as $clusters)
+                                <p class="badge badge-outline-primary">{{ $clusters->name }}</p>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="timeline-panel bg-white p-4 mb-4">
                     <a href="{{ route('edit_dataset', $datasets->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>

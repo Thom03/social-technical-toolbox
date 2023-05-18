@@ -71,5 +71,24 @@ class TechPracController extends Controller
 
     }
 
+
+    public function delete_techprac($id)
+    {
+        $techPrac = TechPrac::find($id);
+
+        if (!$techPrac) {
+            return redirect('/techprac')->with('error', 'Technology or Practice not found.');
+        }
+
+        // Detach the relationship with datasets
+        $techPrac->datasets()->detach();
+
+        // Delete the record
+        $techPrac->delete();
+
+        return redirect('/techprac')->with('status', 'Technology or Practice has been deleted successfully.');
+
+    }
+
     //TODO: Adding delete functions
 }

@@ -67,9 +67,13 @@
                                                 </svg>
                                             </div>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#">Details</a>
                                                 <a class="dropdown-item text-success" href="{{ route('edit_techprac', $techpracs->id) }}">Edit</a>
-                                                <a class="dropdown-item text-danger" href="#">Delete</a>
+                                                <form action="{{ route('delete_techprac', ['id' => $techpracs->id]) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+{{--                                                <a class="dropdown-item text-danger">Delete</a>--}}
+                                                    <button class="dropdown-item text-danger" type="submit">Delete</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </td>
