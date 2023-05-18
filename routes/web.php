@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ClusterController;
 use App\Http\Controllers\Admin\ImpactAreaController;
 use App\Http\Controllers\Admin\InnovationController;
+use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\RegionController;
 use App\Http\Controllers\Admin\TechPracController;
 use App\Http\Controllers\Admin\ThemeController;
@@ -102,6 +104,23 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/search_dataset', [DatasetController::class, 'search_dataset'])->name('search_dataset');
 //    Route::get('/datasets/filter/{filter}', 'DatasetController@filter')->name('datasets.filter');
     Route::get('/datasets/filter/{filter}', [DatasetController::class, 'filter'])->name('datasets.filter');
+
+
+
+    //    Providers management Routes
+    Route::get('provider', [ProviderController::class, 'provider_list'])->name('provider_list');
+    Route::get('add_provider', [ProviderController::class, 'add_provider'])->name('add_provider');
+    Route::get('insert_provider', [ProviderController::class, 'insert_provider'])->name('insert_provider');
+    Route::get('edit_provider/{id}', [ProviderController::class, 'edit_provider'])->name('edit_provider');
+    Route::get('update_provider/{id}', [ProviderController::class, 'update_provider'])->name('update_provider');
+
+
+    //    Clusters management Routes
+    Route::get('cluster', [ClusterController::class, 'cluster_list'])->name('cluster_list');
+    Route::get('add_cluster', [ClusterController::class, 'add_cluster'])->name('add_cluster');
+    Route::get('insert_cluster', [ClusterController::class, 'insert_cluster'])->name('insert_cluster');
+    Route::get('edit_cluster/{id}', [ClusterController::class, 'edit_cluster'])->name('edit_cluster');
+    Route::get('update_cluster/{id}', [ClusterController::class, 'update_cluster'])->name('update_cluster');
 
 
 

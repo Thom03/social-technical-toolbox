@@ -62,9 +62,9 @@
                                                 @endif
                                                 <br>
                                                 <br>
-                                                <a href="#" class="btn btn-rounded btn-outline-danger">DELETE</a>
-{{--                                                <a href="{{ route('edit_dataset', $dataset->id) }}" class="btn btn-outline-success">EDIT</a>--}}
                                                 <a href="{{ route('edit_dataset', $dataset->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>
+                                                <a href="{{ route('datset_detail', $dataset->id) }}" type="button" class="btn btn-rounded btn-light">View</a>
+                                                <a href="#" class="btn btn-rounded btn-outline-danger">DELETE</a>
                                             </div>
                                         </div>
 
@@ -72,20 +72,20 @@
 
                                     @endforeach
                                 </div>
-                                <nav>
-                                    <ul class="pagination pagination-circle">
-                                        <li class="page-item page-indicator">
-                                            <a class="page-link" href="javascript:void()">
-                                                <i class="la la-angle-left"></i></a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="javascript:void()">1</a>
-                                        </li>
-                                        <li class="page-item page-indicator">
-                                            <a class="page-link" href="javascript:void()">
-                                                <i class="la la-angle-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
+{{--                                <nav>--}}
+{{--                                    <ul class="pagination pagination-circle">--}}
+{{--                                        <li class="page-item page-indicator">--}}
+{{--                                            <a class="page-link" href="javascript:void()">--}}
+{{--                                                <i class="la la-angle-left"></i></a>--}}
+{{--                                        </li>--}}
+{{--                                        <li class="page-item active"><a class="page-link" href="javascript:void()">1</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li class="page-item page-indicator">--}}
+{{--                                            <a class="page-link" href="javascript:void()">--}}
+{{--                                                <i class="la la-angle-right"></i></a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </nav>--}}
                             </div>
 
                         </div>

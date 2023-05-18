@@ -67,9 +67,9 @@
 							<span class="nav-text">Settings</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{!! url('./uc-select2'); !!}">Datataset Templates</a></li>
+                            <li><a href="{{ route('provider_list') }}">Dataset Providers</a></li>
                             <li><a href="{{ route('region_list') }}">Dataset Regions</a></li>
-                            <li><a href="{{ route('theme_list') }}">Dataset Themes</a></li>
+                            <li><a href="{{ route('cluster_list') }}">Dataset Clusters</a></li>
                             <li><a href="{{ route('impact_list') }}">Dataset Impact Areas</a></li>
                             <li><a href="{{ route('innovation_list') }}">Innovations</a></li>
                             <li><a href="{{ route('techprac_list') }}">Technology/Practices</a></li>
