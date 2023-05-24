@@ -36,7 +36,15 @@
                                         <input  type="text" name="name" value="{{ $techpracs->name }}"
                                                 class="form-control" placeholder="Name" required>
                                     </div>
-                                </div> <div class="col-lg-6 mb-2">
+                                </div>
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label">Name</label>
+                                        <input  type="text" name="description" value="{{ $techpracs->description }}"
+                                                class="form-control" placeholder="Description">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">Slug</label>
                                         <input  type="text" name="slug" value="{{ $techpracs->slug }}"
@@ -44,7 +52,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">Save</button>
+                            <button type="submit" class="btn btn-success">Update</button>
                             <a href="{{ route('techprac_list') }}" type="submit" class="btn btn-danger">Cancel</a>
                         </form>
 

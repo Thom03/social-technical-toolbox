@@ -7,6 +7,7 @@ use App\Models\Cluster;
 use App\Models\Dataset;
 use App\Models\ImpactArea;
 use App\Models\Innovation;
+use App\Models\Provider;
 use App\Models\Region;
 use App\Models\TechPrac;
 use App\Models\Theme;
@@ -58,8 +59,9 @@ class DatasetController extends Controller
         $countries = new Countries();
         $countryList = $countries->all()->pluck('name.common');
         $clusters = Cluster::all();
+        $providers = Provider::all();
 
-        return view('datasets.add', compact('region', 'theme', 'impactAreas', 'innovations', 'techPracs', 'clusters', 'logo', 'countryList', 'page_title', 'page_description', 'action'));
+        return view('datasets.add', compact('region', 'theme', 'impactAreas', 'innovations', 'techPracs', 'clusters', 'providers', 'logo', 'countryList', 'page_title', 'page_description', 'action'));
 
     }
 
@@ -82,6 +84,8 @@ class DatasetController extends Controller
             'tech_pracs.*' => 'exists:tech_pracs,id',
             'clusters' => 'nullable|array',
             'clusters.*' => 'exists:clusters,id',
+            'providers' => 'nullable|array',
+            'providers.*' => 'exists:providers,id',
             'country.*' => 'nullable',
             'admin_bound_1.*' => 'nullable',
             'admin_bound_2.*' => 'nullable',
@@ -117,6 +121,9 @@ class DatasetController extends Controller
 
 //        Attach clusters to the datasets
         $dataset->clusters()->attach($validateData['clusters']);
+
+//        Attach providers to the datasets
+        $dataset->providers()->attach($validateData['providers']);
 
         $country = $validateData['country'];
         $admin_bound_1 = $validateData['admin_bound_1'];
