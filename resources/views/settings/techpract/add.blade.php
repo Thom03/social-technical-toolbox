@@ -36,7 +36,15 @@
                                             <input  type="text" name="name"
                                                    class="form-control" placeholder="Name" required>
                                         </div>
-                                    </div> <div class="col-lg-6 mb-2">
+                                    </div>
+                                    <div class="col-lg-6 mb-2">
+                                        <div class="form-group">
+                                            <label class="text-label">Description</label>
+                                            <input  type="text" name="description"
+                                                    class="form-control" placeholder="Description">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-2">
                                         <div class="form-group">
                                             <label class="text-label">Slug</label>
                                             <input  type="text" name="slug"

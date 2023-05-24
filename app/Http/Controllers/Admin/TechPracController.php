@@ -39,6 +39,7 @@ class TechPracController extends Controller
 
         $techprac = new TechPrac();
         $techprac->name = $request->input('name');
+        $techprac->description = $request->input('description');
         $techprac->slug = $request->input('slug');
         $techprac->save();
 
@@ -63,11 +64,31 @@ class TechPracController extends Controller
 
         $techprac = TechPrac::find($id);
         $techprac->name = $request->input('name');
+        $techprac->description = $request->input('description');
         $techprac->slug = $request->input('slug');
         $techprac->update();
 
 
         return redirect('/techprac')->with('status', 'Technology/Practice updated successfully.');
+
+    }
+
+
+    public function delete_techprac($id)
+    {
+        $techPrac = TechPrac::find($id);
+
+        if (!$techPrac) {
+            return redirect('/techprac')->with('error', 'Technology or Practice not found.');
+        }
+
+        // Detach the relationship with datasets
+        $techPrac->datasets()->detach();
+
+        // Delete the record
+        $techPrac->delete();
+
+        return redirect('/techprac')->with('status', 'Technology or Practice has been deleted successfully.');
 
     }
 

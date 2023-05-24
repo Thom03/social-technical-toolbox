@@ -16,6 +16,7 @@ class CreateTechPracsTable extends Migration
         Schema::create('tech_pracs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
         });

@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('insert_techprac', [TechPracController::class, 'insert_techprac'])->name('insert_techprac');
     Route::get('edit_techprac/{id}', [TechPracController::class, 'edit_techprac'])->name('edit_techprac');
     Route::get('update_techprac/{id}', [TechPracController::class, 'update_techprac'])->name('update_techprac');
+    Route::delete('delete_techprac/{id}', [TechPracController::class, 'delete_techprac'])->name('delete_techprac');
 
 
     //    Region Routes
