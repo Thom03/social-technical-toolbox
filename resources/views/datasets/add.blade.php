@@ -88,9 +88,14 @@
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
-                                        <label class="text-label">Providers</label>
-                                        <input type="text" name="providers"
-                                               class="form-control" placeholder="Providers">
+                                        <label for="providers">Providers</label>
+                                        <select name="provider[]" id="providers" class="form-control select2-tags"
+                                                multiple>
+                                            @foreach($providers as $provider)
+                                                <option
+                                                    value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
