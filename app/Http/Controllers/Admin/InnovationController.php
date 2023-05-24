@@ -41,6 +41,7 @@ class InnovationController extends Controller
 
         $innovation = new Innovation();
         $innovation->name = $request->input('name');
+        $innovation->description = $request->input('description');
         $innovation->slug = $request->input('slug');
         $innovation->save();
 
@@ -65,6 +66,7 @@ class InnovationController extends Controller
 
         $innovation = Innovation::find($id);
         $innovation->name = $request->input('name');
+        $innovation->description = $request->input('description');
         $innovation->slug = $request->input('slug');
         $innovation->update();
 

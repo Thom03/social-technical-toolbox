@@ -116,24 +116,11 @@
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
-                                        <label class="text-label">Production System</label>
-                                        <input type="text" name="production_system"
-                                               class="form-control" placeholder="Production System">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-2">
-                                    <div class="form-group">
                                         <label class="text-label">Status</label>
                                         <select class="form-control" name="status" id="status">
                                             <option value="unpublished">Unpublished</option>
                                             <option value="published">Published</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-2">
-                                    <div class="form-group">
-                                        <label class="text-label">Gender Responsive</label>
-                                        <input type="checkbox" name="gender_responsive">
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +185,7 @@
                                     <div class="form-group">
                                         <label class="text-label">Observation</label>
                                         <textarea rows="3" name="observations"
-                                                  class="form-control" placeholder="Collection Period"></textarea>
+                                                  class="form-control" placeholder="Observation"></textarea>
                                     </div>
                                 </div>
 

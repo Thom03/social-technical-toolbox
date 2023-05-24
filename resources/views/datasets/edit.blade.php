@@ -121,24 +121,11 @@
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
-                                        <label class="text-label">Production System</label>
-                                        <input type="text" name="production_system" value="{{ $dataset->production_system }}"
-                                               class="form-control" placeholder="Production System">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-2">
-                                    <div class="form-group">
                                         <label class="text-label">Status</label>
                                         <select class="form-control"  name="status" id="status">
                                             <option  value="unpublished">Unpublished</option>
                                             <option value="published">Published</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-2">
-                                    <div class="form-group">
-                                        <label class="text-label">Gender Responsive</label>
-                                        <input type="checkbox" value="{{ $dataset->gender_responsive == "1" ? 'checked':'' }}" name="gender_responsive">
                                     </div>
                                 </div>
                             </div>

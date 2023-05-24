@@ -39,6 +39,7 @@ class TechPracController extends Controller
 
         $techprac = new TechPrac();
         $techprac->name = $request->input('name');
+        $techprac->description = $request->input('description');
         $techprac->slug = $request->input('slug');
         $techprac->save();
 
@@ -63,6 +64,7 @@ class TechPracController extends Controller
 
         $techprac = TechPrac::find($id);
         $techprac->name = $request->input('name');
+        $techprac->description = $request->input('description');
         $techprac->slug = $request->input('slug');
         $techprac->update();
 

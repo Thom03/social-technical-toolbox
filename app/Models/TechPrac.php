@@ -11,7 +11,7 @@ class TechPrac extends Model
 
     protected $table = 'tech_pracs';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
     public function datasets()
     {

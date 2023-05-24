@@ -104,8 +104,6 @@ class DatasetController extends Controller
         $dataset->collection_period = $request->input('collection_period');
         $dataset->data_type = $request->input('data_type');
         $dataset->methods = $request->input('methods');
-        $dataset->production_system = $request->input('production_system');
-        $dataset->gender_responsive = $request->input('gender_responsive') == 'on' ? 1 : 0;
         $dataset->resillience_indicators = $request->input('resillience_indicators');
         $dataset->observations = $request->input('observations');
         $dataset->status = $request->input('status');
@@ -237,8 +235,6 @@ class DatasetController extends Controller
         $dataset->collection_period = $request->input('collection_period');
         $dataset->data_type = $request->input('data_type');
         $dataset->methods = $request->input('methods');
-        $dataset->production_system = $request->input('production_system');
-        $dataset->gender_responsive = $request->input('gender_responsive') == 'on' ? 1 : 0;
         $dataset->resillience_indicators = $request->input('resillience_indicators');
         $dataset->observations = $request->input('observations');
         $dataset->status = $request->input('status');
