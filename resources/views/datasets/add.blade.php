@@ -89,7 +89,7 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label for="providers">Providers</label>
-                                        <select name="provider[]" id="providers" class="form-control select2-tags"
+                                        <select name="providers[]" id="providers" class="form-control select2-tags"
                                                 multiple>
                                             @foreach($providers as $provider)
                                                 <option

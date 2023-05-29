@@ -25,6 +25,7 @@ class DatasetController extends Controller
     public function dataset_list(Request $request)
     {
         $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
         $page_title = 'Datasets';
         $page_description = 'Some description for the page';
 
@@ -34,7 +35,7 @@ class DatasetController extends Controller
         $latestDatasets = Dataset::latest()->get();
 
 
-        return view('datasets.datasetlist', compact('dataset', 'impactAreas', 'latestDatasets', 'logo', 'page_title', 'page_description', 'action'));
+        return view('datasets.datasetlist', compact('dataset', 'impactAreas', 'latestDatasets', 'logo', 'logoText', 'page_title', 'page_description', 'action'));
 
     }
 
@@ -46,6 +47,7 @@ class DatasetController extends Controller
     public function add_dataset()
     {
         $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
         $page_title = 'Dataset';
         $page_description = 'Some description for the page';
 
@@ -61,7 +63,7 @@ class DatasetController extends Controller
         $clusters = Cluster::all();
         $providers = Provider::all();
 
-        return view('datasets.add', compact('region', 'theme', 'impactAreas', 'innovations', 'techPracs', 'clusters', 'providers', 'logo', 'countryList', 'page_title', 'page_description', 'action'));
+        return view('datasets.add', compact('region', 'theme', 'impactAreas', 'innovations', 'techPracs', 'clusters', 'providers', 'logo', 'logoText', 'countryList', 'page_title', 'page_description', 'action'));
 
     }
 
@@ -104,7 +106,6 @@ class DatasetController extends Controller
         $dataset->license = $request->input('license');
         $dataset->contact = $request->input('contact');
         $dataset->DOI = $request->input('DOI');
-        $dataset->providers = $request->input('providers');
         $dataset->collection_period = $request->input('collection_period');
         $dataset->data_type = $request->input('data_type');
         $dataset->methods = $request->input('methods');
@@ -162,6 +163,7 @@ class DatasetController extends Controller
 
     {
         $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
         $page_title = 'Dataset';
         $page_description = 'Some description for the page';
 
@@ -171,7 +173,7 @@ class DatasetController extends Controller
         $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
 
 
-        return view('datasets.detail', compact('datasets', 'impactAreas', 'adminBoundaries', 'logo', 'page_title', 'page_description', 'action'));
+        return view('datasets.detail', compact('datasets', 'impactAreas', 'adminBoundaries', 'logo', 'logoText', 'page_title', 'page_description', 'action'));
     }
 
     /**
@@ -183,6 +185,7 @@ class DatasetController extends Controller
     public function edit_dataset($id)
     {
         $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
         $page_title = 'Impact Areas';
         $page_description = 'Some description for the page';
         $action = __FUNCTION__;
@@ -195,9 +198,10 @@ class DatasetController extends Controller
         $countryList = Countries::all();
         $administrativeBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
         $clusters = Cluster::all();
+        $providers = Provider::all();
 
 
-        return view('datasets.edit', compact('logo', 'page_title', 'page_description', 'action', 'dataset', 'impactAreas', 'innovations', 'techPracs','clusters', 'administrativeBoundaries', 'countryList'));
+        return view('datasets.edit', compact('logo', 'logoText', 'page_title', 'page_description', 'action', 'dataset', 'providers', 'impactAreas', 'innovations', 'techPracs','clusters', 'administrativeBoundaries', 'countryList'));
     }
 
     /**
@@ -220,6 +224,8 @@ class DatasetController extends Controller
             'tech_pracs.*' => 'exists:tech_pracs,id',
             'clusters' => 'nullable|array',
             'clusters.*' => 'exists:clusters,id',
+            'providers' => 'nullable|array',
+            'providers.*' => 'exists:providers,id',
             'country.*' => 'nullable',
             'admin_bound_1.*' => 'nullable',
             'admin_bound_2.*' => 'nullable',
@@ -238,7 +244,7 @@ class DatasetController extends Controller
         $dataset->license = $request->input('license');
         $dataset->contact = $request->input('contact');
         $dataset->DOI = $request->input('DOI');
-        $dataset->providers = $request->input('providers');
+
         $dataset->collection_period = $request->input('collection_period');
         $dataset->data_type = $request->input('data_type');
         $dataset->methods = $request->input('methods');
@@ -253,6 +259,9 @@ class DatasetController extends Controller
 
         //        Attach clusters to the datasets
         $dataset->clusters()->attach($validateData['clusters']);
+
+        //        Attach providers to the datasets
+        $dataset->providers()->attach($validateData['providers']);
 
 
         $country = $validateData['country'];
@@ -312,6 +321,7 @@ class DatasetController extends Controller
     public function filter($filter)
     {
         $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
         $page_title = 'Datasets';
         $page_description = 'Some description for the page';
         $action = __FUNCTION__;
@@ -329,7 +339,7 @@ class DatasetController extends Controller
         }
 
 //        return view('datasets.datasetlist', ['dataset' => $dataset]);
-        return view('datasets.datasetlist', compact('dataset', 'logo', 'page_title', 'page_description', 'action'));
+        return view('datasets.datasetlist', compact('dataset', 'logo', 'logoText', 'page_title', 'page_description', 'action'));
 
     }
 }

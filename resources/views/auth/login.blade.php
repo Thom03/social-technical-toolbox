@@ -10,6 +10,9 @@
             <div class="row no-gutters">
                 <div class="col-xl-12">
                     <div class="auth-form">
+                        <div class="text-center mb-4">
+                            <img src="{{ asset('img/logo-text.png') }}" alt="Logo" class="logo" style="width: 200px; height: auto;">
+                        </div>
                         <h4 class="text-center mb-4">Sign in your account</h4>
                         <form  method="post" action="{{ route('login') }}">
 {{--                            @csrf--}}

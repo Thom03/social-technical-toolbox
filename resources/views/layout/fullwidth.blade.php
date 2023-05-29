@@ -33,6 +33,25 @@
                         </div>
                     </div>
                 @endif
+                    @if ($errors->any())
+                    <div class="col-xl-6">
+                        <div class="alert alert-danger left-icon-big alert-dismissible fade show">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                            </button>
+                            <div class="media">
+                                <div class="alert-left-icon-big">
+                                    <span><i class="mdi mdi-check-circle-outline"></i></span>
+                                </div>
+                                <div class="media-body">
+{{--                                    <h5 class="mt-1 mb-2">Success!</h5>--}}
+                                    @foreach ($errors->all() as $error)
+                                    <p class="mb-0">{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
 			@yield('content')
             </div>
         </div>

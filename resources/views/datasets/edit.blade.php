@@ -92,9 +92,14 @@
 
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
-                                        <label class="text-label">Providers</label>
-                                        <input type="text" name="providers" value="{{ $dataset->providers }}"
-                                               class="form-control" placeholder="Providers" >
+                                        <label for="providers">Providers</label>
+                                        <select name="providers[]" id="providers" class="form-control select2-tags" @error('providers') is-invalid @enderror" multiple>
+                                        @foreach($providers as $provider)
+                                            <option value="{{ $provider->id }}"  @if($dataset->providers->contains($provider->id)) selected @endif>
+                                                {{ $provider->name }}
+                                            </option>
+                                            @endforeach
+                                            </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-2">
@@ -166,10 +171,10 @@
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
                                             <label for="tech_pracs">Technology/Practices</label>
-                                            <select name="tech_pracs[]" id="tech_pracs" class="form-control select2-tags" @error('innovations') is-invalid @enderror" multiple>
-                                                @foreach($techPracs as $techPracs)
-                                                    <option value="{{ $techPracs->id }}" @if($dataset->techPracs->contains($techPracs->id)) selected @endif>
-                                                        {{ $techPracs->name }}
+                                            <select name="tech_pracs[]" id="tech_pracs" class="form-control select2-tags" @error('techPracs') is-invalid @enderror" multiple>
+                                                @foreach($techPracs as $techPrac)
+                                                    <option value="{{ $techPrac->id }}" @if($dataset->techPracs->contains($techPrac->id)) selected @endif>
+                                                        {{ $techPrac->name }}
                                                     </option>
                                                 @endforeach
                                             </select>

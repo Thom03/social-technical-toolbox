@@ -171,13 +171,13 @@
 {{--															<img class="mr-3 img-fluid rounded" width="78" src="{{ asset('images/avatar/1.jpg') }}" alt="DexignZone">--}}
 															<div class="media-body">
 																<h5 class="mt-0 mb-1">Data Title heading</h5>
-																<p class="mb-0">41 Years Old</p>
+																<p class="mb-0">Test Data</p>
 															</div>
 														</div>
 													</td>
 													<td>
-														<p class="mb-0">Disease</p>
-														<h5 class="my-0 text-primary">Allergies & Asthma</h5>
+														<p class="mb-0">Release Year</p>
+														<h5 class="my-0 text-primary">2015</h5>
 													</td>
 													<td>
 														<div class="d-flex align-items-center">
