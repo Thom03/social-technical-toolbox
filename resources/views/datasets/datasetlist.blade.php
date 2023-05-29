@@ -62,9 +62,17 @@
                                                 @endif
                                                 <br>
                                                 <br>
-                                                <a href="{{ route('edit_dataset', $dataset->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>
-                                                <a href="{{ route('datset_detail', $dataset->id) }}" type="button" class="btn btn-rounded btn-light">View</a>
-                                                <a href="#" class="btn btn-rounded btn-outline-danger">DELETE</a>
+{{--                                                <a href="{{ route('edit_dataset', $dataset->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>--}}
+{{--                                                <a href="{{ route('datset_detail', $dataset->id) }}" type="button" class="btn btn-rounded btn-light">View</a>--}}
+{{--                                                <a href="#" class="btn btn-rounded btn-outline-danger">DELETE</a>--}}
+                                                <form action="{{ route('delete_dataset', ['id' => $dataset->id]) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    {{--                                                <a class="dropdown-item text-danger">Delete</a>--}}
+                                                    <a href="{{ route('edit_dataset', $dataset->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>
+                                                    <a href="{{ route('datset_detail', $dataset->id) }}" type="button" class="btn btn-rounded btn-light">View</a>
+                                                    <button class="btn btn-rounded btn-outline-danger" type="submit">Delete</button>
+                                                </form>
                                             </div>
                                         </div>
 

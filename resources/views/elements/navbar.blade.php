@@ -1,8 +1,24 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark nav-bar-colour">
-    <a class="navbar-brand mr-auto mr-lg-0" href="#"><b>STIBs TOOLBOX</b></a>
+    <img src="{{ asset('img/logo-white.png') }}" alt="homepage" class="light-logo" height="70" />
     <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
         <span class="navbar-toggler-icon"></span>
     </button>
+{{--    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">--}}
+{{--        <ul class="navbar-nav ml-auto">--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="#">Home</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="#">About</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="#">Services</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="#">Contact</a>--}}
+{{--            </li>--}}
+{{--        </ul>--}}
+{{--    </div>--}}
 {{--    <div class="navbar-header">--}}
 {{--        <a class="navbar-brand" href="/">--}}
 {{--            <b>--}}
@@ -16,6 +32,7 @@
 {{--        </a>--}}
 {{--    </div>--}}
 
+
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
 
 
@@ -24,13 +41,10 @@
 
 <div class="nav-scroller bg-white shadow-sm">
     <nav class="nav  justify-content-center nav-underline">
-        <a class="nav-link active" href="{{ route('map_page') }}">Map</a>
-        <a class="nav-link active" href="{{ route('landing_page_grid') }}">
-           Datasets
-{{--            <span class="badge badge-pill bg-light align-text-bottom">27</span>--}}
-        </a>
-        <a class="nav-link active" href="#">About Us</a>
-        <a class="nav-link active" href="#">Contact Us</a>
+        <a class="nav-link" href="{{ route('map_page') }}"><h4><i class="mdi mdi-map"></i> Interactive Map</h4></a>
+        <a class="nav-link active" href="{{ route('landing_page_grid') }}"><h4><i class="mdi mdi-format-list-bulleted"></i>  Datasets</h4></a>
+        <a class="nav-link active" href="#"><h4><i class="mdi mdi-comment-question-outline"></i>  About Us </h4></a>
+        <a class="nav-link active" href="#"><h4><i class="mdi mdi-phone"></i> Contact Us</h4></a>
 
     </nav>
 </div>

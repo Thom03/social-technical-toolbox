@@ -342,4 +342,29 @@ class DatasetController extends Controller
         return view('datasets.datasetlist', compact('dataset', 'logo', 'logoText', 'page_title', 'page_description', 'action'));
 
     }
+
+    public function delete_dataset($id)
+    {
+        $dataset = Dataset::find($id);
+
+        if (!$dataset) {
+            return redirect('/datasetlist')->with('error', 'Dataset not found.');
+        }
+
+        // Detach the relationship with datasets
+//        $techPrac->datasets()->detach();
+        $dataset->impactAreas()->detach();
+        $dataset->techPracs()->detach();
+        $dataset->innovations()->detach();
+        $dataset->providers()->detach();
+        $dataset->clusters()->detach();
+
+
+
+        // Delete the record
+        $dataset->delete();
+
+        return redirect('/datasetlist')->with('status', 'Dataset has been deleted successfully.');
+
+    }
 }

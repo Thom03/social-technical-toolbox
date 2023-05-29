@@ -105,6 +105,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/search_dataset', [DatasetController::class, 'search_dataset'])->name('search_dataset');
 //    Route::get('/datasets/filter/{filter}', 'DatasetController@filter')->name('datasets.filter');
     Route::get('/datasets/filter/{filter}', [DatasetController::class, 'filter'])->name('datasets.filter');
+    Route::delete('delete_dataset/{id}', [DatasetController::class, 'delete_dataset'])->name('delete_dataset');
 
 
 
