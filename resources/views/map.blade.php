@@ -72,13 +72,13 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-9 m-b-20">
                             <div class="container p-l-0 p-r-0">
-                                <div class="col-12 bg-inverse text-white" onclick="displayFilters('commodities')"><i class="fa fa-file-text"></i> Innovations</div>
+                                <div class="col-12 bg-inverse text-white" onclick="displayFilters('commodities')"><i class="fa fa-file-text"></i> Clusters</div>
                                 <div id="commodities" class="col-12 show">
-                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Beans" id="Beans" checked class="ciat-check"> <label for="Beans" class="small">Beans</label><br>
-                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Cassava" id="Cassava" checked class="ciat-check"> <label for="Cassava" class="small">Cassava</label><br>
-                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Forage" id="Forage" checked class="ciat-check"> <label for="Forage" class="small">Forage</label><br>
-                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Rice" id="Rice" checked class="ciat-check"> <label for="Rice" class="small">Rice</label><br>
-                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="All agriculture" id="All agriculture" checked class="ciat-check"> <label for="All agriculture" class="small">All agriculture</label><br>
+                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Beans" id="Beans" checked class="ciat-check"> <label for="Beans" class="small">Social</label><br>
+                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Cassava" id="Cassava" checked class="ciat-check"> <label for="Cassava" class="small">Technical</label><br>
+                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Forage" id="Forage" checked class="ciat-check"> <label for="Forage" class="small">Technological</label><br>
+{{--                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Rice" id="Rice" checked class="ciat-check"> <label for="Rice" class="small">Rice</label><br>--}}
+{{--                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="All agriculture" id="All agriculture" checked class="ciat-check"> <label for="All agriculture" class="small">All agriculture</label><br>--}}
                                 </div>
                                 <div class="col-12 bg-inverse text-white m-t-5" onclick="displayFilters('researches')"><i class="fa fa-flask"></i> Impact Areas</div>
                                 <div id="researches" class="col-12 show"></div>
