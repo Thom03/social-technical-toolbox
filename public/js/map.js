@@ -6,7 +6,7 @@ var options = {
 var map = L.mapbox.map('map',undefined,options).setView([0.5286709, 27.2723167], 3);
 
 L.mapbox.styleLayer('mapbox://styles/mapbox/light-v9',{
-    attribution: 'Data Bundles by <a href="http://ciat.cgiar.org" class="blue">HER+ Team</a>',
+    attribution: 'Developed by <a href="http://ciat.cgiar.org" class="blue">Alliance and CIAT</a>',
 }).addTo(map);
 
 //******************************************************************************************
