@@ -9,7 +9,7 @@
 			<div class="container-fluid">
 				<div class="form-head d-flex mb-3 mb-md-5 align-items-start">
 					<div class="mr-auto d-none d-lg-block">
-						<h3 class="text-primary font-w600">Welcome to STBIs Toolbox!</h3>
+						<h3 class="text-primary font-w600">Welcome to STIBs Toolbox!</h3>
 {{--						<p class="mb-0">Hospital Admin Dashboard Template</p>--}}
 					</div>
 

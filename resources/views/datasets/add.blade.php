@@ -210,7 +210,7 @@
                                                class="form-control" placeholder="Country" list="countryList">
                                         <datalist id="countryList">
                                             @foreach($countryList as $country)
-                                                <option value="{{ $country }}">
+                                                <option value="{{ $country->country_name }}">
                                             @endforeach
                                         </datalist>
                                     </div>

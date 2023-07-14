@@ -130,36 +130,36 @@
                             <a href="{{ $datasets->DOI }}"> <p class="badge badge-rounded badge-outline-info">{{ $datasets->DOI }}</p> </a>
                         </div>
 
-                        <div class="col-12 m-t-20">
-                            <h4>Resource Files</h4>
-                            <div class="col-md-12 table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Label</th>
-                                        <th>Description</th>
-                                        <th>Tags</th>
-                                        <th class="small">Restricted reason/duration</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            Questionnaire_RiceBOL2013.pdf
-                                            <span class="btn btn-rounded btn-xs btn-warning">Open</span>
-                                        </td>
-                                        <td>
-                                            Complete survey that was used to collect household rice producers information
-                                        </td>
-                                        <td>
-                                            Questionnaire
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+{{--                        <div class="col-12 m-t-20">--}}
+{{--                            <h4>Resource Files</h4>--}}
+{{--                            <div class="col-md-12 table-responsive">--}}
+{{--                                <table class="table">--}}
+{{--                                    <thead>--}}
+{{--                                    <tr>--}}
+{{--                                        <th>Label</th>--}}
+{{--                                        <th>Description</th>--}}
+{{--                                        <th>Tags</th>--}}
+{{--                                        <th class="small">Restricted reason/duration</th>--}}
+{{--                                    </tr>--}}
+{{--                                    </thead>--}}
+{{--                                    <tbody>--}}
+{{--                                    <tr>--}}
+{{--                                        <td>--}}
+{{--                                            Questionnaire_RiceBOL2013.pdf--}}
+{{--                                            <span class="btn btn-rounded btn-xs btn-warning">Open</span>--}}
+{{--                                        </td>--}}
+{{--                                        <td>--}}
+{{--                                            Complete survey that was used to collect household rice producers information--}}
+{{--                                        </td>--}}
+{{--                                        <td>--}}
+{{--                                            Questionnaire--}}
+{{--                                        </td>--}}
+{{--                                        <td></td>--}}
+{{--                                    </tr>--}}
+{{--                                    </tbody>--}}
+{{--                                </table>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="col-12 m-t-20">
                             <h4>Social Innovations Components</h4>
@@ -175,9 +175,9 @@
                                     <thead>
                                     <tr>
                                         <th>Country</th>
-                                        <th>Administrative Boundary 1</th>
-                                        <th>Administrative Boundary 2</th>
-                                        <th>Administrative Boundary 3</th>
+                                        <th>Administrative Level 1</th>
+                                        <th>Administrative Level 2</th>
+                                        <th>Administrative Level 3</th>
                                     </tr>
                                     </thead>
                                     <tbody>

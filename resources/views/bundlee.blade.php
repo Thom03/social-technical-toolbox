@@ -171,9 +171,9 @@
                                 <thead>
                                 <tr>
                                     <th>Country</th>
-                                    <th>Administrative Boundary 1</th>
-                                    <th>Administrative Boundary 2</th>
-                                    <th>Administrative Boundary 3</th>
+                                    <th>Administrative Level 1</th>
+                                    <th>Administrative Level 2</th>
+                                    <th>Administrative Level 3</th>
                                 </tr>
                                 </thead>
                                 <tbody>
