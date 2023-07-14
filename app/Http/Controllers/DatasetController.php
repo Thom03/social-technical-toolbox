@@ -11,6 +11,7 @@ use App\Models\Provider;
 use App\Models\Region;
 use App\Models\TechPrac;
 use App\Models\Theme;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use PragmaRX\Countries\Package\Countries;
@@ -39,6 +40,15 @@ class DatasetController extends Controller
 
     }
 
+//    public function getCountries()
+//    {
+//        $client = new Client();
+//        $response = $client->get('https://ramses.ciat.cgiar.org/api/v1/countries');
+//        $countries_list = json_decode($response->getBody());
+//
+//        return view('datasets.add', compact('countries_list'));
+//    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +69,13 @@ class DatasetController extends Controller
         $innovations = Innovation::all();
         $techPracs = TechPrac::all();
         $countries = new Countries();
-        $countryList = $countries->all()->pluck('name.common');
+//        $countryList = $countries->all()->pluck('name.common');
+
+        $client = new Client();
+        $response = $client->get('https://ramses.ciat.cgiar.org/api/v1/countries');
+        $responseData = json_decode($response->getBody());
+        $countryList = $responseData->result->data;
+
         $clusters = Cluster::all();
         $providers = Provider::all();
 
