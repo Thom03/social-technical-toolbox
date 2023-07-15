@@ -42,7 +42,7 @@ class HomeController extends Controller
     {
 
         $page_title = 'STBIS';
-        $page_description = 'Some description for the page';
+        $page_description = 'Social-Technical Innovation Bundles';
         $logo = "imig/logo.png";
         $logoText = "img/logo-text.png";
         $action = __FUNCTION__;
@@ -98,7 +98,7 @@ class HomeController extends Controller
     {
         $logo = "img/logo.png";
         $page_title = 'Map Page';
-        $page_description = 'Some description for the page';
+        $page_description = 'Social-Technical Innovation Bundles.';
 
         $action = __FUNCTION__;
 
@@ -109,7 +109,7 @@ class HomeController extends Controller
     public function dataset_list()
     {
         $page_title = 'Dataset Lists';
-        $page_description = 'Some description for the page';
+        $page_description = 'Social-Technical Innovation Bundles.';
         $logo = "img/logo.png";
         $logoText = "images/logo-text.png";
 
@@ -122,7 +122,7 @@ class HomeController extends Controller
     {
         $logo = "img/logo.png";
         $page_title = 'Home Page';
-        $page_description = 'Some description for the page';
+        $page_description = 'Social-Technical Innovation Bundles.';
         $action = __FUNCTION__;
         $dataset = Dataset::where('status', 'published')->get();
         $dataset_count = Dataset::where('status', 'published')->count();
@@ -138,7 +138,7 @@ class HomeController extends Controller
     {
         $logo = "img/logo.png";
         $page_title = 'Home Page';
-        $page_description = 'Some description for the page';
+        $page_description = 'Social-Technical Innovation Bundles.';
         $action = __FUNCTION__;
         $dataset = Dataset::where('status', 'published')->get();
         $dataset_count = Dataset::where('status', 'published')->count();
@@ -152,8 +152,8 @@ class HomeController extends Controller
     public function bundle_detail($id, Dataset $dataset)
     {
         $logo = "img/logo.png";
-        $page_title = 'Home Page';
-        $page_description = 'Some description for the page';
+        $page_title = 'Details Page';
+        $page_description = 'Social-Technical Innovation Bundles.';
 
         $action = __FUNCTION__;
         $datasets = Dataset::find($id);
@@ -165,6 +165,25 @@ class HomeController extends Controller
 
 
         return view('bundlee', compact('datasets','impactAreas','innovations', 'dataset','techPracs', 'adminBoundaries','logo','page_title', 'page_description', 'providers', 'action'));
+    }
+
+
+
+    public function graphs_page()
+    {
+        $logo = "img/logo.png";
+        $page_title = 'Graph Pahe';
+        $page_description = 'Social-Technical Innovation Bundles';
+        $action = __FUNCTION__;
+        $dataset_count = Dataset::where('status', 'published')->count();
+        $region_count = Region::count();
+        $country_count = AdministrativeBoundary::distinct('country')->count('country');
+        $cluster_count = Cluster::count();
+
+        $datasets = Dataset::orderBy('release_year')->get();
+
+
+        return view('graphs', compact('datasets','dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
 

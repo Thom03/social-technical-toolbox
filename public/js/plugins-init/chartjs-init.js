@@ -4,7 +4,7 @@
     //basic bar chart
 if(jQuery('#barChart_1').length > 0 ){
     const barChart_1 = document.getElementById("barChart_1").getContext('2d');
-    
+
     barChart_1.height = 100;
 
     new Chart(barChart_1, {
@@ -23,7 +23,7 @@ if(jQuery('#barChart_1').length > 0 ){
             ]
         },
         options: {
-            legend: false, 
+            legend: false,
             scales: {
                 yAxes: [{
                     ticks: {
@@ -60,13 +60,13 @@ if(jQuery('#barChart_2').length > 0 ){
                     data: [65, 59, 80, 81, 56, 55, 40],
                     borderColor: barChart_2gradientStroke,
                     borderWidth: "0",
-                    backgroundColor: barChart_2gradientStroke, 
+                    backgroundColor: barChart_2gradientStroke,
                     hoverBackgroundColor: barChart_2gradientStroke
                 }
             ]
         },
         options: {
-            legend: false, 
+            legend: false,
             scales: {
                 yAxes: [{
                     ticks: {
@@ -98,7 +98,7 @@ if(jQuery('#barChart_3').length > 0 ){
     const barChart_3gradientStroke3 = barChart_3.createLinearGradient(50, 100, 50, 50);
     barChart_3gradientStroke3.addColorStop(0, "rgba(247, 43, 80, 1)");
     barChart_3gradientStroke3.addColorStop(1, "rgba(247, 43, 80, 1)");
-    
+
     barChart_3.height = 100;
 
     let barChartData = {
@@ -107,7 +107,7 @@ if(jQuery('#barChart_3').length > 0 ){
         datasets: [{
             label: 'Red',
             backgroundColor: barChart_3gradientStroke,
-            hoverBackgroundColor: barChart_3gradientStroke, 
+            hoverBackgroundColor: barChart_3gradientStroke,
             data: [
                 '12',
                 '12',
@@ -120,7 +120,7 @@ if(jQuery('#barChart_3').length > 0 ){
         }, {
             label: 'Green',
             backgroundColor: barChart_3gradientStroke2,
-            hoverBackgroundColor: barChart_3gradientStroke2, 
+            hoverBackgroundColor: barChart_3gradientStroke2,
             data: [
                 '12',
                 '12',
@@ -133,7 +133,7 @@ if(jQuery('#barChart_3').length > 0 ){
         }, {
             label: 'Blue',
             backgroundColor: barChart_3gradientStroke3,
-            hoverBackgroundColor: barChart_3gradientStroke3, 
+            hoverBackgroundColor: barChart_3gradientStroke3,
             data: [
                 '12',
                 '12',
@@ -153,7 +153,7 @@ if(jQuery('#barChart_3').length > 0 ){
         options: {
             legend: {
                 display: false
-            }, 
+            },
             title: {
                 display: false
             },
@@ -181,7 +181,26 @@ if(jQuery('#lineChart_1').length > 0 ){
 
 
 //basic line chart
+    const datasets = JSON.parse(document.getElementById('datasets').textContent);
     const lineChart_1 = document.getElementById("lineChart_1").getContext('2d');
+
+    const datasetCountByYear = {};
+
+    // Loop through the datasets and count the occurrences of each year
+    datasets.forEach(function(dataset) {
+        var releaseYear = dataset.release_year;
+        if (datasetCountByYear.hasOwnProperty(releaseYear)) {
+            datasetCountByYear[releaseYear]++;
+        } else {
+            datasetCountByYear[releaseYear] = 1;
+        }
+    });
+
+    // Extract the years and counts from the object
+    var years = Object.keys(datasetCountByYear);
+    var counts = Object.values(datasetCountByYear);
+
+
 
     Chart.controllers.line = Chart.controllers.line.extend({
         draw: function () {
@@ -199,51 +218,52 @@ if(jQuery('#lineChart_1').length > 0 ){
             }
         }
     });
-    
+
     lineChart_1.height = 100;
 
     new Chart(lineChart_1, {
         type: 'line',
         data: {
             defaultFontFamily: 'Poppins',
-            labels: ["Jan", "Febr", "Mar", "Apr", "May", "Jun", "Jul"],
+            labels: years,
             datasets: [
                 {
-                    label: "My First dataset",
-                    data: [25, 20, 60, 41, 66, 45, 80],
+                    label: "Number of Bundles",
+                    data: counts,
                     borderColor: 'rgba(69, 11, 90, 1)',
-                    borderWidth: "2",
-                    backgroundColor: 'transparent',  
+                    borderWidth: "3",
+                    backgroundColor: 'transparent',
                     pointBackgroundColor: 'rgba(69, 11, 90, 1)'
                 }
             ]
         },
         options: {
-            legend: false, 
+            legend: false,
             scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true, 
-                        max: 100, 
-                        min: 0, 
-                        stepSize: 20, 
-                        padding: 10
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Release Year',
+
                     }
-                }],
-                xAxes: [{
-                    ticks: {
-                        padding: 5
+                },
+                y: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Bundles'
                     }
-                }]
+                }
             }
         }
     });
-    
+
 }
 
 //gradient line chart
 if(jQuery('#lineChart_2').length > 0 ){
-	
+
     const lineChart_2 = document.getElementById("lineChart_2").getContext('2d');
     //generate gradient
     const lineChart_2gradientStroke = lineChart_2.createLinearGradient(500, 0, 100, 0);
@@ -266,7 +286,7 @@ if(jQuery('#lineChart_2').length > 0 ){
             }
         }
     });
-        
+
     lineChart_2.height = 100;
 
     new Chart(lineChart_2, {
@@ -280,24 +300,24 @@ if(jQuery('#lineChart_2').length > 0 ){
                     data: [25, 20, 60, 41, 66, 45, 80],
                     borderColor: lineChart_2gradientStroke,
                     borderWidth: "2",
-                    backgroundColor: 'transparent', 
+                    backgroundColor: 'transparent',
                     pointBackgroundColor: 'rgba(69, 11, 90, 0.5)'
                 }
             ]
         },
         options: {
-            legend: false, 
+            legend: false,
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true, 
-                        max: 100, 
-                        min: 0, 
-                        stepSize: 20, 
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0,
+                        stepSize: 20,
                         padding: 10
                     }
                 }],
-                xAxes: [{ 
+                xAxes: [{
                     ticks: {
                         padding: 5
                     }
@@ -335,7 +355,7 @@ if(jQuery('#lineChart_3').length > 0 ){
             }
         }
     });
-        
+
     lineChart_3.height = 100;
 
     new Chart(lineChart_3, {
@@ -349,31 +369,31 @@ if(jQuery('#lineChart_3').length > 0 ){
                     data: [25, 20, 60, 41, 66, 45, 80],
                     borderColor: lineChart_3gradientStroke1,
                     borderWidth: "2",
-                    backgroundColor: 'transparent', 
+                    backgroundColor: 'transparent',
                     pointBackgroundColor: 'rgba(69, 11, 90, 0.5)'
                 }, {
                     label: "My First dataset",
                     data: [5, 20, 15, 41, 35, 65, 80],
                     borderColor: lineChart_3gradientStroke2,
                     borderWidth: "2",
-                    backgroundColor: 'transparent', 
+                    backgroundColor: 'transparent',
                     pointBackgroundColor: 'rgba(254, 176, 25, 1)'
                 }
             ]
         },
         options: {
-            legend: false, 
+            legend: false,
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true, 
-                        max: 100, 
-                        min: 0, 
-                        stepSize: 20, 
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0,
+                        stepSize: 20,
                         padding: 10
                     }
                 }],
-                xAxes: [{ 
+                xAxes: [{
                     ticks: {
                         padding: 5
                     }
@@ -381,14 +401,14 @@ if(jQuery('#lineChart_3').length > 0 ){
             }
         }
     });
-    
+
 
 }
 //dual line chart
 if(jQuery('#lineChart_3Kk').length > 0 ){
     const lineChart_3Kk = document.getElementById("lineChart_3Kk").getContext('2d');
     //generate gradient
-    
+
 	Chart.controllers.line = Chart.controllers.line.extend({
         draw: function () {
             draw.apply(this, arguments);
@@ -405,7 +425,7 @@ if(jQuery('#lineChart_3Kk').length > 0 ){
             }
         }
     });
-        
+
     lineChart_3Kk.height = 100;
 
     new Chart(lineChart_3Kk, {
@@ -419,13 +439,13 @@ if(jQuery('#lineChart_3Kk').length > 0 ){
                     data: [90, 60, 80, 50, 60, 55, 80],
                     borderColor: 'rgba(58,122,254,1)',
                     borderWidth: "3",
-                    backgroundColor: 'rgba(0,0,0,0)', 
+                    backgroundColor: 'rgba(0,0,0,0)',
                     pointBackgroundColor: 'rgba(0, 0, 0, 0)'
                 }
             ]
         },
         options: {
-            legend: false, 
+            legend: false,
 			elements: {
 					point:{
 						radius: 0
@@ -434,32 +454,32 @@ if(jQuery('#lineChart_3Kk').length > 0 ){
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true, 
-                        max: 100, 
-                        min: 0, 
-                        stepSize: 20, 
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0,
+                        stepSize: 20,
                         padding: 10
                     },
 					borderWidth:3,
 					display:false,
 					lineTension:0.4,
                 }],
-                xAxes: [{ 
+                xAxes: [{
                     ticks: {
                         padding: 5
                     },
-					
+
                 }]
             }
         }
     });
-    
+
 
 }
 //basic area chart
 if(jQuery('#areaChart_1').length > 0 ){
     const areaChart_1 = document.getElementById("areaChart_1").getContext('2d');
-    
+
     areaChart_1.height = 100;
 
     new Chart(areaChart_1, {
@@ -473,24 +493,24 @@ if(jQuery('#areaChart_1').length > 0 ){
                     data: [25, 20, 60, 41, 66, 45, 80],
                     borderColor: 'rgba(0, 0, 1128, .3)',
                     borderWidth: "1",
-                    backgroundColor: 'rgba(69, 11, 90, .5)', 
+                    backgroundColor: 'rgba(69, 11, 90, .5)',
                     pointBackgroundColor: 'rgba(0, 0, 1128, .3)'
                 }
             ]
         },
         options: {
-            legend: false, 
+            legend: false,
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true, 
-                        max: 100, 
-                        min: 0, 
-                        stepSize: 20, 
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0,
+                        stepSize: 20,
                         padding: 10
                     }
                 }],
-                xAxes: [{ 
+                xAxes: [{
                     ticks: {
                         padding: 5
                     }
@@ -507,7 +527,7 @@ if(jQuery('#areaChart_2').length > 0 ){
     const areaChart_2gradientStroke = areaChart_2.createLinearGradient(0, 1, 0, 500);
     areaChart_2gradientStroke.addColorStop(0, "rgba(247, 43, 80, 0.2)");
     areaChart_2gradientStroke.addColorStop(1, "rgba(247, 43, 80, 0)");
-    
+
     areaChart_2.height = 100;
 
     new Chart(areaChart_2, {
@@ -526,18 +546,18 @@ if(jQuery('#areaChart_2').length > 0 ){
             ]
         },
         options: {
-            legend: false, 
+            legend: false,
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true, 
-                        max: 100, 
-                        min: 0, 
-                        stepSize: 20, 
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0,
+                        stepSize: 20,
                         padding: 5
                     }
                 }],
-                xAxes: [{ 
+                xAxes: [{
                     ticks: {
                         padding: 5
                     }
@@ -545,12 +565,12 @@ if(jQuery('#areaChart_2').length > 0 ){
             }
         }
     });
-}    
+}
 
 //gradient area chart
 if(jQuery('#areaChart_3').length > 0 ){
     const areaChart_3 = document.getElementById("areaChart_3").getContext('2d');
-    
+
     areaChart_3.height = 100;
 
     new Chart(areaChart_3, {
@@ -565,7 +585,7 @@ if(jQuery('#areaChart_3').length > 0 ){
                     borderColor: 'rgb(69, 11, 90)',
                     borderWidth: "1",
                     backgroundColor: 'rgba(69, 11, 90, .5)'
-                }, 
+                },
                 {
                     label: "My First dataset",
                     data: [5, 25, 20, 41, 36, 75, 70],
@@ -576,18 +596,18 @@ if(jQuery('#areaChart_3').length > 0 ){
             ]
         },
         options: {
-            legend: false, 
+            legend: false,
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true, 
-                        max: 100, 
-                        min: 0, 
-                        stepSize: 20, 
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0,
+                        stepSize: 20,
                         padding: 10
                     }
                 }],
-                xAxes: [{ 
+                xAxes: [{
                     ticks: {
                         padding: 5
                     }
@@ -595,7 +615,7 @@ if(jQuery('#areaChart_3').length > 0 ){
             }
         }
     });
-    
+
 }
 
 if(jQuery('#radar_chart').length > 0 ){
@@ -635,7 +655,7 @@ if(jQuery('#radar_chart').length > 0 ){
         },
         options: {
             legend: false,
-            maintainAspectRatio: false, 
+            maintainAspectRatio: false,
             scale: {
                 ticks: {
                     beginAtZero: true
@@ -643,7 +663,7 @@ if(jQuery('#radar_chart').length > 0 ){
             }
         }
     });
-    
+
 
 }
 //pie chart
@@ -657,7 +677,7 @@ if(jQuery('#pie_chart').length > 0 ){
             defaultFontFamily: 'Poppins',
             datasets: [{
                 data: [45, 25, 20, 10],
-                borderWidth: 0, 
+                borderWidth: 0,
                 backgroundColor: [
                     "rgba(69, 11, 90, .9)",
                     "rgba(69, 11, 90, .7)",
@@ -675,18 +695,18 @@ if(jQuery('#pie_chart').length > 0 ){
             labels: [
                 "one",
                 "two",
-                "three", 
+                "three",
                 "four"
             ]
         },
         options: {
-            responsive: true, 
-            legend: false, 
+            responsive: true,
+            legend: false,
             maintainAspectRatio: false
         }
     });
 }
-    
+
 if(jQuery('#doughnut_chart').length > 0 ){
     //doughut chart
     const doughnut_chart = document.getElementById("doughnut_chart").getContext('2d');
@@ -694,11 +714,11 @@ if(jQuery('#doughnut_chart').length > 0 ){
     new Chart(doughnut_chart, {
         type: 'doughnut',
         data: {
-			weight: 5,	
+			weight: 5,
             defaultFontFamily: 'Poppins',
             datasets: [{
                 data: [45, 25, 20],
-                borderWidth: 3, 
+                borderWidth: 3,
 				borderColor: "rgba(255,255,255,1)",
                 backgroundColor: [
                     "rgba(69, 11, 90, 1)",
@@ -720,13 +740,13 @@ if(jQuery('#doughnut_chart').length > 0 ){
             // ]
         },
         options: {
-			weight: 1,	
+			weight: 1,
 			 cutoutPercentage: 70,
             responsive: true,
             maintainAspectRatio: false
         }
     });
-    
+
 }
 if(jQuery('#polar_chart').length > 0 ){
     //polar chart
@@ -738,7 +758,7 @@ if(jQuery('#polar_chart').length > 0 ){
             defaultFontFamily: 'Poppins',
             datasets: [{
                 data: [15, 18, 9, 6, 19],
-                borderWidth: 0, 
+                borderWidth: 0,
                 backgroundColor: [
                     "rgba(69, 11, 90, 1)",
                     "rgba(32, 159, 132, 1)",
@@ -750,12 +770,14 @@ if(jQuery('#polar_chart').length > 0 ){
             }]
         },
         options: {
-            responsive: true, 
+            responsive: true,
             maintainAspectRatio: false
         }
     });
 
 }
+
+
 
 
 
