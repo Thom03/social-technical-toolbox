@@ -10,18 +10,21 @@
             <div class="widget-stat card">
                 <div class="card-body p-4">
                     <div class="media ai-icon">
-									<span class="mr-3 bgl-primary text-primary">
-										<!-- <i class="ti-user"></i> -->
-										<svg id="icon-customers" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
-											<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-											<circle cx="12" cy="7" r="4"></circle>
+									<span class="mr-3 bgl-success text-success">
+										<svg id="icon-database-widget" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-map">
+											<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+											<path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+											<path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
 										</svg>
 									</span>
 
                         <div class="media-body">
-                            <p class="mb-1">TOTAL BUNDLES</p>
+                            <p class="mb-1">STIBs</p>
                             <h4 class="mb-0">{{ $dataset_count}}</h4>
-{{--                            <span class="badge badge-primary">+3.5%</span>--}}
+                            {{--                            <span class="badge badge-primary">+3.5%</span>--}}
                         </div>
 
                     </div>
@@ -32,20 +35,19 @@
             <div class="widget-stat card">
                 <div class="card-body p-4">
                     <div class="media ai-icon">
-									<span class="mr-3 bgl-warning text-warning">
-										<svg id="icon-orders" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
-											<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-											<polyline points="14 2 14 8 20 8"></polyline>
-											<line x1="16" y1="13" x2="8" y2="13"></line>
-											<line x1="16" y1="17" x2="8" y2="17"></line>
-											<polyline points="10 9 9 9 8 9"></polyline>
-										</svg>
-									</span>
+									<span class="mr-3 bgl-danger text-danger">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2L12 22"></path>
+        <path d="M20 9L4 9"></path>
+        <path d="M4 15L20 15"></path>
+    </svg>
                         <div class="media-body">
-                            <p class="mb-1">Open Access Datasets</p>
-                            <h4 class="mb-0">{{ $open_count }}</h4>
-{{--                            <span class="badge badge-warning">+3.5%</span>--}}
-                        </div>
+                                <p class="mb-1">Regions</p>
+                                <h4 class="mb-0">{{ $region_count }}</h4>
+                                {{--                            <span class="badge badge-warning">+3.5%</span>--}}
+                            </div>
                     </div>
                 </div>
             </div>
@@ -54,16 +56,17 @@
             <div class="widget-stat card">
                 <div class="card-body  p-4">
                     <div class="media ai-icon">
-									<span class="mr-3 bgl-danger text-danger">
-										<svg id="icon-revenue" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
-											<line x1="12" y1="1" x2="12" y2="23"></line>
-											<path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-										</svg>
-									</span>
+									<span class="mr-3 bgl-warning text-warning">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin">
+        <path
+            d="M12 2C8.686 2 6 4.686 6 8c0 4 6 13 6 13s6-9 6-13c0-3.314-2.686-6-6-6zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path>
+    </svg>
+</span>
                         <div class="media-body">
-                            <p class="mb-1">Limited Access Datasets</p>
-                            <h4 class="mb-0">{{ $limited_count }}</h4>
-{{--                            <span class="badge badge-danger">-3.5%</span>--}}
+                            <p class="mb-1">Countries</p>
+                            <h4 class="mb-0">{{ $country_count  }}</h4>
+                            {{--                            <span class="badge badge-danger">-3.5%</span>--}}
                         </div>
                     </div>
                 </div>
@@ -73,17 +76,16 @@
             <div class="widget-stat card">
                 <div class="card-body p-4">
                     <div class="media ai-icon">
-									<span class="mr-3 bgl-success text-success">
-										<svg id="icon-database-widget" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-database">
-											<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-											<path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-											<path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-										</svg>
-									</span>
+									<span class="mr-3 bgl-primary text-primary">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-molecule">
+        <circle cx="12" cy="8" r="7"></circle>
+        <circle cx="5.5" cy="14.5" r="2.5"></circle>
+    </svg>
+</span>
                         <div class="media-body">
-                            <p class="mb-1">Bundle Clusters</p>
+                            <p class="mb-1">Clusters</p>
                             <h4 class="mb-0">0</h4>
-{{--                            <span class="badge badge-success">-3.5%</span>--}}
+                            {{--                            <span class="badge badge-success">-3.5%</span>--}}
                         </div>
                     </div>
                 </div>

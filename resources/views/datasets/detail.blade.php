@@ -88,8 +88,10 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>International Center for Tropical Agriculture (CIAT)</td>
-                                        <td><a href="http://ciat.cgiar.org/" target="_blank">http://ciat.cgiar.org/</a><img src="http://ciat-library.ciat.cgiar.org/dm_images/CIAT-Logo-255x128.png" width="60"> </td>
+                                        @foreach($datasets->providers as $provider)
+                                        <td>{{ $provider->name }}</td>
+                                        <td><a href="#" target="_blank">{{ $provider->url }}</a><img src="http://ciat-library.ciat.cgiar.org/dm_images/CIAT-Logo-255x128.png" width="60"> </td>
+                                        @endforeach
                                         <td> {{ $datasets->contact }} </td>
                                     </tr>
                                     {{--                                <tr>--}}

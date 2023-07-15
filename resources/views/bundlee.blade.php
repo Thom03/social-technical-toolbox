@@ -83,10 +83,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 <tr>
-                                    <td>International Center for Tropical Agriculture (CIAT)</td>
-                                    <td><a href="http://ciat.cgiar.org/" target="_blank">http://ciat.cgiar.org/</a><img src="http://ciat-library.ciat.cgiar.org/dm_images/CIAT-Logo-255x128.png" width="60"> </td>
+                                    @foreach($datasets->providers as $provider)
+                                    <td>{{ $provider->name }}</td>
+                                    <td><a href="#" target="_blank">{{ $provider->url }}</a><img src="http://ciat-library.ciat.cgiar.org/dm_images/CIAT-Logo-255x128.png" width="60"> </td>
+                                    @endforeach
                                     <td> {{ $datasets->contact }} </td>
+
                                 </tr>
 {{--                                <tr>--}}
 {{--                                    <td>International Center for Tropical Agriculture (CIAT)</td>--}}
@@ -126,36 +130,36 @@
                         <a href="{{ $datasets->DOI }}"> <p class="badge badge-rounded badge-outline-info">{{ $datasets->DOI }}</p> </a>
                     </div>
 
-                    <div class="col-12 m-t-20">
-                        <h4>Resource Files</h4>
-                        <div class="col-md-12 table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Label</th>
-                                    <th>Description</th>
-                                    <th>Tags</th>
-                                    <th class="small">Restricted reason/duration</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        Questionnaire_RiceBOL2013.pdf
-                                        <span class="btn btn-rounded btn-xs btn-warning">Open</span>
-                                    </td>
-                                    <td>
-                                        Complete survey that was used to collect household rice producers information
-                                    </td>
-                                    <td>
-                                        Questionnaire
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+{{--                    <div class="col-12 m-t-20">--}}
+{{--                        <h4>Resource Files</h4>--}}
+{{--                        <div class="col-md-12 table-responsive">--}}
+{{--                            <table class="table">--}}
+{{--                                <thead>--}}
+{{--                                <tr>--}}
+{{--                                    <th>Label</th>--}}
+{{--                                    <th>Description</th>--}}
+{{--                                    <th>Tags</th>--}}
+{{--                                    <th class="small">Restricted reason/duration</th>--}}
+{{--                                </tr>--}}
+{{--                                </thead>--}}
+{{--                                <tbody>--}}
+{{--                                <tr>--}}
+{{--                                    <td>--}}
+{{--                                        Questionnaire_RiceBOL2013.pdf--}}
+{{--                                        <span class="btn btn-rounded btn-xs btn-warning">Open</span>--}}
+{{--                                    </td>--}}
+{{--                                    <td>--}}
+{{--                                        Complete survey that was used to collect household rice producers information--}}
+{{--                                    </td>--}}
+{{--                                    <td>--}}
+{{--                                        Questionnaire--}}
+{{--                                    </td>--}}
+{{--                                    <td></td>--}}
+{{--                                </tr>--}}
+{{--                                </tbody>--}}
+{{--                            </table>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="col-12 m-t-20">
                         <h4>Social Innovations Components</h4>
@@ -198,6 +202,12 @@
                         <h4>Technology/Practice</h4>
                         @foreach($datasets->techPracs as $techPrac)
                             <p class="badge badge-light">{{ $techPrac->name }}</p>
+                        @endforeach
+                    </div>
+                    <div class="col-12 m-t-20">
+                        <h4>Cluster</h4>
+                        @foreach($datasets->clusters as $clusters)
+                            <p class="badge badge-outline-primary">{{ $clusters->name }}</p>
                         @endforeach
                     </div>
                 </div>

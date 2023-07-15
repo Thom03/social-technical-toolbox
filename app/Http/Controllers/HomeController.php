@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdministrativeBoundary;
+use App\Models\Cluster;
 use App\Models\Dataset;
 use App\Models\ImpactArea;
 use App\Models\Innovation;
+use App\Models\Provider;
+use App\Models\Region;
 use App\Models\TechPrac;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -120,20 +123,15 @@ class HomeController extends Controller
         $logo = "img/logo.png";
         $page_title = 'Home Page';
         $page_description = 'Some description for the page';
-
         $action = __FUNCTION__;
         $dataset = Dataset::where('status', 'published')->get();
-
         $dataset_count = Dataset::where('status', 'published')->count();
-        $open_count = Dataset::where('access', 'open')
-            ->where('status', 'published')
-            ->count();
-        $limited_count = Dataset::where('access', 'limited')
-            ->where('status', 'published')
-            ->count();
+        $region_count = Region::count();
+        $country_count = AdministrativeBoundary::distinct('country')->count('country');
+        $cluster_count = Cluster::count();
 
 
-        return view('home-list', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
+        return view('home-list', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
     }
 
     public function landing_page_grid()
@@ -141,20 +139,15 @@ class HomeController extends Controller
         $logo = "img/logo.png";
         $page_title = 'Home Page';
         $page_description = 'Some description for the page';
-
         $action = __FUNCTION__;
         $dataset = Dataset::where('status', 'published')->get();
-
         $dataset_count = Dataset::where('status', 'published')->count();
-        $open_count = Dataset::where('access', 'open')
-            ->where('status', 'published')
-            ->count();
-        $limited_count = Dataset::where('access', 'limited')
-            ->where('status', 'published')
-            ->count();
+        $region_count = Region::count();
+        $country_count = AdministrativeBoundary::distinct('country')->count('country');
+        $cluster_count = Cluster::count();
 
 
-        return view('home-grid', compact('dataset', 'dataset_count','open_count','limited_count','logo','page_title', 'page_description','action'));
+        return view('home-grid', compact('dataset', 'dataset_count','region_count', 'cluster_count', 'country_count','logo','page_title', 'page_description','action'));
     }
     public function bundle_detail($id, Dataset $dataset)
     {
@@ -168,9 +161,10 @@ class HomeController extends Controller
         $innovations = Innovation::all();
         $techPracs = TechPrac::all();
         $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
+        $providers = Provider::all();
 
 
-        return view('bundlee', compact('datasets','impactAreas','innovations', 'dataset','techPracs', 'adminBoundaries','logo','page_title', 'page_description','action'));
+        return view('bundlee', compact('datasets','impactAreas','innovations', 'dataset','techPracs', 'adminBoundaries','logo','page_title', 'page_description', 'providers', 'action'));
     }
 
 

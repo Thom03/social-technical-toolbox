@@ -109,35 +109,41 @@
 														<span class="bg-danger"></span>
 														<div>
 															<p>Gender Equity, Youth & Social Inclusion</p>
-															<h3>{{ $gender_impact ->datasets_count }}</h3>
+{{--															<h3>{{ $gender_impact ->datasets_count }}</h3>--}}
+															<h3>0</h3>
 														</div>
 													</div>
 													<div class="col px-0">
 														<span class="bg-success"></span>
 														<div>
 															<p>Nutrition, Health & Food Security</p>
-															<h3>{{ $nutrition_impact ->datasets_count }}</h3>
+{{--															<h3>{{ $nutrition_impact ->datasets_count }}</h3>--}}
+                                                            <h3>0</h3>
 														</div>
 													</div>
 													<div class="col px-0">
 														<span class="bg-warning"></span>
 														<div>
 															<p>Climate Adaptation & Mitigation. </p>
-															<h3>{{ $climate_impact ->datasets_count }}</h3>
+{{--															<h3>{{ $climate_impact ->datasets_count }}</h3>--}}
+                                                            <h3>0</h3>
 														</div>
 													</div>
                                                     <div class="col px-0">
                                                         <span class="bg-blue"></span>
                                                         <div>
                                                             <p>Poverty Reduction, Livelihoods & Jobs.</p>
-                                                            <h3>{{ $poverty_impact ->datasets_count }}</h3>
+{{--                                                            <h3>{{ $poverty_impact ->datasets_count }}</h3>--}}
+                                                            <h3>0</h3>
                                                         </div>
+
                                                     </div>
                                                     <div class="col px-0">
                                                         <span class="bg-dark"></span>
                                                         <div>
                                                             <p>Environment Health and Biodiversity.</p>
-                                                            <h3>{{ $environment_impact ->datasets_count }}</h3>
+{{--                                                            <h3>{{ $environment_impact ->datasets_count }}</h3>--}}
+                                                            <h3>0</h3>
                                                         </div>
                                                     </div>
 												</div>
