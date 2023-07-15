@@ -6,6 +6,7 @@ use App\Models\AdministrativeBoundary;
 use App\Models\Dataset;
 use App\Models\ImpactArea;
 use App\Models\Innovation;
+use App\Models\Provider;
 use App\Models\TechPrac;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -168,9 +169,10 @@ class HomeController extends Controller
         $innovations = Innovation::all();
         $techPracs = TechPrac::all();
         $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
+        $providers = Provider::all();
 
 
-        return view('bundlee', compact('datasets','impactAreas','innovations', 'dataset','techPracs', 'adminBoundaries','logo','page_title', 'page_description','action'));
+        return view('bundlee', compact('datasets','impactAreas','innovations', 'dataset','techPracs', 'adminBoundaries','logo','page_title', 'page_description', 'providers', 'action'));
     }
 
 

@@ -70,6 +70,7 @@ fetch('/countries-json')
                         if (feature.properties.admin_bound_1) {
                             popupContent += `Admin Bound 1: ${feature.properties.admin_bound_1}`;
                             popupContent += `Title: ${feature.properties.dataset_title}`;
+
                         }
                         // marker.bindPopup(popupContent);
 
@@ -77,6 +78,7 @@ fetch('/countries-json')
                         marker.on('click', function() {
                             $('#countryModal .modal-title').text(feature.properties.title);
                             $('#countryModal .modal-body').text(feature.properties.dataset_title);
+
                             // Additional code to populate the modal with content if needed
                             $('#countryModal').modal('show');
                         });

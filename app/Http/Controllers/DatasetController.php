@@ -186,10 +186,11 @@ class DatasetController extends Controller
         $action = __FUNCTION__;
         $datasets = Dataset::find($id);
         $impactAreas = ImpactArea::all();
+        $providers = Provider::all();
         $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
 
 
-        return view('datasets.detail', compact('datasets', 'impactAreas', 'adminBoundaries', 'logo', 'logoText', 'page_title', 'page_description', 'action'));
+        return view('datasets.detail', compact('datasets', 'impactAreas', 'adminBoundaries', 'logo', 'logoText', 'page_title', 'page_description', 'providers', 'action'));
     }
 
     /**
