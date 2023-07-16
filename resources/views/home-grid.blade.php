@@ -37,7 +37,8 @@
                     <div class="card-body p-4">
                         <div class="media ai-icon">
 	<span class="mr-3 bgl-danger text-danger">
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe">
         <circle cx="12" cy="12" r="10"></circle>
         <line x1="2" y1="12" x2="22" y2="12"></line>
         <path d="M12 2L12 22"></path>
@@ -81,7 +82,8 @@
                     <div class="card-body p-4">
                         <div class="media ai-icon">
 			<span class="mr-3 bgl-primary text-primary">
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-molecule">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-molecule">
         <circle cx="12" cy="8" r="7"></circle>
         <circle cx="5.5" cy="14.5" r="2.5"></circle>
     </svg>

@@ -33,6 +33,7 @@ Route::get('/', [HomeController::class, 'landing_page_grid'])->name('landing_pag
 Route::get('/bundle_detail/{id}', [HomeController::class, 'bundle_detail'])->name('bundle_detail');
 Route::get('/map', [HomeController::class, 'map_page'])->name('map_page');
 Route::get('/countries-json', [HomeController::class, 'getCountriesJson'])->name('countries-json');
+Route::get('/graphs', [HomeController::class, 'graphs_page'])->name('graphs');
 
 Auth::routes();
 //Route::post('insert_impact', [ImpactAreaController::class, 'insert_impact'])->name('insert_impact');
