@@ -38,7 +38,8 @@ fetch('/countries-json')
                             properties: {
                                 title: country,
                                 admin_bound_1: countryData.admin_bound_1,
-                                dataset_title: countryData.dataset_title
+                                dataset_title: countryData.dataset_title,
+                                dataset_doi: countryData.dataset_doi
                             },
                             geometry: {
                                 type: 'Point',
@@ -71,6 +72,7 @@ fetch('/countries-json')
                             popupContent += `Admin Bound 1: ${feature.properties.admin_bound_1}`;
                             popupContent += `Title: ${feature.properties.dataset_title}`;
 
+
                         }
                         // marker.bindPopup(popupContent);
 
@@ -78,6 +80,8 @@ fetch('/countries-json')
                         marker.on('click', function() {
                             $('#countryModal .modal-title').text(feature.properties.title);
                             $('#countryModal .modal-body').text(feature.properties.dataset_title);
+
+
 
                             // Additional code to populate the modal with content if needed
                             $('#countryModal').modal('show');

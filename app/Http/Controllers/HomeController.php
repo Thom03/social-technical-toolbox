@@ -80,10 +80,12 @@ class HomeController extends Controller
         $countryList = $administrativeBoundaries->map(function ($item) {
             $dataset = Dataset::find($item->dataset_id);
             $datasetTitle = $dataset ? $dataset->title : null;
+            $datasetDOI = $dataset ? $dataset->DOI : null;
             return [
                 'country' => $item->country,
                 'admin_bound_1' => $item->admin_bound_1,
                 'dataset_title' => $datasetTitle,
+                'dataset_doi' => $datasetDOI,
 
             ];
         })->toArray();
@@ -183,8 +185,10 @@ class HomeController extends Controller
 
         $datasets = Dataset::orderBy('release_year')->get();
 
+        $clusters = Cluster::withCount('datasets')->get();
 
-        return view('graphs', compact('datasets','dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+
+        return view('graphs', compact('datasets', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
     public function about_page()
