@@ -13,7 +13,7 @@ class CreateDatasetClusterTable extends Migration
      */
     public function up()
     {
-        Schema::create('cluster_dataset', function (Blueprint $table) {
+        Schema::create('dataset_cluster', function (Blueprint $table) {
             $table->id();
             $table->foreignId('dataset_id')->constrained();
             $table->foreignId('cluster_id')->constrained();
@@ -28,6 +28,6 @@ class CreateDatasetClusterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cluster_dataset');
+        Schema::dropIfExists('dataset_cluster');
     }
 }

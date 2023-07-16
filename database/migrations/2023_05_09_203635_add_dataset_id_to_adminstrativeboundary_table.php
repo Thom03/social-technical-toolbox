@@ -13,7 +13,7 @@ class AddDatasetIdToAdminstrativeboundaryTable extends Migration
      */
     public function up()
     {
-        Schema::table('adminstrativeboundary', function (Blueprint $table) {
+        Schema::table('adminstrativeboundaries', function (Blueprint $table) {
             //
             $table->unsignedBigInteger('dataset_id')->nullable();
             $table->foreign('dataset_id')->references('id')->on('datasets')->onDelete('cascade');
@@ -27,7 +27,7 @@ class AddDatasetIdToAdminstrativeboundaryTable extends Migration
      */
     public function down()
     {
-        Schema::table('adminstrativeboundary', function (Blueprint $table) {
+        Schema::table('adminstrativeboundaries', function (Blueprint $table) {
             //
         });
     }

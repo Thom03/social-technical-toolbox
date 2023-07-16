@@ -13,7 +13,7 @@ class CreateAdminstrivebountryTable extends Migration
      */
     public function up()
     {
-        Schema::create('adminstrativeboundary', function (Blueprint $table) {
+        Schema::create('adminstrativeboundaries', function (Blueprint $table) {
             $table->id();
             $table->string('country')->nullable();
             $table->string('admin_bound_1')->nullable();
@@ -30,6 +30,6 @@ class CreateAdminstrivebountryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adminstrativeboundary');
+        Schema::dropIfExists('adminstrativeboundaries');
     }
 }

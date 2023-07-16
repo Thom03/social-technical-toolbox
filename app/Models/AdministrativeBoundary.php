@@ -9,7 +9,7 @@ class AdministrativeBoundary extends Model
 {
     use HasFactory;
 
-    protected $table = 'adminstrativeboundary';
+    protected $table = 'adminstrativeboundaries';
 
     protected $fillable = [
         'country',
