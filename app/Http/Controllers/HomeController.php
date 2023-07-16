@@ -173,7 +173,7 @@ class HomeController extends Controller
     public function graphs_page()
     {
         $logo = "img/logo.png";
-        $page_title = 'Graph Pahe';
+        $page_title = 'Graph Page';
         $page_description = 'Social-Technical Innovation Bundles';
         $action = __FUNCTION__;
         $dataset_count = Dataset::where('status', 'published')->count();
@@ -185,6 +185,16 @@ class HomeController extends Controller
 
 
         return view('graphs', compact('datasets','dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+    }
+
+    public function about_page()
+    {
+        $logo = "img/logo.png";
+        $page_title = 'About Page';
+        $page_description = 'Social-Technical Innovation Bundles';
+        $action = __FUNCTION__;
+
+        return view('about', compact( 'logo','page_title', 'page_description','action'));
     }
 
 
