@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ImpactAreaTableSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(ProviderTableSeeder::class);
-        $this->call(ClusterTableSeeder::class);
+        $this->call(CreateAdminUserSeeder::class);
     }
 }
