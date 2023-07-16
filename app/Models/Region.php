@@ -15,5 +15,9 @@ class Region extends Model
         'slug',
     ];
 
+    public function  datasets()
+    {
+        return $this->belongsToMany(Dataset::class);
+    }
 
 }

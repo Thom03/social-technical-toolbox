@@ -34,9 +34,9 @@ class Dataset extends Model
 
     ];
 
-    public function region()
+    public function regions()
     {
-        return $this->belongsTo(Region::class, 'region_id', 'id');
+        return $this->belongsToMany(Region::class);
     }
 
     public function theme()
@@ -73,5 +73,7 @@ class Dataset extends Model
     {
         return $this->belongsToMany(Cluster::class);
     }
+
+
 
 }
