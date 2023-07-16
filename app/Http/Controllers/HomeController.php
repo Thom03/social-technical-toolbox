@@ -162,6 +162,7 @@ class HomeController extends Controller
         $techPracs = TechPrac::all();
         $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
         $providers = Provider::all();
+        $regions = Region::all();
 
 
         return view('bundlee', compact('datasets','impactAreas','innovations', 'dataset','techPracs', 'adminBoundaries','logo','page_title', 'page_description', 'providers', 'action'));

@@ -78,8 +78,9 @@ class DatasetController extends Controller
 
         $clusters = Cluster::all();
         $providers = Provider::all();
+        $regions = Region::all();
 
-        return view('datasets.add', compact('region', 'theme', 'impactAreas', 'innovations', 'techPracs', 'clusters', 'providers', 'logo', 'logoText', 'countryList', 'page_title', 'page_description', 'action'));
+        return view('datasets.add', compact('region', 'theme', 'impactAreas', 'innovations', 'techPracs', 'clusters', 'providers', 'regions', 'logo', 'logoText', 'countryList', 'page_title', 'page_description', 'action'));
 
     }
 
@@ -104,6 +105,8 @@ class DatasetController extends Controller
             'clusters.*' => 'exists:clusters,id',
             'providers' => 'nullable|array',
             'providers.*' => 'exists:providers,id',
+            'regions' => 'nullable|array',
+            'regions.*' => 'exists:regions,id',
             'country.*' => 'nullable',
             'admin_bound_1.*' => 'nullable',
             'admin_bound_2.*' => 'nullable',
@@ -141,6 +144,12 @@ class DatasetController extends Controller
 
 //        Attach providers to the datasets
         $dataset->providers()->attach($validateData['providers']);
+
+//        Attach regions to the datasets
+        $dataset->regions()->attach($validateData['regions']);
+
+
+
 
         $country = $validateData['country'];
         $admin_bound_1 = $validateData['admin_bound_1'];
@@ -187,10 +196,11 @@ class DatasetController extends Controller
         $datasets = Dataset::find($id);
         $impactAreas = ImpactArea::all();
         $providers = Provider::all();
+        $regions = Region::all();
         $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
 
 
-        return view('datasets.detail', compact('datasets', 'impactAreas', 'adminBoundaries', 'logo', 'logoText', 'page_title', 'page_description', 'providers', 'action'));
+        return view('datasets.detail', compact('datasets', 'impactAreas','regions', 'adminBoundaries', 'logo', 'logoText', 'page_title', 'page_description', 'providers', 'action'));
     }
 
     /**

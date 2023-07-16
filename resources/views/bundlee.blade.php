@@ -199,6 +199,13 @@
                     </div>
 
                     <div class="col-12 m-t-20">
+                        <h4>Regions</h4>
+                        @foreach($datasets->regions as $region)
+                            <p class="badge badge-light">{{ $region->name }}</p>
+                        @endforeach
+                    </div>
+
+                    <div class="col-12 m-t-20">
                         <h4>Technology/Practice</h4>
                         @foreach($datasets->techPracs as $techPrac)
                             <p class="badge badge-light">{{ $techPrac->name }}</p>

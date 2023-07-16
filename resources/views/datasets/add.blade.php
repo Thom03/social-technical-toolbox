@@ -128,6 +128,18 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label for="regions">Regions</label>
+                                        <select name="regions[]" id="regions" class="form-control select2-tags" multiple>
+                                            @foreach($regions  as $regions )
+                                                <option class="badge badge-secondary"
+                                                        value="{{ $regions->id }}">{{ $regions ->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
 
