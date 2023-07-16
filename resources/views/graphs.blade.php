@@ -108,10 +108,10 @@
                 <div class="col-xl-6 col-lg-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Basic Bar Chart</h4>
+                            <h4 class="card-title">Innovation Bundle Cluster Distribution</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="barChart_1"></canvas>
+                            <canvas id="barChart_1">{{ $clusters->toJson() }}</canvas>
                         </div>
                     </div>
                 </div>

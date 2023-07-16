@@ -3,9 +3,14 @@
 
     //basic bar chart
 if(jQuery('#barChart_1').length > 0 ){
+
     const barChart_1 = document.getElementById("barChart_1").getContext('2d');
 
+
     barChart_1.height = 100;
+
+    // Retrieve the dataset counts from the view
+
 
     new Chart(barChart_1, {
         type: 'bar',
@@ -230,10 +235,10 @@ if(jQuery('#lineChart_1').length > 0 ){
                 {
                     label: "Number of Bundles",
                     data: counts,
-                    borderColor: 'rgba(69, 11, 90, 1)',
+                    borderColor: 'rgba(241, 90, 49, 1)',
                     borderWidth: "3",
                     backgroundColor: 'transparent',
-                    pointBackgroundColor: 'rgba(69, 11, 90, 1)'
+                    pointBackgroundColor: 'rgba(241, 90, 49, 1)'
                 }
             ]
         },

@@ -185,8 +185,10 @@ class HomeController extends Controller
 
         $datasets = Dataset::orderBy('release_year')->get();
 
+        $clusters = Cluster::withCount('datasets')->get();
 
-        return view('graphs', compact('datasets','dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+
+        return view('graphs', compact('datasets', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
     public function about_page()
