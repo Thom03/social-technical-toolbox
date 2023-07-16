@@ -44,6 +44,7 @@
         <a class="nav-link" href="{{ route('map_page') }}"><h4><i class="mdi mdi-map"></i> Interactive Map</h4></a>
         <a class="nav-link active" href="{{ route('landing_page_grid') }}"><h4><i class="mdi mdi-format-list-bulleted"></i>  Datasets</h4></a>
         <a class="nav-link active" href="{{ route('graphs') }}"><h4><i class="mdi mdi-home"></i>  Dashboard</h4></a>
+        <a class="nav-link active" href="#"><h4><i class="mdi mdi-file-document"></i> Resources </h4></a>
         <a class="nav-link active" href="{{ route('about_us') }}"><h4><i class="mdi mdi-comment-question-outline"></i>  About Us </h4></a>
         <a class="nav-link active" href="#"><h4><i class="mdi mdi-phone"></i> Contact Us</h4></a>
 

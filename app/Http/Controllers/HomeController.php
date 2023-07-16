@@ -80,10 +80,12 @@ class HomeController extends Controller
         $countryList = $administrativeBoundaries->map(function ($item) {
             $dataset = Dataset::find($item->dataset_id);
             $datasetTitle = $dataset ? $dataset->title : null;
+            $datasetDOI = $dataset ? $dataset->DOI : null;
             return [
                 'country' => $item->country,
                 'admin_bound_1' => $item->admin_bound_1,
                 'dataset_title' => $datasetTitle,
+                'dataset_doi' => $datasetDOI,
 
             ];
         })->toArray();
