@@ -13,6 +13,7 @@ class AdministrativeBoundary extends Model
 
     protected $fillable = [
         'country',
+        'country_id',
         'admin_bound_1',
         'admin_bound_2',
         'admin_bound_3',

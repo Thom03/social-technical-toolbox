@@ -13,8 +13,8 @@
                         <div class="text-center mb-4">
                             <img src="{{ asset('img/logo-text.png') }}" alt="Logo" class="logo" style="width: 200px; height: auto;">
                         </div>
-                        <h4 class="text-center mb-4">Sign in your account</h4>
-                        <form  method="post" action="{{ route('login') }}">
+                        <h4 class="text-center mb-4">Sign in</h4>
+                        <form  method="POST" action="{{ route('login') }}">
 {{--                            @csrf--}}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <div class="form-group">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
+                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                             </div>
                         </form>
 {{--                        <div class="new-account mt-3">--}}
