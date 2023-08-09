@@ -31,3 +31,40 @@ $(document).ready(function() {
         }
     });
 });
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const countrySelect = document.getElementById('country');
+//     const countryIdInput = document.getElementById('country_id');
+//
+//     console.log(countrySelect); // Check if countrySelect is defined
+//     console.log(countryIdInput); // Check if countryIdInput is defined
+//
+//     countrySelect.addEventListener('change', function () {
+//         console.log('Change event fired');
+//
+//         console.log(countrySelect.selectedIndex); // Check the selectedIndex value
+//         console.log(countrySelect.options); // Check the options property
+//
+//         const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+//         console.log(selectedOption); // Check if selectedOption is defined
+//
+//         const selectedCountryId = selectedOption.getAttribute('data-country-id');
+//         console.log(selectedCountryId); // Check if selectedCountryId is defined
+//
+//         countryIdInput.value = selectedCountryId;
+//     });
+//
+// });
+
+$(document).ready(function() {
+    $(document).on('input', '.country-input', function() {
+        const selectedOption = $(`#countryList option[value="${this.value}"]`);
+        if (selectedOption.length > 0) {
+            const countryId = selectedOption.data('countryId');
+            $(this).closest('.form-group').find('.country-id-input').val(countryId);
+        } else {
+            $(this).closest('.form-group').find('.country-id-input').val('');
+        }
+    });
+});

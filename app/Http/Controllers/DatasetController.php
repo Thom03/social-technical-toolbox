@@ -154,6 +154,7 @@ class DatasetController extends Controller
 
         $country = $validateData['country'];
         $country_id = $validateData['country_id'];
+//        $country_id = $request->input('country_id');
         $admin_bound_1 = $validateData['admin_bound_1'];
         $admin_bound_2 = $validateData['admin_bound_2'];
         $admin_bound_3 = $validateData['admin_bound_3'];
@@ -161,14 +162,11 @@ class DatasetController extends Controller
 
         // Check if the arrays have the same number of elements
         $arrayCount = count($country);
-//        if (count($admin_bound_1) !== $arrayCount || count($admin_bound_2) !== $arrayCount || count($admin_bound_3) !== $arrayCount) {
-//            return redirect()->back()->withErrors('The arrays must have the same number of elements.');
-//        }
 
         for ($i = 0; $i < $arrayCount; $i++) {
             $administrativeBoundaries = new AdministrativeBoundary();
             $administrativeBoundaries->country = $country[$i];
-            $administrativeBoundaries->country_id = $country_id[$i];
+            $administrativeBoundaries->country_id = $country_id[$i] ?? null;
             $administrativeBoundaries->admin_bound_1 = $admin_bound_1[$i] ?? null;
             $administrativeBoundaries->admin_bound_2 = $admin_bound_2[$i] ?? null;
             $administrativeBoundaries->admin_bound_3 = $admin_bound_3[$i] ?? null;
