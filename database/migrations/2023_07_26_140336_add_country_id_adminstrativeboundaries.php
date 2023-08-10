@@ -15,8 +15,7 @@ class AddCountryIdAdminstrativeboundaries extends Migration
     {
         Schema::table('adminstrativeboundaries', function (Blueprint $table) {
             $table->unsignedBigInteger('country_id')->nullable();;
-            $table->polygon('coordinates')->nullable();;
-            //
+            $table->geometry('coordinates')->nullable();;
         });
     }
 

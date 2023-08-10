@@ -32,30 +32,22 @@ class UpdateCoordinatesListener implements ShouldQueue
      */
     public function handle(UpdateCoordinatesEvent $event)
     {
-        //
         $countryId = $event->countryId;
         $response = Http::get("https://ramses.ciat.cgiar.org/api/v1/countries/{$countryId}/geojson/polygons");
 
         $data = json_decode($response->getBody(), true);
 
-
-
-
-
-        // Check if 'geometry' key and 'coordinates' key are present in the API response
         if (isset($data['geometry']['coordinates'])) {
+            $geometryType = $data['geometry']['type'];
             $coordinates = $data['geometry']['coordinates'];
 
-            // Convert coordinates to MySQL polygon format
-            $polygon = 'POLYGON((';
-            foreach ($coordinates[0] as $point) { // Assuming that $coordinates is an array of arrays
-                $polygon .= "{$point[0]} {$point[1]},";
-            }
-            $polygon = rtrim($polygon, ',') . '))';
+            $geometry = [
+                'type' => $geometryType,
+                'coordinates' => $coordinates,
+            ];
 
-            // Update the coordinates field in your table
             AdministrativeBoundary::where('country_id', $countryId)->update([
-                'coordinates' => DB::raw("ST_GeomFromText('$polygon')"),
+                'coordinates' => DB::raw("ST_GeomFromGeoJSON('".json_encode($geometry)."')"),
             ]);
 
             Log::info('Coordinates updated successfully for country ID: ' . $countryId);

@@ -76,16 +76,34 @@ class HomeController extends Controller
     function getCountriesJson()
     {
         $administrativeBoundaries = AdministrativeBoundary::all();
+//        $administrativeBoundaries = AdministrativeBoundary::select('country', 'admin_bound_1', 'coordinates')
+//            ->get();
+
 
         $countryList = $administrativeBoundaries->map(function ($item) {
             $dataset = Dataset::find($item->dataset_id);
             $datasetTitle = $dataset ? $dataset->title : null;
             $datasetDOI = $dataset ? $dataset->DOI : null;
+
+
+
+            // Parse coordinates
+            $coordinates = $item->coordinates;
+            $coordinatePairs = explode(',', str_replace(['POLYGON((', '))'], ['', ''], $coordinates));
+            $parsedCoordinates = [];
+            foreach ($coordinatePairs as $pair) {
+                [$longitude, $latitude] = explode(' ', $pair);
+                $parsedCoordinates[] = [$longitude, $latitude];
+            }
+
+
             return [
                 'country' => $item->country,
                 'admin_bound_1' => $item->admin_bound_1,
                 'dataset_title' => $datasetTitle,
                 'dataset_doi' => $datasetDOI,
+                'coordinates' => $parsedCoordinates, // Include parsed coordinates
+
 
             ];
         })->toArray();

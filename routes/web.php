@@ -37,7 +37,7 @@ Route::get('/graphs', [HomeController::class, 'graphs_page'])->name('graphs');
 Route::get('/about-us', [HomeController::class, 'about_page'])->name('about_us');
 
 Auth::routes();
-//Route::post('insert_impact', [ImpactAreaController::class, 'insert_impact'])->name('insert_impact');
+
 
 
 //API Routes
