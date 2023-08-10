@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\Models\AdministrativeBoundary;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class AdminBoundariesUpdated
+class UpdateCoordinatesEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,10 +19,11 @@ class AdminBoundariesUpdated
      *
      * @return void
      */
-    public function __construct(AdministrativeBoundary $administrativeBoundary)
+
+    public $countryId;
+    public function __construct($countryId)
     {
-        //
-        $this->administrativeBoundary = $administrativeBoundary;
+        $this->countryId = $countryId;
     }
 
     /**
