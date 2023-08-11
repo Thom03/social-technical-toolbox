@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UpdateCoordinatesEvent;
 use App\Models\AdministrativeBoundary;
 use App\Models\Cluster;
 use App\Models\Dataset;
@@ -242,6 +243,18 @@ class HomeController extends Controller
         ];
 
         return response()->json($geojson);
+    }
+
+    public function updateNullCoordinates()
+    {
+        $countriesWithNullCoordinates = AdministrativeBoundary::whereNull('coordinates')->get();
+
+        foreach ($countriesWithNullCoordinates as $country) {
+            // Dispatch the UpdateCoordinatesEvent for each country
+            event(new UpdateCoordinatesEvent($country->country_id));
+        }
+
+        return response()->json(['message' => 'Update coordinates events dispatched for countries with null coordinates']);
     }
 
 
