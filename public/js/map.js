@@ -103,3 +103,21 @@ fetch('/countries-json')
     .catch(error => {
         console.error('Failed to fetch country data:', error);
     });
+
+fetch('/getcountrygeojson')
+    .then(response => response.json())
+    .then(data => {
+        // Create a Leaflet GeoJSON layer
+        var boundaryLayer = L.geoJSON(data, {
+            style: {
+                color: '#f15a31', // Customize the boundary color
+                weight: 1, // Customize the boundary weight
+            },
+        });
+
+        // Add the GeoJSON layer to the map
+        boundaryLayer.addTo(map);
+    })
+    .catch(error => {
+        console.error('Failed to fetch administrative boundary data:', error);
+    });

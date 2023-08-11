@@ -219,11 +219,13 @@
                                 <div class="col-lg-2 mb-2">
                                     <div class="form-group">
                                         <input type="text" id="country" name="country[]"
-                                               class="form-control" placeholder="Country" list="countryList">
+                                               class="form-control country-input" placeholder="Country" list="countryList">
+                                        <input type="hidden"  class="country-id-input"  name="country_id[]" value="">
                                         <datalist id="countryList">
                                             @foreach($countryList as $country)
-                                                <option value="{{ $country->country_name }}">
+                                                <option value="{{ $country->country_name }}" data-country-id="{{ $country->id_country }}">
                                             @endforeach
+
                                         </datalist>
                                     </div>
                                 </div>

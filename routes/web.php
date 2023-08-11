@@ -35,9 +35,12 @@ Route::get('/map', [HomeController::class, 'map_page'])->name('map_page');
 Route::get('/countries-json', [HomeController::class, 'getCountriesJson'])->name('countries-json');
 Route::get('/graphs', [HomeController::class, 'graphs_page'])->name('graphs');
 Route::get('/about-us', [HomeController::class, 'about_page'])->name('about_us');
+Route::get('/getcountrygeojson', [HomeController::class, 'getGeometryGeoJson'])->name('getcountrygeojson');
+Route::get('/update-null-coordinates', [HomeController::class, 'updateNullCoordinates'])->name('update-null-coordinates');
+
 
 Auth::routes();
-//Route::post('insert_impact', [ImpactAreaController::class, 'insert_impact'])->name('insert_impact');
+
 
 
 //API Routes

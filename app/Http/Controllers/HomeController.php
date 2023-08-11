@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UpdateCoordinatesEvent;
 use App\Models\AdministrativeBoundary;
 use App\Models\Cluster;
 use App\Models\Dataset;
@@ -10,9 +11,16 @@ use App\Models\Innovation;
 use App\Models\Provider;
 use App\Models\Region;
 use App\Models\TechPrac;
+use GeoJson\GeoJson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Spatie\Geocoder\Geocoder;
+use Grimzy\LaravelMysqlSpatial\Types\Geometry;
+
+
+
 
 
 class HomeController extends Controller
@@ -81,15 +89,19 @@ class HomeController extends Controller
             $dataset = Dataset::find($item->dataset_id);
             $datasetTitle = $dataset ? $dataset->title : null;
             $datasetDOI = $dataset ? $dataset->DOI : null;
+
+
             return [
                 'country' => $item->country,
                 'admin_bound_1' => $item->admin_bound_1,
                 'dataset_title' => $datasetTitle,
                 'dataset_doi' => $datasetDOI,
 
+
+
             ];
         })->toArray();
-        $json = json_encode($countryList);
+        $json = json_encode($countryList, JSON_PRETTY_PRINT);
 
         return response($json)->header('Content-Type', 'application/json');
 
@@ -200,6 +212,52 @@ class HomeController extends Controller
 
         return view('about', compact( 'logo','page_title', 'page_description','action'));
     }
+
+
+    public function getGeometryGeoJson()
+    {
+        // Fetch all administrative boundaries
+        $boundaries = AdministrativeBoundary::all();
+
+        $geojsonFeatures = [];
+
+        foreach ($boundaries as $boundary) {
+            $geometry = DB::select("SELECT ST_AsGeoJSON(coordinates) as geojson FROM adminstrativeboundaries WHERE id = ?", [$boundary->id])[0]->geojson;
+            $geometry = json_decode($geometry);
+
+            $geojsonFeature = [
+                'type' => 'Feature',
+                'geometry' => $geometry,
+                'properties' => [
+                    'id' => $boundary->id, // You can add more properties here
+                    'country' => $boundary->country,
+                ],
+            ];
+
+            $geojsonFeatures[] = $geojsonFeature;
+        }
+
+        $geojson = [
+            'type' => 'FeatureCollection',
+            'features' => $geojsonFeatures,
+        ];
+
+        return response()->json($geojson);
+    }
+
+    public function updateNullCoordinates()
+    {
+        $countriesWithNullCoordinates = AdministrativeBoundary::whereNull('coordinates')->get();
+
+        foreach ($countriesWithNullCoordinates as $country) {
+            // Dispatch the UpdateCoordinatesEvent for each country
+            event(new UpdateCoordinatesEvent($country->country_id));
+        }
+
+        return response()->json(['message' => 'Update coordinates events dispatched for countries with null coordinates']);
+    }
+
+
 
 
 
