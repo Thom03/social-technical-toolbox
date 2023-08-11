@@ -35,6 +35,7 @@ Route::get('/map', [HomeController::class, 'map_page'])->name('map_page');
 Route::get('/countries-json', [HomeController::class, 'getCountriesJson'])->name('countries-json');
 Route::get('/graphs', [HomeController::class, 'graphs_page'])->name('graphs');
 Route::get('/about-us', [HomeController::class, 'about_page'])->name('about_us');
+Route::get('/getcountrygeojson', [HomeController::class, 'getGeometryGeoJson'])->name('getcountrygeojson');
 
 Auth::routes();
 

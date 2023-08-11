@@ -10,9 +10,16 @@ use App\Models\Innovation;
 use App\Models\Provider;
 use App\Models\Region;
 use App\Models\TechPrac;
+use GeoJson\GeoJson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Spatie\Geocoder\Geocoder;
+use Grimzy\LaravelMysqlSpatial\Types\Geometry;
+
+
+
 
 
 class HomeController extends Controller
@@ -76,9 +83,6 @@ class HomeController extends Controller
     function getCountriesJson()
     {
         $administrativeBoundaries = AdministrativeBoundary::all();
-//        $administrativeBoundaries = AdministrativeBoundary::select('country', 'admin_bound_1', 'coordinates')
-//            ->get();
-
 
         $countryList = $administrativeBoundaries->map(function ($item) {
             $dataset = Dataset::find($item->dataset_id);
@@ -86,28 +90,17 @@ class HomeController extends Controller
             $datasetDOI = $dataset ? $dataset->DOI : null;
 
 
-
-            // Parse coordinates
-            $coordinates = $item->coordinates;
-            $coordinatePairs = explode(',', str_replace(['POLYGON((', '))'], ['', ''], $coordinates));
-            $parsedCoordinates = [];
-            foreach ($coordinatePairs as $pair) {
-                [$longitude, $latitude] = explode(' ', $pair);
-                $parsedCoordinates[] = [$longitude, $latitude];
-            }
-
-
             return [
                 'country' => $item->country,
                 'admin_bound_1' => $item->admin_bound_1,
                 'dataset_title' => $datasetTitle,
                 'dataset_doi' => $datasetDOI,
-                'coordinates' => $parsedCoordinates, // Include parsed coordinates
+
 
 
             ];
         })->toArray();
-        $json = json_encode($countryList);
+        $json = json_encode($countryList, JSON_PRETTY_PRINT);
 
         return response($json)->header('Content-Type', 'application/json');
 
@@ -218,6 +211,40 @@ class HomeController extends Controller
 
         return view('about', compact( 'logo','page_title', 'page_description','action'));
     }
+
+
+    public function getGeometryGeoJson()
+    {
+        // Fetch all administrative boundaries
+        $boundaries = AdministrativeBoundary::all();
+
+        $geojsonFeatures = [];
+
+        foreach ($boundaries as $boundary) {
+            $geometry = DB::select("SELECT ST_AsGeoJSON(coordinates) as geojson FROM adminstrativeboundaries WHERE id = ?", [$boundary->id])[0]->geojson;
+            $geometry = json_decode($geometry);
+
+            $geojsonFeature = [
+                'type' => 'Feature',
+                'geometry' => $geometry,
+                'properties' => [
+                    'id' => $boundary->id, // You can add more properties here
+                    'country' => $boundary->country,
+                ],
+            ];
+
+            $geojsonFeatures[] = $geojsonFeature;
+        }
+
+        $geojson = [
+            'type' => 'FeatureCollection',
+            'features' => $geojsonFeatures,
+        ];
+
+        return response()->json($geojson);
+    }
+
+
 
 
 
