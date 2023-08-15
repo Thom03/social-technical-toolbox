@@ -48,7 +48,7 @@
 						</a>
                         <ul aria-expanded="false">
                             <li><a href="{!! url('./datasetlist'); !!}">Dataset List</a></li>
-                            <li><a href="{!! url('./chart-morris'); !!}">Uploading Dataset</a></li>
+                            <li><a href="{!! url('./upload_dataset'); !!}">Uploading Dataset</a></li>
 
                         </ul>
                     </li>

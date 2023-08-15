@@ -101,6 +101,11 @@ return [
                     'vendor/chartist/css/chartist.min.css',
                     'https://cdn.lineicons.com/2.0/LineIcons.css',
                 ],
+                'upload_dataset' => [
+                    'vendor/jqvmap/css/jqvmap.min.css',
+                    'vendor/chartist/css/chartist.min.css',
+                    'https://cdn.lineicons.com/2.0/LineIcons.css',
+                ],
                 'doctors_details' => [
                     'vendor/chartist/css/chartist.min.css',
                     'vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
@@ -507,6 +512,14 @@ return [
 
                 ],
                 'dataset_list' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/peity/jquery.peity.min.js',
+                    'vendor/chartist/js/chartist.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'upload_dataset' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',
                     'vendor/peity/jquery.peity.min.js',

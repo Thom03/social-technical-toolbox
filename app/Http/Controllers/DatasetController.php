@@ -395,4 +395,20 @@ class DatasetController extends Controller
         return redirect('/datasetlist')->with('status', 'Dataset has been deleted successfully.');
 
     }
+
+
+    public function upload_dataset(Request $request)
+    {
+        $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
+        $page_title = 'Datasets';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+
+
+
+        return view('datasets.upload', compact('logo', 'logoText', 'page_title', 'page_description', 'action'));
+
+    }
 }
