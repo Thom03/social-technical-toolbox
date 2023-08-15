@@ -144,41 +144,41 @@
 
         <div class="row">
             <div class="col-xl-12">
-                <div id="accordion-one" class="accordion doctor-list ">
+                <div id="accordion-one" class="accordion doctor-list">
                     <div class="accordion__item">
-                        <div id="default_collapseOne" class="collapse accordion__body show"
-                             data-parent="#accordion-one">
+                        <div id="default_collapseOne" class="collapse accordion__body show" data-parent="#accordion-one">
                             <div class="widget-media best-doctor pt-4">
                                 <div class="timeline row">
                                     @foreach ($dataset as $data)
                                         <div class="col-lg-4">
                                             <div class="timeline-panel bg-dark-alt p-4 mb-4">
-                                                <a href="{{ route('bundle_detail', $data->id) }}"
-                                                   class="text-decoration-none">
+                                                <a href="{{ route('bundle_detail', $data->id) }}" class="text-decoration-none">
                                                     <div class="media-body">
-                                                        <a href="{{ route('bundle_detail', $data->id) }}"><h4
-                                                                class="mb-2">{{ $data->title }}</h4></a>
-                                                        <span>Release Year:</span><span
-                                                            class="badge badge-light"> {{ $data->release_year }}</span>
-                                                        <span>DOI:</span><span
-                                                            class="badge badge-light-"> {{ $data->DOI }}</span>
+                                                        <a href="{{ route('bundle_detail', $data->id) }}">
+                                                            <h4 class="mb-2">{{ $data->title }}</h4>
+                                                        </a>
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="mr-2">Release Year:</span>
+                                                            <span class="badge badge-light">{{ $data->release_year }}</span>
+                                                        </div>
                                                         <br>
-                                                        <br>
-                                                        <br>
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="mr-2">DOI:</span>
+                                                            <span class="badge badge-light">{{ $data->DOI }}</span>
+                                                        </div>
                                                     </div>
                                                 </a>
                                             </div>
                                         </div>
-
                                     @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
+
         <div class="row justify-content-center">
             <nav>
                 <ul class="pagination pagination-circle">

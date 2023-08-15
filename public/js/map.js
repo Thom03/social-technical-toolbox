@@ -7,7 +7,7 @@ var map = L.mapbox.map('map',undefined,options).setView([0.5286709, 27.2723167],
 
 
 L.mapbox.styleLayer('mapbox://styles/mapbox/light-v9',{
-    attribution: 'Developed by <a href="http://ciat.cgiar.org" class="blue">Alliance and CIAT</a>',
+    attribution: 'Designed & Developed by  <a href="http://ciat.cgiar.org" class="link">Alliance Bioversity and CIAT</a>',
 }).addTo(map);
 
 //******************************************************************************************
