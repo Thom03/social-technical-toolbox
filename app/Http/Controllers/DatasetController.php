@@ -31,7 +31,7 @@ class DatasetController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $dataset = Dataset::all();
+        $dataset = Dataset::paginate(10);
         $impactAreas = ImpactArea::all();
         $latestDatasets = Dataset::latest()->get();
 

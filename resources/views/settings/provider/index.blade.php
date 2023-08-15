@@ -46,11 +46,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($providers as $provider)
+                            @foreach ($providers as $prov)
                                 <tr>
-                                    <td>{{ $provider->identifier }}</td>
-                                    <td><span class="badge badge-rounded badge-success">{{ $provider->name }}</span></td>
-                                    <td>{{ $provider->url}}</td>
+                                    <td>{{ $prov->identifier }}</td>
+                                    <td><span class="badge badge-rounded badge-success">{{ $prov->name }}</span></td>
+                                    <td>{{ $prov->url}}</td>
                                     <td>
                                         <div class="dropdown custom-dropdown mb-0">
                                             <div class="btn sharp btn-primary tp-btn" data-toggle="dropdown">
@@ -66,7 +66,7 @@
                                                 </svg>
                                             </div>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item text-success" href="{{ route('edit_provider', $provider->id) }}">Edit</a>
+                                                <a class="dropdown-item text-success" href="{{ route('edit_provider', $prov->id) }}">Edit</a>
                                                 <a class="dropdown-item text-danger" href="#">Delete</a>
                                             </div>
                                         </div>
@@ -77,6 +77,29 @@
                         </table>
                     </div>
                 </div>
+                <div class="row justify-content-center">
+                    <nav>
+                        <ul class="pagination pagination-circle">
+                            <li class="page-item page-indicator">
+                                <a class="page-link" href="{{ $providers->previousPageUrl() }}" aria-label="Previous">
+                                    <i class="la la-angle-left"></i>
+                                </a>
+                            </li>
+                            @for ($i = 1; $i <= $providers->lastPage(); $i++)
+                                <li class="page-item {{ $providers->currentPage() == $i ? 'active' : '' }}">
+                                    <a class="page-link" href="{{ $providers->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+
+                            <li class="page-item page-indicator">
+                                <a class="page-link" href="{{ $providers->nextPageUrl() }}" aria-label="Next">
+                                    <i class="la la-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
             </div>
         </div>
 

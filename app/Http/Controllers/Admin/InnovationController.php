@@ -16,7 +16,7 @@ class InnovationController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $innovations = Innovation::all();
+        $innovations = Innovation::paginate(20);
 
 
 //        $users = User::latest()->paginate(10);

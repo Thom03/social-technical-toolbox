@@ -47,12 +47,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($techpracs as $techpracs)
+                            @foreach ($techpracs as $techp)
                                 <tr>
-                                    <td>{{ $techpracs->id }}</td>
-                                    <td><span class="badge badge-rounded badge-success">{{ $techpracs->name }}</span></td>
-                                    <td>{{ $techpracs->description }}</td>
-                                    <td>{{ $techpracs->slug }}</td>
+                                    <td>{{ $techp->id }}</td>
+                                    <td><span class="badge badge-rounded badge-success">{{ $techp->name }}</span></td>
+                                    <td>{{ $techp->description }}</td>
+                                    <td>{{ $techp->slug }}</td>
 
                                     <td>
                                         <div class="dropdown custom-dropdown mb-0">
@@ -69,11 +69,10 @@
                                                 </svg>
                                             </div>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item text-success" href="{{ route('edit_techprac', $techpracs->id) }}">Edit</a>
-                                                <form action="{{ route('delete_techprac', ['id' => $techpracs->id]) }}" method="POST">
+                                                <a class="dropdown-item text-success" href="{{ route('edit_techprac', $techp->id) }}">Edit</a>
+                                                <form action="{{ route('delete_techprac', ['id' => $techp->id]) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-{{--                                                <a class="dropdown-item text-danger">Delete</a>--}}
                                                     <button class="dropdown-item text-danger" type="submit">Delete</button>
                                                 </form>
                                             </div>
@@ -85,6 +84,29 @@
                         </table>
                     </div>
                 </div>
+                <div class="row justify-content-center">
+                    <nav>
+                        <ul class="pagination pagination-circle">
+                            <li class="page-item page-indicator">
+                                <a class="page-link" href="{{ $techpracs->previousPageUrl() }}" aria-label="Previous">
+                                    <i class="la la-angle-left"></i>
+                                </a>
+                            </li>
+                            @for ($i = 1; $i <= $techpracs->lastPage(); $i++)
+                                <li class="page-item {{ $techpracs->currentPage() == $i ? 'active' : '' }}">
+                                    <a class="page-link" href="{{ $techpracs->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+
+                            <li class="page-item page-indicator">
+                                <a class="page-link" href="{{ $techpracs->nextPageUrl() }}" aria-label="Next">
+                                    <i class="la la-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
             </div>
         </div>
 

@@ -16,7 +16,7 @@ class TechPracController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $techpracs = TechPrac::all();
+        $techpracs = TechPrac::paginate(20);
 
         return view('settings.techpract.index', compact('techpracs','logo', 'page_title', 'page_description', 'action'));
 

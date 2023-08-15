@@ -15,6 +15,10 @@
 <link href="https://soecodat.ciat.cgiar.org/monster/css/colors/green.css" id="theme" rel="stylesheet">
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+
+<script src="{{ asset('js/GlobeMinimap.js') }}"></script>
 
 <script src="https://soecodat.ciat.cgiar.org/monster/assets/plugins/jquery/jquery.min.js"></script>
 <script src="https://soecodat.ciat.cgiar.org/monster/assets/plugins/bootstrap/js/popper.min.js"></script>
@@ -29,5 +33,11 @@
 
 <script src="https://soecodat.ciat.cgiar.org/js/custom.js"></script>
 <script src="https://soecodat.ciat.cgiar.org/js/chartjs.init.js"></script>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+
+
 
 

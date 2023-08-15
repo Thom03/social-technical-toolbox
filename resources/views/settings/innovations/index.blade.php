@@ -47,12 +47,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($innovations as $innovations)
+                            @foreach ($innovations as $innov)
                                 <tr>
-                                    <td>{{ $innovations->id }}</td>
-                                    <td><span class="badge badge-rounded badge-success">{{ $innovations->name }}</span></td>
-                                    <td>{{ $innovations->description }}</td>
-                                    <td>{{ $innovations->slug }}</td>
+                                    <td>{{ $innov->id }}</td>
+                                    <td><span class="badge badge-rounded badge-success">{{ $innov->name }}</span></td>
+                                    <td>{{ $innov->description }}</td>
+                                    <td>{{ $innov->slug }}</td>
 
                                     <td>
                                         <div class="dropdown custom-dropdown mb-0">
@@ -70,7 +70,7 @@
                                             </div>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" href="#">Details</a>
-                                                <a class="dropdown-item text-success" href="{{ route('edit_innovation', $innovations->id) }}">Edit</a>
+                                                <a class="dropdown-item text-success" href="{{ route('edit_innovation', $innov->id) }}">Edit</a>
                                                 <a class="dropdown-item text-danger" href="#">Delete</a>
                                             </div>
                                         </div>
@@ -80,6 +80,28 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="row justify-content-center">
+                    <nav>
+                        <ul class="pagination pagination-circle">
+                            <li class="page-item page-indicator">
+                                <a class="page-link" href="{{ $innovations->previousPageUrl() }}" aria-label="Previous">
+                                    <i class="la la-angle-left"></i>
+                                </a>
+                            </li>
+                            @for ($i = 1; $i <= $innovations->lastPage(); $i++)
+                                <li class="page-item {{ $innovations->currentPage() == $i ? 'active' : '' }}">
+                                    <a class="page-link" href="{{ $innovations->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+
+                            <li class="page-item page-indicator">
+                                <a class="page-link" href="{{ $innovations->nextPageUrl() }}" aria-label="Next">
+                                    <i class="la la-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
