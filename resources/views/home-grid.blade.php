@@ -164,7 +164,7 @@
                                                         <br>
                                                         <div class="d-flex align-items-center">
                                                             <span class="mr-2">DOI:</span>
-                                                            <span class="badge badge-light">{{ $data->DOI }}</span>
+                                                            <span class="badge badge-rounded badge-outline-info">{{ $data->DOI }}</span>
                                                         </div>
                                                     </div>
                                                 </a>

@@ -83,43 +83,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                <tr>
-                                    @foreach($datasets->providers as $provider)
-                                    <td>{{ $provider->name }}</td>
-                                    <td><a href="#" target="_blank">{{ $provider->url }}</a><img src="http://ciat-library.ciat.cgiar.org/dm_images/CIAT-Logo-255x128.png" width="60"> </td>
-                                    @endforeach
-                                    <td> {{ $datasets->contact }} </td>
-
-                                </tr>
-{{--                                <tr>--}}
-{{--                                    <td>International Center for Tropical Agriculture (CIAT)</td>--}}
-{{--                                    <td><a href="http://ciat.cgiar.org/" target="_blank">http://ciat.cgiar.org/</a> 										 <img src="http://ciat-library.ciat.cgiar.org/dm_images/CIAT-Logo-255x128.png" width="60"> 									</td>--}}
-{{--                                    <td>Producer--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                <tr>--}}
-{{--                                    <td>--}}
-{{--                                        Global Rice Science Partnership--}}
-{{--                                        (GRiSP)--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        <a href="http://www.grisp.net/main/summary" target="_blank">http://www.grisp.net/main/summary</a> 										 <img src="http://ciat-library.ciat.cgiar.org/dm_images/CGIAR-GRISP-LOGO.png" width="60"> 									</td>--}}
-{{--                                    <td>--}}
-{{--                                        Producer--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                <tr>--}}
-{{--                                    <td>--}}
-{{--                                        HarvestPlus--}}
-
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        Producer--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
+                                @foreach($datasets->providers as $provider)
+                                    <tr>
+                                        <td>{{ $provider->name }}</td>
+                                        <td><a href="{{ $provider->url }}" target="_blank">{{ $provider->url }}</a><img src="http://ciat-library.ciat.cgiar.org/dm_images/CIAT-Logo-255x128.png" width="60"></td>
+                                        <td>{{ $datasets->contact }}</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

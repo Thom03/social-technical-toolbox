@@ -126,15 +126,14 @@
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
-                                        <label class="text-label">Status</label>
-                                        <select class="form-control"  name="status" id="status">
-                                            <option  value="unpublished">Unpublished</option>
-                                            <option value="published">Published</option>
+                                        <label class="text-label"><strong>Status</strong></label>
+                                        <select class="form-control" name="status" id="status">
+                                            <option value="unpublished" @if(old('status', $dataset->status) === 'unpublished') selected @endif>Unpublished</option>
+                                            <option value="published" @if(old('status', $dataset->status) === 'published') selected @endif>Published</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-
                                 <div class="row">
                                 <div class="col-lg-12 mb-2">
                                     <div class="card-header">
