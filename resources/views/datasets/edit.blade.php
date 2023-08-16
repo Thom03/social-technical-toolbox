@@ -85,8 +85,8 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label">DOI</label>
-                                        <input type="text" name="DOI" value="{{ $dataset->doi }}"
-                                               class="form-control" placeholder="DOI" >
+                                        <input type="text" name="DOI" value="{{ $dataset->DOI }}"
+                                               class="form-control" placeholder="DOI">
                                     </div>
                                 </div>
 
@@ -210,45 +210,43 @@
                                             <!-- The dynamic input fields will be added here -->
                                         </div>
 
-
+                                    @foreach($adminBoundaries as $index => $adminBoundary)
                                         <div class="col-lg-2 mb-2">
                                             <div class="form-group">
-                                                <input type="text" id="country" name="country[]"
-                                                       class="form-control" placeholder="Country" list="countryList">
+                                                <input type="text" id="country" name="country[]" class="form-control country-input" placeholder="Country" list="countryList" value="{{ old('country.'.$index, $adminBoundary->country) }}">
+                                                <input type="hidden" class="country-id-input" name="country_id[]" value="{{ old('country_id.'.$index, $adminBoundary->country_id) }}">
                                                 <datalist id="countryList">
-{{--                                                    @foreach($countryList->toArray() as $country)--}}
-{{--                                                        <option value="{{ is_array($country) ? htmlspecialchars($country['name']) : htmlspecialchars($country) }}" {{ in_array($country, $selectedCountries) ? 'selected' : '' }}></option>--}}
-{{--                                                    @endforeach--}}
+                                                    @foreach($countryList as $country)
+                                                        <option value="{{ $country->country_name }}" data-country-id="{{ $country->id_country }}">
+                                                    @endforeach
                                                 </datalist>
                                             </div>
                                         </div>
 
-                                    @foreach($administrativeBoundaries as $index => $boundary)
+                                        <div class="col-lg-2 mb-2">
+                                            <div class="form-group">
+                                                <input type="text" id="admin_bound_1" name="admin_bound_1[]" class="form-control" placeholder="Administrative Boundary 1" value="{{ old('admin_bound_1.'.$index, $adminBoundary->admin_bound_1) }}">
+                                            </div>
+                                        </div>
 
                                         <div class="col-lg-2 mb-2">
                                             <div class="form-group">
-                                                <input type="text" id="admin_bound_1{{ $index }}" name="admin_bound_1[]"
-                                                       class="form-control" placeholder="Administrative Boundary 1" value="{{ $boundary->admin_bound_1 }}">
+                                                <input type="text" id="admin_bound_2" name="admin_bound_2[]" class="form-control" placeholder="Administrative Boundary 2" value="{{ old('admin_bound_2.'.$index, $adminBoundary->admin_bound_2) }}">
                                             </div>
                                         </div>
+
                                         <div class="col-lg-2 mb-2">
                                             <div class="form-group">
-                                                <input type="text" id="admin_bound_2{{ $index }}" name="admin_bound_2[]"
-                                                       class="form-control" placeholder="Administrative Boundary 2" value="{{ $boundary->admin_bound_2 }}">
+                                                <input type="text" id="admin_bound_3" name="admin_bound_3[]" class="form-control" placeholder="Administrative Boundary 3" value="{{ old('admin_bound_3.'.$index, $adminBoundary->admin_bound_3) }}">
                                             </div>
                                         </div>
-                                        <div class="col-lg-2 mb-2">
-                                            <div class="form-group">
-                                                <input type="text" id="admin_bound_3{{ $index }}" name="admin_bound_3[]"
-                                                       class="form-control" placeholder="Administrative Boundary 3" value="{{ $boundary->admin_bound_3 }}">
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-outline-warning" type="button" onclick="region_fields();"> Add Region
-                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                            </button>
-                                        </div>
+                                    @endforeach
+
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-outline-warning" type="button" onclick="region_fields();">
+                                            Add Region<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
 
                             </div>
 

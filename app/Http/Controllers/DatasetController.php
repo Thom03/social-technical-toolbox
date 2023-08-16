@@ -31,7 +31,7 @@ class DatasetController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $dataset = Dataset::paginate(10);
+        $dataset = Dataset::paginate(12);
         $impactAreas = ImpactArea::all();
         $latestDatasets = Dataset::latest()->get();
 
@@ -230,15 +230,20 @@ class DatasetController extends Controller
         $impactAreas = ImpactArea::all();
         $innovations = Innovation::all();
         $techPracs = TechPrac::all();
-//        $countries = new Countries();
-//        $countryList = $countries->all()->pluck('name.common');
-        $countryList = Countries::all();
+        $client = new Client();
+        $response = $client->get('https://ramses.ciat.cgiar.org/api/v1/countries');
+        $responseData = json_decode($response->getBody());
+        $countryList = $responseData->result->data;
+
         $administrativeBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
+        $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
         $clusters = Cluster::all();
         $providers = Provider::all();
+        $regions = Region::all();
 
 
-        return view('datasets.edit', compact('logo', 'logoText', 'page_title', 'page_description', 'action', 'dataset', 'providers', 'impactAreas', 'innovations', 'techPracs','clusters', 'administrativeBoundaries', 'countryList'));
+
+        return view('datasets.edit', compact('logo', 'logoText', 'page_title', 'page_description', 'action', 'dataset', 'providers', 'regions','impactAreas', 'innovations', 'techPracs','clusters', 'adminBoundaries', 'countryList'));
     }
 
     /**

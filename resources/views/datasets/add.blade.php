@@ -34,11 +34,9 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label"><strong>Title</strong></label>
-                                        <textarea rows="5" name="title" class="form-control @error('title') is-invalid @enderror"  placeholder="Title" value="{{ old('title') }}"></textarea>
+                                        <textarea rows="5" name="title" class="form-control @error('title') is-invalid @enderror"  placeholder="Title">{{ old('title') }}</textarea>
                                         @error('title')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                        </span>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -150,7 +148,7 @@
                                         <select name="impact_areas[]" id="impact_areas"
                                                 class="form-control select2-tags" multiple>
                                             @foreach($impactAreas as $impactArea)
-                                                <option value="{{ $impactArea->id }}" {{ in_array($impactArea->id, old('impactAreas', [])) ? 'selected' : '' }}>
+                                                <option value="{{ $impactArea->id }}" {{ in_array($impactArea->id, old('impact_areas', [])) ? 'selected' : '' }}>
                                                     {{ $impactArea->name }}
                                                 </option>
                                             @endforeach
@@ -177,7 +175,7 @@
                                         <label for="tech_pracs"><strong>Technology/Practices</strong></label>
                                         <select name="tech_pracs[]" id="tech_pracs" class="form-control select2-tags" multiple>
                                             @foreach($techPracs as $techPracs)
-                                                <option class="badge badge-secondary" value="{{ $techPracs->id }}" {{ in_array($techPracs->id, old('techPracs', [])) ? 'selected' : '' }}>
+                                                <option class="badge badge-secondary" value="{{ $techPracs->id }}" {{ in_array($techPracs->id, old('tech_pracs', [])) ? 'selected' : '' }}>
                                                     {{ $techPracs->name }}
                                                 </option>
                                             @endforeach
@@ -199,7 +197,7 @@
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
                                         <label class="text-label"><strong>Observation</strong></label>
-                                        <textarea rows="3" name="observations" class="form-control" placeholder="Observation" value="{{ old('observations') }}"></textarea>
+                                        <textarea rows="3" name="observations" class="form-control" placeholder="Observation">{{ old('observations') }}</textarea>
                                     </div>
                                 </div>
 
