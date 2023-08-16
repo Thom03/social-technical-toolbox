@@ -154,29 +154,47 @@ class HomeController extends Controller
         $page_title = 'Home Page';
         $page_description = 'Social-Technical Innovation Bundles.';
         $action = __FUNCTION__;
-        $dataset = Dataset::where('status', 'published')->paginate(12);
-        $dataset_count = Dataset::where('status', 'published')->count();
         $region_count = Region::count();
-        $country_count = AdministrativeBoundary::distinct('country')->count('country');
         $cluster_count = Cluster::count();
+        $country_count = AdministrativeBoundary::distinct('country')->count('country');
 
         $searchQuery = $request->input('search');
+        $regionFilter = $request->input('region');
+        $impactAreaFilter = $request->input('impact_area');
+
+        $query = Dataset::where('status', 'published');
 
         if ($searchQuery) {
-            $searchResults = Dataset::where('status', 'published')
-                ->where(function ($query) use ($searchQuery) {
-                    $query->where('title', 'like', "%$searchQuery%")
-                        ->orWhere('author', 'like', "%$searchQuery%")
-                        ->orWhere('release_year', 'like', "%$searchQuery%");
-                    // Add more columns to search here
-                })
-                ->paginate(12);
-
-            return view('home-grid', compact('dataset', 'dataset_count', 'region_count', 'cluster_count', 'country_count', 'logo', 'page_title', 'page_description', 'action', 'searchResults'));
+            $query->where(function ($query) use ($searchQuery) {
+                $query->where('title', 'like', "%$searchQuery%")
+                    ->orWhere('author', 'like', "%$searchQuery%")
+                    ->orWhere('release_year', 'like', "%$searchQuery%");
+                // Add more columns to search here
+            });
         }
 
+        if ($regionFilter) {
+            // Assuming you have a "regions" relationship on your Dataset model
+            $query->whereHas('regions', function ($query) use ($regionFilter) {
+                $query->where('regions.id', $regionFilter);
+            });
+        }
 
-        return view('home-grid', compact('dataset', 'dataset_count','region_count', 'cluster_count', 'country_count','logo','page_title', 'page_description','action'));
+        if ($impactAreaFilter) {
+            // Assuming you have an "impactAreas" relationship on your Dataset model
+            $query->whereHas('impactAreas', function ($query) use ($impactAreaFilter) {
+                $query->where('impact_areas.id', $impactAreaFilter);
+            });
+        }
+
+        $dataset = $query->paginate(12);
+        $dataset_count = $dataset->total(); // Get the total count of filtered results
+
+        // Assuming you have a Region model to get the list of regions
+        $regions = Region::all();
+        $impactAreas = ImpactArea::all();
+
+        return view('home-grid', compact('dataset', 'dataset_count', 'region_count', 'cluster_count', 'country_count', 'logo', 'page_title', 'page_description', 'action', 'regions', 'impactAreas'));
     }
     public function bundle_detail($id, Dataset $dataset)
     {

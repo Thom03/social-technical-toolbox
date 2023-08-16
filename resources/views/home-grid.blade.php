@@ -124,17 +124,20 @@
                     <i class="flaticon-381-controls-3 mr-2"></i> Regions
                 </div>
                 <div class="dropdown-menu dropdown-menu-left">
-                    <a class="dropdown-item" href="#">A To Z List</a>
-                    <a class="dropdown-item" href="#">Z To A List</a>
+                    @foreach ($regions as $region)
+                        <a class="dropdown-item" href="{{ route('landing_page_grid', ['region' => $region->id]) }}">{{ $region->name }}</a>
+                    @endforeach
                 </div>
             </div>
+
             <div class="dropdown ml-3 d-inline-block">
                 <div class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
                     <i class="flaticon-381-controls-3 mr-2"></i> Impact Areas
                 </div>
                 <div class="dropdown-menu dropdown-menu-left">
-                    <a class="dropdown-item" href="#">A To Z List</a>
-                    <a class="dropdown-item" href="#">Z To A List</a>
+                    @foreach ($impactAreas as $impactArea)
+                        <a class="dropdown-item" href="{{ route('landing_page_grid', ['impact_area' => $impactArea->id]) }}">{{ $impactArea->name }}</a>
+                    @endforeach
                 </div>
             </div>
             <div class="dropdown ml-3 d-inline-block">
