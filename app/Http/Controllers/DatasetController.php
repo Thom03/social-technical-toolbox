@@ -31,7 +31,7 @@ class DatasetController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $dataset = Dataset::all();
+        $dataset = Dataset::paginate(12);
         $impactAreas = ImpactArea::all();
         $latestDatasets = Dataset::latest()->get();
 
@@ -92,6 +92,15 @@ class DatasetController extends Controller
      */
     public function insert_dataset(Request $request)
     {
+        // Define custom validation messages
+        $customMessages = [
+            'impact_areas.*.exists' => 'The selected impact area is invalid.',
+            'innovations.*.exists' => 'The selected innovation is invalid.',
+            'tech_pracs.*.exists' => 'The selected tech practice is invalid.',
+            'clusters.*.exists' => 'The selected cluster is invalid.',
+            'providers.*.exists' => 'The selected provider is invalid.',
+            'regions.*.exists' => 'The selected region is invalid.',
+        ];
 
         // Validate the form data
         $validateData = $request->validate([
@@ -113,7 +122,7 @@ class DatasetController extends Controller
             'admin_bound_2.*' => 'nullable',
             'admin_bound_3.*' => 'nullable',
 
-        ]);
+        ], $customMessages);
 
         // Create the dataset
         $dataset = new Dataset();
@@ -221,15 +230,20 @@ class DatasetController extends Controller
         $impactAreas = ImpactArea::all();
         $innovations = Innovation::all();
         $techPracs = TechPrac::all();
-//        $countries = new Countries();
-//        $countryList = $countries->all()->pluck('name.common');
-        $countryList = Countries::all();
+        $client = new Client();
+        $response = $client->get('https://ramses.ciat.cgiar.org/api/v1/countries');
+        $responseData = json_decode($response->getBody());
+        $countryList = $responseData->result->data;
+
         $administrativeBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
+        $adminBoundaries = AdministrativeBoundary::where('dataset_id', $id)->get();
         $clusters = Cluster::all();
         $providers = Provider::all();
+        $regions = Region::all();
 
 
-        return view('datasets.edit', compact('logo', 'logoText', 'page_title', 'page_description', 'action', 'dataset', 'providers', 'impactAreas', 'innovations', 'techPracs','clusters', 'administrativeBoundaries', 'countryList'));
+
+        return view('datasets.edit', compact('logo', 'logoText', 'page_title', 'page_description', 'action', 'dataset', 'providers', 'regions','impactAreas', 'innovations', 'techPracs','clusters', 'adminBoundaries', 'countryList'));
     }
 
     /**
@@ -393,6 +407,22 @@ class DatasetController extends Controller
         $dataset->delete();
 
         return redirect('/datasetlist')->with('status', 'Dataset has been deleted successfully.');
+
+    }
+
+
+    public function upload_dataset(Request $request)
+    {
+        $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
+        $page_title = 'Datasets';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+
+
+
+        return view('datasets.upload', compact('logo', 'logoText', 'page_title', 'page_description', 'action'));
 
     }
 }

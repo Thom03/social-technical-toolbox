@@ -48,7 +48,7 @@
 						</a>
                         <ul aria-expanded="false">
                             <li><a href="{!! url('./datasetlist'); !!}">Dataset List</a></li>
-                            <li><a href="{!! url('./chart-morris'); !!}">Uploading Dataset</a></li>
+                            <li><a href="{!! url('./upload_dataset'); !!}">Uploading Dataset</a></li>
 
                         </ul>
                     </li>
@@ -71,7 +71,7 @@
                             <li><a href="{{ route('region_list') }}">Dataset Regions</a></li>
                             <li><a href="{{ route('cluster_list') }}">Dataset Clusters</a></li>
                             <li><a href="{{ route('impact_list') }}">Dataset Impact Areas</a></li>
-                            <li><a href="{{ route('innovation_list') }}">Innovations</a></li>
+                            <li><a href="{{ route('innovation_list') }}">Social Innovations</a></li>
                             <li><a href="{{ route('techprac_list') }}">Technology/Practices</a></li>
 {{--                            <li><a href="{!! url('./uc-toastr'); !!}">Toastr</a></li>--}}
 {{--                            <li><a href="{!! url('./map-jqvmap'); !!}">Jqv Map</a></li>--}}

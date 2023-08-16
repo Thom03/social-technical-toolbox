@@ -5,15 +5,16 @@ var options = {
 }
 var map = L.mapbox.map('map',undefined,options).setView([0.5286709, 27.2723167], 3);
 
+
 L.mapbox.styleLayer('mapbox://styles/mapbox/light-v9',{
-    attribution: 'Developed by <a href="http://ciat.cgiar.org" class="blue">Alliance and CIAT</a>',
+    attribution: 'Designed & Developed by  <a href="http://ciat.cgiar.org" class="link">Alliance Bioversity and CIAT</a>',
 }).addTo(map);
 
 //******************************************************************************************
 //To Country layer
 //******************************************************************************************
 
-// Fetch country data from the '/countries-json' route
+
 // Fetch country data from the '/countries-json' route
 fetch('/countries-json')
     .then(response => response.json())
@@ -104,6 +105,7 @@ fetch('/countries-json')
         console.error('Failed to fetch country data:', error);
     });
 
+
 fetch('/getcountrygeojson')
     .then(response => response.json())
     .then(data => {
@@ -112,12 +114,20 @@ fetch('/getcountrygeojson')
             style: {
                 color: '#f15a31', // Customize the boundary color
                 weight: 1, // Customize the boundary weight
-            },
+            }
         });
 
         // Add the GeoJSON layer to the map
         boundaryLayer.addTo(map);
+
     })
     .catch(error => {
         console.error('Failed to fetch administrative boundary data:', error);
     });
+
+
+
+
+
+var miniMap = new L.Control.GlobeMiniMap({
+}).addTo(map);

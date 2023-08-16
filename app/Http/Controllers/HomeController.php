@@ -154,7 +154,7 @@ class HomeController extends Controller
         $page_title = 'Home Page';
         $page_description = 'Social-Technical Innovation Bundles.';
         $action = __FUNCTION__;
-        $dataset = Dataset::where('status', 'published')->get();
+        $dataset = Dataset::where('status', 'published')->paginate(12);
         $dataset_count = Dataset::where('status', 'published')->count();
         $region_count = Region::count();
         $country_count = AdministrativeBoundary::distinct('country')->count('country');

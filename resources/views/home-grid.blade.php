@@ -10,7 +10,6 @@
                 <div class="widget-stat card">
                     <div class="card-body p-4">
                         <div class="media ai-icon">
-
                             <span class="mr-3 bgl-success text-success">
 										<svg id="icon-database-widget" xmlns="http://www.w3.org/2000/svg" width="24"
                                              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -145,48 +144,63 @@
 
         <div class="row">
             <div class="col-xl-12">
-                <div id="accordion-one" class="accordion doctor-list ">
+                <div id="accordion-one" class="accordion doctor-list">
                     <div class="accordion__item">
-                        <div id="default_collapseOne" class="collapse accordion__body show"
-                             data-parent="#accordion-one">
+                        <div id="default_collapseOne" class="collapse accordion__body show" data-parent="#accordion-one">
                             <div class="widget-media best-doctor pt-4">
                                 <div class="timeline row">
-                                    @foreach ($dataset as $dataset)
+                                    @foreach ($dataset as $data)
                                         <div class="col-lg-4">
                                             <div class="timeline-panel bg-dark-alt p-4 mb-4">
-                                                <div class="media-body">
-                                                    <a href="{{ route('bundle_detail', $dataset->id) }}"><h4
-                                                            class="mb-2">{{ $dataset->title }}</h4></a>
-                                                    {{--                                                                @foreach($dataset->impactAreas as $impactArea)--}}
-                                                    {{--                                                                    --}}{{--                                                <p><span class="badge badge-rounded badge-secondary">{{ $impactArea->name }}</span></p>--}}
-                                                    {{--                                                                    --}}{{--                                                        <span class="badge badge-primary">{{ $impactArea->name }}</span>--}}
-                                                    {{--                                                                    <label class="form-check-label" for="impact_area_{{ $impactArea->id }}">--}}
-                                                    {{--                                                                        <span class="badge badge-primary">{{ $impactArea->name }}</span>--}}
-                                                    {{--                                                                    </label>--}}
-                                                    {{--                                                                @endforeach--}}
-                                                    <span>Release Year:</span><span
-                                                        class="badge badge-light"> {{ $dataset->release_year }}</span>
-                                                    <span>DOI:</span><span
-                                                        class="badge badge-light-"> {{ $dataset->DOI }}</span>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                </div>
+                                                <a href="{{ route('bundle_detail', $data->id) }}" class="text-decoration-none">
+                                                    <div class="media-body">
+                                                        <a href="{{ route('bundle_detail', $data->id) }}">
+                                                            <h4 class="mb-2">{{ $data->title }}</h4>
+                                                        </a>
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="mr-2">Release Year:</span>
+                                                            <span class="badge badge-light">{{ $data->release_year }}</span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="mr-2">DOI:</span>
+                                                            <span class="badge badge-rounded badge-outline-info">{{ $data->DOI }}</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
-
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+        </div>
 
+        <div class="row justify-content-center">
+            <nav>
+                <ul class="pagination pagination-circle">
+                    <li class="page-item page-indicator">
+                        <a class="page-link" href="{{ $dataset->previousPageUrl() }}" aria-label="Previous">
+                            <i class="la la-angle-left"></i>
+                        </a>
+                    </li>
+                    @for ($i = 1; $i <= $dataset->lastPage(); $i++)
+                        <li class="page-item {{ $dataset->currentPage() == $i ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $dataset->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
 
+                    <li class="page-item page-indicator">
+                        <a class="page-link" href="{{ $dataset->nextPageUrl() }}" aria-label="Next">
+                            <i class="la la-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
-    <div>
 
 @endsection

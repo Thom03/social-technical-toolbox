@@ -17,7 +17,7 @@ class ProviderController extends Controller
         $page_description = 'Some description for the page';
 
         $action = __FUNCTION__;
-        $providers = Provider::all();
+        $providers = Provider::paginate(6);
 
         return view('settings.provider.index', compact('providers','logo', 'page_title', 'page_description', 'action'));
 

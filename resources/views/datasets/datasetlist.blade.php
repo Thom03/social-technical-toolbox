@@ -41,12 +41,12 @@
                         <div id="default_collapseOne" class="collapse accordion__body show" data-parent="#accordion-one">
                             <div class="widget-media best-doctor pt-4">
                                 <div class="timeline row">
-                                    @foreach ($dataset as $dataset)
+                                    @foreach ($dataset as $data)
                                     <div class="col-lg-6">
                                         <div class="timeline-panel bg-white p-4 mb-4">
                                             <div class="media-body">
-                                                <h4 class="mb-2">{{ $dataset->title }}</h4>
-                                                @foreach($dataset->impactAreas as $impactArea)
+                                                <h4 class="mb-2">{{ $data->title }}</h4>
+                                                @foreach($data->impactAreas as $impactArea)
 {{--                                                <p><span class="badge badge-rounded badge-secondary">{{ $impactArea->name }}</span></p>--}}
 {{--                                                        <span class="badge badge-primary">{{ $impactArea->name }}</span>--}}
                                                     <label class="form-check-label" for="impact_area_{{ $impactArea->id }}">
@@ -55,22 +55,20 @@
                                                 @endforeach
                                             <br>
                                                 <br>
-                                                @if($dataset->status == 'published')
-                                                <span>Status: </span><span class="badge badge-success">{{ $dataset->status }}</span>
+                                                @if($data->status == 'published')
+                                                <span>Status: </span><span class="badge badge-success">{{ $data->status }}</span>
                                                 @else
-                                                    <span>Status: </span><span class="badge badge-warning">{{ $dataset->status }}</span>
+                                                    <span>Status: </span><span class="badge badge-warning">{{ $data->status }}</span>
                                                 @endif
                                                 <br>
                                                 <br>
-{{--                                                <a href="{{ route('edit_dataset', $dataset->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>--}}
-{{--                                                <a href="{{ route('datset_detail', $dataset->id) }}" type="button" class="btn btn-rounded btn-light">View</a>--}}
-{{--                                                <a href="#" class="btn btn-rounded btn-outline-danger">DELETE</a>--}}
-                                                <form action="{{ route('delete_dataset', ['id' => $dataset->id]) }}" method="POST">
+
+                                                <form action="{{ route('delete_dataset', ['id' => $data->id]) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     {{--                                                <a class="dropdown-item text-danger">Delete</a>--}}
-                                                    <a href="{{ route('edit_dataset', $dataset->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>
-                                                    <a href="{{ route('datset_detail', $dataset->id) }}" type="button" class="btn btn-rounded btn-light">View</a>
+                                                    <a href="{{ route('edit_dataset', $data->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>
+                                                    <a href="{{ route('datset_detail', $data->id) }}" type="button" class="btn btn-rounded btn-light">View</a>
                                                     <button class="btn btn-rounded btn-outline-danger" type="submit">Delete</button>
                                                 </form>
                                             </div>
@@ -80,31 +78,33 @@
 
                                     @endforeach
                                 </div>
-{{--                                <nav>--}}
-{{--                                    <ul class="pagination pagination-circle">--}}
-{{--                                        <li class="page-item page-indicator">--}}
-{{--                                            <a class="page-link" href="javascript:void()">--}}
-{{--                                                <i class="la la-angle-left"></i></a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="page-item active"><a class="page-link" href="javascript:void()">1</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li class="page-item page-indicator">--}}
-{{--                                            <a class="page-link" href="javascript:void()">--}}
-{{--                                                <i class="la la-angle-right"></i></a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </nav>--}}
                             </div>
-
                         </div>
-
                     </div>
-
-
-
                 </div>
             </div>
+        </div>
+        <div class="row justify-content-center">
+            <nav>
+                <ul class="pagination pagination-circle">
+                    <li class="page-item page-indicator">
+                        <a class="page-link" href="{{ $dataset->previousPageUrl() }}" aria-label="Previous">
+                            <i class="la la-angle-left"></i>
+                        </a>
+                    </li>
+                    @for ($i = 1; $i <= $dataset->lastPage(); $i++)
+                        <li class="page-item {{ $dataset->currentPage() == $i ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $dataset->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
 
+                    <li class="page-item page-indicator">
+                        <a class="page-link" href="{{ $dataset->nextPageUrl() }}" aria-label="Next">
+                            <i class="la la-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 
