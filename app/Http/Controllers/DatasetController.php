@@ -92,6 +92,15 @@ class DatasetController extends Controller
      */
     public function insert_dataset(Request $request)
     {
+        // Define custom validation messages
+        $customMessages = [
+            'impact_areas.*.exists' => 'The selected impact area is invalid.',
+            'innovations.*.exists' => 'The selected innovation is invalid.',
+            'tech_pracs.*.exists' => 'The selected tech practice is invalid.',
+            'clusters.*.exists' => 'The selected cluster is invalid.',
+            'providers.*.exists' => 'The selected provider is invalid.',
+            'regions.*.exists' => 'The selected region is invalid.',
+        ];
 
         // Validate the form data
         $validateData = $request->validate([
@@ -113,7 +122,7 @@ class DatasetController extends Controller
             'admin_bound_2.*' => 'nullable',
             'admin_bound_3.*' => 'nullable',
 
-        ]);
+        ], $customMessages);
 
         // Create the dataset
         $dataset = new Dataset();
