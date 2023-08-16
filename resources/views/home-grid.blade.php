@@ -145,10 +145,12 @@
                     <i class="flaticon-381-controls-3 mr-2"></i> Cluster
                 </div>
                 <div class="dropdown-menu dropdown-menu-left">
-                    <a class="dropdown-item" href="#">Cluster 1</a>
-                    <a class="dropdown-item" href="#">Cluster 2</a>
+                    @foreach ($clusters as $cluster)
+                        <a class="dropdown-item" href="{{ route('landing_page_grid', ['cluster' => $cluster->id]) }}">{{ $cluster->name }}</a>
+                    @endforeach
                 </div>
             </div>
+
             <div class="dropdown ml-3 d-inline-block">
                 <div class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
                     Newest

@@ -161,6 +161,7 @@ class HomeController extends Controller
         $searchQuery = $request->input('search');
         $regionFilter = $request->input('region');
         $impactAreaFilter = $request->input('impact_area');
+        $clusterFilter = $request->input('cluster');
 
         $query = Dataset::where('status', 'published');
 
@@ -174,16 +175,23 @@ class HomeController extends Controller
         }
 
         if ($regionFilter) {
-            // Assuming you have a "regions" relationship on your Dataset model
+            // Filter by Region
             $query->whereHas('regions', function ($query) use ($regionFilter) {
                 $query->where('regions.id', $regionFilter);
             });
         }
 
         if ($impactAreaFilter) {
-            // Assuming you have an "impactAreas" relationship on your Dataset model
+            // Filter by Impact Area
             $query->whereHas('impactAreas', function ($query) use ($impactAreaFilter) {
                 $query->where('impact_areas.id', $impactAreaFilter);
+            });
+        }
+
+        if ($clusterFilter) {
+            // Filter by Cluster
+            $query->whereHas('clusters', function ($query) use ($clusterFilter) {
+                $query->where('clusters.id', $clusterFilter);
             });
         }
 
@@ -193,8 +201,9 @@ class HomeController extends Controller
         // Assuming you have a Region model to get the list of regions
         $regions = Region::all();
         $impactAreas = ImpactArea::all();
+        $clusters = Cluster::all();
 
-        return view('home-grid', compact('dataset', 'dataset_count', 'region_count', 'cluster_count', 'country_count', 'logo', 'page_title', 'page_description', 'action', 'regions', 'impactAreas'));
+        return view('home-grid', compact('dataset', 'dataset_count', 'region_count', 'cluster_count', 'country_count', 'logo', 'page_title', 'page_description', 'action', 'regions', 'impactAreas', 'clusters'));
     }
     public function bundle_detail($id, Dataset $dataset)
     {
