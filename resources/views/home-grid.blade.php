@@ -103,15 +103,34 @@
 
         <div class="form-head d-flex mb-3  mb-lg-5   align-items-start">
 
+{{--            <div class="input-group search-area ml-auto d-inline-flex">--}}
+{{--                <input type="text" class="form-control" placeholder="Search here">--}}
+{{--                <div class="input-group-append">--}}
+{{--                    <span class="input-group-text"><i class="flaticon-381-search-2"></i></span>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="input-group search-area ml-auto d-inline-flex">
-                <input type="text" class="form-control" placeholder="Search here">
-                <div class="input-group-append">
-                    <span class="input-group-text"><i class="flaticon-381-search-2"></i></span>
+                <form action="{{ route('landing_page_grid') }}" method="GET" class="form-inline">
+                    <input type="text" name="search" class="form-control" placeholder="Search here">
+                    <div class="input-group-append">
+                        <button type="submit" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+{{--                        <span class="input-group-text"><i class="flaticon-381-search-2"></i></span>--}}
+                    </div>
+                </form>
+
+            </div>
+            <div class="dropdown ml-3 d-inline-block">
+                <div class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
+                    <i class="flaticon-381-controls-3 mr-2"></i> Regions
+                </div>
+                <div class="dropdown-menu dropdown-menu-left">
+                    <a class="dropdown-item" href="#">A To Z List</a>
+                    <a class="dropdown-item" href="#">Z To A List</a>
                 </div>
             </div>
             <div class="dropdown ml-3 d-inline-block">
                 <div class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
-                    <i class="flaticon-381-controls-3 mr-2"></i> Filter
+                    <i class="flaticon-381-controls-3 mr-2"></i> Impact Areas
                 </div>
                 <div class="dropdown-menu dropdown-menu-left">
                     <a class="dropdown-item" href="#">A To Z List</a>
@@ -146,31 +165,64 @@
             <div class="col-xl-12">
                 <div id="accordion-one" class="accordion doctor-list">
                     <div class="accordion__item">
-                        <div id="default_collapseOne" class="collapse accordion__body show" data-parent="#accordion-one">
+                        <div id="default_collapseOne" class="collapse accordion__body show"
+                             data-parent="#accordion-one">
                             <div class="widget-media best-doctor pt-4">
                                 <div class="timeline row">
+                                    @if(isset($searchResults))
+                                        @foreach ($searchResults as $data)
+                                            <!-- Display search result content here -->
+                                            <div class="col-lg-4">
+                                                <div class="timeline-panel bg-dark-alt p-4 mb-4">
+                                                    <a href="{{ route('bundle_detail', $data->id) }}"
+                                                       class="text-decoration-none">
+                                                        <div class="media-body">
+                                                            <a href="{{ route('bundle_detail', $data->id) }}">
+                                                                <h4 class="mb-2">{{ $data->title }}</h4>
+                                                            </a>
+                                                            <div class="d-flex align-items-center">
+                                                                <span class="mr-2">Release Year:</span>
+                                                                <span
+                                                                    class="badge badge-light">{{ $data->release_year }}</span>
+                                                            </div>
+                                                            <br>
+                                                            <div class="d-flex align-items-center">
+                                                                <span class="mr-2">DOI:</span>
+                                                                <span
+                                                                    class="badge badge-rounded badge-outline-info">{{ $data->DOI }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @else
                                     @foreach ($dataset as $data)
                                         <div class="col-lg-4">
                                             <div class="timeline-panel bg-dark-alt p-4 mb-4">
-                                                <a href="{{ route('bundle_detail', $data->id) }}" class="text-decoration-none">
+                                                <a href="{{ route('bundle_detail', $data->id) }}"
+                                                   class="text-decoration-none">
                                                     <div class="media-body">
                                                         <a href="{{ route('bundle_detail', $data->id) }}">
                                                             <h4 class="mb-2">{{ $data->title }}</h4>
                                                         </a>
                                                         <div class="d-flex align-items-center">
                                                             <span class="mr-2">Release Year:</span>
-                                                            <span class="badge badge-light">{{ $data->release_year }}</span>
+                                                            <span
+                                                                class="badge badge-light">{{ $data->release_year }}</span>
                                                         </div>
                                                         <br>
                                                         <div class="d-flex align-items-center">
                                                             <span class="mr-2">DOI:</span>
-                                                            <span class="badge badge-rounded badge-outline-info">{{ $data->DOI }}</span>
+                                                            <span
+                                                                class="badge badge-rounded badge-outline-info">{{ $data->DOI }}</span>
                                                         </div>
                                                     </div>
                                                 </a>
                                             </div>
                                         </div>
                                     @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -202,5 +254,12 @@
             </nav>
         </div>
     </div>
+
+    <!-- Display search results -->
+    @if(isset($searchResults))
+        <div class="search-results">
+            <!-- Display search results here -->
+        </div>
+    @endif
 
 @endsection

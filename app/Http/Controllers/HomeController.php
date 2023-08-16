@@ -148,7 +148,7 @@ class HomeController extends Controller
         return view('home-list', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
     }
 
-    public function landing_page_grid()
+    public function landing_page_grid(Request $request)
     {
         $logo = "img/logo.png";
         $page_title = 'Home Page';
@@ -159,6 +159,21 @@ class HomeController extends Controller
         $region_count = Region::count();
         $country_count = AdministrativeBoundary::distinct('country')->count('country');
         $cluster_count = Cluster::count();
+
+        $searchQuery = $request->input('search');
+
+        if ($searchQuery) {
+            $searchResults = Dataset::where('status', 'published')
+                ->where(function ($query) use ($searchQuery) {
+                    $query->where('title', 'like', "%$searchQuery%")
+                        ->orWhere('author', 'like', "%$searchQuery%")
+                        ->orWhere('release_year', 'like', "%$searchQuery%");
+                    // Add more columns to search here
+                })
+                ->paginate(12);
+
+            return view('home-grid', compact('dataset', 'dataset_count', 'region_count', 'cluster_count', 'country_count', 'logo', 'page_title', 'page_description', 'action', 'searchResults'));
+        }
 
 
         return view('home-grid', compact('dataset', 'dataset_count','region_count', 'cluster_count', 'country_count','logo','page_title', 'page_description','action'));
