@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "darkaonline/l5-swagger": "^8.5",
+        "dedoc/scramble": "^0.7.2",
         "facade/ignition": "^2.17",
         "fruitcake/laravel-cors": "^2.0",
         "grimzy/laravel-mysql-spatial": "^5.0",
