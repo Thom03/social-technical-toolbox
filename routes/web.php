@@ -39,6 +39,10 @@ Route::get('/getcountrygeojson', [HomeController::class, 'getGeometryGeoJson'])-
 Route::get('/update-null-coordinates', [HomeController::class, 'updateNullCoordinates'])->name('update-null-coordinates');
 
 
+Route::get('/micro_page', [HomeController::class, 'micro_page'])->name('micro_page');
+
+
+
 Auth::routes();
 
 
