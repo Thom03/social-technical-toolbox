@@ -79,7 +79,7 @@
 
 
                                 </div>
-                                <div class="col-12 bg-inverse text-white" onclick="displayFilters('commodities')"><i class="fa fa-file-text"></i> Clusters</div>
+                                <div class="col-12 bg-inverse text-white" onclick="displayFilters('commodities')"><i class="fa fa-file-text"></i> Innovations</div>
                                 <div id="commodities" class="col-12 show">
                                     <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Beans" id="Beans" checked class="ciat-check"> <label for="Beans" class="small">Social</label><br>
                                     <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Cassava" id="Cassava" checked class="ciat-check"> <label for="Cassava" class="small">Technical</label><br>

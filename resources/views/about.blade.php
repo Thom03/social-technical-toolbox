@@ -13,18 +13,18 @@
                             <div class="col-md-12">
                                 <h1 class="text-center">About Us!</h1>
 {{--                                <h2>Social-Technical Innovation Bundle (STIB) Toolbox</h2>--}}
-                                <p class="text-justify">Work package 2  of the CGIAR Global Initiative on Gender Equality (HER+) has implemented an interactive map and dashboard that dynamically
-                                    displays the global distribution of socio-economic datasets, data, and tools that facilitate bundling in different regional and
-                                    thematic contexts. This visualization effectively conveys the results and impact of these innovation bundles while categorizing datasets into
-                                    distinct categories. Furthermore, an accessible API that facilitates effortless integration and data transfer with other CGIAR platforms,
+                                <p class="text-justify">Work package 2 of the CGIAR Global Initiative on Gender Equality (HER+) has implemented an interactive map and dashboard that dynamically displays the global distribution of socio-economic datasets,
+                                    data, and tools that facilitate bundling in different regional and thematic contexts.
+                                    This visualization effectively conveys the results and impact of these innovation bundles on the five CGIAR impact areas.
+                                    Furthermore, an accessible API has been created facilitates effortless integration and data transfer with other CGIAR platforms,
                                     enhancing this valuable resource's collaborative potential</p>
                             </div>
                             <div class="col-md-12">
                                 <h2 class="m-b-0">Concept by</h2>
-                                <a href="#" target="_blank"><b>Dr. Eileen Nchanji </b></a>Co-Lead Work Package 2 Initiative<br />
-                                <a href="#" target="_blank"><b>Leroy Mwanzia</b></a> Senior Data Manager<br />
-                                <a href="#" target="_blank"><b>Cosmus Lutomia</b></a> Senior Research Associate – Value Chain Specialist<br />
-                                <a href="#" target="_blank"><b>George Thomas Muteti</b></a> Data Systems Analyst <br />
+                                <a href="#" target="_blank"><b>Dr. Eileen Nchanji </b></a>Co-Lead Work Package 2 Initiative<br/>
+                                <a href="#" target="_blank"><b>Leroy Mwanzia</b></a> Senior Data Manager<br/>
+                                <a href="#" target="_blank"><b>Cosmus Lutomia</b></a> Senior Research Associate – Value Chain Specialist<br/>
+                                <a href="#" target="_blank"><b>George Muteti Thomas</b></a> Data Systems Analyst <br/>
 
                                 <br />
                                 <h2 class="m-b-0">Credits</h2>

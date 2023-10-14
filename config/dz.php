@@ -57,16 +57,23 @@ return [
                     'vendor/chartist/css/chartist.min.css',
                     'vendor/datatables/css/jquery.dataTables.min.css',
                     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
-                ],'micro_page' => [
+                ],'landing_page_list' => [
                     'vendor/jqvmap/css/jqvmap.min.css',
                     'vendor/chartist/css/chartist.min.css',
-                    'https://cdn.lineicons.com/2.0/LineIcons.css',
+                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+//                    'https://cdn.lineicons.com/2.0/LineIcons.css',
                     'vendor/chartist/css/chartist.min.css',
                     'vendor/datatables/css/jquery.dataTables.min.css',
                     'css/microdata-style.css',
-                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
-//                    'https://microdata.fao.org/themes/fam52/css/style.css?v2021-231',
-//                    'https://microdata.fao.org/themes/fam52/css/custom.css?v2021',
+                    'css/catalog-card.css',
+                    'css/catalog-tab.css',
+                    'css/custom.css',
+                    'css/facets.css',
+                    'css/filter-action-bar.css',
+                    'css/home.css',
+//                    'css/microstyle.css',
+                    'css/varible.css',
+//                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
                 ],'landing_page_grid' => [
                     'vendor/jqvmap/css/jqvmap.min.css',
                     'vendor/chartist/css/chartist.min.css',
@@ -362,7 +369,7 @@ return [
                     'vendor/peity/jquery.peity.min.js',
                     'js/plugins-init/piety-init.js',
                     'js/plugins-init/widgets-script-init.js',
-                ],'micro_page' => [
+                ],'landing_page_list' => [
                     'vendor/apexchart/apexchart.js',
                     'js/dashboard/dashboard-1.js',
                     'js/custom.min.js',

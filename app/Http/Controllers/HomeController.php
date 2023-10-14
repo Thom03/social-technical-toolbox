@@ -111,7 +111,7 @@ class HomeController extends Controller
     public function map_page(Geocoder $geocoder)
     {
         $logo = "img/logo.png";
-        $page_title = 'Map Page';
+        $page_title = 'Homepage';
         $page_description = 'Social-Technical Innovation Bundles.';
 
         $action = __FUNCTION__;
@@ -151,7 +151,7 @@ class HomeController extends Controller
     public function landing_page_grid(Request $request)
     {
         $logo = "img/logo.png";
-        $page_title = 'Home Page';
+        $page_title = 'STIBs Grid Display Page';
         $page_description = 'Social-Technical Innovation Bundles.';
         $action = __FUNCTION__;
         $region_count = Region::count();
@@ -208,7 +208,7 @@ class HomeController extends Controller
     public function bundle_detail($id, Dataset $dataset)
     {
         $logo = "img/logo.png";
-        $page_title = 'Details Page';
+        $page_title = 'STIB Bundle Details Page';
         $page_description = 'Social-Technical Innovation Bundles.';
 
         $action = __FUNCTION__;
@@ -229,7 +229,7 @@ class HomeController extends Controller
     public function graphs_page()
     {
         $logo = "img/logo.png";
-        $page_title = 'Graph Page';
+        $page_title = 'Infographics Page';
         $page_description = 'Social-Technical Innovation Bundles';
         $action = __FUNCTION__;
         $dataset_count = Dataset::where('status', 'published')->count();
@@ -300,20 +300,24 @@ class HomeController extends Controller
     }
 
 
-    public function micro_page()
+    public function landing_page_list()
     {
         $logo = "img/logo.png";
-        $page_title = 'Home Page';
+        $page_title = 'STIBs List Diplay';
         $page_description = 'Social-Technical Innovation Bundles.';
         $action = __FUNCTION__;
-        $dataset = Dataset::where('status', 'published')->get();
+
         $dataset_count = Dataset::where('status', 'published')->count();
         $region_count = Region::count();
         $country_count = AdministrativeBoundary::distinct('country')->count('country');
         $cluster_count = Cluster::count();
 
+//        $query = Dataset::where('status', 'published');
+//        $dataset = $query->paginate(15);
+        $dataset = Dataset::where('status', 'published')->paginate(15);
 
-        return view('microdata', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
+
+        return view('display-bundle-list', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
     }
 
 

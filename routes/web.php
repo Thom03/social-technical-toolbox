@@ -29,9 +29,9 @@ use App\Http\Controllers\HomeController;
 
 //    Home Routes
 Route::get('/2', [HomeController::class, 'landing_page'])->name('landing_page');
-Route::get('/', [HomeController::class, 'landing_page_grid'])->name('landing_page_grid');
+Route::get('/1', [HomeController::class, 'landing_page_grid'])->name('landing_page_grid');
 Route::get('/bundle_detail/{id}', [HomeController::class, 'bundle_detail'])->name('bundle_detail');
-Route::get('/map', [HomeController::class, 'map_page'])->name('map_page');
+Route::get('/', [HomeController::class, 'map_page'])->name('map_page');
 Route::get('/countries-json', [HomeController::class, 'getCountriesJson'])->name('countries-json');
 Route::get('/graphs', [HomeController::class, 'graphs_page'])->name('graphs');
 Route::get('/about-us', [HomeController::class, 'about_page'])->name('about_us');
@@ -39,7 +39,7 @@ Route::get('/getcountrygeojson', [HomeController::class, 'getGeometryGeoJson'])-
 Route::get('/update-null-coordinates', [HomeController::class, 'updateNullCoordinates'])->name('update-null-coordinates');
 
 
-Route::get('/micro_page', [HomeController::class, 'micro_page'])->name('micro_page');
+Route::get('/display-bundle-list', [HomeController::class, 'landing_page_list'])->name('display-bundle-list');
 
 
 

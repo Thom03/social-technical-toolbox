@@ -149,14 +149,4 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 25%;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-    font-family: 'normal' !important;
-    speak: never;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+

@@ -1,0 +1,23 @@
+/* user defined custom styles or overrides only */
+.list-inline-item:not(:last-child) {
+    margin-right: 0.3rem !important;
+}
+
+.fa, .fas {
+   padding-right: 5px !important;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color:#116aab !important;
+}
+
+.sticky-offset {
+    top: 56px;
+}
+.mb-5, .my-5 {
+    margin-bottom: 2rem!important;
+    margin-top: 2rem!important;
+}
+.repository-container {
+    margin-top:2rem !important;
+}

@@ -10,7 +10,7 @@
 <div class="nav-scroller bg-white shadow-sm">
     <nav class="nav  justify-content-center nav-underline">
         <a class="nav-link" href="{{ route('map_page') }}"><h4><i class="mdi mdi-map"></i> Interactive Map</h4></a>
-        <a class="nav-link active" href="{{ route('landing_page_grid') }}"><h4><i
+        <a class="nav-link active" href="{{ route('display-bundle-list') }}"><h4><i
                     class="mdi mdi-format-list-bulleted"></i> Bundles </h4></a>
         <a class="nav-link active" href="{{ route('graphs') }}"><h4><i class="mdi mdi-graphql"></i> Infographics</h4>
         </a>
