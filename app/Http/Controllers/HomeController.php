@@ -132,21 +132,21 @@ class HomeController extends Controller
         return view('datasets.datasetlist', compact('page_title', 'page_description','action','logo','logoText'));
     }
 
-    public function landing_page()
-    {
-        $logo = "img/logo.png";
-        $page_title = 'Home Page';
-        $page_description = 'Social-Technical Innovation Bundles.';
-        $action = __FUNCTION__;
-        $dataset = Dataset::where('status', 'published')->get();
-        $dataset_count = Dataset::where('status', 'published')->count();
-        $region_count = Region::count();
-        $country_count = AdministrativeBoundary::distinct('country')->count('country');
-        $cluster_count = Cluster::count();
-
-
-        return view('home-list', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
-    }
+//    public function landing_page()
+//    {
+//        $logo = "img/logo.png";
+//        $page_title = 'Home Page';
+//        $page_description = 'Social-Technical Innovation Bundles.';
+//        $action = __FUNCTION__;
+//        $dataset = Dataset::where('status', 'published')->get();
+//        $dataset_count = Dataset::where('status', 'published')->count();
+//        $region_count = Region::count();
+//        $country_count = AdministrativeBoundary::distinct('country')->count('country');
+//        $cluster_count = Cluster::count();
+//
+//
+//        return view('home-list', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
+//    }
 
     public function landing_page_grid(Request $request)
     {
@@ -312,12 +312,21 @@ class HomeController extends Controller
         $country_count = AdministrativeBoundary::distinct('country')->count('country');
         $cluster_count = Cluster::count();
 
-//        $query = Dataset::where('status', 'published');
-//        $dataset = $query->paginate(15);
-        $dataset = Dataset::where('status', 'published')->paginate(15);
+        $query = Dataset::where('status', 'published');
+        $dataset = $query->paginate(15);
+
+
 
 
         return view('display-bundle-list', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
+    }
+
+    public function inventory_dataset_list() {
+        $logo = "img/logo.png";
+        $page_title = 'STIBs List Diplay';
+        $page_description = 'Social-Technical Innovation Bundles.';
+        $action = __FUNCTION__;
+
     }
 
 

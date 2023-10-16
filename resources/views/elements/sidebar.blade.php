@@ -47,7 +47,9 @@
 							<span class="nav-text">Datasets</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{!! url('./datasetlist'); !!}">Dataset List</a></li>
+                            <li><a href="{!! url('./datasetlist'); !!}">Bundle List</a></li>
+                            <li><a href="#">Upload Bundles</a></li>
+                            <li><a href="#">Inventory Data list</a></li>
                             <li><a href="{!! url('./upload_dataset'); !!}">Uploading Dataset</a></li>
 
                         </ul>

@@ -476,26 +476,26 @@
                                         <span class="type-summary" data-types='{&quot;survey&quot;:&quot;1314&quot;}'>
                                         </span>
                                     </span>
-                                    @foreach ($dataset as $dataset)
+                                    @foreach ($dataset as $data)
 
 
                                     <div class="survey-row border-bottom pb-3 mb-2 "
-                                         data-url="{{ route('bundle_detail', $dataset->id) }}">
+                                         data-url="{{ route('bundle_detail', $data->id) }}">
 
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h5 class="wb-card-title title">
-                                                    <a href="{{ route('bundle_detail', $dataset->id) }}"
+                                                    <a href="{{ route('bundle_detail', $data->id) }}"
                                                        title="Comprehensive Food Security and Vulnerability Analysis and Nutrition Survey 2012"
                                                        class="d-flex">
                                                         <i class="fa fa-database fa-nada-icon wb-title-icon"></i>
                                                         <span>
-                                                            {{ $dataset->title }} </span>
+                                                            {{ $data->title }} </span>
                                                     </a>
                                                 </h5>
 
                                                 <div class="study-country">
-                                                    RWANDA, {{$dataset-> release_year}}
+                                                    RWANDA, {{$data-> release_year}}
                                                 </div>
                                                 <div class="sub-title">
                                                     <div>
@@ -510,7 +510,7 @@
                                                 <div class="survey-stats">
                                                     <span class="study-idno">
                                                         <span class="wb-label">DOI:</span> <span
-                                                            class="text-dark-doi wb-value">{{ $dataset->DOI }}</span>
+                                                            class="text-dark-doi wb-value">{{ $data->DOI }}</span>
                                                     </span>
 
 
@@ -520,7 +520,7 @@
                                                 <div class="wb-license-classification">
                                                     <span class="badge wb-data-access wb-badge btn-data-license-remote"
                                                           title="Microdata available from external repository">
-                                                        <i class="icon-da-sm icon-da-remote"></i> <span class="">{{ $dataset->source }}</span>
+                                                        <i class="icon-da-sm icon-da-remote"></i> <span class="">{{ $data->source }}</span>
                                                     </span>
 
 
