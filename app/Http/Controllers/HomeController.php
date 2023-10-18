@@ -8,6 +8,7 @@ use App\Models\Cluster;
 use App\Models\Dataset;
 use App\Models\ImpactArea;
 use App\Models\Innovation;
+use App\Models\InventoryData;
 use App\Models\Provider;
 use App\Models\Region;
 use App\Models\TechPrac;
@@ -333,12 +334,10 @@ class HomeController extends Controller
         $country_count = AdministrativeBoundary::distinct('country')->count('country');
         $cluster_count = Cluster::count();
 
-        $datasets = Dataset::orderBy('release_year')->get();
-
-        $clusters = Cluster::withCount('datasets')->get();
+        $dataset = InventoryData::paginate(100);
 
 
-        return view('inventory-data-list', compact('datasets', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+        return view('inventory-data-list', compact('dataset',  'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
 
