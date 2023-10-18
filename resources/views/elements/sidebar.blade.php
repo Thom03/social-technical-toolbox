@@ -48,9 +48,9 @@
 						</a>
                         <ul aria-expanded="false">
                             <li><a href="{!! url('./datasetlist'); !!}">Bundle List</a></li>
-                            <li><a href="#">Upload Bundles</a></li>
-                            <li><a href="#">Inventory Data list</a></li>
-                            <li><a href="{!! url('./upload_dataset'); !!}">Uploading Dataset</a></li>
+                            <li><a href="{!! url('./upload_dataset'); !!}">Upload Bundles</a></li>
+                            <li><a href="{!! url('./upload_inventory_data_form'); !!}">Upload Inventory Data</a></li>
+                            <li><a href="{!! url('./inventory_data_list'); !!}">Inventory Data list</a></li>
 
                         </ul>
                     </li>

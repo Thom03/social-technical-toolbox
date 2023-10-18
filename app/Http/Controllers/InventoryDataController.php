@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\InventoryDataImport;
+use App\Models\InventoryData;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InventoryDataController extends Controller
 {
@@ -11,9 +14,19 @@ class InventoryDataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function inventory_data_list()
     {
-        //
+        $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
+        $page_title = 'Datasets';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+        $dataset = InventoryData::all();
+
+
+
+        return view('inventory.index', compact('dataset',  'logo', 'logoText', 'page_title', 'page_description', 'action'));
     }
 
     /**
@@ -80,5 +93,39 @@ class InventoryDataController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function upload_inventory_data_form(Request $request)
+    {
+        $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
+        $page_title = 'upload Inventory Data';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+
+
+
+        return view('inventory.upload', compact('logo', 'logoText', 'page_title', 'page_description', 'action'));
+
+    }
+
+
+    public function upload_inventory_data(Request $request)
+    {
+
+        $request->validate([
+            'excel_file' => 'required|file|mimes:xls,xlsx',
+        ]);
+
+        $file = $request->file('excel_file');
+
+        Excel::import(new InventoryDataImport, $file);
+
+
+
+        return redirect('/inventory_data_list')->with('success', 'Inventory Data uploaded and processed successfully');
+
     }
 }

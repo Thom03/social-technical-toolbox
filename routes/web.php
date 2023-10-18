@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\TechPracController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Api\APIController;
 use App\Http\Controllers\DatasetController;
+use App\Http\Controllers\InventoryDataController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -135,6 +136,12 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('insert_cluster', [ClusterController::class, 'insert_cluster'])->name('insert_cluster');
     Route::get('edit_cluster/{id}', [ClusterController::class, 'edit_cluster'])->name('edit_cluster');
     Route::get('update_cluster/{id}', [ClusterController::class, 'update_cluster'])->name('update_cluster');
+
+
+    //Inventory Datasets Routes
+    Route::get('/upload_inventory_data_form', [InventoryDataController::class, 'upload_inventory_data_form'])->name('upload_iventory_data_form');
+    Route::post('/upload_inventory_data', [InventoryDataController::class, 'upload_inventory_data'])->name('upload_inventory_data');
+    Route::get('/inventory_data_list', [InventoryDataController::class, 'inventory_data_list'])->name('inventory_data_list');
 
 
 

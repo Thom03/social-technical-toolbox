@@ -325,7 +325,7 @@ class HomeController extends Controller
     public function inventory_dataset_list()
     {
         $logo = "img/logo.png";
-        $page_title = 'Infographics Page';
+        $page_title = 'Inventory Data List Page';
         $page_description = 'Social-Technical Innovation Bundles';
         $action = __FUNCTION__;
         $dataset_count = Dataset::where('status', 'published')->count();

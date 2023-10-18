@@ -26134,10 +26134,10 @@ table.dataTable tfoot th {
     box-shadow: none; }
   .dataTables_wrapper .dataTables_paginate .paginate_button.current {
     color: #F15A31 !important;
-    background: #ae1ce2;
+    background: #ece5ee;
     border: 0 !important; }
   .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.previous:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.next:hover {
-    background: #ae1ce2;
+    background: #a8a7a8;
     color: #F15A31 !important; }
 
 .dataTables_wrapper input[type="search"], .dataTables_wrapper input[type="text"], .dataTables_wrapper select {
