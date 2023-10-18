@@ -321,16 +321,25 @@ class HomeController extends Controller
         return view('display-bundle-list', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
     }
 
-    public function inventory_dataset_list() {
+
+    public function inventory_dataset_list()
+    {
         $logo = "img/logo.png";
-        $page_title = 'STIBs List Diplay';
-        $page_description = 'Social-Technical Innovation Bundles.';
+        $page_title = 'Infographics Page';
+        $page_description = 'Social-Technical Innovation Bundles';
         $action = __FUNCTION__;
+        $dataset_count = Dataset::where('status', 'published')->count();
+        $region_count = Region::count();
+        $country_count = AdministrativeBoundary::distinct('country')->count('country');
+        $cluster_count = Cluster::count();
 
+        $datasets = Dataset::orderBy('release_year')->get();
+
+        $clusters = Cluster::withCount('datasets')->get();
+
+
+        return view('inventory-data-list', compact('datasets', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
-
-
-
 
 
 
