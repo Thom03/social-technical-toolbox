@@ -499,13 +499,18 @@
                                                 </div>
                                                 <div class="sub-title">
                                                     <div>
-                                                        <span class="study-by">International Food Policy Research Institute (IFPRI)</span>
+                                                        @foreach ($data->providers as $provider)
+                                                        <span class="study-by">{{ $provider->name }}</span>
+                                                        @endforeach
                                                     </div>
 
+
                                                     <span class="owner-collection collection-link mr-3">Impact Areas:
-                                                        <a
-                                                            href="https://microdata.fao.org/index.php/catalog/Food-Security"><span class="badge badge-light">Food
-                                                            Security</span></a> </span>
+                                                        @foreach ($data->impactAreas as $impactArea)
+                                                        <a href=""><span class="badge badge-light">{{ $impactArea->name }}</span></a>
+                                                        @endforeach
+                                                    </span>
+
                                                 </div>
                                                 <div class="survey-stats">
                                                     <span class="study-idno">

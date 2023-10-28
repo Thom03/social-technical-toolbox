@@ -25,7 +25,7 @@
 
                             <div class="media-body">
                                 <p class="mb-1">Datasets</p>
-                                <h4 class="mb-0">{{ $dataset_count}}</h4>
+                                <h4 class="mb-0">{{ $total_dataset}}</h4>
                                 {{--                            <span class="badge badge-primary">+3.5%</span>--}}
                             </div>
 
@@ -50,7 +50,7 @@
 
                             <div class="media-body">
                                 <p class="mb-1">Bundles</p>
-                                <h4 class="mb-0">{{ $region_count }}</h4>
+                                <h4 class="mb-0">{{ $bundles }}</h4>
                                 {{--                            <span class="badge badge-warning">+3.5%</span>--}}
                             </div>
                         </div>

@@ -543,8 +543,8 @@
                                 <div class="nada-pagination border-top-none">
                                     <div class="row mt-3 mb-3 d-flex align-items-lg-center">
 
-                                        <div class="col-12 col-md-3 col-lg-4 text-center text-md-left mb-2 mb-md-0">
-                                            Showing <b>1-15</b> of <b>1,314</b> </div>
+{{--                                        <div class="col-12 col-md-3 col-lg-4 text-center text-md-left mb-2 mb-md-0">--}}
+{{--                                            Showing <b>1-15</b> of <b>1,314</b> </div>--}}
 
                                         <div class="col-12 col-md-9 col-lg-8 d-flex justify-content-center justify-content-lg-end text-center">
                                             <nav aria-label="">

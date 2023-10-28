@@ -242,8 +242,13 @@ class HomeController extends Controller
 
         $clusters = Cluster::withCount('datasets')->get();
 
+        $bundles = Dataset::count();
+        $inventory_data = InventoryData::count();
 
-        return view('graphs', compact('datasets', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+        $total_dataset = $bundles + $inventory_data;
+
+
+        return view('graphs', compact('datasets', 'total_dataset', 'bundles','clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
     public function about_page()
@@ -308,18 +313,13 @@ class HomeController extends Controller
         $page_description = 'Social-Technical Innovation Bundles.';
         $action = __FUNCTION__;
 
-        $dataset_count = Dataset::where('status', 'published')->count();
-        $region_count = Region::count();
-        $country_count = AdministrativeBoundary::distinct('country')->count('country');
-        $cluster_count = Cluster::count();
-
         $query = Dataset::where('status', 'published');
         $dataset = $query->paginate(15);
 
 
 
 
-        return view('display-bundle-list', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
+        return view('display-bundle-list', compact('dataset', 'logo','page_title', 'page_description','action'));
     }
 
 

@@ -136,7 +136,7 @@
 /*
 .btn-data-license-remote,
 .btn-data-license-remote:hover {
-  color: #fff;  
+  color: #fff;
   background-color: var(--color-button-primary);
   border-color: var(--color-button-primary);
 }
@@ -151,7 +151,7 @@
 .btn-data-license-licensed,
 .btn-data-license-licensed:hover {
   color: #fff;
-  background-color: var(--color-button-warning); 
+  background-color: var(--color-button-warning);
   border-color: var(--color-button-warning);
 }
 
@@ -218,10 +218,10 @@
 }
 
 
-.catalog-search-container .search-nav-tabs .nav-item .active{   
+.catalog-search-container .search-nav-tabs .nav-item .active{
   background-color: transparent;
   border:0px;
-  border-bottom: 3px solid red;    
+  border-bottom: 3px solid red;
 }
 
 .catalog-search-container .dataset-type-label{
@@ -275,7 +275,7 @@ float: none;
   padding-right:30px;
 }
 
-.catalog-search-container .type-count, 
+.catalog-search-container .type-count,
 .catalog-search-container .type-count-all{
   color: #6c757d;
   display:block;
@@ -288,7 +288,7 @@ float: none;
 }
 
 .catalog-search-container #search-keywords {
-  border:1px solid #0d6cac
+  border:1px solid #f15a31
 }
 
 .catalog-search-container .search-count{
@@ -302,17 +302,17 @@ color: #dee2e6;
 }
 
 /* Firefox 19+ */
-.catalog-search-container #search-keywords::-moz-placeholder { 
+.catalog-search-container #search-keywords::-moz-placeholder {
   color: #dee2e6;
 }
 
 /* IE 10+ */
-.catalog-search-container #search-keywords:-ms-input-placeholder { 
+.catalog-search-container #search-keywords:-ms-input-placeholder {
   color: #dee2e6;
 }
 
 /* Firefox 18- */
-.catalog-search-container #search-keywords:-moz-placeholder { 
+.catalog-search-container #search-keywords:-moz-placeholder {
   color: #dee2e6;
 }
 
@@ -346,7 +346,7 @@ font-size:25px;
   color:black;
 }
 
-.catalog-search-container .fa-stack { 
+.catalog-search-container .fa-stack {
   font-size: 2em;
   color:#bfbfbf;
 }
@@ -428,7 +428,7 @@ transform: translateY(-50%);
 .catalog-search-container .collection-info  .badge-pill{
   font-weight:normal;
   border:1px solid gainsboro;
-  font-size:14px; 
+  font-size:14px;
 }
 
 .catalog-search-container .collection-info h1{
