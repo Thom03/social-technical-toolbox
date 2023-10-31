@@ -389,7 +389,7 @@
 												<i class="flaticon-381-calendar-1"></i>
 											</span>
 											<div class="media-body text-white text-right">
-												<p class="mb-1">UNPublished Datasets</p>
+												<p class="mb-1">UNPublished Bundles</p>
 												<h3 class="text-white">{{ $unpublishedCount }}</h3>
 											</div>
 										</div>
@@ -404,8 +404,8 @@
 												<i class="flaticon-381-database"></i>
 											</span>
 											<div class="media-body text-white text-right">
-												<p class="mb-1">PUBLISHED DATASETS</p>
-												<h3 class="text-white">{{ $publishedCount }}</h3>
+												<p class="mb-1">TOTAL DATASETS</p>
+												<h3 class="text-white">{{ $total_dataset }}</h3>
 											</div>
 										</div>
 									</div>
@@ -423,8 +423,8 @@
 										</svg>
 									</span>
                                             <div class="media-body">
-                                                <p class="mb-1"> Total Dataset</p>
-                                                <h4 class="mb-0">{{ $dataset_count }}</h4>
+                                                <p class="mb-1"> Total Bundle</p>
+                                                <h4 class="mb-0">{{ $bundles }}</h4>
 {{--                                                <span class="badge badge-success">-3.5%</span>--}}
                                             </div>
                                         </div>
@@ -436,11 +436,11 @@
 									<div class="card-body p-4">
 										<div class="media">
 											<span class="mr-3">
-												<i class="la la-users"></i>
+												<i class="la la-database"></i>
 											</span>
 											<div class="media-body text-white text-right">
-												<p class="mb-1">TOTAL CLUSTER BUNDLES</p>
-												<h3 class="text-white">#</h3>
+												<p class="mb-1">TOTAL INVENTORY DATA</p>
+												<h3 class="text-white">{{ $inventory_data }}</h3>
 											</div>
 										</div>
 									</div>

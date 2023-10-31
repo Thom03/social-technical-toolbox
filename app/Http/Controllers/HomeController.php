@@ -68,10 +68,15 @@ class HomeController extends Controller
         $publishedCount = Dataset::where('status', 'published')->count();
         $unpublishedCount = Dataset::where('status', 'unpublished')->count();
 
+        $bundles = Dataset::count();
+        $inventory_data = InventoryData::count();
+
+        $total_dataset = $bundles + $inventory_data;
 
 
 
-        return view('dashboard.index', compact('page_title', 'nutrition_impact', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
+
+        return view('dashboard.index', compact('page_title', 'total_dataset', 'inventory_data', 'nutrition_impact', 'bundles', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
             'climate_impact', 'publishedCount', 'unpublishedCount','page_description','action','logo','logoText'));
     }
 
@@ -248,7 +253,7 @@ class HomeController extends Controller
         $total_dataset = $bundles + $inventory_data;
 
 
-        return view('graphs', compact('datasets', 'total_dataset', 'bundles','clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
     public function about_page()
