@@ -51,6 +51,7 @@
                             <li><a href="{!! url('./upload_dataset'); !!}">Upload Bundles</a></li>
                             <li><a href="{!! url('./upload_inventory_data_form'); !!}">Upload Inventory Data</a></li>
                             <li><a href="{!! url('./inventory_data_list'); !!}">Inventory Data list</a></li>
+                            <li><a href="{!! url('./geographic_info_list'); !!}">Geographic Data</a></li>
 
                         </ul>
                     </li>

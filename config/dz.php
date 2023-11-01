@@ -31,15 +31,13 @@ return [
             'css' => [
                 'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 'css/style.css',
+                'css/materialdesignicons.min.css'
             ],
             'js' => [
                 'vendor/global/global.min.js',
                 'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                 // 'js/custom.min.js',
                 'js/style.js',
-
-
-                // 'js/deznav-init.js',
 
             ],
         ],
@@ -137,6 +135,12 @@ return [
                     'https://cdn.lineicons.com/2.0/LineIcons.css',
                 ],
                 'inventory_data_list' => [
+                    'vendor/jqvmap/css/jqvmap.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                    'vendor/chartist/css/chartist.min.css',
+                    'https://cdn.lineicons.com/2.0/LineIcons.css',
+                ],
+                'geographic_info_list' => [
                     'vendor/jqvmap/css/jqvmap.min.css',
                     'vendor/datatables/css/jquery.dataTables.min.css',
                     'vendor/chartist/css/chartist.min.css',
@@ -344,6 +348,9 @@ return [
                     'vendor/jquery-steps/css/jquery.steps.css',
                 ],
                 'edit_innovation' => [
+                    'vendor/jquery-steps/css/jquery.steps.css',
+                ],
+                'edit_geographic_info' => [
                     'vendor/jquery-steps/css/jquery.steps.css',
                 ],
                 'add_region' => [
@@ -614,6 +621,16 @@ return [
                     'js/deznav-init.js',
                 ],
                 'inventory_data_list' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/peity/jquery.peity.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'vendor/chartist/js/chartist.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'geographic_info_list' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',
                     'vendor/peity/jquery.peity.min.js',
@@ -1270,6 +1287,16 @@ return [
                     'js/deznav-init.js',
                 ],
                 'edit_innovation' => [
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/apexchart/apexchart.js',
+                    'vendor/jquery-steps/build/jquery.steps.min.js',
+                    'vendor/jquery-validation/jquery.validate.min.js',
+                    'js/plugins-init/jquery.validate-init.js',
+                    'js/plugins-init/jquery-steps-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'edit_geographic_info' => [
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/apexchart/apexchart.js',
                     'vendor/jquery-steps/build/jquery.steps.min.js',

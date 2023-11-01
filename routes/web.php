@@ -119,6 +119,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/datasets/filter/{filter}', [DatasetController::class, 'filter'])->name('datasets.filter');
     Route::delete('delete_dataset/{id}', [DatasetController::class, 'delete_dataset'])->name('delete_dataset');
     Route::get('upload_dataset', [DatasetController::class, 'upload_dataset'])->name('upload_dataset');
+    Route::get('geographic_info_list', [DatasetController::class, 'geographic_info_list'])->name('geographic_info_list');
+
+    Route::get('edit_geographic_info/{id}', [DatasetController::class, 'edit_geographic_info'])->name('edit_geographic_info');
+    Route::get('update_geographic_info/{id}', [DatasetController::class, 'update_geographic_info'])->name('update_geographic_info');
 
 
 

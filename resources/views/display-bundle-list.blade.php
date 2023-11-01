@@ -257,7 +257,7 @@
                                                      href="#facet-collection" role="button" aria-expanded="false"
                                                      aria-controls="facet-collection">
                                                     <i class="fa fa-filter pr-2"></i>
-                                                    <span class="text-capitalize">Collections</span>
+                                                    <span class="text-capitalize">Impact Areas</span>
                                                     <span class="float-right">
                                                         <i
                                                             class="icon-toggle icon-collapsed float-right fa fa-chevron-down"></i>
@@ -292,7 +292,7 @@
                                                                    data-title="Agriculture Census and Surveys"
                                                                    id="collection-agriculture-census-surveys">
 
-                                                            Agriculture Census and Surveys
+                                                            Nutrition, Health, and Food Security
                                                             <span class="count">(423)</span>
                                                         </label>
                                                     </div>
@@ -304,7 +304,42 @@
                                                                    type="checkbox" name="collection[]" value="FISHERIES"
                                                                    data-title="Fishery Surveys" id="collection-FISHERIES">
 
-                                                            Fishery Surveys
+                                                            Poverty Reduction, Livelihood, and Jobs
+                                                            <span class="count">(4)</span>
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check item-collection 8 item inactive">
+                                                        <label class="form-check-label" for="collection-FISHERIES"
+                                                               FISHERIES>
+                                                            <input class="form-check-input chk chk-collection"
+                                                                   type="checkbox" name="collection[]" value="FISHERIES"
+                                                                   data-title="Fishery Surveys" id="collection-FISHERIES">
+
+                                                            Gender Equity, Youth, and Social Inclusion
+                                                            <span class="count">(4)</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check item-collection 8 item inactive">
+                                                        <label class="form-check-label" for="collection-FISHERIES"
+                                                               FISHERIES>
+                                                            <input class="form-check-input chk chk-collection"
+                                                                   type="checkbox" name="collection[]" value="FISHERIES"
+                                                                   data-title="Fishery Surveys" id="collection-FISHERIES">
+
+                                                            Climate Adaption and Mitigation
+                                                            <span class="count">(4)</span>
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check item-collection 8 item inactive">
+                                                        <label class="form-check-label" for="collection-FISHERIES"
+                                                               FISHERIES>
+                                                            <input class="form-check-input chk chk-collection"
+                                                                   type="checkbox" name="collection[]" value="FISHERIES"
+                                                                   data-title="Fishery Surveys" id="collection-FISHERIES">
+
+                                                            Environmental Health and Biodiversity
                                                             <span class="count">(4)</span>
                                                         </label>
                                                     </div>
@@ -495,7 +530,7 @@
                                                 </h5>
 
                                                 <div class="study-country">
-                                                    RWANDA, {{$data-> release_year}}
+                                                    COUNTRYNAME, {{$data-> release_year}}
                                                 </div>
                                                 <div class="sub-title">
                                                     <div>
