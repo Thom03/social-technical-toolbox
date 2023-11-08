@@ -122,8 +122,13 @@ class HomeController extends Controller
 
         $action = __FUNCTION__;
 
+        $bundles = Dataset::count();
+        $inventory_data = InventoryData::count();
 
-        return view('map', compact('logo','page_title', 'page_description','action',));
+        $total_dataset = $bundles + $inventory_data;
+
+
+        return view('map', compact('logo','page_title', 'bundles', 'inventory_data', 'total_dataset','page_description','action',));
     }
 
     public function dataset_list()

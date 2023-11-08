@@ -6471,3 +6471,26 @@ File: scss
     -webkit-flex-wrap: wrap !important; }
   .chat-list li .chat-content {
     width: calc(100% - 80px); } }
+
+
+#floating-panel {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 2; /* Ensure it appears above the map */
+    max-width: 400px;
+}
+
+.media {
+    border: 0px solid rgba(120, 130, 140, 0.13); !important;
+    margin-bottom: 10px;
+
+}
+
+
+
+
