@@ -4,20 +4,6 @@
 
 {{-- Content --}}
 @section('content')
-
-{{--    <aside class="left-sidebar">--}}
-{{--        <div class="scroll-sidebar">--}}
-{{--            <nav class="sidebar-nav">--}}
-{{--                <ul id="sidebarnav">--}}
-{{--                    <li class="nav-small-cap">PERSONAL</li>--}}
-{{--                    <li><a href="/"><i class="mdi mdi-home"></i><span class="hide-menu">Home </span></a></li>--}}
-{{--                    <li><a href="/datasets"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Datasets </span></a></li>--}}
-{{--                    <li><a href="/about"><i class="mdi mdi-comment-question-outline"></i><span class="hide-menu">About </span></a></li>--}}
-{{--                    <li><a href="/contact"><i class="mdi mdi-phone"></i><span class="hide-menu">Contact </span></a></li>--}}
-{{--                </ul>--}}
-{{--            </nav>--}}
-{{--        </div>--}}
-{{--    </aside>        <div class="page-wrapper">--}}
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -116,10 +102,12 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-10 col-md-12 p-l-0 p-r-0" id="mapGrid">
                             <div id="map"></div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -161,6 +149,7 @@
                     </div>
                 </div>
             </div>
+
 
 @include('elements.map-scirpts')
 @endsection

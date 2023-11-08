@@ -3,12 +3,12 @@ var options = {
     minZoom:2,
     worldCopyJump: true,
 }
-var map = L.mapbox.map('map',undefined,options).setView([0.5286709, 27.2723167], 3);
+var stibmap = L.mapbox.map('map',undefined,options).setView([0.5286709, 27.2723167], 3);
 
 
 L.mapbox.styleLayer('mapbox://styles/mapbox/light-v9',{
     attribution: 'Designed & Developed by  <a href="http://ciat.cgiar.org" class="link">Alliance Bioversity and CIAT</a>',
-}).addTo(map);
+}).addTo(stibmap);
 
 //******************************************************************************************
 //To Country layer
@@ -93,12 +93,12 @@ fetch('/countries-json')
                 });
 
                 // Add the GeoJSON layer to the map
-                countryLayer.addTo(map);
+                countryLayer.addTo(stibmap);
 
                 // Add clustering to the country layer
                 var markers = new L.MarkerClusterGroup();
                 markers.addLayer(countryLayer);
-                map.addLayer(markers);
+                stibmap.addLayer(markers);
             });
     })
     .catch(error => {
@@ -118,16 +118,10 @@ fetch('/getcountrygeojson')
         });
 
         // Add the GeoJSON layer to the map
-        boundaryLayer.addTo(map);
+        boundaryLayer.addTo(stibmap);
 
     })
     .catch(error => {
         console.error('Failed to fetch administrative boundary data:', error);
     });
 
-
-
-
-
-var miniMap = new L.Control.GlobeMiniMap({
-}).addTo(map);
