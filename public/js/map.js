@@ -69,18 +69,30 @@ fetch('/countries-json')
 
                         // Add a popup to the marker
                         var popupContent = `<b>${feature.properties.title}</b><br>`;
-                        if (feature.properties.admin_bound_1) {
-                            popupContent += `Admin Bound 1: ${feature.properties.admin_bound_1}`;
-                            popupContent += `Title: ${feature.properties.dataset_title}`;
+                            // popupContent += `<p class="modal-popup-content"><strong>Admin Bound 1:</strong> ${feature.properties.admin_bound_1}</p>`;
+                            popupContent += `<p class="modal-popup-content"></p>
+                                             <div class="col-12 m-t-20">
+                        <h4>Main Title</h4>
+                        <p class="text-justify">${feature.properties.dataset_title}</p>
+                    </div>`;
+                            // popupContent += `<p class="modal-popup-content"><strong>DOI:</strong> ${feature.properties.dataset_doi}</p>`;
+
+                            popupContent += `<p class="modal-popup-content">
+                                    <div class="col-12 m-t-20">
+                                        <h4>Digital Object Identifer (DOI) </h4>
+                                        <a href="{{ ${feature.properties.dataset_doi} }}"> <p class="badge badge-rounded badge-outline-info"> ${feature.properties.dataset_doi}</p> </a>
+                                             </div>`;
+
+                            // popupContent += `DOI: ${feature.properties.dataset_doi}`;
 
 
-                        }
                         // marker.bindPopup(popupContent);
 
                         // Add an event listener to open the Bootstrap modal on marker click
                         marker.on('click', function() {
                             $('#countryModal .modal-title').text(feature.properties.title);
-                            $('#countryModal .modal-body').text(feature.properties.dataset_title);
+                            // $('#countryModal .modal-body').text(feature.properties.dataset_title);
+                            $('#countryModal .modal-body').html(popupContent);
 
 
 
@@ -124,4 +136,6 @@ fetch('/getcountrygeojson')
     .catch(error => {
         console.error('Failed to fetch administrative boundary data:', error);
     });
+
+
 

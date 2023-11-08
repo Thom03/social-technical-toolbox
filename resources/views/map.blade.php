@@ -126,7 +126,7 @@
 									</span>
                                                     <div class="media-body">
                                                         <p class="mb-1">Bundles</p>
-                                                        <h4 class="mb-0">{{ $bundles }}</h4>
+                                                        <h4 class="mb-0" id="countdown">{{ $bundles }}</h4>
                                                         {{--                                                    <span class="badge badge-success">-3.5%</span>--}}
                                                     </div>
                                                 </div>

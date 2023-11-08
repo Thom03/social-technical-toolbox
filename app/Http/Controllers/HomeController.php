@@ -95,6 +95,8 @@ class HomeController extends Controller
             $dataset = Dataset::find($item->dataset_id);
             $datasetTitle = $dataset ? $dataset->title : null;
             $datasetDOI = $dataset ? $dataset->DOI : null;
+            $datasetauthor = $dataset ? $dataset->author : null;
+            $datasetyear = $dataset ? $dataset->release_year : null;
 
 
             return [
@@ -102,6 +104,8 @@ class HomeController extends Controller
                 'admin_bound_1' => $item->admin_bound_1,
                 'dataset_title' => $datasetTitle,
                 'dataset_doi' => $datasetDOI,
+                'dataset_author'=> $datasetauthor,
+                'dataset_release_year'=> $datasetyear,
 
 
 
