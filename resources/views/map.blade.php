@@ -60,8 +60,8 @@
                             <div class="container p-l-0 p-r-0">
                                 <div class="col-12 bg-inverse text-white" onclick="displayFilters('commodities')"><i class="fa fa-map"></i> Map Layers</div>
                                 <div id="commodities" class="col-12 show">
-                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Beans" id="Beans" checked class="ciat-check"> <label for="Beans" class="small">Point Layers</label><br>
-                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="Cassava" id="Cassava" checked class="ciat-check"> <label for="Cassava" class="small">Polygons</label><br>
+                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="PointLayer" id="PointLayer" checked class="ciat-check"> <label for="PointLayer" class="small">Point Layers</label><br>
+                                    <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();" value="PolygonLayer" id="PolygonLayer" checked class="ciat-check"> <label for="PolygonLayer" class="small">Polygons</label><br>
 
 
                                 </div>

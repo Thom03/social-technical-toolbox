@@ -7,13 +7,14 @@ var stibmap = L.mapbox.map('map',undefined,options).setView([0.5286709, 27.27231
 
 
 L.mapbox.styleLayer('mapbox://styles/mapbox/light-v9',{
-    attribution: 'Designed & Developed by  <a href="http://ciat.cgiar.org" class="link">Alliance Bioversity and CIAT</a>',
+    attribution: 'Designed & Developed by  <a href="http://ciat.cgiar.org" class="primary">Alliance Bioversity and CIAT</a>',
 }).addTo(stibmap);
 
 //******************************************************************************************
 //To Country layer
 //******************************************************************************************
 
+var countryLayer;  // Declare countryLayer variable globally
 
 // Fetch country data from the '/countries-json' route
 fetch('/countries-json')
@@ -55,14 +56,14 @@ fetch('/countries-json')
         Promise.all(geocodePromises)
             .then(() => {
                 // Create a Leaflet GeoJSON layer
-                var countryLayer = L.geoJSON(geojson, {
+                countryLayer = L.geoJSON(geojson, {
                     pointToLayer: function(feature, latlng) {
                         // Create a Mapbox marker with a custom icon
                         var marker = L.marker(latlng, {
                             icon: L.mapbox.marker.icon({
                                 // Customize the marker icon here (e.g., color, size, shape)
                                 'marker-color': '#153766',
-                                'marker-size': 'medium',
+                                'marker-size': 'small',
                                 'marker-symbol': 'circle'
                             })
                         });
@@ -117,12 +118,12 @@ fetch('/countries-json')
         console.error('Failed to fetch country data:', error);
     });
 
-
+var boundaryLayer;
 fetch('/getcountrygeojson')
     .then(response => response.json())
     .then(data => {
         // Create a Leaflet GeoJSON layer
-        var boundaryLayer = L.geoJSON(data, {
+        boundaryLayer = L.geoJSON(data, {
             style: {
                 color: '#f15a31', // Customize the boundary color
                 weight: 1, // Customize the boundary weight
@@ -136,6 +137,57 @@ fetch('/getcountrygeojson')
     .catch(error => {
         console.error('Failed to fetch administrative boundary data:', error);
     });
+
+
+var legend = L.control({ position: 'topright' });
+
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend');
+    var grades = [0, 1, 2, 3, 4, 5]; // Define your dataset count ranges
+
+    div.innerHTML += '<h4>Legend</h4>';
+
+    // Loop through the ranges and generate a label with a colored square for each range
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(stibmap);
+
+// Function to determine color based on the dataset count
+function getColor(d) {
+    return d > 5 ? '#f15a31' :
+        d > 4  ? '#ef7955' :
+            d > 3  ? '#f47e60' :
+                d > 2  ? '#f8a18f' :
+                    d > 1   ? '#fbc4be' :
+                        '#ffd8cd';
+}
+
+function controlDatasetsLayer() {
+    var pointLayerCheckbox = document.getElementById('PointLayer');
+    var polygonLayerCheckbox = document.getElementById('PolygonLayer');
+
+    // Check the status of PointLayer checkbox and toggle visibility accordingly
+    if (pointLayerCheckbox.checked) {
+        stibmap.addLayer(countryLayer);
+    } else {
+        stibmap.removeLayer(countryLayer);
+    }
+
+    // Check the status of PolygonLayer checkbox and toggle visibility accordingly
+    if (polygonLayerCheckbox.checked) {
+        stibmap.addLayer(boundaryLayer);
+    } else {
+        stibmap.removeLayer(boundaryLayer);
+    }
+}
+
 
 
 
