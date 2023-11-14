@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0|^8.1",
         "darkaonline/l5-swagger": "^8.5",
         "dedoc/scramble": "^0.7.2",
         "facade/ignition": "^2.17",
