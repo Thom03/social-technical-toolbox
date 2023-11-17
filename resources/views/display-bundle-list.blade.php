@@ -21,11 +21,7 @@
     <header class="site-header">
 
 
-
-
-
         <div class="container">
-
 
 
         </div>
@@ -45,11 +41,11 @@
                 <ol class="breadcrumb wb-breadcrumb">
                     <div class="breadcrumbs" xmlns:v="http://rdf.data-vocabulary.org/#">
                         <span typeof="v:Breadcrumb">
-                            <a href="https://microdata.fao.org/index.php/" rel="v:url" property="v:title">Home</a> /
+                            <a href="" rel="v:url" property="v:title">Home</a> /
 
                         </span>
                         <span typeof="v:Breadcrumb">
-                            <a class="active" href="https://microdata.fao.org/index.php/catalog" rel="v:url"
+                            <a class="active" href="" rel="v:url"
                                property="v:title">Socia-Technical Invovation Bundles</a>
 
                         </span>
@@ -57,7 +53,6 @@
                 </ol>
             </div>
             <!-- /breadcrumbs -->
-
 
 
             <style>
@@ -93,7 +88,7 @@
                                     <button class="btn btn-primary btn-search-submit" type="submit" id="submit_search">
                                         <!-- <i class="fa fa-search"></i> -->
                                         Search </button>
-                                    <a href="https://microdata.fao.org/index.php/catalog/"
+                                    <a href="#"
                                        class="close clear-search-button" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </a>
@@ -101,18 +96,18 @@
 
                             </div>
                             <span class="keyword-suggestions"></span>
-{{--                            <div class="wb-library-search--browse my-3">--}}
-{{--                                <!-- <button type="button" class="btn btn-outline-primary"><a href="https://microdata.fao.org/index.php/collections"><i class="far fa-file-alt"></i>  Collections </a> </button> -->--}}
-{{--                                <button type="button" class="btn btn-outline-primary"><a--}}
-{{--                                        href="https://microdata.fao.org/index.php/citations"><i--}}
-{{--                                            class="far fa-file-alt"></i> Browse Citations </a></button>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="wb-library-search--browse my-3">--}}
+                            {{--                                <!-- <button type="button" class="btn btn-outline-primary"><a href="https://microdata.fao.org/index.php/collections"><i class="far fa-file-alt"></i>  Collections </a> </button> -->--}}
+                            {{--                                <button type="button" class="btn btn-outline-primary"><a--}}
+                            {{--                                        href="https://microdata.fao.org/index.php/citations"><i--}}
+                            {{--                                            class="far fa-file-alt"></i> Browse Citations </a></button>--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
-                    <input type="hidden" name="tab_type" id="tab_type" value="" />
-                    <input type="hidden" name="page" id="page" value="1" />
-                    <input type="hidden" name="view" id="view" value="" />
-                    <input type="hidden" name="image_view" id="image_view" value="" />
+                    <input type="hidden" name="tab_type" id="tab_type" value=""/>
+                    <input type="hidden" name="page" id="page" value="1"/>
+                    <input type="hidden" name="view" id="view" value=""/>
+                    <input type="hidden" name="image_view" id="image_view" value=""/>
                     <div class="row">
 
                         <!--left side bar -->
@@ -161,7 +156,7 @@
                                                             <p class="mb-0 pb-0">From</p>
                                                             <div class="form-group mb-0">
                                                                 <select name="from" id="from" class="form-control">
-                                                                    <option value=""> </option>
+                                                                    <option value=""></option>
                                                                     <option value="2022">2022</option>
                                                                     <option value="2021">2021</option>
                                                                     <option value="2020">2020</option>
@@ -173,7 +168,7 @@
                                                             <p class="mb-0 pb-0">To</p>
                                                             <div class="form-group">
                                                                 <select name="to" id="to" class="form-control">
-                                                                    <option value=""> </option>
+                                                                    <option value=""></option>
                                                                     <option value="2022">2022</option>
                                                                     <option value="2021">2021</option>
                                                                     <option value="2020">2020</option>
@@ -211,8 +206,6 @@
                                                         class="btn btn-link btn-sm rounded clear lnk-filter-reset">Clear</a>
                                                 </div>
                                             </h6>
-
-
 
 
                                             <div id="facet-country"
@@ -274,8 +267,6 @@
                                             </h6>
 
 
-
-
                                             <div id="facet-collection"
                                                  class="sidebar-filter-entries collapse collection-container items-container">
                                                 <div class="items-container ">
@@ -302,7 +293,8 @@
                                                                FISHERIES>
                                                             <input class="form-check-input chk chk-collection"
                                                                    type="checkbox" name="collection[]" value="FISHERIES"
-                                                                   data-title="Fishery Surveys" id="collection-FISHERIES">
+                                                                   data-title="Fishery Surveys"
+                                                                   id="collection-FISHERIES">
 
                                                             Poverty Reduction, Livelihood, and Jobs
                                                             <span class="count">(4)</span>
@@ -314,7 +306,8 @@
                                                                FISHERIES>
                                                             <input class="form-check-input chk chk-collection"
                                                                    type="checkbox" name="collection[]" value="FISHERIES"
-                                                                   data-title="Fishery Surveys" id="collection-FISHERIES">
+                                                                   data-title="Fishery Surveys"
+                                                                   id="collection-FISHERIES">
 
                                                             Gender Equity, Youth, and Social Inclusion
                                                             <span class="count">(4)</span>
@@ -325,7 +318,8 @@
                                                                FISHERIES>
                                                             <input class="form-check-input chk chk-collection"
                                                                    type="checkbox" name="collection[]" value="FISHERIES"
-                                                                   data-title="Fishery Surveys" id="collection-FISHERIES">
+                                                                   data-title="Fishery Surveys"
+                                                                   id="collection-FISHERIES">
 
                                                             Climate Adaption and Mitigation
                                                             <span class="count">(4)</span>
@@ -337,7 +331,8 @@
                                                                FISHERIES>
                                                             <input class="form-check-input chk chk-collection"
                                                                    type="checkbox" name="collection[]" value="FISHERIES"
-                                                                   data-title="Fishery Surveys" id="collection-FISHERIES">
+                                                                   data-title="Fishery Surveys"
+                                                                   id="collection-FISHERIES">
 
                                                             Environmental Health and Biodiversity
                                                             <span class="count">(4)</span>
@@ -372,8 +367,6 @@
                                                         class="btn btn-link btn-sm rounded clear lnk-filter-reset">Clear</a>
                                                 </div>
                                             </h6>
-
-
 
 
                                             <div id="facet-dtype"
@@ -430,7 +423,6 @@
                         <!-- end left side bar -->
 
 
-
                         <!-- listing page -->
                         <div class="col-lg-9 col-md-8">
 
@@ -438,20 +430,19 @@
                             <div id="search-result-container">
 
 
-
-
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-12 mt-2 mt-md-0 ">
                                         <div class="filter-action-bar row">
 
                                             <div class="search-count col-5 text-md-left mb-2 mb-md-0 pt-2">
-                                                Showing <b>1-15</b> of <b>1,314</b> </div>
+                                                Showing <b>1-15</b> of <b>1,314</b></div>
 
                                             <div class="col mt-1 wb-search-toggle">
                                                 <div class="btn-group btn-group-toggle study-view-toggle">
                                                     <button type="button"
                                                             class="btn btn-sm btn-outline-primary rounded-left active toggle_view"
-                                                            data-value="s">List view</button>
+                                                            data-value="s">List view
+                                                    </button>
                                                     <button type="button"
                                                             class="btn btn-sm btn-outline-secondary rounded-right toggle_view"
                                                             data-value="v"><a
@@ -470,7 +461,8 @@
                                                             <option value="relevance" data-sort="desc">Relevance
                                                             </option>
                                                             <option value="popularity" data-sort="desc"
-                                                                    selected="selected">Popularity</option>
+                                                                    selected="selected">Popularity
+                                                            </option>
                                                             <option value="year" data-sort="desc">Year (Recent &uarr;)
                                                             </option>
                                                             <option value="year" data-sort="asc">Year (Oldest &darr;)
@@ -495,15 +487,14 @@
                                 </div>
 
 
-                                <hr />
+                                <hr/>
 
 
-                                <input type="hidden" name="sort_by" id="sort_by" value="popularity" />
-                                <input type="hidden" name="sort_order" id="sort_order" value="desc" />
-                                <input type="hidden" name="ps" id="ps" value="15" />
-                                <input type="hidden" name="repo" id="repo" value="" />
-                                <input type="hidden" name="sid" id="sid" value="" />
-
+                                <input type="hidden" name="sort_by" id="sort_by" value="popularity"/>
+                                <input type="hidden" name="sort_order" id="sort_order" value="desc"/>
+                                <input type="hidden" name="ps" id="ps" value="15"/>
+                                <input type="hidden" name="repo" id="repo" value=""/>
+                                <input type="hidden" name="sid" id="sid" value=""/>
 
 
                                 <div id="surveys">
@@ -513,65 +504,64 @@
                                     </span>
                                     @foreach ($dataset as $data)
 
+                                        <div class="survey-row border-bottom pb-3 mb-2 "
+                                             data-url="{{ route('bundle_detail', $data->id) }}">
 
-                                    <div class="survey-row border-bottom pb-3 mb-2 "
-                                         data-url="{{ route('bundle_detail', $data->id) }}">
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h5 class="wb-card-title title">
-                                                    <a href="{{ route('bundle_detail', $data->id) }}"
-                                                       title="Comprehensive Food Security and Vulnerability Analysis and Nutrition Survey 2012"
-                                                       class="d-flex">
-                                                        <i class="fa fa-database fa-nada-icon wb-title-icon"></i>
-                                                        <span>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h5 class="wb-card-title title">
+                                                        <a href="{{ route('bundle_detail', $data->id) }}"
+                                                           title="Comprehensive Food Security and Vulnerability Analysis and Nutrition Survey 2012"
+                                                           class="d-flex">
+                                                            <i class="fa fa-database fa-nada-icon wb-title-icon"></i>
+                                                            <span>
                                                             {{ $data->title }} </span>
-                                                    </a>
-                                                </h5>
+                                                        </a>
+                                                    </h5>
 
-                                                <div class="study-country">
-                                                    COUNTRYNAME, {{$data-> release_year}}
-                                                </div>
-                                                <div class="sub-title">
-                                                    <div>
-                                                        @foreach ($data->providers as $provider)
-                                                        <span class="study-by">{{ $provider->name }}</span>
-                                                        @endforeach
+                                                    <div class="study-country">
+                                                        COUNTRYNAME, {{$data-> release_year}}
                                                     </div>
+                                                    <div class="sub-title">
+                                                        <div>
+                                                            @foreach ($data->providers as $provider)
+                                                                <span class="study-by">{{ $provider->name }}</span>
+                                                            @endforeach
+                                                        </div>
 
 
-                                                    <span class="owner-collection collection-link mr-3">Impact Areas:
+                                                        <span class="owner-collection collection-link mr-3">Impact Areas:
                                                         @foreach ($data->impactAreas as $impactArea)
-                                                        <a href=""><span class="badge badge-light">{{ $impactArea->name }}</span></a>
-                                                        @endforeach
+                                                                <a href=""><span
+                                                                        class="badge badge-light">{{ $impactArea->name }}</span></a>
+                                                            @endforeach
                                                     </span>
 
-                                                </div>
-                                                <div class="survey-stats">
+                                                    </div>
+                                                    <div class="survey-stats">
                                                     <span class="study-idno">
                                                         <span class="wb-label">DOI:</span> <span
                                                             class="text-dark-doi wb-value">{{ $data->DOI }}</span>
                                                     </span>
 
 
+                                                    </div>
 
-                                                </div>
-
-                                                <div class="wb-license-classification">
+                                                    <div class="wb-license-classification">
                                                     <span class="badge wb-data-access wb-badge btn-data-license-remote"
                                                           title="Microdata available from external repository">
-                                                        <i class="icon-da-sm icon-da-remote"></i> <span class="">{{ $data->source }}</span>
+                                                        <i class="icon-da-sm icon-da-remote"></i> <span
+                                                            class="">{{ $data->source }}</span>
                                                     </span>
 
+
+                                                    </div>
 
                                                 </div>
 
                                             </div>
-
-                                        </div>
-                                    </div> <!-- /.    row -->
+                                        </div> <!-- /.    row -->
                                     @endforeach
-
 
 
                                 </div>
@@ -579,24 +569,28 @@
                                     <div class="row mt-3 mb-3 d-flex align-items-lg-center">
 
                                         <div class="col-12 col-md-3 col-lg-4 text-center text-md-left mb-2 mb-md-0">
-                                            Showing <b>1-15</b> of <b>1,314</b> </div>
+                                            Showing <b>1-15</b> of <b>1,314</b></div>
 
-                                        <div class="col-12 col-md-9 col-lg-8 d-flex justify-content-center justify-content-lg-end text-center">
+                                        <div
+                                            class="col-12 col-md-9 col-lg-8 d-flex justify-content-center justify-content-lg-end text-center">
                                             <nav aria-label="">
                                                 <ul class="pagination pagination-circle">
                                                     <li class="page-item page-indicator">
-                                                        <a class="page-link" href="{{ $dataset->previousPageUrl() }}" aria-label="Previous">
+                                                        <a class="page-link" href="{{ $dataset->previousPageUrl() }}"
+                                                           aria-label="Previous">
                                                             <i class="la la-angle-left"></i>
                                                         </a>
                                                     </li>
                                                     @for ($i = 1; $i <= $dataset->lastPage(); $i++)
                                                         <li class="page-item {{ $dataset->currentPage() == $i ? 'active' : '' }}">
-                                                            <a class="page-link" href="{{ $dataset->url($i) }}">{{ $i }}</a>
+                                                            <a class="page-link"
+                                                               href="{{ $dataset->url($i) }}">{{ $i }}</a>
                                                         </li>
                                                     @endfor
 
                                                     <li class="page-item page-indicator">
-                                                        <a class="page-link" href="{{ $dataset->nextPageUrl() }}" aria-label="Next">
+                                                        <a class="page-link" href="{{ $dataset->nextPageUrl() }}"
+                                                           aria-label="Next">
                                                             <i class="la la-angle-right"></i>
                                                         </a>
                                                     </li>
@@ -628,8 +622,6 @@
 
                         </div>
                         <!-- end listing-->
-
-
 
 
                     </div>
@@ -665,16 +657,13 @@
                             <div class="align-middle mt-2">
                                 <button class="btn btn-link btn-sm rounded clear-variables">Clear</button>
                                 <a target="_blank" class="btn btn-primary btn-sm rounded"
-                                   href="https://microdata.fao.org/index.php/catalog/compare">Compare</a>
+                                   href="#">Compare</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- end variable comparison -->
-
-
-
 
 
             <script>
@@ -711,8 +700,7 @@
                         var date = new Date();
                         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
                         var expires = "; expires=" + date.toGMTString();
-                    }
-                    else var expires = "";
+                    } else var expires = "";
                     document.cookie = name + "=" + value + expires + "; path=/";
                 }
 
@@ -736,8 +724,7 @@
 
                     if (sel_items == null || sel_items == '') {
                         sel_items = Array();
-                    }
-                    else {
+                    } else {
                         sel_items = sel_items.split(",");
                     }
 
@@ -754,8 +741,7 @@
 
                     if (sel_items.length == 0) {
                         $(".variables-found .var-compare-summary").html(i18n.js_compare_variable_select_atleast_2);
-                    }
-                    else {
+                    } else {
                         $(".variables-found .var-compare-summary").html(sel_items.length + " " + i18n.js_compare_variables_selected + " " + studies.length + " " + i18n.js_compare_studies_selected);
                     }
                 }
@@ -766,8 +752,7 @@
 
                     if (sel_items == null || sel_items == '') {
                         sel_items = Array();
-                    }
-                    else {
+                    } else {
                         sel_items = sel_items.split(",");
                     }
 
@@ -779,8 +764,7 @@
 
                     if (sel_items == null || sel_items == '') {
                         sel_items = Array();
-                    }
-                    else {
+                    } else {
                         sel_items = sel_items.split(",");
                     }
 
@@ -803,7 +787,8 @@
                             break;
 
                         case 'remove-all':
-                            eraseCookie("variable-compare"); return;
+                            eraseCookie("variable-compare");
+                            return;
                             break;
                     }
 
@@ -834,16 +819,16 @@
                         $(".variable-comparison-popup .var-list").html("");
 
 
-                        if(data.length<1){
+                        if (data.length < 1) {
                             update_compare_variable_list("remove-all");
                             compare_variable_popup_toggle();
                         }
 
-                        for(var i=0;i < data.length;i++) {
-                            var row=data[i];
-                            var url=encodeURI(CI.base_url + '/catalog/' + row['sid'] + '/variable/' + row['vid']);
+                        for (var i = 0; i < data.length; i++) {
+                            var row = data[i];
+                            var url = encodeURI(CI.base_url + '/catalog/' + row['sid'] + '/variable/' + row['vid']);
 
-                            var html =`< div class="var-box" id = "var-${row['sid']}__data['vid']" data - value="${row['sid']}/${row['vid']}" >
+                            var html = `< div class="var-box" id = "var-${row['sid']}__data['vid']" data - value="${row['sid']}/${row['vid']}" >
                     < !--< a target = "_blank" href = "${url}" > <i class="fa fa-address-card" aria-hidden="true"></i></a > -->
                     <a class="text-white font-weight-bold var-name dlg link" target="_blank" data-url="${url}" href="${url}">${row['name']}</a>
                     <div class="text-light var-description">${row['idno']}</div>
@@ -855,7 +840,7 @@
 
                         $(".variable-comparison-popup .var-in-cart").html(data.length);
                     })
-                        .fail(function() {
+                        .fail(function () {
                             console.log("error");
                         })
 
@@ -863,21 +848,21 @@
                 }
 
                 //remove all variables
-                function compare_variable_clear(){
+                function compare_variable_clear() {
                     eraseCookie("variable-compare");
                     compare_variable_popup_update();
                     compare_variable_popup_toggle();
                     return;
                 }
 
-                function compare_variable_refresh_selection(){
-                    vars=get_selected_variables();
+                function compare_variable_refresh_selection() {
+                    vars = get_selected_variables();
                     //uncheck all
-                    $(".compare").prop( "checked", false );
+                    $(".compare").prop("checked", false);
 
                     //check selected only
-                    for(var i=0;i < vars.length;i++) {
-                        $(".compare[value='"+vars[i]+"']").prop("checked",true);
+                    for (var i = 0; i < vars.length; i++) {
+                        $(".compare[value='" + vars[i] + "']").prop("checked", true);
                     }
 
                     compare_variable_popup_update();
@@ -885,96 +870,99 @@
 
 
                 //update selected variables on page/tab changes
-                $(document).on('visibilitychange', function() {
+                $(document).on('visibilitychange', function () {
 
-                    if(document.visibilityState == 'visible') {
+                    if (document.visibilityState == 'visible') {
                         compare_variable_refresh_selection();
                     }
                 });
 
-                $(document).ready(function(){
+                $(document).ready(function () {
                     compare_variable_popup_update();
                     compare_variable_popup_toggle();
                 });
 
-                function toggle_clear(el){
+                function toggle_clear(el) {
 
                     console.log($(el).closest(".items-container").find(".chk:checked").length);
 
-                    if ($(el).closest(".items-container").find(".chk:checked").length >0){
+                    if ($(el).closest(".items-container").find(".chk:checked").length > 0) {
                         $(el).closest(".sidebar-filter").find(".clear-button-container").removeClass("clear-disabled").addClass("clear-enabled");
                         $(el).closest(".sidebar-filter").find(".clear-button-container").find(".selected-items").text($(el).closest(".items-container").find(".chk:checked").length);
-                    }else{
+                    } else {
                         $(el).closest(".sidebar-filter").find(".clear-button-container").removeClass("clear-enabled").addClass("clear-disabled");
                     }
                 }
 
-                function init_facet_stats(el){
-                    let selected_items=$(el).find(".items-container").find(".chk:checked").length;
-                    let total_items=$(el).find(".items-container").find(".chk").length;
+                function init_facet_stats(el) {
+                    let selected_items = $(el).find(".items-container").find(".chk:checked").length;
+                    let total_items = $(el).find(".items-container").find(".chk").length;
 
-                    if (selected_items >0){
+                    if (selected_items > 0) {
                         $(el).closest(".sidebar-filter").find(".clear-button-container").removeClass("clear-disabled").addClass("clear-enabled");
                         $(el).closest(".sidebar-filter").find(".clear-button-container").find(".selected-items").text(selected_items);
                         $(el).closest(".sidebar-filter").find(".clear-button-container").find(".total-items").text(total_items);
-                    }else{
+                    } else {
                         $(el).closest(".sidebar-filter").find(".clear-button-container").removeClass("clear-enabled").addClass("clear-disabled");
                     }
                 }
 
                 //toggle checkboxes on page load
-                function refresh_facet_options(){
-                    jQuery.each($(".sidebar-filter"), function( i, el ) {
+                function refresh_facet_options() {
+                    jQuery.each($(".sidebar-filter"), function (i, el) {
                         init_facet_stats($(el));
                     });
                 }
 
-                $(function() {
+                $(function () {
                     refresh_facet_options();
                 });
 
 
                 //clear variable selection
-                $(document.body).on("click",".clear-variables", function(){
+                $(document.body).on("click", ".clear-variables", function () {
                     compare_variable_clear();
                     compare_variable_refresh_selection();
                     return false;
                 });
 
-                $(document.body).on("click",".var-remove", function(e){
-                    let id=$(this).attr('data-value');
-                    $(".compare[value='"+id+"']").trigger("click");
-                    update_compare_variable_list("remove",id);
+                $(document.body).on("click", ".var-remove", function (e) {
+                    let id = $(this).attr('data-value');
+                    $(".compare[value='" + id + "']").trigger("click");
+                    update_compare_variable_list("remove", id);
                     compare_variable_refresh_selection();
                     return false;
                 });
 
 
-                $(document).ready(function() {
-                    var page_first_load=true;
+                $(document).ready(function () {
+                    var page_first_load = true;
                     toggle_reset_search_button();
-                    var State=History.getState();
+                    var State = History.getState();
 
-                    if(!State.data.page_state_data){
-                        page_first_load=false;
-                        let search_state=serialize_form();
-                        let page_state_data={
+                    if (!State.data.page_state_data) {
+                        page_first_load = false;
+                        let search_state = serialize_form();
+                        let page_state_data = {
                             'search_options': $("#catalog-search-form").serializeArray(),
                             'search_results': null
                         };
-                        History.replaceState({state:search_state,page_state_data}, document.title, "?"+search_state);
-                    }else{
+                        History.replaceState({
+                            state: search_state,
+                            page_state_data
+                        }, document.title, "?" + search_state);
+                    } else {
                         load_current_state();
                         toggle_reset_search_button();
                     }
 
 
-                    function reset_page(){
+                    function reset_page() {
                         $("#page").val(1);
                     }
 
                     //submit search form
-                    $(document.body).on("click","#submit_search", function(){
+                    $(document.body).on("click", "#submit_search", function () {
                         $("#sort_by").val("");
                         reset_page();
                         change_state();
@@ -983,8 +971,8 @@
 
 
                     //change page size
-                    $(document.body).on("click",".change-page-size", function(){
-                        ps=$(this).attr("data-value");
+                    $(document.body).on("click", ".change-page-size", function () {
+                        ps = $(this).attr("data-value");
                         console.log(ps);
                         $("#page").val(1);
                         $("#ps").val(ps);
@@ -992,35 +980,33 @@
                     });
 
 
+                    $(document.body).on("click", ".remove-filter", function () {
 
-                    $(document.body).on("click",".remove-filter", function(){
+                        name = $(this).attr("data-type");
+                        value = $(this).attr("data-value");
 
-                        name=$(this).attr("data-type");
-                        value=$(this).attr("data-value");
-
-                        el_name="[name='" + name + "']," + "[name='" + name + "[]']";
-                        elements=$(el_name);
+                        el_name = "[name='" + name + "']," + "[name='" + name + "[]']";
+                        elements = $(el_name);
 
                         console.log(elements);
 
-                        if (name=="sid"){
+                        if (name == "sid") {
                             $("#sid").val("");
                         }
 
-                        if (name=='years'){
+                        if (name == 'years') {
                             $("#from").val("");
                             $("#to").val("");
                         }
 
-                        if (elements.length>0){
-                            if (elements.prop("type")=='checkbox'){
-                                named_el=$("[name='" + name + "'][value='"+value+"']");
+                        if (elements.length > 0) {
+                            if (elements.prop("type") == 'checkbox') {
+                                named_el = $("[name='" + name + "'][value='" + value + "']");
                                 console.log(named_el);
                                 named_el.trigger('click');
                                 console.log(named_el);
-                            }
-                            else if(elements.prop("type")=='text' || elements.prop("tagName").toLowerCase()=='select'){
-                                elements.prop("value",'');
+                            } else if (elements.prop("type") == 'text' || elements.prop("tagName").toLowerCase() == 'select') {
+                                elements.prop("value", '');
                             }
                         }
 
@@ -1031,13 +1017,13 @@
                     });
 
 
-                    function search(){
-                        search_state=$("#catalog-search-form").serialize();
-                        $( "#search-result-container" ).html('Loading, please wait...');
+                    function search() {
+                        search_state = $("#catalog-search-form").serialize();
+                        $("#search-result-container").html('Loading, please wait...');
 
-                        $.get('https://microdata.fao.org/index.php/catalog/search?'+search_state, function( data ) {
-                            $( "#search-result-container" ).html( data );
-                            let page_state_data={
+                        $.get('https://microdata.fao.org/index.php/catalog/search?' + search_state, function (data) {
+                            $("#search-result-container").html(data);
+                            let page_state_data = {
                                 'search_options': $("#catalog-search-form").serializeArray(),
                                 'search_results': null
                             };
@@ -1046,12 +1032,12 @@
                             $(".dataset-type-tab").find(".type-count").html("0");
 
                             //update nav-tabs
-                            let types_summary=$(".type-summary").attr("data-types");
+                            let types_summary = $(".type-summary").attr("data-types");
 
-                            if(types_summary){
-                                types_summary=JSON.parse(types_summary);
-                                jQuery.each(types_summary, function(data_type, counts ) {
-                                    $(".dataset-type-tab-"+data_type).find(".type-count").html(parseInt(counts).toLocaleString());
+                            if (types_summary) {
+                                types_summary = JSON.parse(types_summary);
+                                jQuery.each(types_summary, function (data_type, counts) {
+                                    $(".dataset-type-tab-" + data_type).find(".type-count").html(parseInt(counts).toLocaleString());
                                 });
                             }
 
@@ -1060,79 +1046,81 @@
 
 
                     //call this for search
-                    function change_state(){
+                    function change_state() {
                         console.log("change_state called");
-                        let search_state=serialize_form(); //don't include empty elements
-                        let page_state_data={
+                        let search_state = serialize_form(); //don't include empty elements
+                        let page_state_data = {
                             'search_options': $("#catalog-search-form").serializeArray(),
                             'search_results': null
                         };
 
-                        History.pushState({state:search_state,page_state_data}, document.title + '/search - ' + search_state, "?"+search_state);
+                        History.pushState({
+                            state: search_state,
+                            page_state_data
+                        }, document.title + '/search - ' + search_state, "?" + search_state);
                     }
 
-                    function serialize_form(){
-                        return  $("#catalog-search-form :input").filter(function(index, element) {
+                    function serialize_form() {
+                        return $("#catalog-search-form :input").filter(function (index, element) {
                             return $(element).val() != '';
                         }).serialize();
                     }
 
 
                     //sort dropdown
-                    $(document.body).on("change","#sort-by-select", function(){
-                        let sort_order=$(this).find(':selected').data('sort');
-                        let sort_by=$(this).val();
+                    $(document.body).on("change", "#sort-by-select", function () {
+                        let sort_order = $(this).find(':selected').data('sort');
+                        let sort_by = $(this).val();
                         $("#sort_by").val(sort_by);
                         $("#sort_order").val(sort_order);
                         change_state();
                     });
 
-                    $(document.body).on("click",".dataset-type-tab", function(){
-                        $( ".chk-type").prop("checked",false);
-                        el=$("[name='type[]'][value='"+ $(this).attr("data-value") +"']");
-                        el.prop("checked",true);
+                    $(document.body).on("click", ".dataset-type-tab", function () {
+                        $(".chk-type").prop("checked", false);
+                        el = $("[name='type[]'][value='" + $(this).attr("data-value") + "']");
+                        el.prop("checked", true);
                         reset_page();
-                        $( "#tab_type" ).val($(this).attr("data-value"));
-                        window.location.href='https://microdata.fao.org/index.php/catalog/?'+serialize_form();
+                        $("#tab_type").val($(this).attr("data-value"));
+                        window.location.href = 'https://microdata.fao.org/index.php/catalog/?' + serialize_form();
                         return false;
                     });
 
                     //pagination link
-                    $(document.body).on("click",".pagination .page-link", function(){
-                        $( "#page" ).val($(this).attr("data-page"));
+                    $(document.body).on("click", ".pagination .page-link", function () {
+                        $("#page").val($(this).attr("data-page"));
                         change_state();
                         return false;
                     });
 
                     //check/select filter
-                    $(document.body).on("change",".filters-container .chk, .filters-container select", function(){
+                    $(document.body).on("change", ".filters-container .chk, .filters-container select", function () {
                         reset_page();
                         change_state();
                         toggle_clear(this);
                     });
 
                     //clear filter
-                    $(document.body).on("click",".filters-container .lnk-filter-reset", function(){
-                        $(this).closest(".filter-box").find(".chk").prop("checked",false);
+                    $(document.body).on("click", ".filters-container .lnk-filter-reset", function () {
+                        $(this).closest(".filter-box").find(".chk").prop("checked", false);
                         change_state();
                         toggle_clear(this);
                     });
 
-                    $(document.body).on("keypress",".search-keywords", function(e){
+                    $(document.body).on("keypress", ".search-keywords", function (e) {
                         var code = e.keyCode;
                         toggle_reset_search_button();
-                        if(code==13){
+                        if (code == 13) {
                             $('#submit_search').trigger("click");
                             return false;
                         }
                     });
 
 
-
-                    History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+                    History.Adapter.bind(window, 'statechange', function () { // Note: We are using statechange instead of popstate
                         var State = History.getState(); // Note: We are using History.getState() instead of event.state
                         //$( "#catalog-search-form" ).html( State.data.data );
-                        window.data=State.data;
+                        window.data = State.data;
                         console.log("loading state");
                         console.log(State);
                         //$( "#search-result-container" ).html(State.data.search_results);
@@ -1141,29 +1129,27 @@
                     });
 
 
-
-                    function load_current_state(){
-                        if(page_first_load==true){
-                            page_first_load=false;
+                    function load_current_state() {
+                        if (page_first_load == true) {
+                            page_first_load = false;
                             return;
                         }
 
-                        var State=History.getState();
+                        var State = History.getState();
 
-                        if(!State.data.page_state_data){
+                        if (!State.data.page_state_data) {
                             return false;
                         }
 
                         reset_all_filters();
-                        jQuery.each(State.data.page_state_data.search_options, function( i, field ) {
-                            elements=$("[name='" + field.name + "']");
+                        jQuery.each(State.data.page_state_data.search_options, function (i, field) {
+                            elements = $("[name='" + field.name + "']");
 
-                            if (elements.prop("type")=='checkbox'){
-                                named_el=$("[name='" + field.name + "'][value='"+field.value+"']");
-                                named_el.prop("checked",true);
-                            }
-                            else if(elements.prop("type")=='text' || elements.prop("tagName").toLowerCase()=='select'){
-                                elements.prop("value",field.value);
+                            if (elements.prop("type") == 'checkbox') {
+                                named_el = $("[name='" + field.name + "'][value='" + field.value + "']");
+                                named_el.prop("checked", true);
+                            } else if (elements.prop("type") == 'text' || elements.prop("tagName").toLowerCase() == 'select') {
+                                elements.prop("value", field.value);
                             }
                         });
 
@@ -1172,34 +1158,32 @@
                     }
 
 
-                    function reset_all_filters(){
+                    function reset_all_filters() {
                         //uncheck all checkboxes
-                        $(".filters-container .chk").prop("checked",false);
+                        $(".filters-container .chk").prop("checked", false);
 
                         //reset  select
-                        $(".filter-container .form-control").prop("value",'');
+                        $(".filter-container .form-control").prop("value", '');
                     }
 
-                    function toggle_reset_search_button(){
-                        if (!$("#search-keywords").val()){
+                    function toggle_reset_search_button() {
+                        if (!$("#search-keywords").val()) {
                             $(".clear-search-button").hide();
-                        }
-                        else{
+                        } else {
                             $(".clear-search-button").show();
                         }
                     }
 
 
                     //show/hide study sub-variable search
-                    $(document.body).on("click",".vsearch", function(event){
+                    $(document.body).on("click", ".vsearch", function (event) {
                         event.stopPropagation();
                         $(this).parent().toggleClass("expand");
-                        var result=$(this).parent().find(".vsearch-result");
-                        if (result.html()!='' ){
+                        var result = $(this).parent().find(".vsearch-result");
+                        if (result.html() != '') {
                             result.empty().hide();
-                        }
-                        else{
-                            result.show().html('<span class="fa fa-circle-o-notch fa-spin fa-2x text-primary"></span><span>Loading</span>').load($(this).prop("href"), function(data){
+                        } else {
+                            result.show().html('<span class="fa fa-circle-o-notch fa-spin fa-2x text-primary"></span><span>Loading</span>').load($(this).prop("href"), function (data) {
 
                                 //attach compare handlers
                                 //variable_compare_handlers();
@@ -1212,40 +1196,40 @@
 
 
                     //show variable details in a modal dialog
-                    $(document.body).on("click",".variable-list .vrow .link", function(event){
+                    $(document.body).on("click", ".variable-list .vrow .link", function (event) {
                         event.stopPropagation();
 
-                        var vrow=$(this).closest(".vrow");
-                        var target='';
-                        if(typeof $(vrow).attr("data-url-target") != 'undefined'){
-                            target=$(vrow).attr("data-url-target");
+                        var vrow = $(this).closest(".vrow");
+                        var target = '';
+                        if (typeof $(vrow).attr("data-url-target") != 'undefined') {
+                            target = $(vrow).attr("data-url-target");
                         }
-                        if(target==''){
-                            window.location=$(vrow).attr("data-url");
-                        }
-                        else{
-                            window.simple_dialog("dialog_id",$(vrow).attr("data-title"),$(vrow).attr("data-url"));return false;
+                        if (target == '') {
+                            window.location = $(vrow).attr("data-url");
+                        } else {
+                            window.simple_dialog("dialog_id", $(vrow).attr("data-title"), $(vrow).attr("data-url"));
+                            return false;
                         }
                     });
 
                     //variable info for compare variable
-                    $(document.body).on("click",".var-box .var-name", function(event){
+                    $(document.body).on("click", ".var-box .var-name", function (event) {
                         event.stopPropagation();
-                        window.simple_dialog("dialog_id",$(this).text(),$(this).attr("href"));return false;
+                        window.simple_dialog("dialog_id", $(this).text(), $(this).attr("href"));
+                        return false;
                     });
-
 
 
                     /////////////////////////////////////////////////////////////////////////////////////////////
                     // simple dialog
                     /////////////////////////////////////////////////////////////////////////////////////////////
-                    window.simple_dialog=function simple_dialog(dialog_id,title,data_url){
-                        if($("#"+dialog_id).length ==0) {
-                            $("body").append('<div class="modal fade" id="'+dialog_id+'" tabindex="-1" role="dialog"  aria-hidden="true">\
+                    window.simple_dialog = function simple_dialog(dialog_id, title, data_url) {
+                        if ($("#" + dialog_id).length == 0) {
+                            $("body").append('<div class="modal fade" id="' + dialog_id + '" tabindex="-1" role="dialog"  aria-hidden="true">\
                 <div class="modal-dialog  modal-lg catalog-modal-dialog" role="document">\
                 <div class="modal-content">\
                 <div class="modal-header">\
-                <h5 class="modal-title" id="'+dialog_id+'Label">'+title+'</h5>\
+                <h5 class="modal-title" id="' + dialog_id + 'Label">' + title + '</h5>\
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">\
 						<span aria-hidden="true">&times;</span>\
 					</button>\
@@ -1258,17 +1242,15 @@
 					</div>\
 					</div>\
 					</div>');
-                        }
-                        else
-                        {
+                        } else {
                             /********* for jQuery ui modal *******/
                             /*dialog=	$("#"+dialog_id);
                             dialog.html("loading...");
                             dialog.dialog({ title: title});*/
 
                             /********* for Bootstrap modal *********/
-                            $('#'+dialog_id+' h5.modal-title').html(title);
-                            $('#'+dialog_id+' div.modal-body').html("loading...");
+                            $('#' + dialog_id + ' h5.modal-title').html(title);
+                            $('#' + dialog_id + ' div.modal-body').html("loading...");
                         }
 
                         // for jQuery ui modal
@@ -1278,51 +1260,46 @@
                         */
 
                         // for Bootstrap modal
-                        $('#'+dialog_id).modal('show');// for Bootstrap modal
-                        $('#'+dialog_id+' div.modal-body').load(data_url+'?ajax=1');//load content
+                        $('#' + dialog_id).modal('show');// for Bootstrap modal
+                        $('#' + dialog_id + ' div.modal-body').load(data_url + '?ajax=1');//load content
                     }//end function
-
-
 
 
                     //compare checkbox click
 
                     //compare button
-                    $(document.body).on("click",".btn-compare-var", function(event){
+                    $(document.body).on("click", ".btn-compare-var", function (event) {
                         event.stopPropagation();
-                        var sel_items=readCookie("variable-compare");
+                        var sel_items = readCookie("variable-compare");
 
-                        if(sel_items==null){
-                            sel_items=Array();
+                        if (sel_items == null) {
+                            sel_items = Array();
+                        } else {
+                            sel_items = sel_items.split(",");
                         }
-                        else{
-                            sel_items=sel_items.split(",");
-                        }
-                        if(sel_items.length>1){
-                            window.open(CI.base_url+'/catalog/compare','compare');
-                        }
-                        else{
-                            alert(i18n.js_compare_variable_select_atleast_2);return false;
+                        if (sel_items.length > 1) {
+                            window.open(CI.base_url + '/catalog/compare', 'compare');
+                        } else {
+                            alert(i18n.js_compare_variable_select_atleast_2);
+                            return false;
                         }
                         return false;
                     });
 
 
-                    $(document.body).on("click",".compare", function(event){
-                        var sel_items=readCookie("variable-compare");
+                    $(document.body).on("click", ".compare", function (event) {
+                        var sel_items = readCookie("variable-compare");
 
-                        if(sel_items==null){
-                            sel_items=Array();
-                        }
-                        else{
-                            sel_items=sel_items.split(",");
+                        if (sel_items == null) {
+                            sel_items = Array();
+                        } else {
+                            sel_items = sel_items.split(",");
                         }
 
-                        if ($(this).prop("checked")){
-                            update_compare_variable_list('add',$(this).val());
-                        }
-                        else{
-                            update_compare_variable_list('remove',$(this).val());
+                        if ($(this).prop("checked")) {
+                            update_compare_variable_list('add', $(this).val());
+                        } else {
+                            update_compare_variable_list('remove', $(this).val());
                         }
 
                         compare_var_summary();
@@ -1331,36 +1308,34 @@
                     });
 
 
-
                     //disable even propogations for compare link
-                    $(document.body).on("click",".var-quick-list .compare-variable", function(event){
+                    $(document.body).on("click", ".var-quick-list .compare-variable", function (event) {
                         event.stopPropagation();
                     });
 
                     //search facet options
-                    $(document.body).on("keyup",".facet-filter-values", function(event){
-                        var keywords=$(this).val().toLowerCase();
-                        if (keywords.length>0){
+                    $(document.body).on("keyup", ".facet-filter-values", function (event) {
+                        var keywords = $(this).val().toLowerCase();
+                        if (keywords.length > 0) {
                             console.log("showing...");
                             $(this).parent().find(".facet-filter-values-clear").show();
-                        }else{
+                        } else {
                             console.log("hiding...");
                             $(this).parent().find(".facet-filter-values-clear").hide();
                         }
-                        $(this).closest(".items-container").find(".chk").each(function(){
-                            if ($(this).data("title").toLowerCase().indexOf(keywords) >-1){
+                        $(this).closest(".items-container").find(".chk").each(function () {
+                            if ($(this).data("title").toLowerCase().indexOf(keywords) > -1) {
                                 $(this).parent().show();
-                            }else{
+                            } else {
                                 $(this).parent().hide();
                             }
                         });
                     });
 
                     //facet search clear button
-                    $(document.body).on("click",".facet-filter-values-clear", function(event){
+                    $(document.body).on("click", ".facet-filter-values-clear", function (event) {
                         $(this).parent().parent().find('.facet-filter-values').val("").trigger('keyup');
                     });
-
 
 
                 });

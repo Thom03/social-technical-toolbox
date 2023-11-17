@@ -152,6 +152,16 @@
 
                     <div class="col-lg-10 col-md-12 p-l-0 p-r-0" id="mapGrid">
                         <div id="map"></div>
+
+                        <div class="floating-search-bar">
+                            <div class="input-group">
+                                <input type="text" class="form-control"id="searchInput"  placeholder="Search...">
+{{--                                <div class="input-group-append">--}}
+{{--                                    <button class="btn btn-outline-secondary" onclick="searchLocation()" type="button">Search</button>--}}
+{{--                                </div>--}}
+                            </div>
+                        </div>
+
                         <!-- Floating Panel -->
                         <div id="floating-panel" class="bg-white p-3 rounded">
                             <h3>Interactive Map</h3>

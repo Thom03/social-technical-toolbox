@@ -188,6 +188,40 @@ function controlDatasetsLayer() {
     }
 }
 
+function searchLocation() {
+    console.log('Search button clicked!');
+    var searchTerm = document.getElementById('searchInput').value;
+    console.log('Search term:', searchTerm);
+
+    // Search within the countryLayer GeoJSON data
+    var countryFeature = findFeatureInGeoJSON(countryLayer.toGeoJSON(), searchTerm);
+
+    // If not found in countryLayer, search within the boundaryLayer GeoJSON data
+    if (!countryFeature) {
+        var boundaryFeature = findFeatureInGeoJSON(boundaryLayer.toGeoJSON(), searchTerm);
+
+        if (boundaryFeature) {
+            zoomToFeature(boundaryFeature);
+        } else {
+            alert('Location not found!');
+        }
+    } else {
+        zoomToFeature(countryFeature);
+    }
+}
+
+function findFeatureInGeoJSON(geoJSON, searchTerm) {
+    var feature = geoJSON.features.find(function (feature) {
+        return feature.properties.title.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+
+    return feature;
+}
+
+function zoomToFeature(feature) {
+    var coordinates = feature.geometry.coordinates;
+    stibmap.setView(coordinates, 10); // Set the zoom level as needed
+}
 
 
 

@@ -32,8 +32,7 @@ return [
                 'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 'css/style.css',
                 'css/materialdesignicons.min.css',
-                'css/icons/simple-line-icons/css/simple-line-icons.css',
-                'css/icons/font-awesome-old/css/font-awesome.min.cs',
+                'css/icons/simple-line-icons/simple-line-icons.css',
                 'css/icons/material-design-iconic-font/materialdesignicons.min.css',
                 'css/icons/themify-icons/css/themify-icons.css',
                 'css/icons/line-awesome/css/line-awesome.min.css',
@@ -77,9 +76,8 @@ return [
                     'css/facets.css',
                     'css/filter-action-bar.css',
                     'css/home.css',
-//                    'css/microstyle.css',
                     'css/varible.css',
-//                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+
               ],'inventory_dataset_list' => [
                     'vendor/jqvmap/css/jqvmap.min.css',
                     'vendor/chartist/css/chartist.min.css',
@@ -560,6 +558,7 @@ return [
                     'vendor/peity/jquery.peity.min.js',
                     'js/plugins-init/piety-init.js',
                     'js/plugins-init/widgets-script-init.js',
+                    'https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js',
                 ],
                 'about_page' => [
                     'vendor/apexchart/apexchart.js',
