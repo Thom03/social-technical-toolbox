@@ -31,7 +31,15 @@ return [
             'css' => [
                 'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 'css/style.css',
-                'css/materialdesignicons.min.css'
+                'css/materialdesignicons.min.css',
+                'css/icons/simple-line-icons/css/simple-line-icons.css',
+                'css/icons/font-awesome-old/css/font-awesome.min.cs',
+                'css/icons/material-design-iconic-font/materialdesignicons.min.css',
+                'css/icons/themify-icons/css/themify-icons.css',
+                'css/icons/line-awesome/css/line-awesome.min.css',
+                'css/icons/avasta/css/style.css',
+                'css/icons/flaticon/flaticon.css',
+                'css/icons/icomoon/icomoon.css',
             ],
             'js' => [
                 'vendor/global/global.min.js',
