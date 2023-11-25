@@ -14,23 +14,7 @@ function remove_region_fields(rid) {
     $('.removeclass'+rid).remove();
 }
 
-// $(document).ready(function() {
-//     $('.select2-tags').select2({
-//         tags: true,
-//         tokenSeparators: [','],
-//         createTag: function(params) {
-//             var term = $.trim(params.term);
-//             if (term === '') {
-//                 return null;
-//             }
-//             return {
-//                 id: term,
-//                 text: term,
-//                 newTag: true
-//             }
-//         }
-//     });
-// });
+
 
 $(document).ready(function() {
     $(document).on('input', '.country-input', function() {
