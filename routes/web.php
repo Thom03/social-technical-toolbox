@@ -45,7 +45,6 @@ Route::get('/inventory-data', [HomeController::class, 'inventory_dataset_list'])
 
 
 
-
 Auth::routes();
 
 

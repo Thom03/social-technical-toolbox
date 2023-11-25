@@ -41,7 +41,12 @@ fetch('/countries-json')
                                 title: country,
                                 admin_bound_1: countryData.admin_bound_1,
                                 dataset_title: countryData.dataset_title,
-                                dataset_doi: countryData.dataset_doi
+                                dataset_doi: countryData.dataset_doi,
+                                dataset_author: countryData.dataset_author,
+                                dataset_release_year: countryData.dataset_release_year,
+                                impactAreas: countryData.impactAreas,
+                                innovations: countryData.innovations
+
                             },
                             geometry: {
                                 type: 'Point',
@@ -76,23 +81,37 @@ fetch('/countries-json')
                         <h4>Main Title</h4>
                         <p class="text-justify">${feature.properties.dataset_title}</p>
                     </div>`;
-                            // popupContent += `<p class="modal-popup-content"><strong>DOI:</strong> ${feature.properties.dataset_doi}</p>`;
+
+                        popupContent += `<p class="modal-popup-content">
+                                    <div class="col-12 m-t-20">
+                                        <h4>Author(s) </h4>
+                                        <a href=""> <p"> ${feature.properties.dataset_author}</p> </a>
+                                             </div>`;
 
                             popupContent += `<p class="modal-popup-content">
                                     <div class="col-12 m-t-20">
                                         <h4>Digital Object Identifer (DOI) </h4>
-                                        <a href="{{ ${feature.properties.dataset_doi} }}"> <p class="badge badge-rounded badge-outline-info"> ${feature.properties.dataset_doi}</p> </a>
+                                        <a href="{ ${feature.properties.dataset_doi} }"> <p class="badge badge-rounded badge-outline-info"> ${feature.properties.dataset_doi}</p> </a>
                                              </div>`;
-
-                            // popupContent += `DOI: ${feature.properties.dataset_doi}`;
-
-
-                        // marker.bindPopup(popupContent);
+                            popupContent += `<p class="modal-popup-content">
+                                    <div class="col-12 m-t-20">
+                                        <h4>Release Year </h4>
+                                        <a href=""> <p"> ${feature.properties.dataset_release_year}</p> </a>
+                                             </div>`;
+                        popupContent += `<p class="modal-popup-content">
+                                        <div class="col-12 m-t-20">
+                                            <h4>Innovations</h4>
+                                        ${feature.properties.innovations.map(innovation => `<p class="badge badge-rounded badge-outline-warning">${innovation}</p>`).join('')}
+                                            </div>`;
+                            popupContent += `<p class="modal-popup-content">
+                                        <div class="col-12 m-t-20">
+                                            <h4>Impact Areas</h4>
+                                        ${feature.properties.impactAreas.map(impactArea => `<p class="badge badge-rounded badge-outline-primary">${impactArea}</p>`).join('')}
+                                            </div>`;
 
                         // Add an event listener to open the Bootstrap modal on marker click
                         marker.on('click', function() {
                             $('#countryModal .modal-title').text(feature.properties.title);
-                            // $('#countryModal .modal-body').text(feature.properties.dataset_title);
                             $('#countryModal .modal-body').html(popupContent);
 
 
@@ -137,6 +156,20 @@ fetch('/getcountrygeojson')
     .catch(error => {
         console.error('Failed to fetch administrative boundary data:', error);
     });
+
+// Event listener for pressing Enter
+document.getElementById('searchInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        searchCountry();
+    }
+});
+
+document.getElementById('searchButton').addEventListener('click', searchCountry);
+document.getElementById('searchInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        searchCountry();
+    }
+});
 
 
 var legend = L.control({ position: 'topright' });
@@ -188,39 +221,22 @@ function controlDatasetsLayer() {
     }
 }
 
-function searchLocation() {
-    console.log('Search button clicked!');
-    var searchTerm = document.getElementById('searchInput').value;
-    console.log('Search term:', searchTerm);
+function searchCountry() {
+    // Get the search input value
+    var searchInputValue = document.getElementById('searchInput').value;
 
-    // Search within the countryLayer GeoJSON data
-    var countryFeature = findFeatureInGeoJSON(countryLayer.toGeoJSON(), searchTerm);
+    // Find the feature in the GeoJSON data that matches the searched country
+    var countryFeature = boundaryLayer.getLayers().find(layer => layer.feature.properties.country.toLowerCase() === searchInputValue.toLowerCase());
 
-    // If not found in countryLayer, search within the boundaryLayer GeoJSON data
-    if (!countryFeature) {
-        var boundaryFeature = findFeatureInGeoJSON(boundaryLayer.toGeoJSON(), searchTerm);
+    if (countryFeature) {
+        // Get the bounds of the country feature
+        var bounds = countryFeature.getBounds();
 
-        if (boundaryFeature) {
-            zoomToFeature(boundaryFeature);
-        } else {
-            alert('Location not found!');
-        }
+        // Fit the map to the bounds of the country
+        stibmap.fitBounds(bounds);
     } else {
-        zoomToFeature(countryFeature);
+        alert('Country not found');
     }
-}
-
-function findFeatureInGeoJSON(geoJSON, searchTerm) {
-    var feature = geoJSON.features.find(function (feature) {
-        return feature.properties.title.toLowerCase().includes(searchTerm.toLowerCase());
-    });
-
-    return feature;
-}
-
-function zoomToFeature(feature) {
-    var coordinates = feature.geometry.coordinates;
-    stibmap.setView(coordinates, 10); // Set the zoom level as needed
 }
 
 

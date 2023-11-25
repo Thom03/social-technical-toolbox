@@ -156,9 +156,7 @@
                         <div class="floating-search-bar">
                             <div class="input-group">
                                 <input type="text" class="form-control"id="searchInput"  placeholder="Search...">
-{{--                                <div class="input-group-append">--}}
-{{--                                    <button class="btn btn-outline-secondary" onclick="searchLocation()" type="button">Search</button>--}}
-{{--                                </div>--}}
+{{--                                <button class="btn btn-primary" id="searchButton">Search</button>--}}
                             </div>
                         </div>
 

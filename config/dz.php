@@ -65,7 +65,8 @@ return [
                 ],'landing_page_list' => [
                     'vendor/jqvmap/css/jqvmap.min.css',
                     'vendor/chartist/css/chartist.min.css',
-                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css',
+//                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
 //                    'https://cdn.lineicons.com/2.0/LineIcons.css',
                     'vendor/chartist/css/chartist.min.css',
                     'vendor/datatables/css/jquery.dataTables.min.css',

@@ -98,6 +98,10 @@ class HomeController extends Controller
             $datasetauthor = $dataset ? $dataset->author : null;
             $datasetyear = $dataset ? $dataset->release_year : null;
 
+            $impactAreas = $dataset ? $dataset->impactAreas->pluck('name')->toArray() : [];
+            $innovations = $dataset ? $dataset->innovations->pluck('name')->toArray() : [];
+
+
 
             return [
                 'country' => $item->country,
@@ -106,7 +110,8 @@ class HomeController extends Controller
                 'dataset_doi' => $datasetDOI,
                 'dataset_author'=> $datasetauthor,
                 'dataset_release_year'=> $datasetyear,
-
+                'impactAreas' => $impactAreas,
+                'innovations' => $innovations,
 
 
             ];
