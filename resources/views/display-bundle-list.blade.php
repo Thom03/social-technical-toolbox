@@ -435,7 +435,7 @@
                                         <div class="filter-action-bar row">
 
                                             <div class="search-count col-5 text-md-left mb-2 mb-md-0 pt-2">
-                                                Showing <b>1-15</b> of <b>1,314</b></div>
+                                                Showing <b>{{ $dataset->firstItem() }}-{{ $dataset->lastItem() }}</b> of <b>{{ $dataset->total() }}</b></div>
 
                                             <div class="col mt-1 wb-search-toggle">
                                                 <div class="btn-group btn-group-toggle study-view-toggle">
@@ -573,28 +573,58 @@
                                     <div class="row mt-3 mb-3 d-flex align-items-lg-center">
 
                                         <div class="col-12 col-md-3 col-lg-4 text-center text-md-left mb-2 mb-md-0">
-                                            Showing <b>1-15</b> of <b>1,314</b></div>
+                                            Showing <b>{{ $dataset->firstItem() }}-{{ $dataset->lastItem() }}</b> of <b>{{ $dataset->total() }}</b>
+                                        </div>
 
                                         <div
                                             class="col-12 col-md-9 col-lg-8 d-flex justify-content-center justify-content-lg-end text-center">
                                             <nav aria-label="">
                                                 <ul class="pagination pagination-circle">
                                                     <li class="page-item page-indicator">
-                                                        <a class="page-link" href="{{ $dataset->previousPageUrl() }}"
-                                                           aria-label="Previous">
+                                                        <a class="page-link" href="{{ $dataset->previousPageUrl() }}" aria-label="Previous">
                                                             <i class="la la-angle-left"></i>
                                                         </a>
                                                     </li>
-                                                    @for ($i = 1; $i <= $dataset->lastPage(); $i++)
+
+                                                    @php
+                                                        $numPages = $dataset->lastPage();
+                                                        $currentPage = $dataset->currentPage();
+                                                        $maxPagesToShow = 5; // Change this to the desired number of pages to show
+                                                        $halfMax = (int)($maxPagesToShow / 2);
+                                                        $startPage = max(1, $currentPage - $halfMax);
+                                                        $endPage = min($numPages, $startPage + $maxPagesToShow - 1);
+                                                    @endphp
+
+                                                    @if($startPage > 1)
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="{{ $dataset->url(1) }}">1</a>
+                                                        </li>
+                                                        @if($startPage > 2)
+                                                            <li class="page-item disabled">
+                                                                <span class="page-link">...</span>
+                                                            </li>
+                                                        @endif
+                                                    @endif
+
+                                                    @for ($i = $startPage; $i <= $endPage; $i++)
                                                         <li class="page-item {{ $dataset->currentPage() == $i ? 'active' : '' }}">
-                                                            <a class="page-link"
-                                                               href="{{ $dataset->url($i) }}">{{ $i }}</a>
+                                                            <a class="page-link" href="{{ $dataset->url($i) }}">{{ $i }}</a>
                                                         </li>
                                                     @endfor
 
+                                                    @if($endPage < $numPages)
+                                                        @if($endPage < $numPages - 1)
+                                                            <li class="page-item disabled">
+                                                                <span class="page-link">...</span>
+                                                            </li>
+                                                        @endif
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="{{ $dataset->url($numPages) }}">{{ $numPages }}</a>
+                                                        </li>
+                                                    @endif
+
                                                     <li class="page-item page-indicator">
-                                                        <a class="page-link" href="{{ $dataset->nextPageUrl() }}"
-                                                           aria-label="Next">
+                                                        <a class="page-link" href="{{ $dataset->nextPageUrl() }}" aria-label="Next">
                                                             <i class="la la-angle-right"></i>
                                                         </a>
                                                     </li>
