@@ -100,7 +100,8 @@
                             <div class="col-12 bg-inverse text-white m-t-5" onclick="displayFilters('researches')"><i
                                     class="fa fa-flask"></i> Impact Areas
                             </div>
-                            <div id="researches" class="col-12 show"></div>
+                            <div id="researches" class="col-12 show">
+                            </div>
                             <div class="col-12 bg-inverse text-white m-t-5" onclick="displayFilters('regionsDiv')"><i
                                     class="fa fa-globe"></i> Regions
                             </div>

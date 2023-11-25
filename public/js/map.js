@@ -164,13 +164,6 @@ document.getElementById('searchInput').addEventListener('keypress', function (e)
     }
 });
 
-document.getElementById('searchButton').addEventListener('click', searchCountry);
-document.getElementById('searchInput').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        searchCountry();
-    }
-});
-
 
 var legend = L.control({ position: 'topright' });
 
