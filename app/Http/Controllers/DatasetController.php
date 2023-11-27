@@ -295,14 +295,23 @@ class DatasetController extends Controller
         $dataset->status = $request->input('status');
         $dataset->update();
 
+
+        $dataset->impactAreas()->detach();
         $dataset->impactAreas()->attach($validateData['impact_areas']);
+
+
+        $dataset->innovations()->detach();
         $dataset->innovations()->attach($validateData['innovations']);
+
+        $dataset->techPracs()->detach();
         $dataset->techPracs()->attach($validateData['tech_pracs']);
 
         //        Attach clusters to the datasets
+        $dataset->clusters()->detach();
         $dataset->clusters()->attach($validateData['clusters']);
 
         //        Attach providers to the datasets
+        $dataset->providers()->detach();
         $dataset->providers()->attach($validateData['providers']);
 
 
