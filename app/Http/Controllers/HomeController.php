@@ -131,7 +131,7 @@ class HomeController extends Controller
 
         $action = __FUNCTION__;
 
-        $bundles = Dataset::count();
+        $bundles = Dataset::where('status', 'published')->count();
         $inventory_data = InventoryData::count();
 
         $total_dataset = $bundles + $inventory_data;
@@ -321,10 +321,6 @@ class HomeController extends Controller
         $dataset = $query->paginate(15);
 
 
-
-
-
-
         return view('display-bundle-list', compact('dataset', 'logo','page_title', 'page_description','action'));
     }
 
@@ -345,7 +341,6 @@ class HomeController extends Controller
 
         return view('inventory-data-list', compact('dataset',  'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
-
 
 
 }

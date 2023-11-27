@@ -12,7 +12,7 @@
         <a class="nav-link {{ request()->is('map_page') ? 'active' : '' }}" href="{{ route('map_page') }}"><h4><i class="mdi mdi-map"></i> Interactive Map</h4></a>
         <a class="nav-link {{ request()->is('display-bundle-list') ? 'active' : '' }}" href="{{ route('display-bundle-list') }}"><h4><i
                     class="mdi mdi-format-list-bulleted"></i> Bundles </h4></a>
-        <a class="nav-link {{ request()->is('inventory-data-list') ? 'active' : '' }}" href="{{ route('inventory-data-list') }}"><h4><i class="mdi mdi-file-document"></i> Datasets </h4></a>
+        <a class="nav-link {{ request()->is('inventory-data-list') ? 'active' : '' }}" href="{{ route('inventory-data-list') }}"><h4><i class="mdi mdi-file-document"></i>Inventory Data</h4></a>
         <a class="nav-link {{ request()->is('graphs') ? 'active' : '' }}" href="{{ route('graphs') }}"><h4><i class="mdi mdi-graphql"></i> Infographics</h4></a>
 
         <a class="nav-link {{ request()->is('about_us') ? 'active' : '' }}" href="{{ route('about_us') }}"><h4><i class="mdi mdi-comment-question-outline"></i>
