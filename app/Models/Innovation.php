@@ -10,7 +10,7 @@ class Innovation extends Model
     use HasFactory;
 
     protected $table = 'innovations';
-    protected $fillable = ['name','description'];
+    protected $fillable = ['name','description', 'category'];
 
 
     public function datasets()

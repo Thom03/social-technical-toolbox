@@ -44,6 +44,21 @@
                                                    class="form-control" placeholder="Description">
                                         </div>
                                     </div>
+
+                                    <div class="col-lg-6 mb-2">
+                                        <div class="form-group">
+                                            <label class="text-label">Category</label>
+                                            <select name="category" class="form-control">
+                                                <option value="" selected disabled>Select Category</option>
+                                                <option value="Social">Social</option>
+                                                <option value="Technological">Technological</option>
+                                                <option value="Technical">Technical</option>
+                                                <!-- Add more options as needed -->
+                                            </select>
+                                        </div>
+                                    </div>
+
+
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
                                             <label class="text-label">Slug</label>

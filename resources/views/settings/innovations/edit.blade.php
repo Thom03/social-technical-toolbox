@@ -46,6 +46,20 @@
                                 </div>
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
+                                        <label class="text-label">Category</label>
+                                        <select name="category" class="form-control">
+                                            <option value="" disabled>Select Category</option>
+                                            @foreach($categories as $categoryOption)
+                                                <option value="{{ $categoryOption }}" {{ $innovations->category === $categoryOption ? 'selected' : '' }}>
+                                                    {{ $categoryOption }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
                                         <label class="text-label">Slug</label>
                                         <input  type="text" name="slug" value="{{ $innovations->slug }}"
                                                 class="form-control" placeholder="Slug" required>

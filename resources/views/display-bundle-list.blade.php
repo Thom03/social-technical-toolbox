@@ -250,7 +250,7 @@
                                                      href="#facet-collection" role="button" aria-expanded="false"
                                                      aria-controls="facet-collection">
                                                     <i class="fa fa-filter pr-2"></i>
-                                                    <span class="text-capitalize">Impact Areas</span>
+                                                    <span class="text-capitalize">CGIAR Impact Areas</span>
                                                     <span class="float-right">
                                                         <i
                                                             class="icon-toggle icon-collapsed float-right fa fa-chevron-down"></i>
@@ -534,7 +534,7 @@
                                                         </div>
 
 
-                                                        <span class="owner-collection collection-link mr-3">Impact Areas:
+                                                        <span class="owner-collection collection-link mr-3">CGIAR Impact Area(s):
                                                         @foreach ($data->impactAreas as $impactArea)
                                                                 <a href=""><span
                                                                         class="badge badge-light">{{ $impactArea->name }}</span></a>

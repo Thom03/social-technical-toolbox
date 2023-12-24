@@ -41,6 +41,7 @@
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Category</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">slug</th>
                                 <th scope="col"></th>
@@ -51,6 +52,7 @@
                                 <tr>
                                     <td>{{ $innov->id }}</td>
                                     <td><span class="badge badge-rounded badge-success">{{ $innov->name }}</span></td>
+                                    <td>{{ $innov->category }}</td>
                                     <td>{{ $innov->description }}</td>
                                     <td>{{ $innov->slug }}</td>
 
