@@ -8,6 +8,7 @@ use App\Models\Cluster;
 use App\Models\Dataset;
 use App\Models\ImpactArea;
 use App\Models\Innovation;
+use App\Models\InventoryData;
 use App\Models\Provider;
 use App\Models\Region;
 use App\Models\TechPrac;
@@ -67,10 +68,15 @@ class HomeController extends Controller
         $publishedCount = Dataset::where('status', 'published')->count();
         $unpublishedCount = Dataset::where('status', 'unpublished')->count();
 
+        $bundles = Dataset::count();
+        $inventory_data = InventoryData::count();
+
+        $total_dataset = $bundles + $inventory_data;
 
 
 
-        return view('dashboard.index', compact('page_title', 'nutrition_impact', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
+
+        return view('dashboard.index', compact('page_title', 'total_dataset', 'inventory_data', 'nutrition_impact', 'bundles', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
             'climate_impact', 'publishedCount', 'unpublishedCount','page_description','action','logo','logoText'));
     }
 
@@ -89,6 +95,12 @@ class HomeController extends Controller
             $dataset = Dataset::find($item->dataset_id);
             $datasetTitle = $dataset ? $dataset->title : null;
             $datasetDOI = $dataset ? $dataset->DOI : null;
+            $datasetauthor = $dataset ? $dataset->author : null;
+            $datasetyear = $dataset ? $dataset->release_year : null;
+
+            $impactAreas = $dataset ? $dataset->impactAreas->pluck('name')->toArray() : [];
+            $innovations = $dataset ? $dataset->innovations->pluck('name')->toArray() : [];
+
 
 
             return [
@@ -96,7 +108,10 @@ class HomeController extends Controller
                 'admin_bound_1' => $item->admin_bound_1,
                 'dataset_title' => $datasetTitle,
                 'dataset_doi' => $datasetDOI,
-
+                'dataset_author'=> $datasetauthor,
+                'dataset_release_year'=> $datasetyear,
+                'impactAreas' => $impactAreas,
+                'innovations' => $innovations,
 
 
             ];
@@ -111,13 +126,18 @@ class HomeController extends Controller
     public function map_page(Geocoder $geocoder)
     {
         $logo = "img/logo.png";
-        $page_title = 'Map Page';
+        $page_title = 'Homepage';
         $page_description = 'Social-Technical Innovation Bundles.';
 
         $action = __FUNCTION__;
 
+        $bundles = Dataset::where('status', 'published')->count();
+        $inventory_data = InventoryData::count();
 
-        return view('map', compact('logo','page_title', 'page_description','action',));
+        $total_dataset = $bundles + $inventory_data;
+
+
+        return view('map', compact('logo','page_title', 'bundles', 'inventory_data', 'total_dataset','page_description','action',));
     }
 
     public function dataset_list()
@@ -132,26 +152,10 @@ class HomeController extends Controller
         return view('datasets.datasetlist', compact('page_title', 'page_description','action','logo','logoText'));
     }
 
-    public function landing_page()
-    {
-        $logo = "img/logo.png";
-        $page_title = 'Home Page';
-        $page_description = 'Social-Technical Innovation Bundles.';
-        $action = __FUNCTION__;
-        $dataset = Dataset::where('status', 'published')->get();
-        $dataset_count = Dataset::where('status', 'published')->count();
-        $region_count = Region::count();
-        $country_count = AdministrativeBoundary::distinct('country')->count('country');
-        $cluster_count = Cluster::count();
-
-
-        return view('home-list', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
-    }
-
     public function landing_page_grid(Request $request)
     {
         $logo = "img/logo.png";
-        $page_title = 'Home Page';
+        $page_title = 'STIBs Grid Display Page';
         $page_description = 'Social-Technical Innovation Bundles.';
         $action = __FUNCTION__;
         $region_count = Region::count();
@@ -208,7 +212,7 @@ class HomeController extends Controller
     public function bundle_detail($id, Dataset $dataset)
     {
         $logo = "img/logo.png";
-        $page_title = 'Details Page';
+        $page_title = 'STIB Bundle Details Page';
         $page_description = 'Social-Technical Innovation Bundles.';
 
         $action = __FUNCTION__;
@@ -229,7 +233,7 @@ class HomeController extends Controller
     public function graphs_page()
     {
         $logo = "img/logo.png";
-        $page_title = 'Graph Page';
+        $page_title = 'Infographics Page';
         $page_description = 'Social-Technical Innovation Bundles';
         $action = __FUNCTION__;
         $dataset_count = Dataset::where('status', 'published')->count();
@@ -241,8 +245,13 @@ class HomeController extends Controller
 
         $clusters = Cluster::withCount('datasets')->get();
 
+        $bundles = Dataset::count();
+        $inventory_data = InventoryData::count();
 
-        return view('graphs', compact('datasets', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+        $total_dataset = $bundles + $inventory_data;
+
+
+        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
     public function about_page()
@@ -300,25 +309,38 @@ class HomeController extends Controller
     }
 
 
-    public function micro_page()
+    public function landing_page_list()
     {
         $logo = "img/logo.png";
-        $page_title = 'Home Page';
+        $page_title = 'STIBs List Diplay';
         $page_description = 'Social-Technical Innovation Bundles.';
         $action = __FUNCTION__;
-        $dataset = Dataset::where('status', 'published')->get();
+
+
+        $query = Dataset::where('status', 'published');
+        $dataset = $query->paginate(15);
+
+
+        return view('display-bundle-list', compact('dataset', 'logo','page_title', 'page_description','action'));
+    }
+
+
+    public function inventory_dataset_list()
+    {
+        $logo = "img/logo.png";
+        $page_title = 'Inventory Data List Page';
+        $page_description = 'Social-Technical Innovation Bundles';
+        $action = __FUNCTION__;
         $dataset_count = Dataset::where('status', 'published')->count();
         $region_count = Region::count();
         $country_count = AdministrativeBoundary::distinct('country')->count('country');
         $cluster_count = Cluster::count();
 
+        $dataset = InventoryData::paginate(100);
 
-        return view('microdata', compact('dataset', 'dataset_count','region_count','cluster_count','country_count','logo','page_title', 'page_description','action'));
+
+        return view('inventory-data-list', compact('dataset',  'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
-
-
-
-
 
 
 }

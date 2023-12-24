@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\TechPracController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Api\APIController;
 use App\Http\Controllers\DatasetController;
+use App\Http\Controllers\InventoryDataController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -28,10 +29,10 @@ use App\Http\Controllers\HomeController;
 
 
 //    Home Routes
-Route::get('/2', [HomeController::class, 'landing_page'])->name('landing_page');
-Route::get('/', [HomeController::class, 'landing_page_grid'])->name('landing_page_grid');
+//Route::get('/2', [HomeController::class, 'landing_page'])->name('landing_page');
+Route::get('/1', [HomeController::class, 'landing_page_grid'])->name('landing_page_grid');
 Route::get('/bundle_detail/{id}', [HomeController::class, 'bundle_detail'])->name('bundle_detail');
-Route::get('/map', [HomeController::class, 'map_page'])->name('map_page');
+Route::get('/', [HomeController::class, 'map_page'])->name('map_page');
 Route::get('/countries-json', [HomeController::class, 'getCountriesJson'])->name('countries-json');
 Route::get('/graphs', [HomeController::class, 'graphs_page'])->name('graphs');
 Route::get('/about-us', [HomeController::class, 'about_page'])->name('about_us');
@@ -39,7 +40,8 @@ Route::get('/getcountrygeojson', [HomeController::class, 'getGeometryGeoJson'])-
 Route::get('/update-null-coordinates', [HomeController::class, 'updateNullCoordinates'])->name('update-null-coordinates');
 
 
-Route::get('/micro_page', [HomeController::class, 'micro_page'])->name('micro_page');
+Route::get('/display-bundle-list', [HomeController::class, 'landing_page_list'])->name('display-bundle-list');
+Route::get('/inventory-data', [HomeController::class, 'inventory_dataset_list'])->name('inventory-data-list');
 
 
 
@@ -116,6 +118,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/datasets/filter/{filter}', [DatasetController::class, 'filter'])->name('datasets.filter');
     Route::delete('delete_dataset/{id}', [DatasetController::class, 'delete_dataset'])->name('delete_dataset');
     Route::get('upload_dataset', [DatasetController::class, 'upload_dataset'])->name('upload_dataset');
+    Route::get('geographic_info_list', [DatasetController::class, 'geographic_info_list'])->name('geographic_info_list');
+
+    Route::get('edit_geographic_info/{id}', [DatasetController::class, 'edit_geographic_info'])->name('edit_geographic_info');
+    Route::get('update_geographic_info/{id}', [DatasetController::class, 'update_geographic_info'])->name('update_geographic_info');
 
 
 
@@ -133,6 +139,12 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('insert_cluster', [ClusterController::class, 'insert_cluster'])->name('insert_cluster');
     Route::get('edit_cluster/{id}', [ClusterController::class, 'edit_cluster'])->name('edit_cluster');
     Route::get('update_cluster/{id}', [ClusterController::class, 'update_cluster'])->name('update_cluster');
+
+
+    //Inventory Datasets Routes
+    Route::get('/upload_inventory_data_form', [InventoryDataController::class, 'upload_inventory_data_form'])->name('upload_iventory_data_form');
+    Route::post('/upload_inventory_data', [InventoryDataController::class, 'upload_inventory_data'])->name('upload_inventory_data');
+    Route::get('/inventory_data_list', [InventoryDataController::class, 'inventory_data_list'])->name('inventory_data_list');
 
 
 

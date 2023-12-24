@@ -19,7 +19,6 @@ class InnovationController extends Controller
         $innovations = Innovation::paginate(20);
 
 
-//        $users = User::latest()->paginate(10);
         return view('settings.innovations.index', compact('innovations','logo', 'page_title', 'page_description', 'action'));
 
     }
@@ -41,6 +40,7 @@ class InnovationController extends Controller
 
         $innovation = new Innovation();
         $innovation->name = $request->input('name');
+        $innovation->category = $request->input('category');
         $innovation->description = $request->input('description');
         $innovation->slug = $request->input('slug');
         $innovation->save();
@@ -56,9 +56,10 @@ class InnovationController extends Controller
         $page_description = 'Some description for the page';
         $action = __FUNCTION__;
         $innovations = Innovation::find($id);
+        $categories = ['Social', 'Technological', 'Technical'];
 
 
-        return view('settings.innovations.edit', compact('logo', 'page_title', 'page_description', 'action', 'innovations'));
+        return view('settings.innovations.edit', compact('logo', 'page_title', 'page_description', 'action', 'innovations', 'categories'));
     }
 
     public function update_innovation(Request $request, $id)
@@ -66,6 +67,7 @@ class InnovationController extends Controller
 
         $innovation = Innovation::find($id);
         $innovation->name = $request->input('name');
+        $innovation->category = $request->input('category');
         $innovation->description = $request->input('description');
         $innovation->slug = $request->input('slug');
         $innovation->update();

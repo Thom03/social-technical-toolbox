@@ -295,14 +295,23 @@ class DatasetController extends Controller
         $dataset->status = $request->input('status');
         $dataset->update();
 
+
+        $dataset->impactAreas()->detach();
         $dataset->impactAreas()->attach($validateData['impact_areas']);
+
+
+        $dataset->innovations()->detach();
         $dataset->innovations()->attach($validateData['innovations']);
+
+        $dataset->techPracs()->detach();
         $dataset->techPracs()->attach($validateData['tech_pracs']);
 
         //        Attach clusters to the datasets
+        $dataset->clusters()->detach();
         $dataset->clusters()->attach($validateData['clusters']);
 
         //        Attach providers to the datasets
+        $dataset->providers()->detach();
         $dataset->providers()->attach($validateData['providers']);
 
 
@@ -423,6 +432,49 @@ class DatasetController extends Controller
 
 
         return view('datasets.upload', compact('logo', 'logoText', 'page_title', 'page_description', 'action'));
+
+    }
+
+
+    public function geographic_info_list()
+    {
+        $logo = "img/logo.png";
+        $logoText = "img/logo-text.png";
+        $page_title = 'Datasets';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+
+        $dataset = AdministrativeBoundary::all();
+
+
+
+        return view('datasets.geographic', compact('logo', 'dataset', 'logoText', 'page_title', 'page_description', 'action'));
+
+    }
+
+    public function edit_geographic_info($id)
+    {
+        $logo = "img/logo.png";
+        $page_title = 'Innovations';
+        $page_description = 'Some description for the page';
+        $action = __FUNCTION__;
+        $geographicinfo = AdministrativeBoundary::find($id);
+
+
+        return view('datasets.editgeo', compact('logo', 'page_title', 'page_description', 'action', 'geographicinfo'));
+    }
+
+    public function update_geographic_info(Request $request, $id)
+    {
+        $geographicinfo = AdministrativeBoundary::find($id);
+        $geographicinfo->country = $request->input('country');
+        $geographicinfo->country_id = $request->input('country_id');
+
+        $geographicinfo->update();
+
+        return redirect('/geographic_info_list')->with('status', 'Geographic info updated successfully.');
+
 
     }
 }

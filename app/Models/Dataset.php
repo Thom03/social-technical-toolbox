@@ -61,7 +61,7 @@ class Dataset extends Model
     }
     public function administrativeBoundaries()
     {
-        return $this->belongsToMany(AdministrativeBoundary::class);
+        return $this->hasMany(AdministrativeBoundary::class, 'dataset_id');
     }
 
     public function providers()

@@ -21,39 +21,39 @@
 			water: "rgba(0, 0, 0, 0.3)",
 			marker: "#CC0000"
 		},
-		
+
 		//layer is the map layer to be shown in the minimap
-		initialize: function (options) {
-			L.Util.setOptions(this, options);
-			console.log(this.options);
-		},
-		
+		// initialize: function (options) {
+		// 	L.Util.setOptions(this, options);
+		// 	console.log(this.options);
+		// },
+
 		onAdd: function (map) {
-			console.log('onAdd()');
-	
+			// console.log('onAdd()');
+
 			this._mainMap = map;
-	
+
 			//Creating the container and stopping events from spilling through to the main map.
 			this._container = L.DomUtil.create('div', 'leaflet-control-minimap');
 			this._container.style.width = this.options.width + 'px';
 			this._container.style.height = this.options.height + 'px';
-		
+
 			L.DomEvent.disableClickPropagation(this._container);
 			L.DomEvent.on(this._container, 'mousewheel', L.DomEvent.stopPropagation);
-	
 
-	
+
+
 			//Keep a record of this to prevent auto toggling when the user explicitly doesn't want it.
 			this._userToggledDisplay = false;
 			this._minimized = false;
 
 			this._mainMap.on('moveend', this._onMainMapMoved, this);
-	
+
 			return this._container;
 		},
-	
+
 		addTo: function (map) {
-			console.log('addTo()');
+			// console.log('addTo()');
 			L.Control.prototype.addTo.call(this, map);
 			this.initCanvas();
 
@@ -83,7 +83,7 @@
 		  var canvas = d3.select('.leaflet-control-minimap').append("canvas")
 		    .attr("width", 400)
 		    .attr("height", 400)
-		    
+
 
 		  this.c = canvas.node().getContext("2d");
 
@@ -92,18 +92,14 @@
 		    .context(this.c);
 
 
-		  var that = this;
-		  d3.json('../src/world.json', function (world) {
-			  that.globe = {type: "Sphere"},
-	      that.land = topojson.feature(world, world.objects.land);
-			});
+
 
 		  //set to current view
 			this.transitionMap(this._mainMap.getCenter());
 		},
 
 		transitionMap: function (p) {
-			console.log('transtionMap');
+			// console.log('transtionMap');
 			var that = this;
 			var c = that.c;
 			var path = that.path;
@@ -121,37 +117,37 @@
           };
         })
 		},
-	
+
 		onRemove: function (map) {
 			this._mainMap.off('moveend', this._onMainMapMoved, this);
 			this._mainMap.off('move', this._onMainMapMoving, this);
 		},
-	
+
 		_onMainMapMoved: function (e) {
 			console.log('mainmapmoved');
 			if (!this._miniMapMoving) {
 				this._mainMapMoving = true;
-			
+
 				this.transitionMap(this._mainMap.getCenter());
-	
+
 			} else {
 				this._miniMapMoving = false;
-			}	
+			}
 		}
 	});
 
   L.control.globeminimap = function (layer, options) {
     return new L.Control.GlobeMiniMap(layer, options);
   };
-	
+
 	L.Map.mergeOptions({
 		miniMapControl: false
 	});
-	
+
 	L.Map.addInitHook(function () {
 		if (this.options.miniMapControl) {
 			this.miniMapControl = (new GlobeMiniMap()).addTo(this);
 		}
 	});
-		
-}, window)); 
+
+}, window));

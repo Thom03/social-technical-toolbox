@@ -12,9 +12,11 @@
 </p>
 
 ## STIB Toolbox Description
-The Bundles Innovations for Women’s Empowerment work package (WP 2), co-led by the Alliance of Bioversity and CIAT (ABC), is meant to design and collect systematic evidence on whether and how STIBs (Socio-Technical Innovative Bundles) can enhance women’s empowerment and resilience to later design and implement context-specific and gender-responsive STIBs. 
-We intend to build on available and relevant CGIAR and non-CGIAR innovations through learning labs to enhance their uptake and impacts via enhancing women’s access, resilience, and empowerment.
-
+Work package 2 of the CGIAR Global Initiative on Gender Equality (HER+) has implemented an interactive map and dashboard 
+that dynamically displays the global distribution of socio-economic datasets, data, and tools that facilitate bundling in 
+different regional and thematic contexts. This visualization effectively conveys the results and impact of these innovation bundles 
+on the five CGIAR impact areas. Furthermore, an accessible API has been created facilitates effortless integration and data 
+transfer with other CGIAR platforms, enhancing this valuable resource's collaborative potential
 ## Features
 
 ## Installation

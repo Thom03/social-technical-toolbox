@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="col-12 m-t-20">
-                            <h4>Impact Areas</h4>
+                            <h4>CGIAR Impact Areas</h4>
                             @foreach($datasets->impactAreas as $impactArea)
                                 <p class="badge badge-primary">{{ $impactArea->name }}</p>
                             @endforeach
@@ -136,7 +136,22 @@
 {{--                        </div>--}}
 
                         <div class="col-12 m-t-20">
-                            <h4>Social Innovations Components</h4>
+                            <h4>Social Innovations</h4>
+                            @foreach($datasets->innovations as $innovation)
+                                <p class="badge badge-dark">{{ $innovation->name }}</p>
+                            @endforeach
+                        </div>
+
+                        <div class="col-12 m-t-20">
+                            <h4>Technological Innovations</h4>
+                            @foreach($datasets->innovations as $innovation)
+                                <p class="badge badge-dark">{{ $innovation->name }}</p>
+                            @endforeach
+                        </div>
+
+
+                        <div class="col-12 m-t-20">
+                            <h4>Technical Innovations</h4>
                             @foreach($datasets->innovations as $innovation)
                                 <p class="badge badge-dark">{{ $innovation->name }}</p>
                             @endforeach
@@ -179,19 +194,19 @@
                             @endforeach
                         </div>
 
-                        <div class="col-12 m-t-20">
-                            <h4>Technology/Practice</h4>
-                            @foreach($datasets->techPracs as $techPrac)
-                                <p class="badge badge-light">{{ $techPrac->name }}</p>
-                            @endforeach
-                        </div>
+{{--                        <div class="col-12 m-t-20">--}}
+{{--                            <h4>Technology/Practice</h4>--}}
+{{--                            @foreach($datasets->techPracs as $techPrac)--}}
+{{--                                <p class="badge badge-light">{{ $techPrac->name }}</p>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
 
-                        <div class="col-12 m-t-20">
-                            <h4>Cluster</h4>
-                            @foreach($datasets->clusters as $clusters)
-                                <p class="badge badge-outline-primary">{{ $clusters->name }}</p>
-                            @endforeach
-                        </div>
+{{--                        <div class="col-12 m-t-20">--}}
+{{--                            <h4>Cluster</h4>--}}
+{{--                            @foreach($datasets->clusters as $clusters)--}}
+{{--                                <p class="badge badge-outline-primary">{{ $clusters->name }}</p>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
                     </div>
                     <div class="timeline-panel bg-white p-4 mb-4">
                     <a href="{{ route('edit_dataset', $datasets->id) }}" type="button" class="btn btn-rounded btn-dark">Edit</a>

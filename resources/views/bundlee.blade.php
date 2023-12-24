@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="col-12 m-t-20">
-                        <h4>Impact Areas</h4>
+                        <h4>CGIAR Impact Areas</h4>
                         @foreach($datasets->impactAreas as $impactArea)
                         <p class="badge badge-primary">{{ $impactArea->name }}</p>
                         @endforeach
@@ -94,7 +94,7 @@
                         <a href="{{ $datasets->DOI }}"> <p class="badge badge-rounded badge-outline-info">{{ $datasets->DOI }}</p> </a>
                     </div>
                     <div class="col-12 m-t-20">
-                        <h4>Social Innovations Components</h4>
+                        <h4>Innovations</h4>
                         @foreach($datasets->innovations as $innovation)
                             <p class="badge badge-dark">{{ $innovation->name }}</p>
                         @endforeach
@@ -137,12 +137,12 @@
                         @endforeach
                     </div>
 
-                    <div class="col-12 m-t-20">
-                        <h4>Technology/Practice</h4>
-                        @foreach($datasets->techPracs as $techPrac)
-                            <p class="badge badge-light">{{ $techPrac->name }}</p>
-                        @endforeach
-                    </div>
+{{--                    <div class="col-12 m-t-20">--}}
+{{--                        <h4>Technology/Practice</h4>--}}
+{{--                        @foreach($datasets->techPracs as $techPrac)--}}
+{{--                            <p class="badge badge-light">{{ $techPrac->name }}</p>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
                     <div class="col-12 m-t-20">
                         <h4>Cluster</h4>
                         @foreach($datasets->clusters as $clusters)

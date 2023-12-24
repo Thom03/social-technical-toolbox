@@ -9,7 +9,7 @@
 
     <meta name="description" content="@yield('page_description', $page_description )"/>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/logo-text.png') }}">
 
 
 
@@ -26,9 +26,11 @@
         @endforeach
     @endif
 
-
 </head>
-
+<link href="{{ asset('vendor/animate/animate.min.css') }}" rel="stylesheet">
+<link href="{{ asset('vendor/aos/css/aos.min.css') }}" rel="stylesheet">
+<link href="{{ asset('vendor/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+<link href="{{ asset('vendor/metismenu/css/metisMenu.min.css') }}" rel="stylesheet">
 <body>
 
 <!--*******************
@@ -50,34 +52,6 @@
 ***********************************-->
 <div id="main-wrapper">
 
-    <!--**********************************
-        Nav header start
-    ***********************************-->
-{{--    <div class="nav-header">--}}
-{{--        <a href="{{ route('dashboard') }}" class="brand-logo">--}}
-{{--            @if(!empty($logo))--}}
-{{--                <img class="logo-abbr" src="{{ asset($logo) }}" alt="">--}}
-{{--            @else--}}
-{{--                <img class="logo-abbr" src="{{ asset('img/logo.png') }}" alt="">--}}
-{{--            @endif--}}
-{{--            @if(!empty($logoText))--}}
-{{--                <img class="logo-compact" src="{{ asset($logoText) }}" alt="">--}}
-{{--                <img class="brand-title" src="{{ asset($logoText) }}" alt="">--}}
-{{--            @else--}}
-{{--                <img class="logo-compact" src="{{ asset('img/logo-text.png') }}" alt="">--}}
-{{--                <img class="brand-title" src="{{ asset('img/logo-text.png') }}" alt="">--}}
-{{--            @endif--}}
-{{--        </a>--}}
-
-{{--        <div class="nav-control">--}}
-{{--            <div class="hamburger">--}}
-{{--                <span class="line"></span><span class="line"></span><span class="line"></span>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-    <!--**********************************
-        Nav header end
-    ***********************************-->
 
     <!--**********************************
         Header start

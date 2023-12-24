@@ -18,6 +18,7 @@ class AdministrativeBoundary extends Model
         'admin_bound_1',
         'admin_bound_2',
         'admin_bound_3',
+        'dataset_id',
         'coordinates',
         ];
 

@@ -47,8 +47,11 @@
 							<span class="nav-text">Datasets</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{!! url('./datasetlist'); !!}">Dataset List</a></li>
-                            <li><a href="{!! url('./upload_dataset'); !!}">Uploading Dataset</a></li>
+                            <li><a href="{!! url('./datasetlist'); !!}">STIBs List</a></li>
+                            <li><a href="{!! url('./upload_dataset'); !!}">Upload STIBs</a></li>
+                            <li><a href="{!! url('./inventory_data_list'); !!}">Inventory Data list</a></li>
+                            <li><a href="{!! url('./upload_inventory_data_form'); !!}">Upload Inventory Data</a></li>
+                            <li><a href="{!! url('./geographic_info_list'); !!}">Geographic Data</a></li>
 
                         </ul>
                     </li>
@@ -70,11 +73,9 @@
                             <li><a href="{{ route('provider_list') }}">Dataset Providers</a></li>
                             <li><a href="{{ route('region_list') }}">Dataset Regions</a></li>
                             <li><a href="{{ route('cluster_list') }}">Dataset Clusters</a></li>
-                            <li><a href="{{ route('impact_list') }}">Dataset Impact Areas</a></li>
-                            <li><a href="{{ route('innovation_list') }}">Social Innovations</a></li>
-                            <li><a href="{{ route('techprac_list') }}">Technology/Practices</a></li>
-{{--                            <li><a href="{!! url('./uc-toastr'); !!}">Toastr</a></li>--}}
-{{--                            <li><a href="{!! url('./map-jqvmap'); !!}">Jqv Map</a></li>--}}
+                            <li><a href="{{ route('impact_list') }}">CGIAR Impact Areas</a></li>
+                            <li><a href="{{ route('innovation_list') }}">Innovations</a></li>
+{{--                            <li><a href="{{ route('techprac_list') }}">Technology/Practices</a></li>--}}
                         </ul>
                     </li>
                     <li><a href="{!! url('widget-basic'); !!}" class="ai-icon" aria-expanded="false">
