@@ -105,7 +105,7 @@ fetch('/countries-json')
                                             </div>`;
                             popupContent += `<p class="modal-popup-content">
                                         <div class="col-12 m-t-20">
-                                            <h4>Impact Areas</h4>
+                                            <h4>CGIAR Impact Areas</h4>
                                         ${feature.properties.impactAreas.map(impactArea => `<p class="badge badge-rounded badge-outline-primary">${impactArea}</p>`).join('')}
                                             </div>`;
 
@@ -165,7 +165,7 @@ document.getElementById('searchInput').addEventListener('keypress', function (e)
 });
 
 
-var legend = L.control({ position: 'topright' });
+var legend = L.control({ position: 'bottomleft' });
 
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');

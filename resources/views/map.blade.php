@@ -88,13 +88,10 @@
                             <div id="commodities" class="col-12 show">
                                 <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();"
                                        value="Beans" id="Beans" checked class="ciat-check"> <label for="Beans"
-                                                                                                   class="small">Social</label><br>
+                                                                                                   class="small">STIBs</label><br>
                                 <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();"
                                        value="Cassava" id="Cassava" checked class="ciat-check"> <label for="Cassava"
-                                                                                                       class="small">Technical</label><br>
-                                <input type="checkbox" name="commodities" onclick="controlDatasetsLayer();"
-                                       value="Forage" id="Forage" checked class="ciat-check"> <label for="Forage"
-                                                                                                     class="small">Technological</label><br>
+                                                                                                       class="small">NON-STIBs</label><br>
 
                             </div>
                             <div class="col-12 bg-inverse text-white m-t-5" onclick="displayFilters('researches')"><i
@@ -163,9 +160,10 @@
 
                         <!-- Floating Panel -->
                         <div id="floating-panel" class="bg-white p-3 rounded">
-                            <h3>Interactive Map</h3>
-                            <p>Interactive map showing the distribution of socio-technical innovation bundle
-                                datasets</p>
+{{--                            <h3>Interactive Map</h3>--}}
+                            <p><strong>socio-technical innovation bundles (STIBs)</strong> are
+                                a combination of technological and social innovations that are co-designed to address women
+                                empowerment and resilience</p>
 
                             <div class="row mt-3">
 

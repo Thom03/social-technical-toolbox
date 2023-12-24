@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="col-12 m-t-20">
-                        <h4>Impact Areas</h4>
+                        <h4>CGIAR Impact Areas</h4>
                         @foreach($datasets->impactAreas as $impactArea)
                         <p class="badge badge-primary">{{ $impactArea->name }}</p>
                         @endforeach
