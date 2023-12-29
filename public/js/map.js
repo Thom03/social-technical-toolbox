@@ -233,4 +233,8 @@ function searchCountry() {
 }
 
 
+$(document).ready(function () {
+    $('#myModal').modal('show');
+});
+
 

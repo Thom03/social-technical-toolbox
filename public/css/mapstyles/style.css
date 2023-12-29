@@ -6482,7 +6482,7 @@ File: scss
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     z-index: 2; /* Ensure it appears above the map */
-    max-width: 400px;
+    max-width: 600px;
 }
 
 .floating-search-bar {
