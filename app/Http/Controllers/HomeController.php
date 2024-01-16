@@ -100,6 +100,7 @@ class HomeController extends Controller
 
             $impactAreas = $dataset ? $dataset->impactAreas->pluck('name')->toArray() : [];
             $innovations = $dataset ? $dataset->innovations->pluck('name')->toArray() : [];
+            $categories = ['Social', 'Technological', 'Technical'];
 
 
 
@@ -112,6 +113,7 @@ class HomeController extends Controller
                 'dataset_release_year'=> $datasetyear,
                 'impactAreas' => $impactAreas,
                 'innovations' => $innovations,
+                'categories' => $categories,
 
 
             ];

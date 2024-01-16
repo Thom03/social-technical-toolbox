@@ -99,10 +99,24 @@ fetch('/countries-json')
                                         <a href=""> <p"> ${feature.properties.dataset_release_year}</p> </a>
                                              </div>`;
                         popupContent += `<p class="modal-popup-content">
-                                        <div class="col-12 m-t-20">
-                                            <h4>Innovations</h4>
-                                        ${feature.properties.innovations.map(innovation => `<p class="badge badge-rounded badge-outline-warning">${innovation}</p>`).join('')}
-                                            </div>`;
+                    <div class="row">
+                        <div class="col-12 m-t-20">
+                            <h4>Social Innovations</h4>
+                            ${feature.properties.innovations.filter(innovation => innovation.category === 'Social').map(innovation => `<p class="badge badge-rounded badge-outline-warning">${innovation.name}</p>`).join('') || '<p>None</p>'}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 m-t-20">
+                            <h4>Technological Innovations</h4>
+                            ${feature.properties.innovations.filter(innovation => innovation.category === 'Technological').map(innovation => `<p class="badge badge-rounded badge-outline-warning">${innovation.name}</p>`).join('') || '<p>None</p>'}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 m-t-20">
+                            <h4>Technical Innovations</h4>
+                            ${feature.properties.innovations.filter(innovation => innovation.category === 'Technical').map(innovation => `<p class="badge badge-rounded badge-outline-warning">${innovation.name}</p>`).join('') || '<p>None</p>'}
+                        </div>
+                    </div>`;
                             popupContent += `<p class="modal-popup-content">
                                         <div class="col-12 m-t-20">
                                             <h4>CGIAR Impact Areas</h4>
