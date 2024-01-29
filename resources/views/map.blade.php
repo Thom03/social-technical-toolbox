@@ -253,9 +253,19 @@
                     </div>
                     <div class="modal-body">
                         <img src="{{ asset('img/logo-orange.png') }}" alt="Logo"  class="img-fluid mb-3 mx-auto text-center" width="200" height="100">
-                        <p class="lead"><strong style="color: orangered;">Work package 2 EMPOWER </strong>of the CGIAR Initiative on Gender Equality (HER+) have co-developed and co-designed a dashboard with an interactive map that dynamically displays the global distribution of socio-economic datasets, data, and tools that facilitate socio-technical innovation bundling in different local, regional, and thematic contexts. This visualization effectively conveys the results and alignment of the innovation bundles with the five CGIAR impact areas.</p>
-                        <p><strong style="color: orangered;">Socio-Technical Innovation Bundles (STIBs) </strong> are a combination or combinations of technological, technical, and social innovations co-designed to address women's empowerment and resilience (inclusive of men and youths).</p>
-{{--                        <p>Furthermore, an accessible API has been created to facilitate seamless integration with other CGIAR platforms to facilitate data access, global distribution of visualization, and support innovation bundling. The STIBs dashboard and its associated API infrastructure are valuable resources with immense potential for informing and supporting effective implementation of socio-technical innovation bundles.</p>--}}
+
+                        <p class="lead"><strong style="color: orangered;">Socio-Technical Innovation Bundles (STIBs) </strong> are a combination or combinations of technological, technical, and social innovations co-designed to address women's empowerment and resilience (inclusive of men and youths).<strong style="color: orangered;">Non-STIBs</strong> combine only one or two types of innovations rather
+                            than all three. Here, we refer to bundles of only technological and technical, technical and social or
+                            technological and social bundles</p>
+                        <p><strong style="color: orangered;">Work package 2 EMPOWER </strong>of the CGIAR Initiative on Gender Equality (HER+) aims to identify,
+                            develop, and test context-specific STIBs to address climate change. The empower work package
+                            focuses on co-designing and testing partnerships and pathways to enhance uptake of climate
+                            smart STIBs by men, women, and youth. The goal of socio-technical innovations bundling is ultimately
+                            develop a toolbox that guides data, tools, and processes for creating, implementing, and
+                            evaluating climate-smart STIBs to empower women, men, youths and enhance their resilience. Thus, we have co-developed and co-designed a dashboard with an interactive map that dynamically
+                            displays the global distribution of socio-economic datasets, data, and tools that facilitate
+                            bundling in different local, regional, and thematic contexts.</p>
+
                         <div class="row mt-3">
                             <div class="col-4 mb-3">
                                 <div class="widget-stat card">
