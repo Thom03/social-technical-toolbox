@@ -180,7 +180,7 @@
 									</span>
                                                 <div class="media-body">
                                                     <p class="mb-1">STIBs</p>
-                                                    <h4 class="mb-0" id="countdown">{{ $bundles }}</h4>
+                                                    <h4 class="mb-0" id="countdown">{{ $stibs_Count }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -204,7 +204,7 @@
 									</span>
                                                 <div class="media-body">
                                                     <p class="mb-1">Non-STIBS</p>
-                                                    <h4 class="mb-0">0</h4>
+                                                    <h4 class="mb-0">{{ $non_stib_Count }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,7 +280,7 @@
                                     </span>
                                             <div class="media-body">
                                                 <p class="mb-1">STIBs</p>
-                                                <h4 class="mb-0" id="countdown">{{ $bundles }}</h4>
+                                                <h4 class="mb-0" id="countdown">{{ $stibs_Count }}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -300,7 +300,7 @@
                                     </span>
                                             <div class="media-body">
                                                 <p class="mb-1">NON-STIBS</p>
-                                                <h4 class="mb-0">0</h4>
+                                                <h4 class="mb-0">{{ $non_stib_Count }}</h4>
                                             </div>
                                         </div>
                                     </div>

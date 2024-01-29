@@ -71,12 +71,28 @@ class HomeController extends Controller
         $bundles = Dataset::count();
         $inventory_data = InventoryData::count();
 
+        $totalCategoriesCount = Innovation::distinct()->count('category');
+
+        $stibs_Count =  Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) >= ?', [$totalCategoriesCount])
+            ->count();
+
+        $non_stib_Count = Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) < ?', [$totalCategoriesCount])
+            ->count();
+
         $total_dataset = $bundles + $inventory_data;
 
 
 
 
-        return view('dashboard.index', compact('page_title', 'total_dataset', 'inventory_data', 'nutrition_impact', 'bundles', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
+        return view('dashboard.index', compact('page_title', 'total_dataset', 'stibs_Count', 'non_stib_Count', 'inventory_data', 'nutrition_impact', 'bundles', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
             'climate_impact', 'publishedCount', 'unpublishedCount','page_description','action','logo','logoText'));
     }
 
@@ -99,8 +115,14 @@ class HomeController extends Controller
             $datasetyear = $dataset ? $dataset->release_year : null;
 
             $impactAreas = $dataset ? $dataset->impactAreas->pluck('name')->toArray() : [];
-            $innovations = $dataset ? $dataset->innovations->pluck('name')->toArray() : [];
-            $categories = ['Social', 'Technological', 'Technical'];
+            $innovationsWithCategories = $dataset ? $dataset->innovations->map(function ($innovation) {
+                // Assuming each innovation has a category property, adjust accordingly
+                return [
+                    'name' => $innovation->name,
+                    'category' => $innovation->category // Adjust this according to your actual structure
+                ];
+            })->toArray() : [];
+
 
 
 
@@ -112,8 +134,8 @@ class HomeController extends Controller
                 'dataset_author'=> $datasetauthor,
                 'dataset_release_year'=> $datasetyear,
                 'impactAreas' => $impactAreas,
-                'innovations' => $innovations,
-                'categories' => $categories,
+                'innovationsWithCategories' => $innovationsWithCategories,
+
 
 
             ];
@@ -136,10 +158,26 @@ class HomeController extends Controller
         $bundles = Dataset::where('status', 'published')->count();
         $inventory_data = InventoryData::count();
 
+        $totalCategoriesCount = Innovation::distinct()->count('category');
+
+        $stibs_Count =  Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) >= ?', [$totalCategoriesCount])
+            ->count();
+
+        $non_stib_Count = Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) < ?', [$totalCategoriesCount])
+            ->count();
+
         $total_dataset = $bundles + $inventory_data;
 
 
-        return view('map', compact('logo','page_title', 'bundles', 'inventory_data', 'total_dataset','page_description','action',));
+        return view('map', compact('logo','page_title', 'bundles', 'inventory_data', 'stibs_Count', 'non_stib_Count', 'total_dataset','page_description','action',));
     }
 
     public function dataset_list()
