@@ -43,6 +43,8 @@ Route::get('/update-null-coordinates', [HomeController::class, 'updateNullCoordi
 Route::get('/display-bundle-list', [HomeController::class, 'landing_page_list'])->name('display-bundle-list');
 Route::get('/inventory-data', [HomeController::class, 'inventory_dataset_list'])->name('inventory-data-list');
 
+Route::get('/landing-page-list', [HomeController::class, 'landing_page_list'])->name('landing_page_list');
+
 
 
 Auth::routes();

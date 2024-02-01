@@ -349,7 +349,7 @@ class HomeController extends Controller
     }
 
 
-    public function landing_page_list()
+    public function landing_page_list(Request $request)
     {
         $logo = "img/logo.png";
         $page_title = 'STIBs List Diplay';
@@ -358,6 +358,25 @@ class HomeController extends Controller
 
 
         $query = Dataset::where('status', 'published');
+
+        if ($request->has('sk') && !empty($request->sk)) {
+            $searchTerm = $request->sk;
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('title', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('author', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('release_year', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('source', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('access', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('license', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('contact', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('DOI', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('collection_period', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('data_type', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('methods', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('resillience_indicators', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('observations', 'like', '%' . $searchTerm . '%');
+            });
+        }
         $dataset = $query->paginate(15);
 
 
