@@ -290,8 +290,26 @@ class HomeController extends Controller
 
         $total_dataset = $bundles + $inventory_data;
 
+        $totalCategoriesCount = Innovation::distinct()->count('category');
 
-        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+        $stibs_Count =  Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) >= ?', [$totalCategoriesCount])
+            ->count();
+
+        $non_stib_Count = Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) < ?', [$totalCategoriesCount])
+            ->count();
+
+        $total_dataset =  $inventory_data + $stibs_Count + $non_stib_Count;
+
+
+        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'stibs_Count', 'non_stib_Count', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
     public function about_page()

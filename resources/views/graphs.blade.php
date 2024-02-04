@@ -24,9 +24,8 @@
 									</span>
 
                             <div class="media-body">
-                                <p class="mb-1">Total Datasets</p>
-                                <h4 class="mb-0">{{ $total_dataset}}</h4>
-                                {{--                            <span class="badge badge-primary">+3.5%</span>--}}
+                                <p class="mb-1">Total non-STIBs</p>
+                                <h4 class="mb-0">{{ $non_stib_Count }}</h4>
                             </div>
 
                         </div>
@@ -49,9 +48,8 @@
 </span>
 
                             <div class="media-body">
-                                <p class="mb-1">Total Bundles</p>
-                                <h4 class="mb-0">{{ $bundles }}</h4>
-                                {{--                            <span class="badge badge-warning">+3.5%</span>--}}
+                                <p class="mb-1">Total STIBs</p>
+                                <h4 class="mb-0">{{ $stibs_Count }}</h4>
                             </div>
                         </div>
                     </div>
@@ -72,7 +70,6 @@
                             <div class="media-body">
                                 <p class="mb-1">Total Inventory Data</p>
                                 <h4 class="mb-0">{{ $inventory_data  }}</h4>
-                                {{--                            <span class="badge badge-danger">-3.5%</span>--}}
                             </div>
                         </div>
                     </div>
@@ -92,9 +89,8 @@
 
 
                             <div class="media-body">
-                                <p class="mb-1">Clusters</p>
-                                <h4 class="mb-0">{{ $cluster_count }}</h4>
-                                {{--                            <span class="badge badge-success">-3.5%</span>--}}
+                                <p class="mb-1">Total Datasets</p>
+                                <h4 class="mb-0">{{ $total_dataset }}</h4>
                             </div>
                         </div>
                     </div>
