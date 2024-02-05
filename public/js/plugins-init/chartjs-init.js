@@ -2,33 +2,83 @@
     "use strict"
 
     //basic bar chart
-if(jQuery('#barChart_1').length > 0 ){
+if($('#barChart_1').length > 0 ){
 
     const barChart_1 = document.getElementById("barChart_1").getContext('2d');
-
 
     barChart_1.height = 100;
 
     // Retrieve the dataset counts from the view
+    // const impactAreas = jQuery('#barChart_1').data('impact-areas');
+    // const datasetCounts = jQuery('#barChart_1').data('dataset-counts');
+    const impactAreas = $('#barChart_1').data('impact-areas');
+    const datasetCounts = $('#barChart_1').data('dataset-counts');
+
+    // Sorting the data
+    const sortedData = datasetCounts.slice().sort((a, b) => b - a);
+    const sortedLabels = sortedData.map(count => impactAreas[datasetCounts.indexOf(count)]);
+
+    // Generate random colors
+    const colors = [];
+    for (let i = 0; i < datasetCounts.length; i++) {
+        const color = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 1)`;
+        colors.push(color);
+    }
+
+
 
 
     new Chart(barChart_1, {
         type: 'bar',
         data: {
             defaultFontFamily: 'Poppins',
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+            labels: sortedLabels,
             datasets: [
                 {
-                    label: "My First dataset",
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    label: "Dataset Counts",
+                    data: sortedData,
                     borderColor: 'rgba(69, 11, 90, 1)',
                     borderWidth: "0",
-                    backgroundColor: 'rgba(69, 11, 90, 1)'
+                    backgroundColor: colors
                 }
             ]
         },
         options: {
-            legend: false,
+            plugins: {
+                datalabels: {
+                    anchor: 'end', // Anchor the labels to the end of the bars
+                    align: 'top', // Align the labels to the top of the bars
+                    color: 'black', // Label color
+                    font: {
+                        weight: 'bold' // Bold font weight for the labels
+                    },
+                    formatter: function(value, context) {
+                        return value; // Display the value of each data point as label
+                    }
+                }
+            },
+            // legend: {
+            //     display: true,
+            //     position: 'chartArea', // Display legend inside the chart area
+            //     align: 'topright', // Align legend to the start of the chart
+            //     labels: {
+            //         generateLabels: function(chart) {
+            //             const data = chart.data;
+            //             if (data.labels.length && data.datasets.length) {
+            //                 return data.labels.map(function(label, i) {
+            //                     const dataset = data.datasets[0];
+            //                     return {
+            //                         text: label,
+            //                         fillStyle: dataset.backgroundColor[i % dataset.backgroundColor.length],
+            //                         hidden: isNaN(dataset.data[i]), // Hide legend for NaN values
+            //                         index: i
+            //                     };
+            //                 });
+            //             }
+            //             return [];
+            //         }
+            //     }
+            // },
             scales: {
                 yAxes: [{
                     ticks: {
@@ -36,13 +86,16 @@ if(jQuery('#barChart_1').length > 0 ){
                     }
                 }],
                 xAxes: [{
-                    // Change here
-                    barPercentage: 0.5
+                    barPercentage: 0.8
                 }]
             }
         }
     });
+
 }
+
+
+
 if(jQuery('#barChart_2').length > 0 ){
 
 //gradient bar chart
@@ -190,6 +243,8 @@ if(jQuery('#lineChart_1').length > 0 ){
     const lineChart_1 = document.getElementById("lineChart_1").getContext('2d');
 
     const datasetCountByYear = {};
+
+
 
     // Loop through the datasets and count the occurrences of each year
     datasets.forEach(function(dataset) {

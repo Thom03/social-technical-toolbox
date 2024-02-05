@@ -104,10 +104,15 @@
                 <div class="col-xl-6 col-lg-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Innovation Bundle Cluster Distribution</h4>
+                            <h4 class="card-title">Classification of datasets per 5 CGIAR impact Areas</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="barChart_1">{{ $clusters->toJson() }}</canvas>
+                            <div id="legend-container"></div>
+
+                            <canvas id="barChart_1"
+                                data-impact-areas="{{ json_encode($impactAreas->pluck('name')) }}"
+                                data-dataset-counts="{{ json_encode($datasetCounts) }}">
+                            </canvas>
                         </div>
                     </div>
                 </div>

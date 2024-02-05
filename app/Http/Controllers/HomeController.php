@@ -288,7 +288,7 @@ class HomeController extends Controller
         $bundles = Dataset::count();
         $inventory_data = InventoryData::count();
 
-        $total_dataset = $bundles + $inventory_data;
+
 
         $totalCategoriesCount = Innovation::distinct()->count('category');
 
@@ -308,8 +308,25 @@ class HomeController extends Controller
 
         $total_dataset =  $inventory_data + $stibs_Count + $non_stib_Count;
 
+        $impactAreas = ImpactArea::all();
 
-        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'stibs_Count', 'non_stib_Count', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+        // Initialize an array to store dataset counts for each impact area
+        $datasetCounts = [];
+
+        // Loop through each impact area
+        foreach ($impactAreas as $impactArea) {
+            // Retrieve the dataset counts for the current impact area
+            $datasetCount = Dataset::whereHas('impactAreas', function ($query) use ($impactArea) {
+                $query->where('impact_area_id', $impactArea->id);
+            })->count();
+
+            // Store the dataset count for the current impact area
+            $datasetCounts[] = $datasetCount;
+        }
+
+
+
+        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'stibs_Count', 'non_stib_Count', 'datasetCounts', 'impactAreas', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
     public function about_page()
