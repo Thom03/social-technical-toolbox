@@ -335,10 +335,9 @@ class HomeController extends Controller
             $datasetPCounts[] = $datasetPCount;
         }
 
-        $inventorySources = InventoryData::select('inventory_source', DB::raw('COUNT(*) as count'))
+        $inventorySources = InventoryData::select('inventory_source', \DB::raw('count(*) as count'))
             ->groupBy('inventory_source')
-            ->pluck('count', 'inventory_source')
-            ->toArray();
+            ->get();
 
 
 

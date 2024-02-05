@@ -778,44 +778,48 @@ if(jQuery('#radar_chart').length > 0 ){
 
 }
 //pie chart
-if(jQuery('#pie_chart').length > 0 ){
+
+if($('#pie_chart').length > 0 ){
     //pie chart
     const pie_chart = document.getElementById("pie_chart").getContext('2d');
+    // const inventoryData = JSON.parse(document.getElementById('inventoryData').textContent);
+    const inventoryData = $('#pie_chart').data('dataset-counts');
     // pie_chart.height = 100;
-    new Chart(pie_chart, {
-        type: 'pie',
-        data: {
-            defaultFontFamily: 'Poppins',
-            datasets: [{
-                data: [45, 25, 20, 10],
-                borderWidth: 0,
-                backgroundColor: [
-                    "rgba(69, 11, 90, .9)",
-                    "rgba(69, 11, 90, .7)",
-                    "rgba(69, 11, 90, .5)",
-                    "rgba(0,0,0,0.07)"
-                ],
-                hoverBackgroundColor: [
-                    "rgba(69, 11, 90, .9)",
-                    "rgba(69, 11, 90, .7)",
-                    "rgba(69, 11, 90, .5)",
-                    "rgba(0,0,0,0.07)"
-                ]
+    if (inventoryData && inventoryData.length > 0) {
+        new Chart(pie_chart, {
 
-            }],
-            labels: [
-                "one",
-                "two",
-                "three",
-                "four"
-            ]
-        },
-        options: {
-            responsive: true,
-            legend: false,
-            maintainAspectRatio: false
-        }
-    });
+            type: 'pie',
+            data: {
+                defaultFontFamily: 'Poppins',
+                datasets: [{
+                    data: inventoryData.map(item => item.count),
+                    borderWidth: 0,
+                    backgroundColor: [
+                        "rgba(69, 11, 90, .9)",
+                        "rgba(69, 11, 90, .7)",
+                        "rgba(69, 11, 90, .5)",
+                        "rgba(0,0,0,0.07)"
+                    ],
+                    hoverBackgroundColor: [
+                        "rgba(69, 11, 90, .9)",
+                        "rgba(69, 11, 90, .7)",
+                        "rgba(69, 11, 90, .5)",
+                        "rgba(0,0,0,0.07)"
+                    ]
+
+                }],
+                labels: inventoryData.map(item => item.inventory_source)
+            },
+            options: {
+                responsive: true,
+                legend: false,
+                maintainAspectRatio: false
+
+            }
+        });
+    } else {
+        console.error("Inventory data is empty or invalid.");
+    }
 }
 
 if(jQuery('#doughnut_chart').length > 0 ){
