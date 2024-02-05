@@ -104,7 +104,7 @@
                 <div class="col-xl-6 col-lg-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Classification of datasets per 5 CGIAR impact Areas</h4>
+                            <h4 class="card-title">Classification of STIBS & Non-STIBs per 5 CGIAR impact Areas</h4>
                         </div>
                         <div class="card-body">
                             <div id="legend-container"></div>

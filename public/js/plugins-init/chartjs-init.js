@@ -37,7 +37,7 @@ if($('#barChart_1').length > 0 ){
                 {
                     label: "Dataset Counts",
                     data: sortedData,
-                    borderColor: 'rgba(69, 11, 90, 1)',
+                    borderColor: 'rgb(255,255,255)',
                     borderWidth: "0",
                     backgroundColor: colors
                 }
@@ -57,28 +57,6 @@ if($('#barChart_1').length > 0 ){
                     }
                 }
             },
-            // legend: {
-            //     display: true,
-            //     position: 'chartArea', // Display legend inside the chart area
-            //     align: 'topright', // Align legend to the start of the chart
-            //     labels: {
-            //         generateLabels: function(chart) {
-            //             const data = chart.data;
-            //             if (data.labels.length && data.datasets.length) {
-            //                 return data.labels.map(function(label, i) {
-            //                     const dataset = data.datasets[0];
-            //                     return {
-            //                         text: label,
-            //                         fillStyle: dataset.backgroundColor[i % dataset.backgroundColor.length],
-            //                         hidden: isNaN(dataset.data[i]), // Hide legend for NaN values
-            //                         index: i
-            //                     };
-            //                 });
-            //             }
-            //             return [];
-            //         }
-            //     }
-            // },
             scales: {
                 yAxes: [{
                     ticks: {
@@ -86,7 +64,13 @@ if($('#barChart_1').length > 0 ){
                     }
                 }],
                 xAxes: [{
-                    barPercentage: 0.8
+                    barPercentage: 0.8,
+                    ticks: {
+                        maxRotation: 0, // Rotate x-axis labels by 45 degrees
+                        minRotation: 25, // Minimum rotation of x-axis labels
+                        autoSkip: false, // Prevent automatic skipping of labels
+                        fontSize: 10 // Adjust font size of x-axis labels
+                    }
                 }]
             }
         }
