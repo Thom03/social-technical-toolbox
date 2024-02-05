@@ -310,8 +310,11 @@ class HomeController extends Controller
 
         $impactAreas = ImpactArea::all();
 
+        $providers = Provider::all();
+
         // Initialize an array to store dataset counts for each impact area
         $datasetCounts = [];
+        $datasetPCounts = [];
 
         // Loop through each impact area
         foreach ($impactAreas as $impactArea) {
@@ -324,9 +327,24 @@ class HomeController extends Controller
             $datasetCounts[] = $datasetCount;
         }
 
+        foreach ($providers as $provider){
+            $datasetPCount = Dataset::whereHas('providers', function ($query) use ($provider){
+                $query->where('provider_id', $provider->id);
+            })->count();
+
+            $datasetPCounts[] = $datasetPCount;
+        }
+
+        $inventorySources = InventoryData::select('inventory_source', DB::raw('COUNT(*) as count'))
+            ->groupBy('inventory_source')
+            ->pluck('count', 'inventory_source')
+            ->toArray();
 
 
-        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'stibs_Count', 'non_stib_Count', 'datasetCounts', 'impactAreas', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+
+
+
+        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'stibs_Count', 'non_stib_Count', 'datasetCounts', 'impactAreas', 'providers', 'datasetPCounts', 'inventorySources', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
     public function about_page()

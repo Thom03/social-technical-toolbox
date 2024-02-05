@@ -129,10 +129,14 @@
                 <div class="col-xl-6 col-lg-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Stalked Bar Chart</h4>
+                            <h4 class="card-title">Categorization of STIBs & Non-STIBs per provider</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="barChart_3"></canvas>
+                            <canvas id="barChart_3"
+                                    data-providers="{{ json_encode($providers->pluck('name')) }}"
+                                    data-dataset-counts="{{ json_encode($datasetPCounts) }}">
+
+                            </canvas>
                         </div>
                     </div>
                 </div>
@@ -236,16 +240,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Polar Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="polar_chart"></canvas>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Polar Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <canvas id="wordCloudChart"></canvas>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

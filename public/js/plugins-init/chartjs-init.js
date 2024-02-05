@@ -18,12 +18,22 @@ if($('#barChart_1').length > 0 ){
     const sortedData = datasetCounts.slice().sort((a, b) => b - a);
     const sortedLabels = sortedData.map(count => impactAreas[datasetCounts.indexOf(count)]);
 
-    // Generate random colors
-    const colors = [];
-    for (let i = 0; i < datasetCounts.length; i++) {
-        const color = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 1)`;
-        colors.push(color);
-    }
+
+    // Define specific colors for each dataset
+    const colors = [
+        'rgba(88, 58, 131, 1)', // Red
+        'rgba(0, 153, 170, 1)', // Blue
+        'rgba(0, 150, 127, 1)', // Yellow
+        'rgba(0, 166, 87, 1)', // Green
+        'rgba(146, 200, 62, 1)', // Purple
+        'rgba(255, 159, 64, 1)' // Orange
+        // Add more colors if needed
+    ];
+
+    // Ensure that there are enough colors for all datasets
+    const datasetColors = colors.slice(0, datasetCounts.length);
+
+
 
 
 
@@ -124,99 +134,96 @@ if(jQuery('#barChart_2').length > 0 ){
     });
 }
 
+if($('#barChart_3').length > 0 ){
 
-//stalked bar chart
-if(jQuery('#barChart_3').length > 0 ){
-    const barChart_3 = document.getElementById("barChart_3").getContext('2d');
-    //generate gradient
-    const barChart_3gradientStroke = barChart_3.createLinearGradient(50, 100, 50, 50);
-    barChart_3gradientStroke.addColorStop(0, "rgba(69, 11, 90, 1)");
-    barChart_3gradientStroke.addColorStop(1, "rgba(69, 11, 90, 0.5)");
+    const barChart_1 = document.getElementById("barChart_3").getContext('2d');
 
-    const barChart_3gradientStroke2 = barChart_3.createLinearGradient(50, 100, 50, 50);
-    barChart_3gradientStroke2.addColorStop(0, "rgba(32, 159, 132, 1)");
-    barChart_3gradientStroke2.addColorStop(1, "rgba(32, 159, 132, 1)");
+    barChart_1.height = 100;
 
-    const barChart_3gradientStroke3 = barChart_3.createLinearGradient(50, 100, 50, 50);
-    barChart_3gradientStroke3.addColorStop(0, "rgba(247, 43, 80, 1)");
-    barChart_3gradientStroke3.addColorStop(1, "rgba(247, 43, 80, 1)");
+    // Retrieve the dataset counts from the view
+    // const impactAreas = jQuery('#barChart_1').data('impact-areas');
+    // const datasetCounts = jQuery('#barChart_1').data('dataset-counts');
+    const providers = $('#barChart_3').data('providers');
+    const datasetPCounts = $('#barChart_3').data('dataset-counts');
 
-    barChart_3.height = 100;
+    // Sorting the data
+    const sortedData = datasetPCounts.slice().sort((a, b) => b - a);
+    const sortedLabels = sortedData.map(count => providers[datasetPCounts.indexOf(count)]);
 
-    let barChartData = {
-        defaultFontFamily: 'Poppins',
-        labels: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
-        datasets: [{
-            label: 'Red',
-            backgroundColor: barChart_3gradientStroke,
-            hoverBackgroundColor: barChart_3gradientStroke,
-            data: [
-                '12',
-                '12',
-                '12',
-                '12',
-                '12',
-                '12',
-                '12'
+    // Define a color range
+    const colorRange = [
+        'rgba(73, 42, 115, 1)', // Red
+        'rgba(66, 62, 134, 1)', // Blue
+        'rgba(55, 88, 141, 1)', // Yellow
+        'rgba(47, 112, 143, 1)', // Green
+        'rgba(37, 133, 142, 1)', // Purple
+        'rgba(27, 155, 137, 1)', // Orange
+        'rgba(92, 188, 106, 1)', // Orange
+        'rgba(139, 198, 76, 1)', // Orange
+        'rgba(193, 215, 47, 1)' // Orange
+    ];
+
+    // Create a function to cycle through the color range
+    function getColor(index) {
+        return colorRange[index % colorRange.length];
+    }
+
+    // Use the color function to assign colors to datasets
+    const colors = sortedData.map((data, index) => getColor(index));
+
+
+
+    new Chart(barChart_1, {
+        type: 'horizontalBar',
+        data: {
+            defaultFontFamily: 'Poppins',
+            labels: sortedLabels,
+            datasets: [
+                {
+                    label: "Dataset Counts",
+                    data: sortedData,
+                    borderColor: 'rgb(255,255,255)',
+                    borderWidth: "0",
+                    backgroundColor: colors
+                }
             ]
-        }, {
-            label: 'Green',
-            backgroundColor: barChart_3gradientStroke2,
-            hoverBackgroundColor: barChart_3gradientStroke2,
-            data: [
-                '12',
-                '12',
-                '12',
-                '12',
-                '12',
-                '12',
-                '12'
-            ]
-        }, {
-            label: 'Blue',
-            backgroundColor: barChart_3gradientStroke3,
-            hoverBackgroundColor: barChart_3gradientStroke3,
-            data: [
-                '12',
-                '12',
-                '12',
-                '12',
-                '12',
-                '12',
-                '12'
-            ]
-        }]
-
-    };
-
-    new Chart(barChart_3, {
-        type: 'bar',
-        data: barChartData,
+        },
         options: {
-            legend: {
-                display: false
+            plugins: {
+                datalabels: {
+                    anchor: 'end', // Anchor the labels to the end of the bars
+                    align: 'top', // Align the labels to the top of the bars
+                    color: 'black', // Label color
+                    font: {
+                        weight: 'bold' // Bold font weight for the labels
+                    },
+                    formatter: function(value, context) {
+                        return value; // Display the value of each data point as label
+                    }
+                }
             },
-            title: {
-                display: false
-            },
-            tooltips: {
-                mode: 'index',
-                intersect: false
-            },
-            responsive: true,
             scales: {
-                xAxes: [{
-                    stacked: true,
-                }],
                 yAxes: [{
-                    stacked: true
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    barPercentage: 0.8,
+                    ticks: {
+                        maxRotation: 0, // Rotate x-axis labels by 45 degrees
+                        minRotation: 25, // Minimum rotation of x-axis labels
+                        autoSkip: false, // Prevent automatic skipping of labels
+                        fontSize: 10 // Adjust font size of x-axis labels
+                    }
                 }]
             }
         }
     });
 
-
 }
+
+
 
 let draw = Chart.controllers.line.__super__.draw; //draw shadow
 if(jQuery('#lineChart_1').length > 0 ){
@@ -370,6 +377,66 @@ if(jQuery('#lineChart_2').length > 0 ){
         }
     });
 }
+
+    if ($('#wordCloudChart').length > 0) {
+
+        const wordCloudCtx = document.getElementById("wordCloudChart").getContext('2d');
+
+        // Example word frequency data
+        const wordFrequencies = {
+            "hello": 10,
+            "world": 15,
+            "good": 8,
+            "morning": 12,
+            // Add more words and frequencies as needed
+        };
+
+        // Convert word frequency data to datasets for Chart.js
+        const datasets = Object.keys(wordFrequencies).map(word => {
+            return {
+                label: word,
+                data: [wordFrequencies[word]],
+                backgroundColor: 'rgba(0, 0, 255, 0.5)', // Blue color for all words (you can change this)
+                borderWidth: 0,
+                fontSize: wordFrequencies[word] * 5 // Adjust the multiplier to change font sizes
+            };
+        });
+
+        new Chart(wordCloudCtx, {
+            type: 'horizontalBar',
+            data: {
+                datasets: datasets
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        display: false,
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        display: false
+                    }]
+                },
+                plugins: {
+                    datalabels: {
+                        display: true,
+                        font: {
+                            size: 'fontSize'
+                        },
+                        formatter: function(value, context) {
+                            return context.dataset.label; // Display the word label as the data label
+                        }
+                    }
+                }
+            }
+        });
+
+    }
 
 //dual line chart
 if(jQuery('#lineChart_3').length > 0 ){

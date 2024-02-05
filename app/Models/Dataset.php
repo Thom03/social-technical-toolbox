@@ -66,7 +66,7 @@ class Dataset extends Model
 
     public function providers()
     {
-        return $this->belongsToMany(Provider::class);
+        return $this->belongsToMany(Provider::class, 'dataset_provider', 'dataset_id', 'provider_id');
     }
 
     public function clusters()
