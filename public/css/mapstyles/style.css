@@ -83,7 +83,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #2c2b2e;
+  color: #f27b56;
   font-family: "Rubik", sans-serif;
   font-weight: 400; }
 
@@ -6495,6 +6495,7 @@ File: scss
 
 .floating-search-bar .input-group {
     width: 500px; /* Adjust the width of the search bar */
+    bottom: 60px;
 }
 
 .floating-search-bar input.form-control {

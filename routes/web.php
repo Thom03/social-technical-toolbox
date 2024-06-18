@@ -32,7 +32,7 @@ use App\Http\Controllers\HomeController;
 //Route::get('/2', [HomeController::class, 'landing_page'])->name('landing_page');
 Route::get('/1', [HomeController::class, 'landing_page_grid'])->name('landing_page_grid');
 Route::get('/bundle_detail/{id}', [HomeController::class, 'bundle_detail'])->name('bundle_detail');
-Route::get('/', [HomeController::class, 'map_page'])->name('map_page');
+Route::get('/interactive_maps', [HomeController::class, 'map_page'])->name('map_page');
 Route::get('/countries-json', [HomeController::class, 'getCountriesJson'])->name('countries-json');
 Route::get('/graphs', [HomeController::class, 'graphs_page'])->name('graphs');
 Route::get('/about-us', [HomeController::class, 'about_page'])->name('about_us');
@@ -45,7 +45,7 @@ Route::get('/inventory-data', [HomeController::class, 'inventory_dataset_list'])
 
 Route::get('/landing-page-list', [HomeController::class, 'landing_page_list'])->name('landing_page_list');
 
-
+Route::get('/', [HomeController::class, 'learning_labs'])->name('learning_labs');
 
 Auth::routes();
 

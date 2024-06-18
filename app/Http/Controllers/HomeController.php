@@ -454,4 +454,17 @@ class HomeController extends Controller
     }
 
 
+    public function learning_labs()
+    {
+        $logo = "img/logo.png";
+        $page_title = 'Learning Page';
+        $page_description = 'Social-Technical Innovation Bundles';
+        $action = __FUNCTION__;
+
+
+        return view('learning', compact( 'logo','page_title', 'page_description','action'));
+
+    }
+
+
 }
