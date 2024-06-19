@@ -44,7 +44,7 @@
         #map {
             position: absolute;
             width: 120%;
-            height: 100vh;
+            height: 120vh;
             /*z-index: 1;*/
         }
 
@@ -228,6 +228,6 @@
     </div>
 
 
-    @include('elements.map-scirpts')
+    @include('elements.map-leraning')
 @endsection
 
