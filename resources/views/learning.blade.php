@@ -48,6 +48,30 @@
             /*z-index: 1;*/
         }
 
+        .label-icon {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333; /* Dark text color for better readability */
+            background: rgba(255, 255, 255, 0.9); /* Slightly more opaque background */
+            padding: 4px 8px; /* More padding for better spacing */
+            border: 2px solid #f15a31; /* Border to make the annotation stand out */
+            border-radius: 4px; /* Slightly larger border radius */
+            text-align: center;
+            white-space: nowrap;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add a shadow for a 3D effect */
+        }
+
+        .label-icon::after {
+            content: "";
+            position: absolute;
+            bottom: -10px; /* Position it below the label */
+            left: 50%;
+            margin-left: -1px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #f15a31 transparent transparent transparent;
+        }
+
         #mapGrid {
             min-height: 76vh;
         }

@@ -45,6 +45,8 @@ Route::get('/inventory-data', [HomeController::class, 'inventory_dataset_list'])
 
 Route::get('/landing-page-list', [HomeController::class, 'landing_page_list'])->name('landing_page_list');
 
+Route::get('/llabsjson', [HomeController::class, 'getllabs'])->name('getllabs');
+
 Route::get('/', [HomeController::class, 'learning_labs'])->name('learning_labs');
 
 Auth::routes();

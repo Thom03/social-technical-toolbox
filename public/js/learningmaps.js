@@ -1,9 +1,9 @@
 L.mapbox.accessToken = 'pk.eyJ1IjoiZGxvdXJpZG8iLCJhIjoiY2o0ZmtwaWFsMTlheDMzcHNnNzdob3p4YiJ9.H6RYGmoe1ftZUEOobGL8zw';
 var options = {
-    minZoom:6,
+    minZoom:7,
     worldCopyJump: true,
 }
-var stibmap = L.mapbox.map('map',undefined,options).setView([0.5286709, 27.2723167], 3);
+var stibmap = L.mapbox.map('map',undefined,options).setView([-1.73795, 37.56620], 3);
 
 
 L.mapbox.styleLayer('mapbox://styles/mapbox/light-v9',{
@@ -229,6 +229,50 @@ var countryLayer;  // Declare countryLayer variable globally
 //         stibmap.removeLayer(boundaryLayer);
 //     }
 // }
+var learningLayer;
+fetch('/llabsjson')
+    .then(response => response.json())
+    .then(data => {
+        learningLayer = L.geoJSON(data, {
+            style: {
+                color: '#f15a31',
+                weight: 2,
+            },
+            onEachFeature: function(feature, layer) {
+                if (feature.properties && feature.properties.ADM1_EN) {
+                    var bounds  = layer.getBounds();
+                    var center  = bounds.getCenter(); // Adjust the offset as needed
+
+
+                    var offsetLat = bounds.getNorthEast().lat + 0.02; // Adjust offset as necessary
+                    var offsetLng = bounds.getNorthEast().lng;
+
+
+                    var label = L.marker([offsetLat, offsetLng], {
+                        icon: L.divIcon({
+                            className: 'label-icon',
+                            html: feature.properties.ADM1_EN,
+                            iconSize: [100, 40], // Adjust as necessary
+                            iconAnchor: [50, 20] // Adjust as necessary
+
+                    })
+                    }).addTo(stibmap);
+                    // Create a line between the feature and the label
+                    var latlngs = [
+                        [center.lat, center.lng],
+                        [offsetLat, offsetLng]
+                    ];
+                    var polyline = L.polyline(latlngs, {
+                        color: '#f15a31',
+                        weight: 2
+                    }).addTo(stibmap);
+                    }
+                }
+            });
+        learningLayer.addTo(stibmap);
+    })
+    .catch(error => console.error(error));
+
 
 function searchCountry() {
     // Get the search input value

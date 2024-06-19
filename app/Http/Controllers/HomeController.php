@@ -453,6 +453,14 @@ class HomeController extends Controller
         return view('inventory-data-list', compact('dataset',  'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
+    public function getllabs()
+    {
+        $path = storage_path('app/public/counties.geojson');
+        $geoJson = file_get_contents($path);
+        return response()->json(json_decode($geoJson));
+
+    }
+
 
     public function learning_labs()
     {
