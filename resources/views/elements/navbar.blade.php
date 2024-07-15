@@ -1,53 +1,31 @@
+
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark nav-bar-colour">
-    <img src="{{ asset('img/logo-orange.png') }}" alt="homepage" class="light-logo" height="70"/>
-    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <img src="{{ asset('img/logo-white.png') }}" alt="homepage" class="light-logo" height="70"/>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('learning_labs') ? 'active' : '' }}" href="{{ route('learning_labs') }}">
-                    <h4><i class="mdi mdi-map"></i> Learning Labs</h4>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('map_page') ? 'active' : '' }}" href="{{ route('map_page') }}">
-                    <h4><i class="mdi mdi-map"></i> Interactive Map</h4>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle {{ request()->is('display-bundle-list') ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <h4><i class="mdi mdi-format-list-bulleted"></i> STIBs</h4>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">STIB Option 1</a>
-                    <a class="dropdown-item" href="#">STIB Option 2</a>
-                    <a class="dropdown-item" href="#">STIB Option 3</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('inventory-data-list') ? 'active' : '' }}" href="{{ route('inventory-data-list') }}">
-                    <h4><i class="mdi mdi-file-document"></i>Inventory Data</h4>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('graphs') ? 'active' : '' }}" href="{{ route('graphs') }}">
-                    <h4><i class="mdi mdi-graphql"></i> Infographics</h4>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <h4><i class="mdi mdi-graphql"></i> API</h4>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('about_us') ? 'active' : '' }}" href="{{ route('about_us') }}">
-                    <h4><i class="mdi mdi-comment-question-outline"></i> About Us</h4>
-                </a>
-            </li>
-        </ul>
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     </div>
 </nav>
+
+<div class="nav-scroller bg-white shadow-sm">
+    <nav class="nav  justify-content-center nav-underline">
+        <a class="nav-link {{ request()->is('map_page') ? 'active' : '' }}" href="{{ route('map_page') }}"><h4><i class="mdi mdi-map"></i> Interactive Map</h4></a>
+        <a class="nav-link {{ request()->is('learning_labs') ? 'active' : '' }}" href="{{ route('learning_labs') }}"><h4><i class="mdi mdi-map"></i> Learning Labs</h4></a>
+
+        <a class="nav-link {{ request()->is('display-bundle-list') ? 'active' : '' }}" href="{{ route('display-bundle-list') }}"><h4><i
+                    class="mdi mdi-format-list-bulleted"></i> STIBs </h4></a>
+        <a class="nav-link {{ request()->is('inventory-data-list') ? 'active' : '' }}" href="{{ route('inventory-data-list') }}"><h4><i class="mdi mdi-file-document"></i>Inventory Data</h4></a>
+        <a class="nav-link {{ request()->is('graphs') ? 'active' : '' }}" href="{{ route('graphs') }}"><h4><i class="mdi mdi-graphql"></i> Infographics</h4></a>
+
+        <a class="nav-link {{ request()->is('about_us') ? 'active' : '' }}" href="{{ route('about_us') }}"><h4><i class="mdi mdi-comment-question-outline"></i>
+                About Us </h4></a>
+        {{--        <a class="nav-link active" href="#"><h4><i class="mdi mdi-phone"></i> Contact Us</h4></a>--}}
+
+    </nav>
+</div>
+
+
 
 <!-- Additional CSS for styling the unified navbar -->
 <style>

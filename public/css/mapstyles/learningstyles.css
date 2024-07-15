@@ -83,7 +83,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #f27b56;
+    color: #2c2b2e;
     font-family: "Rubik", sans-serif;
     font-weight: 400; }
 
@@ -6534,6 +6534,10 @@ File: scss
     background: #f15a31;
 }
 
+
+.container-fluid {
+    margin-top: -20px !important;
+}
 
 
 
