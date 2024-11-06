@@ -45,7 +45,7 @@ fetch('/countries-json')
                                 dataset_author: countryData.dataset_author,
                                 dataset_release_year: countryData.dataset_release_year,
                                 impactAreas: countryData.impactAreas,
-                                innovations: countryData.innovations
+                                innovationsWithCategories: countryData.innovationsWithCategories,
 
                             },
                             geometry: {
@@ -98,11 +98,27 @@ fetch('/countries-json')
                                         <h4>Release Year </h4>
                                         <a href=""> <p"> ${feature.properties.dataset_release_year}</p> </a>
                                              </div>`;
-                        popupContent += `<p class="modal-popup-content">
-                                        <div class="col-12 m-t-20">
-                                            <h4>Innovations</h4>
-                                        ${feature.properties.innovations.map(innovation => `<p class="badge badge-rounded badge-outline-warning">${innovation}</p>`).join('')}
-                                            </div>`;
+                        popupContent += `<p class="modal-popup-content">`;
+                        popupContent += `
+                            <div class="col-12 m-t-20">
+                                <h4>Social Innovations</h4>
+                                ${feature.properties.innovationsWithCategories.filter(innovation => innovation.category === 'Social').map(innovation => `<p class="badge badge-rounded badge-outline-warning">${innovation.name}</p>`).join('') || '<p>None</p>'}
+                            </div>
+                        `;
+
+                        popupContent += `
+                            <div class="col-12 m-t-20">
+                                <h4>Technological Innovations</h4>
+                                ${feature.properties.innovationsWithCategories.filter(innovation => innovation.category === 'Technological').map(innovation => `<p class="badge badge-rounded badge-outline-warning">${innovation.name}</p>`).join('') || '<p>None</p>'}
+                            </div>
+                        `;
+
+                        popupContent += `
+                            <div class="col-12 m-t-20">
+                                <h4>Technical Innovations</h4>
+                                ${feature.properties.innovationsWithCategories.filter(innovation => innovation.category === 'Technical').map(innovation => `<p class="badge badge-rounded badge-outline-warning">${innovation.name}</p>`).join('') || '<p>None</p>'}
+                            </div>
+                        `;
                             popupContent += `<p class="modal-popup-content">
                                         <div class="col-12 m-t-20">
                                             <h4>CGIAR Impact Areas</h4>
@@ -232,5 +248,9 @@ function searchCountry() {
     }
 }
 
+
+$(document).ready(function () {
+    $('#myModal').modal('show');
+});
 
 

@@ -10,7 +10,6 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="m-b-0">{{ $datasets->title }} </h2>
-{{--                    <span class="btn btn-rounded btn-xs btn-warning">Unpublished</span>--}}
                     <span class="btn btn-rounded btn-xs btn-success">{{ $datasets->status }} </span>
                     <br>
                     <br>
@@ -34,7 +33,6 @@
                     <br>
 
                     <div class="col-12 m-t-20">
-{{--                        <h4>Keywords</h4>--}}
                         <div class="col-md-12 table-responsive">
                             <table class="table">
                                 <thead>
@@ -88,18 +86,34 @@
                             </table>
                         </div>
                     </div>
-
                     <div class="col-12 m-t-20">
                         <h4>Digital Object Identifer (DOI) </h4>
                         <a href="{{ $datasets->DOI }}"> <p class="badge badge-rounded badge-outline-info">{{ $datasets->DOI }}</p> </a>
                     </div>
                     <div class="col-12 m-t-20">
-                        <h4>Innovations</h4>
-                        @foreach($datasets->innovations as $innovation)
+                        <h4>Social Innovation Bundles</h4>
+                        @forelse($datasets->innovations->where('category', 'Social') as $innovation)
                             <p class="badge badge-dark">{{ $innovation->name }}</p>
-                        @endforeach
+                        @empty
+                            <p>None</p>
+                        @endforelse
                     </div>
-
+                    <div class="col-12 m-t-20">
+                        <h4>Technological Innovations Bundles</h4>
+                        @forelse($datasets->innovations->where('category', 'Technological') as $innovation)
+                            <p class="badge badge-dark">{{ $innovation->name }}</p>
+                        @empty
+                            <p>None</p>
+                        @endforelse
+                    </div>
+                    <div class="col-12 m-t-20">
+                        <h4>Technical Innovations Bundles</h4>
+                        @forelse($datasets->innovations->where('category', 'Technical') as $innovation)
+                            <p class="badge badge-dark">{{ $innovation->name }}</p>
+                        @empty
+                            <p>None</p>
+                        @endforelse
+                    </div>
                     <div class="col-12 m-t-20">
                         <h4>Sites</h4>
                         <div class="col-md-12 table-responsive">
@@ -115,38 +129,20 @@
                                 <tbody>
                                 @foreach ($adminBoundaries as $adminBoundary)
                                 <tr>
-
                                     <td>{{ $adminBoundary->country }}</td>
-
                                     <td>{{ $adminBoundary->admin_bound_1 }}</td>
                                     <td>{{ $adminBoundary->admin_bound_2 }}</td>
                                     <td>{{ $adminBoundary->admin_bound_3 }}</td>
-
                                 </tr>
                                 @endforeach
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                     <div class="col-12 m-t-20">
                         <h4>Regions</h4>
                         @foreach($datasets->regions as $region)
                             <p class="badge badge-light">{{ $region->name }}</p>
-                        @endforeach
-                    </div>
-
-{{--                    <div class="col-12 m-t-20">--}}
-{{--                        <h4>Technology/Practice</h4>--}}
-{{--                        @foreach($datasets->techPracs as $techPrac)--}}
-{{--                            <p class="badge badge-light">{{ $techPrac->name }}</p>--}}
-{{--                        @endforeach--}}
-{{--                    </div>--}}
-                    <div class="col-12 m-t-20">
-                        <h4>Cluster</h4>
-                        @foreach($datasets->clusters as $clusters)
-                            <p class="badge badge-outline-primary">{{ $clusters->name }}</p>
                         @endforeach
                     </div>
                 </div>

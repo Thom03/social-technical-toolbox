@@ -48,6 +48,7 @@
 						</a>
                         <ul aria-expanded="false">
                             <li><a href="{!! url('./datasetlist'); !!}">STIBs List</a></li>
+                            <li><a href="{!! url('./resourcelist'); !!}">Resource Hub</a></li>
                             <li><a href="{!! url('./upload_dataset'); !!}">Upload STIBs</a></li>
                             <li><a href="{!! url('./inventory_data_list'); !!}">Inventory Data list</a></li>
                             <li><a href="{!! url('./upload_inventory_data_form'); !!}">Upload Inventory Data</a></li>
@@ -74,7 +75,7 @@
                             <li><a href="{{ route('region_list') }}">Dataset Regions</a></li>
                             <li><a href="{{ route('cluster_list') }}">Dataset Clusters</a></li>
                             <li><a href="{{ route('impact_list') }}">CGIAR Impact Areas</a></li>
-                            <li><a href="{{ route('innovation_list') }}">Innovations</a></li>
+                            <li><a href="{{ route('innovation_list') }}">Bundles</a></li>
 {{--                            <li><a href="{{ route('techprac_list') }}">Technology/Practices</a></li>--}}
                         </ul>
                     </li>

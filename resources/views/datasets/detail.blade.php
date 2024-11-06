@@ -136,26 +136,32 @@
 {{--                        </div>--}}
 
                         <div class="col-12 m-t-20">
-                            <h4>Social Innovations</h4>
-                            @foreach($datasets->innovations as $innovation)
+                            <h4>Social Innovation Bundles</h4>
+                            @forelse($datasets->innovations->where('category', 'Social') as $innovation)
                                 <p class="badge badge-dark">{{ $innovation->name }}</p>
-                            @endforeach
+                            @empty
+                                <p>None</p>
+                            @endforelse
                         </div>
 
                         <div class="col-12 m-t-20">
-                            <h4>Technological Innovations</h4>
-                            @foreach($datasets->innovations as $innovation)
+                            <h4>Technological Innovation Bundles</h4>
+                            @forelse($datasets->innovations->where('category', 'Technological') as $innovation)
                                 <p class="badge badge-dark">{{ $innovation->name }}</p>
-                            @endforeach
+                            @empty
+                                <p>None</p>
+                            @endforelse
                         </div>
-
 
                         <div class="col-12 m-t-20">
-                            <h4>Technical Innovations</h4>
-                            @foreach($datasets->innovations as $innovation)
+                            <h4>Technical Innovation Bundles</h4>
+                            @forelse($datasets->innovations->where('category', 'Technical') as $innovation)
                                 <p class="badge badge-dark">{{ $innovation->name }}</p>
-                            @endforeach
+                            @empty
+                                <p>None</p>
+                            @endforelse
                         </div>
+
 
                         <div class="col-12 m-t-20">
                             <h4>Sites</h4>

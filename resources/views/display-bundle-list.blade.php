@@ -76,7 +76,7 @@
             <div class="container catalog-search-container">
                 <!--search bar-->
 
-                <form method="get" id="catalog-search-form">
+                <form action="{{ route('landing_page_list') }}" method="get" id="catalog-search-form">
 
                     <div class="nada-search-box wb-controls-wrapper">
                         <div class="row mb-5 justify-content-center align-items-center">
@@ -88,7 +88,7 @@
                                     <button class="btn btn-primary btn-search-submit" type="submit" id="submit_search">
                                         <!-- <i class="fa fa-search"></i> -->
                                         Search </button>
-                                    <a href="#"
+                                    <a href="{{ route('landing_page_list') }}"
                                        class="close clear-search-button" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </a>
@@ -96,12 +96,6 @@
 
                             </div>
                             <span class="keyword-suggestions"></span>
-                            {{--                            <div class="wb-library-search--browse my-3">--}}
-                            {{--                                <!-- <button type="button" class="btn btn-outline-primary"><a href="https://microdata.fao.org/index.php/collections"><i class="far fa-file-alt"></i>  Collections </a> </button> -->--}}
-                            {{--                                <button type="button" class="btn btn-outline-primary"><a--}}
-                            {{--                                        href="https://microdata.fao.org/index.php/citations"><i--}}
-                            {{--                                            class="far fa-file-alt"></i> Browse Citations </a></button>--}}
-                            {{--                            </div>--}}
                         </div>
                     </div>
                     <input type="hidden" name="tab_type" id="tab_type" value=""/>

@@ -2175,11 +2175,11 @@ ul#themecolors {
 .footer {
   bottom: 0;
   color: #54667a;
-  left: 0px;
+  /*left: 0px;*/
   text-align: center;
-  padding: 17px 15px;
+  /*padding: 17px 15px;*/
   position: absolute;
-  right: 0;
+  /*right: 0;*/
   border-top: 1px solid rgba(120, 130, 140, 0.13);
   background: #ffffff; }
 
@@ -6495,6 +6495,7 @@ File: scss
 
 .floating-search-bar .input-group {
     width: 500px; /* Adjust the width of the search bar */
+    bottom: 60px;
 }
 
 .floating-search-bar input.form-control {

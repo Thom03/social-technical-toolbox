@@ -24,9 +24,8 @@
 									</span>
 
                             <div class="media-body">
-                                <p class="mb-1">Total Datasets</p>
-                                <h4 class="mb-0">{{ $total_dataset}}</h4>
-                                {{--                            <span class="badge badge-primary">+3.5%</span>--}}
+                                <p class="mb-1">Total non-STIBs</p>
+                                <h4 class="mb-0">{{ $non_stib_Count }}</h4>
                             </div>
 
                         </div>
@@ -49,9 +48,8 @@
 </span>
 
                             <div class="media-body">
-                                <p class="mb-1">Total Bundles</p>
-                                <h4 class="mb-0">{{ $bundles }}</h4>
-                                {{--                            <span class="badge badge-warning">+3.5%</span>--}}
+                                <p class="mb-1">Total STIBs</p>
+                                <h4 class="mb-0">{{ $stibs_Count }}</h4>
                             </div>
                         </div>
                     </div>
@@ -72,7 +70,6 @@
                             <div class="media-body">
                                 <p class="mb-1">Total Inventory Data</p>
                                 <h4 class="mb-0">{{ $inventory_data  }}</h4>
-                                {{--                            <span class="badge badge-danger">-3.5%</span>--}}
                             </div>
                         </div>
                     </div>
@@ -92,9 +89,8 @@
 
 
                             <div class="media-body">
-                                <p class="mb-1">Clusters</p>
-                                <h4 class="mb-0">{{ $cluster_count }}</h4>
-                                {{--                            <span class="badge badge-success">-3.5%</span>--}}
+                                <p class="mb-1">Total Datasets</p>
+                                <h4 class="mb-0">{{ $total_dataset }}</h4>
                             </div>
                         </div>
                     </div>
@@ -108,30 +104,41 @@
                 <div class="col-xl-6 col-lg-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Innovation Bundle Cluster Distribution</h4>
+                            <h4 class="card-title">Classification of STIBs & Non-STIBs per 5 CGIAR impact Areas</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="barChart_1">{{ $clusters->toJson() }}</canvas>
+                            <div id="legend-container"></div>
+
+                            <canvas id="barChart_1"
+                                data-impact-areas="{{ json_encode($impactAreas->pluck('name')) }}"
+                                data-dataset-counts="{{ json_encode($datasetCounts) }}">
+                            </canvas>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Pie Chart</h4>
+                            <h4 class="card-title">Inventory Data Sources</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="pie_chart"></canvas>
+                            <canvas id="pie_chart"
+                                    data-dataset-counts="{{ json_encode($inventorySources) }}">
+                            </canvas>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Stalked Bar Chart</h4>
+                            <h4 class="card-title">Categorization of STIBs & Non-STIBs per provider</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="barChart_3"></canvas>
+                            <canvas id="barChart_3"
+                                    data-providers="{{ json_encode($providers->pluck('name')) }}"
+                                    data-dataset-counts="{{ json_encode($datasetPCounts) }}">
+
+                            </canvas>
                         </div>
                     </div>
                 </div>
@@ -146,105 +153,107 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Gradient Line Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="lineChart_2"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Dual Line Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="lineChart_3"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Basic Area Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="areaChart_1"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Gradinet Area Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="areaChart_2"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Dual Area Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="areaChart_3"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Radar Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="radar_chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Pie Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="pie_chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Doughnut Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart-point">
-                                <div class="check-point-area">
-                                    <canvas id="doughnut_chart"></canvas>
-                                </div>
-                                <ul class="chart-point-list">
-                                    <li><i class="fa fa-circle text-primary mr-1"></i> 40% Tickets</li>
-                                    <li><i class="fa fa-circle text-success mr-1"></i> 35% Events</li>
-                                    <li><i class="fa fa-circle text-warning mr-1"></i> 25% Other</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Polar Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="polar_chart"></canvas>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="col-xl-6 col-lg-12 col-sm-12">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Gradient Line Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <canvas id="pie_chart">--}}
+
+{{--                            </canvas>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-6 col-lg-12 col-sm-12">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Dual Line Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <canvas id="lineChart_3"></canvas>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-6 col-lg-12 col-sm-12">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Basic Area Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <canvas id="areaChart_1"></canvas>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-6 col-lg-12 col-sm-12">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Gradinet Area Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <canvas id="areaChart_2"></canvas>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-6 col-lg-12 col-sm-12">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Dual Area Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <canvas id="areaChart_3"></canvas>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Radar Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <canvas id="radar_chart"></canvas>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Pie Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <canvas id="pie_chart"></canvas>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Doughnut Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <div class="chart-point">--}}
+{{--                                <div class="check-point-area">--}}
+{{--                                    <canvas id="doughnut_chart"></canvas>--}}
+{{--                                </div>--}}
+{{--                                <ul class="chart-point-list">--}}
+{{--                                    <li><i class="fa fa-circle text-primary mr-1"></i> 40% Tickets</li>--}}
+{{--                                    <li><i class="fa fa-circle text-success mr-1"></i> 35% Events</li>--}}
+{{--                                    <li><i class="fa fa-circle text-warning mr-1"></i> 25% Other</li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Polar Chart</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <canvas id="wordCloudChart"></canvas>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

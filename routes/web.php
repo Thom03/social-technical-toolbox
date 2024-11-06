@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ImpactAreaController;
 use App\Http\Controllers\Admin\InnovationController;
 use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\RegionController;
+use App\Http\Controllers\Admin\ResourceController;
 use App\Http\Controllers\Admin\TechPracController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Api\APIController;
@@ -32,7 +33,7 @@ use App\Http\Controllers\HomeController;
 //Route::get('/2', [HomeController::class, 'landing_page'])->name('landing_page');
 Route::get('/1', [HomeController::class, 'landing_page_grid'])->name('landing_page_grid');
 Route::get('/bundle_detail/{id}', [HomeController::class, 'bundle_detail'])->name('bundle_detail');
-Route::get('/', [HomeController::class, 'map_page'])->name('map_page');
+Route::get('/interactive_maps', [HomeController::class, 'map_page'])->name('map_page');
 Route::get('/countries-json', [HomeController::class, 'getCountriesJson'])->name('countries-json');
 Route::get('/graphs', [HomeController::class, 'graphs_page'])->name('graphs');
 Route::get('/about-us', [HomeController::class, 'about_page'])->name('about_us');
@@ -43,7 +44,13 @@ Route::get('/update-null-coordinates', [HomeController::class, 'updateNullCoordi
 Route::get('/display-bundle-list', [HomeController::class, 'landing_page_list'])->name('display-bundle-list');
 Route::get('/inventory-data', [HomeController::class, 'inventory_dataset_list'])->name('inventory-data-list');
 
+Route::get('/landing-page-list', [HomeController::class, 'landing_page_list'])->name('landing_page_list');
 
+Route::get('/llabsjson', [HomeController::class, 'getllabs'])->name('getllabs');
+
+Route::get('/learning_labs', [HomeController::class, 'learning_labs'])->name('learning_labs');
+
+Route::get('/', [HomeController::class, 'resource_hub'])->name('resource_hub');
 
 Auth::routes();
 
@@ -145,6 +152,11 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/upload_inventory_data_form', [InventoryDataController::class, 'upload_inventory_data_form'])->name('upload_iventory_data_form');
     Route::post('/upload_inventory_data', [InventoryDataController::class, 'upload_inventory_data'])->name('upload_inventory_data');
     Route::get('/inventory_data_list', [InventoryDataController::class, 'inventory_data_list'])->name('inventory_data_list');
+
+
+    Route::get('resourcelist', [ResourceController::class, 'resource_list'])->name('resource_list');
+    Route::get('add_resource', [ResourceController::class, 'add_resource'])->name('add_resource');
+    Route::get('insert_resource', [ResourceController::class, 'insert_resource'])->name('insert_resource');
 
 
 

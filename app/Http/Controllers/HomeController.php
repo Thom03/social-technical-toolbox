@@ -11,6 +11,7 @@ use App\Models\Innovation;
 use App\Models\InventoryData;
 use App\Models\Provider;
 use App\Models\Region;
+use App\Models\ResourceHub;
 use App\Models\TechPrac;
 use GeoJson\GeoJson;
 use Illuminate\Http\Request;
@@ -71,12 +72,28 @@ class HomeController extends Controller
         $bundles = Dataset::count();
         $inventory_data = InventoryData::count();
 
+        $totalCategoriesCount = Innovation::distinct()->count('category');
+
+        $stibs_Count =  Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) >= ?', [$totalCategoriesCount])
+            ->count();
+
+        $non_stib_Count = Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) < ?', [$totalCategoriesCount])
+            ->count();
+
         $total_dataset = $bundles + $inventory_data;
 
 
 
 
-        return view('dashboard.index', compact('page_title', 'total_dataset', 'inventory_data', 'nutrition_impact', 'bundles', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
+        return view('dashboard.index', compact('page_title', 'total_dataset', 'stibs_Count', 'non_stib_Count', 'inventory_data', 'nutrition_impact', 'bundles', 'dataset_count', 'gender_impact','poverty_impact', 'environment_impact',
             'climate_impact', 'publishedCount', 'unpublishedCount','page_description','action','logo','logoText'));
     }
 
@@ -99,7 +116,14 @@ class HomeController extends Controller
             $datasetyear = $dataset ? $dataset->release_year : null;
 
             $impactAreas = $dataset ? $dataset->impactAreas->pluck('name')->toArray() : [];
-            $innovations = $dataset ? $dataset->innovations->pluck('name')->toArray() : [];
+            $innovationsWithCategories = $dataset ? $dataset->innovations->map(function ($innovation) {
+                // Assuming each innovation has a category property, adjust accordingly
+                return [
+                    'name' => $innovation->name,
+                    'category' => $innovation->category // Adjust this according to your actual structure
+                ];
+            })->toArray() : [];
+
 
 
 
@@ -111,7 +135,8 @@ class HomeController extends Controller
                 'dataset_author'=> $datasetauthor,
                 'dataset_release_year'=> $datasetyear,
                 'impactAreas' => $impactAreas,
-                'innovations' => $innovations,
+                'innovationsWithCategories' => $innovationsWithCategories,
+
 
 
             ];
@@ -134,10 +159,26 @@ class HomeController extends Controller
         $bundles = Dataset::where('status', 'published')->count();
         $inventory_data = InventoryData::count();
 
+        $totalCategoriesCount = Innovation::distinct()->count('category');
+
+        $stibs_Count =  Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) >= ?', [$totalCategoriesCount])
+            ->count();
+
+        $non_stib_Count = Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) < ?', [$totalCategoriesCount])
+            ->count();
+
         $total_dataset = $bundles + $inventory_data;
 
 
-        return view('map', compact('logo','page_title', 'bundles', 'inventory_data', 'total_dataset','page_description','action',));
+        return view('map', compact('logo','page_title', 'bundles', 'inventory_data', 'stibs_Count', 'non_stib_Count', 'total_dataset','page_description','action',));
     }
 
     public function dataset_list()
@@ -248,10 +289,62 @@ class HomeController extends Controller
         $bundles = Dataset::count();
         $inventory_data = InventoryData::count();
 
-        $total_dataset = $bundles + $inventory_data;
 
 
-        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+        $totalCategoriesCount = Innovation::distinct()->count('category');
+
+        $stibs_Count =  Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) >= ?', [$totalCategoriesCount])
+            ->count();
+
+        $non_stib_Count = Dataset::selectRaw('COUNT(*) as aggregate')
+            ->join('dataset_innovation', 'datasets.id', '=', 'dataset_innovation.dataset_id')
+            ->join('innovations', 'dataset_innovation.innovation_id', '=', 'innovations.id')
+            ->groupBy('datasets.id')
+            ->havingRaw('COUNT(DISTINCT innovations.category) < ?', [$totalCategoriesCount])
+            ->count();
+
+        $total_dataset =  $inventory_data + $stibs_Count + $non_stib_Count;
+
+        $impactAreas = ImpactArea::all();
+
+        $providers = Provider::all();
+
+        // Initialize an array to store dataset counts for each impact area
+        $datasetCounts = [];
+        $datasetPCounts = [];
+
+        // Loop through each impact area
+        foreach ($impactAreas as $impactArea) {
+            // Retrieve the dataset counts for the current impact area
+            $datasetCount = Dataset::whereHas('impactAreas', function ($query) use ($impactArea) {
+                $query->where('impact_area_id', $impactArea->id);
+            })->count();
+
+            // Store the dataset count for the current impact area
+            $datasetCounts[] = $datasetCount;
+        }
+
+        foreach ($providers as $provider){
+            $datasetPCount = Dataset::whereHas('providers', function ($query) use ($provider){
+                $query->where('provider_id', $provider->id);
+            })->count();
+
+            $datasetPCounts[] = $datasetPCount;
+        }
+
+        $inventorySources = InventoryData::select('inventory_source', \DB::raw('count(*) as count'))
+            ->groupBy('inventory_source')
+            ->get();
+
+
+
+
+
+        return view('graphs', compact('datasets', 'total_dataset', 'bundles', 'stibs_Count', 'non_stib_Count', 'datasetCounts', 'impactAreas', 'providers', 'datasetPCounts', 'inventorySources', 'inventory_data', 'clusters', 'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
     }
 
     public function about_page()
@@ -309,7 +402,7 @@ class HomeController extends Controller
     }
 
 
-    public function landing_page_list()
+    public function landing_page_list(Request $request)
     {
         $logo = "img/logo.png";
         $page_title = 'STIBs List Diplay';
@@ -318,6 +411,25 @@ class HomeController extends Controller
 
 
         $query = Dataset::where('status', 'published');
+
+        if ($request->has('sk') && !empty($request->sk)) {
+            $searchTerm = $request->sk;
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('title', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('author', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('release_year', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('source', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('access', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('license', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('contact', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('DOI', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('collection_period', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('data_type', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('methods', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('resillience_indicators', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('observations', 'like', '%' . $searchTerm . '%');
+            });
+        }
         $dataset = $query->paginate(15);
 
 
@@ -340,6 +452,91 @@ class HomeController extends Controller
 
 
         return view('inventory-data-list', compact('dataset',  'dataset_count','region_count', 'cluster_count', 'country_count', 'logo','page_title', 'page_description','action'));
+    }
+
+    public function getllabs()
+    {
+        $path = storage_path('app/public/counties.geojson');
+        $geoJson = file_get_contents($path);
+        return response()->json(json_decode($geoJson));
+
+    }
+
+
+    public function learning_labs()
+    {
+        $logo = "img/logo.png";
+        $page_title = 'Learning Page';
+        $page_description = 'Social-Technical Innovation Bundles';
+        $action = __FUNCTION__;
+
+
+        return view('learning', compact( 'logo','page_title', 'page_description','action'));
+
+    }
+
+    public function resource_hub(Request $request)
+    {
+        $logo = "img/logo.png";
+        $page_title = 'STIBs Resource HUB';
+        $page_description = 'STIBs Resource HUB.';
+        $action = __FUNCTION__;
+
+        $searchQuery = $request->input('search');
+        $regionFilter = $request->input('region');
+        $impactAreaFilter = $request->input('impact_area');
+        $clusterFilter = $request->input('cluster');
+
+        $query = Dataset::where('status', 'published');
+
+        if ($searchQuery) {
+            $query->where(function ($query) use ($searchQuery) {
+                $query->where('title', 'like', "%$searchQuery%")
+                    ->orWhere('author', 'like', "%$searchQuery%")
+                    ->orWhere('release_year', 'like', "%$searchQuery%");
+                // Add more columns to search here
+            });
+        }
+
+        if ($regionFilter) {
+            // Filter by Region
+            $query->whereHas('regions', function ($query) use ($regionFilter) {
+                $query->where('regions.id', $regionFilter);
+            });
+        }
+
+        if ($impactAreaFilter) {
+            // Filter by Impact Area
+            $query->whereHas('impactAreas', function ($query) use ($impactAreaFilter) {
+                $query->where('impact_areas.id', $impactAreaFilter);
+            });
+        }
+
+        if ($clusterFilter) {
+            // Filter by Cluster
+            $query->whereHas('clusters', function ($query) use ($clusterFilter) {
+                $query->where('clusters.id', $clusterFilter);
+            });
+        }
+
+        $dataset = $query->paginate(12);
+        $dataset_count = $dataset->total(); // Get the total count of filtered results
+
+        // Assuming you have a Region model to get the list of regions
+        $regions = Region::all();
+        $impactAreas = ImpactArea::all();
+        $clusters = Cluster::all();
+
+        $workshopReportsCount = ResourceHub::where('type', 'Workshop Reports')->count();
+        $blogsCount = ResourceHub::where('type', 'Blog')->count();
+        $videosCount = ResourceHub::where('type', 'LIKE', '%Video%')->count();
+        $workingPapersCount = ResourceHub::where('type', 'Working Paper')->count();
+        $frameworksCount = ResourceHub::where('type', 'Frameworks, Guides & Instruments')->count();
+        $trainingManualsCount = ResourceHub::where('type', 'Training Manuals')->count();
+
+        $resource = ResourceHub::paginate(12);
+
+        return view('resource_hub', compact('resource','workshopReportsCount', 'blogsCount', 'videosCount', 'workingPapersCount', 'frameworksCount', 'trainingManualsCount','dataset', 'dataset_count', 'logo', 'page_title', 'page_description', 'action', 'regions', 'impactAreas', 'clusters'));
     }
 
 
