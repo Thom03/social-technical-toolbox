@@ -11,6 +11,7 @@ use App\Models\Innovation;
 use App\Models\InventoryData;
 use App\Models\Provider;
 use App\Models\Region;
+use App\Models\ResourceHub;
 use App\Models\TechPrac;
 use GeoJson\GeoJson;
 use Illuminate\Http\Request;
@@ -472,6 +473,70 @@ class HomeController extends Controller
 
         return view('learning', compact( 'logo','page_title', 'page_description','action'));
 
+    }
+
+    public function resource_hub(Request $request)
+    {
+        $logo = "img/logo.png";
+        $page_title = 'STIBs Resource HUB';
+        $page_description = 'STIBs Resource HUB.';
+        $action = __FUNCTION__;
+
+        $searchQuery = $request->input('search');
+        $regionFilter = $request->input('region');
+        $impactAreaFilter = $request->input('impact_area');
+        $clusterFilter = $request->input('cluster');
+
+        $query = Dataset::where('status', 'published');
+
+        if ($searchQuery) {
+            $query->where(function ($query) use ($searchQuery) {
+                $query->where('title', 'like', "%$searchQuery%")
+                    ->orWhere('author', 'like', "%$searchQuery%")
+                    ->orWhere('release_year', 'like', "%$searchQuery%");
+                // Add more columns to search here
+            });
+        }
+
+        if ($regionFilter) {
+            // Filter by Region
+            $query->whereHas('regions', function ($query) use ($regionFilter) {
+                $query->where('regions.id', $regionFilter);
+            });
+        }
+
+        if ($impactAreaFilter) {
+            // Filter by Impact Area
+            $query->whereHas('impactAreas', function ($query) use ($impactAreaFilter) {
+                $query->where('impact_areas.id', $impactAreaFilter);
+            });
+        }
+
+        if ($clusterFilter) {
+            // Filter by Cluster
+            $query->whereHas('clusters', function ($query) use ($clusterFilter) {
+                $query->where('clusters.id', $clusterFilter);
+            });
+        }
+
+        $dataset = $query->paginate(12);
+        $dataset_count = $dataset->total(); // Get the total count of filtered results
+
+        // Assuming you have a Region model to get the list of regions
+        $regions = Region::all();
+        $impactAreas = ImpactArea::all();
+        $clusters = Cluster::all();
+
+        $workshopReportsCount = ResourceHub::where('type', 'Workshop Reports')->count();
+        $blogsCount = ResourceHub::where('type', 'Blog')->count();
+        $videosCount = ResourceHub::where('type', 'LIKE', '%Video%')->count();
+        $workingPapersCount = ResourceHub::where('type', 'Working Paper')->count();
+        $frameworksCount = ResourceHub::where('type', 'Frameworks, Guides & Instruments')->count();
+        $trainingManualsCount = ResourceHub::where('type', 'Training Manuals')->count();
+
+        $resource = ResourceHub::paginate(12);
+
+        return view('resource_hub', compact('resource','workshopReportsCount', 'blogsCount', 'videosCount', 'workingPapersCount', 'frameworksCount', 'trainingManualsCount','dataset', 'dataset_count', 'logo', 'page_title', 'page_description', 'action', 'regions', 'impactAreas', 'clusters'));
     }
 
 

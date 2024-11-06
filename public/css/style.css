@@ -142,15 +142,15 @@
 .nav-scroller .nav {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
+    -ms-flex-wrap: wrap; /* Allow wrapping in IE/Edge */
+    flex-wrap: wrap; /* Allow wrapping */
     padding-bottom: 1rem;
     margin-top: 40px;
-    overflow-x: auto;
+    overflow-x: hidden; /* Remove horizontal scroll */
     color: rgba(255, 255, 255, .75);
     text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
+    white-space: normal; /* Allow line breaking */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
 }
 
 .nav-underline .nav-link {

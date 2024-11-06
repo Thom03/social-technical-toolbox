@@ -10,9 +10,9 @@
 
 <div class="nav-scroller bg-white shadow-sm">
     <nav class="nav  justify-content-center nav-underline">
+        <a class="nav-link {{ request()->is('resource_hub') ? 'active' : '' }}" href="{{ route('resource_hub') }}"><h4><i class="mdi mdi-home"></i> Home</h4></a>
         <a class="nav-link {{ request()->is('map_page') ? 'active' : '' }}" href="{{ route('map_page') }}"><h4><i class="mdi mdi-map"></i> Interactive Map</h4></a>
-        <a class="nav-link {{ request()->is('learning_labs') ? 'active' : '' }}" href="{{ route('learning_labs') }}"><h4><i class="mdi mdi-map"></i> Learning Labs</h4></a>
-
+        <a class="nav-link {{ request()->is('learning_labs') ? 'active' : '' }}" href="{{ route('learning_labs') }}"><h4><i class="mdi mdi-map-marker"></i> Learning Labs</h4></a>
         <a class="nav-link {{ request()->is('display-bundle-list') ? 'active' : '' }}" href="{{ route('display-bundle-list') }}"><h4><i
                     class="mdi mdi-format-list-bulleted"></i> STIBs </h4></a>
         <a class="nav-link {{ request()->is('inventory-data-list') ? 'active' : '' }}" href="{{ route('inventory-data-list') }}"><h4><i class="mdi mdi-file-document"></i>Inventory Data</h4></a>
@@ -20,12 +20,8 @@
 
         <a class="nav-link {{ request()->is('about_us') ? 'active' : '' }}" href="{{ route('about_us') }}"><h4><i class="mdi mdi-comment-question-outline"></i>
                 About Us </h4></a>
-        {{--        <a class="nav-link active" href="#"><h4><i class="mdi mdi-phone"></i> Contact Us</h4></a>--}}
-
     </nav>
 </div>
-
-
 
 <!-- Additional CSS for styling the unified navbar -->
 <style>
@@ -105,5 +101,21 @@
             position: static;
             float: none;
         }
+    }
+
+    .nav-link.active {
+        color: #f05a31; /* Customize this color for the active menu item */
+        font-weight: bold; /* Optionally, make it bold */
+        border-bottom: 2px solid #f05a31; /* Optional underline effect */
+    }
+
+    /* Hover effect for other links */
+    .nav-link:hover {
+        color: #f05a31; /* Slightly different color on hover */
+    }
+
+    /* Optional: For inactive links */
+    .nav-link {
+        color: #5a5a5a; /* Default color for non-active links */
     }
 </style>

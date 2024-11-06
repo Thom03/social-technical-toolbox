@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ImpactAreaController;
 use App\Http\Controllers\Admin\InnovationController;
 use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\RegionController;
+use App\Http\Controllers\Admin\ResourceController;
 use App\Http\Controllers\Admin\TechPracController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Api\APIController;
@@ -47,7 +48,9 @@ Route::get('/landing-page-list', [HomeController::class, 'landing_page_list'])->
 
 Route::get('/llabsjson', [HomeController::class, 'getllabs'])->name('getllabs');
 
-Route::get('/', [HomeController::class, 'learning_labs'])->name('learning_labs');
+Route::get('/learning_labs', [HomeController::class, 'learning_labs'])->name('learning_labs');
+
+Route::get('/', [HomeController::class, 'resource_hub'])->name('resource_hub');
 
 Auth::routes();
 
@@ -149,6 +152,11 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/upload_inventory_data_form', [InventoryDataController::class, 'upload_inventory_data_form'])->name('upload_iventory_data_form');
     Route::post('/upload_inventory_data', [InventoryDataController::class, 'upload_inventory_data'])->name('upload_inventory_data');
     Route::get('/inventory_data_list', [InventoryDataController::class, 'inventory_data_list'])->name('inventory_data_list');
+
+
+    Route::get('resourcelist', [ResourceController::class, 'resource_list'])->name('resource_list');
+    Route::get('add_resource', [ResourceController::class, 'add_resource'])->name('add_resource');
+    Route::get('insert_resource', [ResourceController::class, 'insert_resource'])->name('insert_resource');
 
 
 
